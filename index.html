@@ -432,7 +432,7 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        const scriptURL = "https://script.google.com/macros/s/AKfycbxTYls9jsuq3KysDoFugbuWqv_6kDYPKs_pm6AMYYWli2fUDGFTgufoACDsaEWlOkyQ/exec";
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyGQYDQ6eDQDRTFRKs6DS9l3A4_lAqpFuB1m5wEKG8zuOadl1r4vo3x_Do4-U6Nm3_d/exec';
         let teamsLoaded = false;
 
         function switchPage(page) {
@@ -459,19 +459,18 @@
         async function loadTeams() {
             const teamsGrid = document.getElementById('teams-grid');
             const loadingText = document.getElementById('loading-text');
-            
-            console.log("Takımlar yeni URL üzerinden isteniyor...");
 
             try {
                 const response = await fetch(scriptURL);
                 const teamsData = await response.json(); 
-                console.log("Gelen veriler:", teamsData);
 
                 loadingText.style.display = 'none';
 
                 teamsData.forEach(team => {
-                    const teamName = team[0]; 
-                    const logoUrl = team[1];  
+                    // Veri nesne (object) olarak geldiği için değerlerini diziye çevirip alıyoruz
+                    const values = Object.values(team);
+                    const teamName = values[0]; 
+                    const logoUrl = values[1];  
 
                     if (!teamName || teamName === "Team Name" || teamName === "TakimAdi") return;
 
@@ -487,7 +486,7 @@
 
                     teamsGrid.appendChild(teamCard);
                 });
-                console.log("Takımlar başarıyla yerleştirildi!");
+                console.log("128 takım başarıyla ızgaraya yerleştirildi!");
 
             } catch (error) {
                 console.error('Hata:', error);
