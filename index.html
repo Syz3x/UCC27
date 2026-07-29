@@ -320,21 +320,15 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
+        /* BEYAZ DAİRE ARKA PLANI KALDIRILDI, ŞEFFAF YAPILDI */
         .team-logo-container {
             width: 70px;
             height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #fff;
-            border-radius: 50%;
-            padding: 5px;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .team-card:hover .team-logo-container {
-            border-color: var(--theme-dark);
+            background-color: transparent; 
+            border: none;
         }
 
         .team-logo-container img {
@@ -467,7 +461,6 @@
                 loadingText.style.display = 'none';
 
                 teamsData.forEach(team => {
-                    // Veri nesne (object) olarak geldiği için değerlerini diziye çevirip alıyoruz
                     const values = Object.values(team);
                     const teamName = values[0]; 
                     const logoUrl = values[1];  
@@ -486,7 +479,6 @@
 
                     teamsGrid.appendChild(teamCard);
                 });
-                console.log("128 takım başarıyla ızgaraya yerleştirildi!");
 
             } catch (error) {
                 console.error('Hata:', error);
