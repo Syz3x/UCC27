@@ -26,6 +26,8 @@
             background: linear-gradient(135deg, var(--theme-dark), var(--theme-dark-red));
             color: var(--text-main);
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* ÜST MENÜ */
@@ -33,7 +35,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 40px; /* Logoya yer açmak için biraz kıstım */
+            padding: 10px 40px;
             background-color: var(--theme-red); 
             border-bottom: 2px solid #800000; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -46,21 +48,21 @@
         }
         
         .logo img {
-            height: 140px; /* LOGO DEVASA YAPILDI */
+            height: 140px; 
             filter: brightness(0) invert(1); 
             object-fit: contain;
         }
 
         nav {
             display: flex;
-            gap: 35px; /* Aralarını biraz açtım */
+            gap: 35px; 
         }
 
         nav a {
             color: var(--text-main);
             text-decoration: none;
-            font-size: 18px; /* MENÜ YAZILARI BÜYÜTÜLDÜ */
-            font-weight: 700; /* Daha kalın yapıldı */
+            font-size: 18px; 
+            font-weight: 700; 
             text-transform: uppercase;
             transition: all 0.3s;
             cursor: pointer;
@@ -79,7 +81,6 @@
             gap: 25px;
         }
 
-        /* DİL SEÇİM MENÜSÜ */
         .lang-select {
             background-color: rgba(0, 0, 0, 0.2);
             color: white;
@@ -113,6 +114,10 @@
         }
 
         /* SAYFA YÖNETİMİ */
+        .page-content {
+            flex: 1;
+        }
+        
         .page-view {
             display: none;
         }
@@ -184,50 +189,12 @@
             color: var(--theme-dark);
         }
 
-        /* HİKAYELER / YUVARLAK PROFİLLER */
-        .stories-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 40px;
-            gap: 20px;
-            overflow-x: auto;
-        }
-
-        .story-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-
-        .story-circle {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-color);
-            background-color: var(--theme-black);
-            padding: 2px;
-            transition: transform 0.3s;
-        }
-        
-        .story-circle:hover {
-            transform: scale(1.1);
-        }
-
-        .story-text {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
         /* ANA İÇERİK BÖLÜMÜ */
         .main-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 30px;
-            padding: 20px 40px 50px 40px;
+            padding: 40px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -311,11 +278,12 @@
             align-items: center;
         }
 
-        /* TAKIMLAR SAYFASI STİLLERİ */
-        .teams-page-container {
+        /* ORTAK İÇERİK SAYFASI STİLLERİ (Matches, Stats, vb.) */
+        .content-page-container {
             max-width: 1400px;
             margin: 40px auto;
             padding: 0 40px;
+            text-align: center;
         }
 
         .page-title {
@@ -326,8 +294,21 @@
             padding-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-align: left;
+        }
+        
+        .info-message {
+            background-color: var(--theme-black);
+            border: 1px solid rgba(204, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 60px 20px;
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-top: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
+        /* TAKIMLAR SAYFASI STİLLERİ */
         .teams-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -378,8 +359,8 @@
             color: var(--text-main);
         }
 
-        /* KURALAR (DRAWS) SAYFASI STİLLERİ */
-        .draw-article-container {
+        /* MAKALELER (DRAWS & NEWS) SAYFASI STİLLERİ */
+        .article-container {
             max-width: 1000px;
             margin: 40px auto;
             background-color: var(--theme-black);
@@ -389,21 +370,21 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .draw-title {
+        .article-title {
             font-size: 36px;
             font-weight: bold;
             color: var(--text-main);
             margin-bottom: 10px;
         }
 
-        .draw-subtitle {
+        .article-subtitle {
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 30px;
             font-weight: 500;
         }
 
-        .draw-image {
+        .article-image {
             width: 100%;
             border-radius: 12px;
             margin-bottom: 30px;
@@ -411,12 +392,54 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .draw-content p {
+        .article-content p {
             font-size: 17px;
             line-height: 1.6;
             margin-bottom: 20px;
             color: #dddddd;
             text-align: center;
+        }
+
+        /* SPONSORLAR FOOTER (YENİ EKLENDİ) */
+        footer {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            margin-top: auto;
+            text-align: center;
+            border-top: 4px solid var(--theme-red);
+        }
+
+        .sponsors-title {
+            color: #333333;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .sponsors-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sponsors-grid img {
+            height: 40px; 
+            max-width: 120px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        .sponsors-grid img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
         }
     </style>
 </head>
@@ -429,11 +452,12 @@
         </a>
         
         <nav>
-            <a id="nav-home" class="active" onclick="switchPage('home')" data-i18n="matches">Matches</a>
+            <a id="nav-home" class="active" onclick="switchPage('home')" data-i18n="home">Home</a>
+            <a id="nav-matches" onclick="switchPage('matches')" data-i18n="matches">Matches</a>
             <a id="nav-draws" onclick="switchPage('draws')" data-i18n="draws">Draws</a>
-            <a onclick="alert('Bu sayfa yapım aşamasında!')" data-i18n="stats">Stats</a>
+            <a id="nav-stats" onclick="switchPage('stats')" data-i18n="stats">Stats</a>
             <a id="nav-teams" onclick="switchPage('teams')" data-i18n="teams">Teams</a>
-            <a onclick="alert('Bu sayfa yapım aşamasında!')" data-i18n="news">News</a>
+            <a id="nav-news" onclick="switchPage('news')" data-i18n="news">News</a>
         </nav>
         
         <div class="header-right">
@@ -453,83 +477,132 @@
         </div>
     </header>
 
-    <!-- 1. ANA SAYFA GÖRÜNÜMÜ -->
-    <div id="view-home" class="page-view active-page">
-        <section class="scoreboard-section">
-            <div class="matches-container">
-                <div class="match-card">
-                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="today">Today, 21:00</span>
-                    <div class="team-row"><span>Galatasaray</span> <span>-</span></div>
-                    <div class="team-row"><span>Bayern Munich</span> <span>-</span></div>
+    <div class="page-content">
+        <!-- 1. ANA SAYFA GÖRÜNÜMÜ -->
+        <div id="view-home" class="page-view active-page">
+            <section class="scoreboard-section">
+                <div class="matches-container">
+                    <div class="match-card">
+                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="july31">31 July</span>
+                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
+                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
+                    </div>
+                    <div class="match-card">
+                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="july31">31 July</span>
+                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
+                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
+                    </div>
+                    <div class="match-card">
+                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="july31">31 July</span>
+                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
+                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
+                    </div>
+                     <div class="match-card">
+                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="july31">31 July</span>
+                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
+                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
+                    </div>
                 </div>
-                <div class="match-card">
-                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="today">Today, 21:00</span>
-                    <div class="team-row"><span>Trabzonspor</span> <span>-</span></div>
-                    <div class="team-row"><span>Chelsea</span> <span>-</span></div>
+                <button class="view-all-btn" onclick="switchPage('matches')" data-i18n="viewAll">View all matches</button>
+            </section>
+
+            <main class="main-content">
+                <div class="hero-section">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbb1925536?q=80&w=1000&auto=format&fit=crop" alt="Hero Image">
+                    <div class="hero-text" data-i18n="heroText">Qualifying: Fixtures, results, format</div>
                 </div>
-                <div class="match-card">
-                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="today">Today, 22:00</span>
-                    <div class="team-row"><span>Real Madrid</span> <span>-</span></div>
-                    <div class="team-row"><span>Fenerbahce</span> <span>-</span></div>
+                <div class="headlines-section">
+                    <h2 class="headlines-title" data-i18n="headlines">Headlines</h2>
+                    <!-- Haber manşetine tıklandığında news sayfasına gidiyor -->
+                    <div class="headline-item" onclick="switchPage('news')">
+                        <img src="image2" alt="Draw News" class="headline-img" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
+                        <div class="headline-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
+                    </div>
                 </div>
-                 <div class="match-card">
-                    <span style="color: var(--text-muted); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tomorrow">Tomorrow, 19:45</span>
-                    <div class="team-row"><span>Arsenal</span> <span>-</span></div>
-                    <div class="team-row"><span>Besiktas</span> <span>-</span></div>
+            </main>
+        </div>
+
+        <!-- 2. MAÇLAR SAYFASI GÖRÜNÜMÜ -->
+        <div id="view-matches" class="page-view">
+            <div class="content-page-container">
+                <h1 class="page-title" data-i18n="matches">Matches</h1>
+                <div class="info-message" data-i18n="matchesNotSet">
+                    Matches have not been determined yet.
                 </div>
             </div>
-            <button class="view-all-btn" data-i18n="viewAll">View all matches</button>
-        </section>
+        </div>
 
-        <section class="stories-section">
-            <div class="story-item"><div class="story-circle"></div><span class="story-text" data-i18n="story1">Back to work 💪</span></div>
-            <div class="story-item"><div class="story-circle"></div><span class="story-text" data-i18n="story2">Transfers 🔥</span></div>
-            <div class="story-item"><div class="story-circle"></div><span class="story-text">Zidane 🦊</span></div>
-            <div class="story-item"><div class="story-circle"></div><span class="story-text">Klopp 🧢</span></div>
-            <div class="story-item"><div class="story-circle"></div><span class="story-text">CR7 🐐</span></div>
-        </section>
-
-        <main class="main-content">
-            <div class="hero-section">
-                <img src="https://images.unsplash.com/photo-1574629810360-7efbb1925536?q=80&w=1000&auto=format&fit=crop" alt="Hero Image">
-                <div class="hero-text" data-i18n="heroText">Qualifying: Fixtures, results, format</div>
-            </div>
-            <div class="headlines-section">
-                <h2 class="headlines-title" data-i18n="headlines">Headlines</h2>
-                <!-- MANŞETLER: Sadece Draws haberi ve image2 eklendi -->
-                <div class="headline-item" onclick="switchPage('draws')">
-                    <img src="image2" alt="Draw News" class="headline-img" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
-                    <div class="headline-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
+        <!-- 3. İSTATİSTİKLER SAYFASI GÖRÜNÜMÜ -->
+        <div id="view-stats" class="page-view">
+            <div class="content-page-container">
+                <h1 class="page-title" data-i18n="stats">Stats</h1>
+                <div class="info-message" data-i18n="statsNotSet">
+                    Will be updated after matches are determined.
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
 
-    <!-- 2. TAKIMLAR SAYFASI GÖRÜNÜMÜ -->
-    <div id="view-teams" class="page-view">
-        <div class="teams-page-container">
-            <h1 class="page-title" data-i18n="partTeams">Participating Teams</h1>
-            <div id="teams-grid" class="teams-grid">
-                <p id="loading-text" style="color: var(--accent-color); font-size: 16px; grid-column: 1 / -1; text-align: center; padding: 50px;" data-i18n="loading">Takımlar yükleniyor...</p>
+        <!-- 4. TAKIMLAR SAYFASI GÖRÜNÜMÜ -->
+        <div id="view-teams" class="page-view">
+            <div class="content-page-container">
+                <h1 class="page-title" data-i18n="partTeams">Participating Teams</h1>
+                <div id="teams-grid" class="teams-grid">
+                    <p id="loading-text" style="color: var(--accent-color); font-size: 16px; grid-column: 1 / -1; text-align: center; padding: 50px;" data-i18n="loading">Loading teams...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. KURALAR (DRAWS) SAYFASI GÖRÜNÜMÜ -->
+        <div id="view-draws" class="page-view">
+            <div class="article-container">
+                <h1 class="article-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
+                <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
+                
+                <img src="image2" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
+                
+                <div class="article-content">
+                    <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
+                    <p data-i18n="drawP2">The draw will begin at 22:00 CET. Seedings, groupings, and the procedure will be available prior to the ceremony.</p>
+                    <p data-i18n="drawP3">Presidents of all participating clubs will be in attendance for the official ceremony.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. HABERLER (NEWS) SAYFASI GÖRÜNÜMÜ (Yeni) -->
+        <div id="view-news" class="page-view">
+            <div class="article-container">
+                <h1 class="article-title" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</h1>
+                <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
+                
+                <img src="image2" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
+                
+                <div class="article-content">
+                    <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
+                    <p data-i18n="drawP2">The draw will begin at 22:00 CET. Seedings, groupings, and the procedure will be available prior to the ceremony.</p>
+                    <p data-i18n="drawP3">Presidents of all participating clubs will be in attendance for the official ceremony.</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 3. KURALAR (DRAWS) SAYFASI GÖRÜNÜMÜ -->
-    <div id="view-draws" class="page-view">
-        <div class="draw-article-container">
-            <h1 class="draw-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
-            <div class="draw-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 22:00 CET / 23:00 TSI</div>
-            
-            <img src="image2" alt="UCC Draw Ball" class="draw-image" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
-            
-            <div class="draw-content">
-                <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
-                <p data-i18n="drawP2">The draw will begin at 22:00 CET (23:00 TSI). Seedings, groupings, and the procedure will be available prior to the ceremony.</p>
-                <p data-i18n="drawP3">Presidents of all participating clubs will be in attendance for the official ceremony.</p>
-            </div>
+    <!-- SPONSORLAR BÖLÜMÜ (Tüm sayfalarda en altta görünür) -->
+    <footer>
+        <div class="sponsors-title" data-i18n="sponsorsText">Global Sponsors</div>
+        <div class="sponsors-grid">
+            <img src="image3" alt="Coca-Cola" onerror="this.onerror=null; this.src='image3.png'; this.src='image3.jpg';">
+            <img src="image4" alt="FedEx" onerror="this.onerror=null; this.src='image4.png'; this.src='image4.jpg';">
+            <img src="image5" alt="Mastercard" onerror="this.onerror=null; this.src='image5.png'; this.src='image5.jpg';">
+            <img src="image6" alt="Sony" onerror="this.onerror=null; this.src='image6.png'; this.src='image6.jpg';">
+            <img src="image7" alt="Just Eat Takeaway" onerror="this.onerror=null; this.src='image7.png'; this.src='image7.jpg';">
+            <img src="image8" alt="AUDI" onerror="this.onerror=null; this.src='image8.png'; this.src='image8.jpg';">
+            <img src="image9" alt="Turkish Airlines" onerror="this.onerror=null; this.src='image9.png'; this.src='image9.jpg';">
+            <img src="image10" alt="Apple" onerror="this.onerror=null; this.src='image10.png'; this.src='image10.jpg';">
+            <img src="image11" alt="Frito-lay" onerror="this.onerror=null; this.src='image11.png'; this.src='image11.jpg';">
+            <img src="image12" alt="Adidas" onerror="this.onerror=null; this.src='image12.png'; this.src='image12.jpg';">
+            <img src="image13" alt="Rexona" onerror="this.onerror=null; this.src='image13.png'; this.src='image13.jpg';">
+            <img src="image14" alt="McDonald's" onerror="this.onerror=null; this.src='image14.png'; this.src='image14.jpg';">
         </div>
-    </div>
+    </footer>
 
     <!-- JAVASCRIPT & ÇOKLU DİL SİSTEMİ -->
     <script>
@@ -539,122 +612,121 @@
         // DİL SÖZLÜĞÜ 
         const translations = {
             en: {
-                matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
+                home: "Home", matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
                 login: "Log in", viewAll: "View all matches", headlines: "Headlines", partTeams: "Participating Teams",
-                loading: "Loading teams...", today: "Today", tomorrow: "Tomorrow",
-                story1: "Back to work 💪", story2: "Transfers 🔥",
+                loading: "Loading teams...", july31: "31 July", tbd: "TBD",
                 heroText: "Qualifying: Fixtures, results, format",
                 newsDraw: "UCC 27 Play-off draw in Madrid",
+                sponsorsText: "Global Sponsors",
+                matchesNotSet: "Matches have not been determined yet.",
+                statsNotSet: "Will be updated after matches are determined.",
                 
                 // Kuralar Sayfası
                 drawTitle: "UCC 27 Play-off draw",
-                drawSubtitle: "Madrid, Spain - 22:00 CET / 23:00 TSI",
+                drawSubtitle: "Madrid, Spain - 31 July, 22:00 CET",
                 drawP1: "The UCC 27 play-off round draw takes place in Madrid, Spain.",
-                drawP2: "The draw will begin at 22:00 CET (23:00 TSI). Seedings, groupings, and the procedure will be available prior to the ceremony.",
+                drawP2: "The draw will begin at 22:00 CET. Seedings, groupings, and the procedure will be available prior to the ceremony.",
                 drawP3: "Presidents of all participating clubs will be in attendance for the official ceremony."
             },
             tr: {
-                matches: "Maçlar", draws: "Kuralar", stats: "İstatistikler", teams: "Takımlar", news: "Haberler",
+                home: "Ana Sayfa", matches: "Maçlar", draws: "Kuralar", stats: "İstatistikler", teams: "Takımlar", news: "Haberler",
                 login: "Giriş yap", viewAll: "Tüm maçları gör", headlines: "Manşetler", partTeams: "Katılan Takımlar",
-                loading: "Takımlar yükleniyor...", today: "Bugün", tomorrow: "Yarın",
-                story1: "İşe Dönüş 💪", story2: "Transferler 🔥",
+                loading: "Takımlar yükleniyor...", july31: "31 Temmuz", tbd: "Bilinmiyor",
                 heroText: "Elemeler: Fikstür, sonuçlar, format",
                 newsDraw: "UCC 27 Play-off kura çekimi Madrid'de",
+                sponsorsText: "Global Sponsorlar",
+                matchesNotSet: "Henüz maçlar belirlenmemiştir.",
+                statsNotSet: "Maçlar belirlendikten sonra güncellenecektir.",
 
                 // Kuralar Sayfası
                 drawTitle: "UCC 27 Play-off Kura Çekimi",
-                drawSubtitle: "Madrid, İspanya - 22:00 CET / 23:00 TSİ",
+                drawSubtitle: "Madrid, İspanya - 31 Temmuz, 22:00 CET",
                 drawP1: "UCC 27 play-off turu kura çekimi Madrid, İspanya'da gerçekleştirilecektir.",
-                drawP2: "Kura çekimi 22:00 CET (23:00 TSİ) itibarıyla başlayacaktır. Torbalar, gruplandırmalar ve kura prosedürü tören öncesi açıklanacaktır.",
+                drawP2: "Kura çekimi 22:00 CET itibarıyla başlayacaktır. Torbalar, gruplandırmalar ve kura prosedürü tören öncesi açıklanacaktır.",
                 drawP3: "Katılan tüm kulüplerin başkanları resmi kura töreninde bizzat yer alacaktır."
             },
             fr: {
-                matches: "Matchs", draws: "Tirages", stats: "Stats", teams: "Équipes", news: "Actualités",
+                home: "Accueil", matches: "Matchs", draws: "Tirages", stats: "Stats", teams: "Équipes", news: "Actualités",
                 login: "Connexion", viewAll: "Voir tous les matchs", headlines: "À la une", partTeams: "Équipes Participantes",
-                loading: "Chargement des équipes...", today: "Aujourd'hui", tomorrow: "Demain",
-                story1: "Retour au travail 💪", story2: "Transferts 🔥",
+                loading: "Chargement des équipes...", july31: "31 Juillet", tbd: "À dét.",
                 heroText: "Qualifications : Calendrier, résultats, format",
                 newsDraw: "Tirage au sort des barrages UCC 27 à Madrid",
+                sponsorsText: "Sponsors Mondiaux",
+                matchesNotSet: "Les matchs n'ont pas encore été déterminés.",
+                statsNotSet: "Sera mis à jour une fois les matchs déterminés.",
                 
                 // Kuralar Sayfası
                 drawTitle: "Tirage au sort des barrages UCC 27",
-                drawSubtitle: "Madrid, Espagne - 22h00 CET / 23h00 TSI",
+                drawSubtitle: "Madrid, Espagne - 31 Juillet, 22h00 CET",
                 drawP1: "Le tirage au sort des barrages de l'UCC 27 a lieu à Madrid, en Espagne.",
-                drawP2: "Le tirage commencera à 22h00 CET (23h00 TSI). Les chapeaux et la procédure seront disponibles avant la cérémonie.",
+                drawP2: "Le tirage commencera à 22h00 CET. Les chapeaux et la procédure seront disponibles avant la cérémonie.",
                 drawP3: "Les présidents de tous les clubs participants seront présents pour la cérémonie officielle."
             },
             de: {
-                matches: "Spiele", draws: "Auslosungen", stats: "Statistiken", teams: "Teams", news: "News",
+                home: "Startseite", matches: "Spiele", draws: "Auslosungen", stats: "Statistiken", teams: "Teams", news: "News",
                 login: "Anmelden", viewAll: "Alle Spiele ansehen", headlines: "Schlagzeilen", partTeams: "Teilnehmende Teams",
-                loading: "Teams werden geladen...", today: "Heute", tomorrow: "Morgen",
-                story1: "Zurück an die Arbeit 💪", story2: "Transfers 🔥",
+                loading: "Teams werden geladen...", july31: "31. Juli", tbd: "Offen",
                 heroText: "Qualifikation: Spielplan, Ergebnisse, Format",
                 newsDraw: "UCC 27 Play-off-Auslosung in Madrid",
+                sponsorsText: "Globale Sponsoren",
+                matchesNotSet: "Spiele wurden noch nicht festgelegt.",
+                statsNotSet: "Wird nach der Auslosung aktualisiert.",
                 
                 // Kuralar Sayfası
                 drawTitle: "UCC 27 Play-off-Auslosung",
-                drawSubtitle: "Madrid, Spanien - 22:00 CET / 23:00 TSI",
+                drawSubtitle: "Madrid, Spanien - 31. Juli, 22:00 CET",
                 drawP1: "Die Auslosung der UCC 27 Play-off-Runde findet in Madrid, Spanien statt.",
-                drawP2: "Die Auslosung beginnt um 22:00 CET (23:00 TSI). Setzlisten und Abläufe werden vor der Zeremonie bekannt gegeben.",
+                drawP2: "Die Auslosung beginnt um 22:00 CET. Setzlisten und Abläufe werden vor der Zeremonie bekannt gegeben.",
                 drawP3: "Die Präsidenten aller teilnehmenden Vereine werden bei der offiziellen Zeremonie anwesend sein."
             },
             es: {
-                matches: "Partidos", draws: "Sorteos", stats: "Estadísticas", teams: "Equipos", news: "Noticias",
+                home: "Inicio", matches: "Partidos", draws: "Sorteos", stats: "Estadísticas", teams: "Equipos", news: "Noticias",
                 login: "Iniciar sesión", viewAll: "Ver todos los partidos", headlines: "Titulares", partTeams: "Equipos Participantes",
-                loading: "Cargando equipos...", today: "Hoy", tomorrow: "Mañana",
-                story1: "Vuelta al trabajo 💪", story2: "Traspasos 🔥",
+                loading: "Cargando equipos...", july31: "31 Julio", tbd: "Por det.",
                 heroText: "Clasificación: Calendario, resultados, formato",
                 newsDraw: "Sorteo de play-offs UCC 27 en Madrid",
+                sponsorsText: "Patrocinadores Globales",
+                matchesNotSet: "Aún no se han determinado los partidos.",
+                statsNotSet: "Se actualizará una vez que se determinen los partidos.",
                 
                 // Kuralar Sayfası
                 drawTitle: "Sorteo de play-offs UCC 27",
-                drawSubtitle: "Madrid, España - 22:00 CET / 23:00 TSI",
+                drawSubtitle: "Madrid, España - 31 Julio, 22:00 CET",
                 drawP1: "El sorteo de la ronda de play-offs de la UCC 27 tendrá lugar en Madrid, España.",
-                drawP2: "El sorteo comenzará a las 22:00 CET (23:00 TSI. Los bombos y el procedimiento estarán disponibles antes de la ceremonia.",
+                drawP2: "El sorteo comenzará a las 22:00 CET. Los bombos y el procedimiento estarán disponibles antes de la ceremonia.",
                 drawP3: "Los presidentes de todos los clubes participantes estarán presentes en la ceremonia oficial."
             }
         };
 
-        // Dili Değiştiren Fonksiyon
         function changeLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
-                    if(key === 'today' || key === 'tomorrow') {
-                        const timeStr = element.textContent.split(',')[1];
-                        element.textContent = translations[lang][key] + (timeStr ? ',' + timeStr : '');
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
+                    element.textContent = translations[lang][key];
                 }
             });
         }
 
-        // Sayfa Geçiş Fonksiyonu
         function switchPage(page) {
-            // Tüm sayfaları ve aktif menü sınıflarını temizle
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
             document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
 
-            // İstenen sayfayı ve menü linkini aktif yap
-            if (page === 'home') {
-                document.getElementById('view-home').classList.add('active-page');
-                document.getElementById('nav-home').classList.add('active');
-            } else if (page === 'teams') {
-                document.getElementById('view-teams').classList.add('active-page');
-                document.getElementById('nav-teams').classList.add('active');
-                
-                if (!teamsLoaded) {
-                    loadTeams();
-                    teamsLoaded = true;
-                }
-            } else if (page === 'draws') {
-                document.getElementById('view-draws').classList.add('active-page');
-                document.getElementById('nav-draws').classList.add('active');
+            const viewId = 'view-' + page;
+            const navId = 'nav-' + page;
+            
+            if (document.getElementById(viewId)) {
+                document.getElementById(viewId).classList.add('active-page');
+            }
+            if (document.getElementById(navId)) {
+                document.getElementById(navId).classList.add('active');
+            }
+
+            if (page === 'teams' && !teamsLoaded) {
+                loadTeams();
+                teamsLoaded = true;
             }
         }
 
-        // Takımları Çekme Fonksiyonu
         async function loadTeams() {
             const teamsGrid = document.getElementById('teams-grid');
             const loadingText = document.getElementById('loading-text');
