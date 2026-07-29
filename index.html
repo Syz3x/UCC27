@@ -9,7 +9,7 @@
             --theme-dark: #050505;
             --theme-black: #121212;
             --theme-dark-red: #240000;
-            --theme-red: #cc0000;
+            --theme-red: #b30000; /* Daha okunaklı tok bir kırmızı */
             --accent-color: #ff1a1a;
             --text-main: #ffffff;
             --text-muted: #999999;
@@ -34,21 +34,22 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 40px;
-            background-color: rgba(5, 5, 5, 0.9);
-            border-bottom: 2px solid var(--theme-red);
+            background-color: var(--theme-red); /* Arkası tamamen okunaklı kırmızı */
+            border-bottom: 2px solid #800000; /* Altına daha koyu kırmızı hafif bir çizgi */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .logo {
-            font-size: 26px;
-            font-weight: 900;
-            color: var(--text-main);
             cursor: pointer;
-            letter-spacing: 1px;
-            text-decoration: none;
+            display: flex;
+            align-items: center;
         }
         
-        .logo span {
-            color: var(--accent-color);
+        .logo img {
+            height: 55px; /* Logonun boyutu */
+            /* Resmi tamamen beyaza çeviren efsane CSS filtresi */
+            filter: brightness(0) invert(1); 
+            object-fit: contain;
         }
 
         nav {
@@ -60,14 +61,48 @@
             color: var(--text-main);
             text-decoration: none;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 600; /* Kırmızı üstünde daha net okunması için kalınlaştırıldı */
             text-transform: uppercase;
-            transition: color 0.3s;
+            transition: all 0.3s;
             cursor: pointer;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
         }
 
+        /* Menüde üzerine gelince ve aktifken bembeyaz olup altı çizilir */
         nav a:hover, nav a.active {
-            color: var(--accent-color);
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* DİL SEÇİM MENÜSÜ */
+        .lang-select {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .lang-select:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-color: white;
+        }
+
+        .lang-select option {
+            color: #000; /* Tıklanınca açılan seçenekler siyah olsun ki okunsun */
+            font-weight: bold;
         }
 
         .user-login {
@@ -76,6 +111,7 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
+            font-weight: 600;
         }
 
         /* SAYFA YÖNETİMİ (GİZLE / GÖSTER) */
@@ -124,7 +160,7 @@
         .match-card:hover {
             transform: translateY(-3px);
             background-color: var(--theme-red);
-            border-color: var(--accent-color);
+            border-color: var(--text-main);
         }
 
         .team-row {
@@ -320,7 +356,6 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* BEYAZ DAİRE ARKA PLANI KALDIRILDI, ŞEFFAF YAPILDI */
         .team-logo-container {
             width: 70px;
             height: 70px;
@@ -348,18 +383,34 @@
 
     <!-- ÜST MENÜ -->
     <header>
-        <a class="logo" onclick="switchPage('home')">UCC <span>27</span></a>
+        <!-- Logo resmi buraya eklendi (CSS ile beyaza dönüştürülecek) -->
+        <a class="logo" onclick="switchPage('home')">
+            <img src="image_39be54.png" alt="UEFA Club Championship">
+        </a>
+        
         <nav>
             <a id="nav-home" class="active" onclick="switchPage('home')">Matches</a>
-            <a onclick="alert('Bu sayfa yapım aşamasında!')">UCC.tv</a>
+            <a onclick="alert('Bu sayfa yapım aşamasında!')">UEFA.tv</a> <!-- UCC.tv UEFA.tv yapıldı -->
             <a onclick="alert('Bu sayfa yapım aşamasında!')">Draws</a>
             <a onclick="alert('Bu sayfa yapım aşamasında!')">Stats</a>
             <a id="nav-teams" onclick="switchPage('teams')">Teams</a>
             <a onclick="alert('Bu sayfa yapım aşamasında!')">News</a>
         </nav>
-        <div class="user-login">
-            <span>Log in</span>
-            👤
+        
+        <div class="header-right">
+            <!-- Dil Seçim Menüsü -->
+            <select class="lang-select">
+                <option value="en">English (EN)</option>
+                <option value="tr">Türkçe (TR)</option>
+                <option value="fr">Français (FR)</option>
+                <option value="de">Deutsch (DE)</option>
+                <option value="es">Español (ES)</option>
+            </select>
+            
+            <div class="user-login">
+                <span>Log in</span>
+                👤
+            </div>
         </div>
     </header>
 
@@ -417,7 +468,7 @@
     <!-- 2. TAKIMLAR SAYFASI GÖRÜNÜMÜ -->
     <div id="view-teams" class="page-view">
         <div class="teams-page-container">
-            <h1 class="page-title">Participating Teams (UCC 27)</h1>
+            <h1 class="page-title">Participating Teams</h1>
             <div id="teams-grid" class="teams-grid">
                 <p id="loading-text" style="color: var(--accent-color); font-size: 16px; grid-column: 1 / -1; text-align: center; padding: 50px;">Takımlar yükleniyor...</p>
             </div>
