@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCC 27 - Official Site</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0d0d0d; color: #ffffff; }
+
+        /* ÜST MENÜ */
+        .uefa-header {
+            background-color: #000000; display: flex; justify-content: space-between; align-items: center;
+            padding: 0 50px; height: 80px; border-bottom: 2px solid #8b0000; position: sticky; top: 0; z-index: 100;
+        }
+        .logo-container .main-logo { font-size: 28px; font-weight: 900; letter-spacing: 2px; }
+        .logo-container .main-logo span { color: #8b0000; }
+        .main-nav ul { list-style: none; display: flex; gap: 30px; }
+        .main-nav ul li a {
+            text-decoration: none; color: #cccccc; font-size: 14px; font-weight: 600;
+            letter-spacing: 1px; transition: all 0.3s ease; padding: 10px 0; position: relative;
+        }
+        .main-nav ul li a:hover, .main-nav ul li a.active { color: #ffffff; }
+        .main-nav ul li a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 3px;
+            background-color: #8b0000; transition: width 0.3s ease;
+        }
+        .main-nav ul li a:hover::after, .main-nav ul li a.active::after { width: 100%; }
+
+        /* DEV MANŞET */
+        .hero-section {
+            position: relative; height: 500px; background-color: #1a1a1a;
+            background-image: linear-gradient(45deg, #000000 0%, #3a0000 100%);
+            display: flex; align-items: flex-end; padding: 60px 50px;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 800px; }
+        .hero-tag {
+            background-color: #8b0000; color: white; padding: 5px 12px; font-size: 12px; font-weight: bold;
+            letter-spacing: 1.5px; text-transform: uppercase; border-radius: 3px; margin-bottom: 15px; display: inline-block;
+        }
+        .hero-content h2 { font-size: 48px; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; }
+        .hero-content p { font-size: 18px; color: #aaaaaa; margin-bottom: 30px; line-height: 1.6; }
+
+        /* TAKIMLAR ALANI */
+        .teams-section { padding: 50px 20px; text-align: center; background-color: #0d0d0d; }
+        .section-title { color: #fff; margin-bottom: 40px; font-size: 28px; letter-spacing: 2px; }
+        .teams-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto;
+        }
+        .team-card {
+            background-color: #1a1a1a; border: 1px solid #333; border-radius: 10px; padding: 20px;
+            transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .team-card:hover { transform: translateY(-8px); border-color: #8b0000; box-shadow: 0 10px 20px rgba(139, 0, 0, 0.3); }
+        .team-logo { width: 90px; height: 90px; object-fit: contain; margin-bottom: 15px; }
+        .team-name { color: #fff; font-size: 16px; font-weight: 600; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <header class="uefa-header">
+        <div class="logo-container">
+            <h1 class="main-logo">UCC <span>27</span></h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="active">ANA SAYFA</a></li>
+                <li><a href="#">TAKIMLAR</a></li>
+                <li><a href="#">KURA</a></li>
+                <li><a href="#">MAÇLAR</a></li>
+                <li><a href="#">İSTATİSTİKLER</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-tag">SİSTEM AKTİF</span>
+            <h2>UCC 27 HEYECANI BAŞLIYOR</h2>
+            <p>128 Takım, Tek Bir Hedef. Büyük kura çekimi ve turnuva detayları yakında açıklanıyor.</p>
+        </div>
+    </section>
+
+    <section class="teams-section">
+        <h2 class="section-title">KATILIMCI TAKIMLAR</h2>
+        <div id="teams-container" class="teams-grid">
+            <p style="color: #aaaaaa; font-weight: bold; font-size: 1.2rem;">Veriler Google Sheets'ten yükleniyor, lütfen bekleyin...</p>
+        </div>
+    </section>
+
+    <script>
+        // İŞTE LİNKİ YAPIŞTIRACAĞIN YER BURASI:
+        const API_URL = "BURAYA_APPS_SCRIPT_LINKI_GELECEK";
+
+        async function verileriEkranaBas() {
+            const container = document.getElementById("teams-container");
+            try {
+                if (API_URL === "BURAYA_APPS_SCRIPT_LINKI_GELECEK") {
+                    container.innerHTML = "<p style='color:orange;'>⚠️ Lütfen koddaki API_URL kısmına kendi Apps Script linkini yapıştır.</p>";
+                    return;
+                }
+                const response = await fetch(API_URL);
+                const takımlar = await response.json();
+                
+                container.innerHTML = ""; 
+
+                takımlar.forEach(takimVerisi => {
+                    // Excel'de A1'de Takim, B1'de Logo yazmalı
+                    if(takimVerisi.Takim && takimVerisi.Logo) {
+                        const kartHTML = `
+                            <div class="team-card">
+                                <img src="${takimVerisi.Logo}" alt="${takimVerisi.Takim}" class="team-logo">
+                                <div class="team-name">${takimVerisi.Takim}</div>
+                            </div>
+                        `;
+                        container.innerHTML += kartHTML;
+                    }
+                });
+            } catch (error) {
+                console.error("Hata:", error);
+                container.innerHTML = "<p style='color:red;'>Veriler çekilirken bir hata oluştu! Bağlantını veya linki kontrol et.</p>";
+            }
+        }
+        verileriEkranaBas();
+    </script>
+</body>
+</html>
