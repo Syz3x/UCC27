@@ -9,7 +9,7 @@
             --theme-dark: #050505;
             --theme-black: #121212;
             --theme-dark-red: #240000;
-            --theme-red: #b30000; /* Daha okunaklı tok bir kırmızı */
+            --theme-red: #b30000;
             --accent-color: #ff1a1a;
             --text-main: #ffffff;
             --text-muted: #999999;
@@ -34,8 +34,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 40px;
-            background-color: var(--theme-red); /* Arkası tamamen okunaklı kırmızı */
-            border-bottom: 2px solid #800000; /* Altına daha koyu kırmızı hafif bir çizgi */
+            background-color: var(--theme-red); 
+            border-bottom: 2px solid #800000; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
@@ -46,8 +46,8 @@
         }
         
         .logo img {
-            height: 55px; /* Logonun boyutu */
-            /* Resmi tamamen beyaza çeviren efsane CSS filtresi */
+            height: 55px; 
+            /* Siyah logoyu kırmızı arkaplanda beyaza çevirir */
             filter: brightness(0) invert(1); 
             object-fit: contain;
         }
@@ -61,7 +61,7 @@
             color: var(--text-main);
             text-decoration: none;
             font-size: 15px;
-            font-weight: 600; /* Kırmızı üstünde daha net okunması için kalınlaştırıldı */
+            font-weight: 600;
             text-transform: uppercase;
             transition: all 0.3s;
             cursor: pointer;
@@ -69,7 +69,6 @@
             border-bottom: 2px solid transparent;
         }
 
-        /* Menüde üzerine gelince ve aktifken bembeyaz olup altı çizilir */
         nav a:hover, nav a.active {
             color: #ffffff;
             border-bottom: 2px solid #ffffff;
@@ -101,7 +100,7 @@
         }
 
         .lang-select option {
-            color: #000; /* Tıklanınca açılan seçenekler siyah olsun ki okunsun */
+            color: #000;
             font-weight: bold;
         }
 
@@ -114,7 +113,7 @@
             font-weight: 600;
         }
 
-        /* SAYFA YÖNETİMİ (GİZLE / GÖSTER) */
+        /* SAYFA YÖNETİMİ */
         .page-view {
             display: none;
         }
@@ -123,7 +122,7 @@
             display: block;
         }
 
-        /* SKORBORD BÖLÜMÜ (MAÇLAR) */
+        /* SKORBORD BÖLÜMÜ */
         .scoreboard-section {
             display: flex;
             align-items: center;
@@ -383,23 +382,23 @@
 
     <!-- ÜST MENÜ -->
     <header>
-        <!-- Logo resmi buraya eklendi (CSS ile beyaza dönüştürülecek) -->
         <a class="logo" onclick="switchPage('home')">
-            <img src="image_39be54.png" alt="UEFA Club Championship">
+            <!-- Github'a attığın image1.png buradan çağrılacak -->
+            <img src="image1.png" alt="UCC 27 Logo">
         </a>
         
         <nav>
-            <a id="nav-home" class="active" onclick="switchPage('home')">Matches</a>
-            <a onclick="alert('Bu sayfa yapım aşamasında!')">UEFA.tv</a> <!-- UCC.tv UEFA.tv yapıldı -->
-            <a onclick="alert('Bu sayfa yapım aşamasında!')">Draws</a>
-            <a onclick="alert('Bu sayfa yapım aşamasında!')">Stats</a>
-            <a id="nav-teams" onclick="switchPage('teams')">Teams</a>
-            <a onclick="alert('Bu sayfa yapım aşamasında!')">News</a>
+            <a id="nav-home" class="active" onclick="switchPage('home')" data-i18n="matches">Matches</a>
+            <a onclick="alert('Bu sayfa yapım aşamasında!')">UEFA.tv</a> 
+            <a onclick="alert('Bu sayfa yapım aşamasında!')" data-i18n="draws">Draws</a>
+            <a onclick="alert('Bu sayfa yapım aşamasında!')" data-i18n="stats">Stats</a>
+            <a id="nav-teams" onclick="switchPage('teams')" data-i18n="teams">Teams</a>
+            <a onclick="alert('Bu sayfa yapım aşamasında!')" data-i18n="news">News</a>
         </nav>
         
         <div class="header-right">
-            <!-- Dil Seçim Menüsü -->
-            <select class="lang-select">
+            <!-- DİL SEÇİM MENÜSÜ -->
+            <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="en">English (EN)</option>
                 <option value="tr">Türkçe (TR)</option>
                 <option value="fr">Français (FR)</option>
@@ -408,7 +407,7 @@
             </select>
             
             <div class="user-login">
-                <span>Log in</span>
+                <span data-i18n="login">Log in</span>
                 👤
             </div>
         </div>
@@ -419,32 +418,32 @@
         <section class="scoreboard-section">
             <div class="matches-container">
                 <div class="match-card">
-                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 21:00</span>
+                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="today">Today, 21:00</span>
                     <div class="team-row"><span>Galatasaray</span> <span>-</span></div>
                     <div class="team-row"><span>Bayern Munich</span> <span>-</span></div>
                 </div>
                 <div class="match-card">
-                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 21:00</span>
+                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="today">Today, 21:00</span>
                     <div class="team-row"><span>Trabzonspor</span> <span>-</span></div>
                     <div class="team-row"><span>Chelsea</span> <span>-</span></div>
                 </div>
                 <div class="match-card">
-                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 22:00</span>
+                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="today">Today, 22:00</span>
                     <div class="team-row"><span>Real Madrid</span> <span>-</span></div>
                     <div class="team-row"><span>Fenerbahce</span> <span>-</span></div>
                 </div>
                  <div class="match-card">
-                    <span style="color: var(--text-muted); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Tomorrow, 19:45</span>
+                    <span style="color: var(--text-muted); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tomorrow">Tomorrow, 19:45</span>
                     <div class="team-row"><span>Arsenal</span> <span>-</span></div>
                     <div class="team-row"><span>Besiktas</span> <span>-</span></div>
                 </div>
             </div>
-            <button class="view-all-btn">View all matches</button>
+            <button class="view-all-btn" data-i18n="viewAll">View all matches</button>
         </section>
 
         <section class="stories-section">
-            <div class="story-item"><div class="story-circle"></div><span class="story-text">Back to work 💪</span></div>
-            <div class="story-item"><div class="story-circle"></div><span class="story-text">Transfers 🔥</span></div>
+            <div class="story-item"><div class="story-circle"></div><span class="story-text" data-i18n="story1">Back to work 💪</span></div>
+            <div class="story-item"><div class="story-circle"></div><span class="story-text" data-i18n="story2">Transfers 🔥</span></div>
             <div class="story-item"><div class="story-circle"></div><span class="story-text">Zidane 🦊</span></div>
             <div class="story-item"><div class="story-circle"></div><span class="story-text">Klopp 🧢</span></div>
             <div class="story-item"><div class="story-circle"></div><span class="story-text">CR7 🐐</span></div>
@@ -453,14 +452,14 @@
         <main class="main-content">
             <div class="hero-section">
                 <img src="https://images.unsplash.com/photo-1574629810360-7efbb1925536?q=80&w=1000&auto=format&fit=crop" alt="Hero Image">
-                <div class="hero-text">Qualifying: Fixtures, results, format</div>
+                <div class="hero-text" data-i18n="heroText">Qualifying: Fixtures, results, format</div>
             </div>
             <div class="headlines-section">
-                <h2 class="headlines-title">Headlines</h2>
-                <div class="headline-item"><div class="headline-img"></div><div class="headline-text">How solidarity payments strengthen competitive balance</div></div>
-                <div class="headline-item"><div class="headline-img"></div><div class="headline-text">Men's second qualifying round delivers goals and drama</div></div>
-                <div class="headline-item"><div class="headline-img"></div><div class="headline-text">European football aligns on refereeing matters</div></div>
-                <div class="headline-item"><div class="headline-img"></div><div class="headline-text">Classic Trabzonspor goals in Europe</div></div>
+                <h2 class="headlines-title" data-i18n="headlines">Headlines</h2>
+                <div class="headline-item"><div class="headline-img"></div><div class="headline-text" data-i18n="news1">How solidarity payments strengthen competitive balance</div></div>
+                <div class="headline-item"><div class="headline-img"></div><div class="headline-text" data-i18n="news2">Men's second qualifying round delivers goals and drama</div></div>
+                <div class="headline-item"><div class="headline-img"></div><div class="headline-text" data-i18n="news3">European football aligns on refereeing matters</div></div>
+                <div class="headline-item"><div class="headline-img"></div><div class="headline-text" data-i18n="news4">Classic Trabzonspor goals in Europe</div></div>
             </div>
         </main>
     </div>
@@ -468,18 +467,94 @@
     <!-- 2. TAKIMLAR SAYFASI GÖRÜNÜMÜ -->
     <div id="view-teams" class="page-view">
         <div class="teams-page-container">
-            <h1 class="page-title">Participating Teams</h1>
+            <h1 class="page-title" data-i18n="partTeams">Participating Teams</h1>
             <div id="teams-grid" class="teams-grid">
-                <p id="loading-text" style="color: var(--accent-color); font-size: 16px; grid-column: 1 / -1; text-align: center; padding: 50px;">Takımlar yükleniyor...</p>
+                <p id="loading-text" style="color: var(--accent-color); font-size: 16px; grid-column: 1 / -1; text-align: center; padding: 50px;" data-i18n="loading">Takımlar yükleniyor...</p>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT & ÇOKLU DİL SİSTEMİ -->
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyGQYDQ6eDQDRTFRKs6DS9l3A4_lAqpFuB1m5wEKG8zuOadl1r4vo3x_Do4-U6Nm3_d/exec';
         let teamsLoaded = false;
 
+        // DİL SÖZLÜĞÜ (İngilizce, Türkçe, Fransızca, Almanca, İspanyolca)
+        const translations = {
+            en: {
+                matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
+                login: "Log in", viewAll: "View all matches", headlines: "Headlines", partTeams: "Participating Teams",
+                loading: "Loading teams...", today: "Today", tomorrow: "Tomorrow",
+                story1: "Back to work 💪", story2: "Transfers 🔥",
+                heroText: "Qualifying: Fixtures, results, format",
+                news1: "How solidarity payments strengthen competitive balance",
+                news2: "Men's second qualifying round delivers goals and drama",
+                news3: "European football aligns on refereeing matters",
+                news4: "Classic Trabzonspor goals in Europe"
+            },
+            tr: {
+                matches: "Maçlar", draws: "Kuralar", stats: "İstatistikler", teams: "Takımlar", news: "Haberler",
+                login: "Giriş yap", viewAll: "Tüm maçları gör", headlines: "Manşetler", partTeams: "Katılan Takımlar",
+                loading: "Takımlar yükleniyor...", today: "Bugün", tomorrow: "Yarın",
+                story1: "İşe Dönüş 💪", story2: "Transferler 🔥",
+                heroText: "Elemeler: Fikstür, sonuçlar, format",
+                news1: "Dayanışma ödemeleri rekabet dengesini nasıl güçlendirir?",
+                news2: "Erkekler ikinci eleme turu bol gollü geçiyor",
+                news3: "Avrupa futbolunda hakem kararları uyumu",
+                news4: "Avrupa'da klasikleşmiş Trabzonspor golleri"
+            },
+            fr: {
+                matches: "Matchs", draws: "Tirages", stats: "Stats", teams: "Équipes", news: "Actualités",
+                login: "Connexion", viewAll: "Voir tous les matchs", headlines: "À la une", partTeams: "Équipes Participantes",
+                loading: "Chargement des équipes...", today: "Aujourd'hui", tomorrow: "Demain",
+                story1: "Retour au travail 💪", story2: "Transferts 🔥",
+                heroText: "Qualifications : Calendrier, résultats, format",
+                news1: "Comment les paiements de solidarité renforcent l'équilibre",
+                news2: "Le deuxième tour de qualification offre des buts et du drame",
+                news3: "Le football européen s'aligne sur l'arbitrage",
+                news4: "Les buts classiques de Trabzonspor en Europe"
+            },
+            de: {
+                matches: "Spiele", draws: "Auslosungen", stats: "Statistiken", teams: "Teams", news: "News",
+                login: "Anmelden", viewAll: "Alle Spiele ansehen", headlines: "Schlagzeilen", partTeams: "Teilnehmende Teams",
+                loading: "Teams werden geladen...", today: "Heute", tomorrow: "Morgen",
+                story1: "Zurück an die Arbeit 💪", story2: "Transfers 🔥",
+                heroText: "Qualifikation: Spielplan, Ergebnisse, Format",
+                news1: "Wie Solidaritätszahlungen das Wettbewerbsgleichgewicht stärken",
+                news2: "Zweite Qualifikationsrunde liefert Tore und Drama",
+                news3: "Europäischer Fußball einigt sich auf Schiedsrichterfragen",
+                news4: "Klassische Trabzonspor-Tore in Europa"
+            },
+            es: {
+                matches: "Partidos", draws: "Sorteos", stats: "Estadísticas", teams: "Equipos", news: "Noticias",
+                login: "Iniciar sesión", viewAll: "Ver todos los partidos", headlines: "Titulares", partTeams: "Equipos Participantes",
+                loading: "Cargando equipos...", today: "Hoy", tomorrow: "Mañana",
+                story1: "Vuelta al trabajo 💪", story2: "Traspasos 🔥",
+                heroText: "Clasificación: Calendario, resultados, formato",
+                news1: "Cómo los pagos de solidaridad refuerzan el equilibrio competitivo",
+                news2: "La segunda ronda de clasificación ofrece goles y drama",
+                news3: "El fútbol europeo se alinea en materia de arbitraje",
+                news4: "Goles clásicos del Trabzonspor en Europa"
+            }
+        };
+
+        // Dili Değiştiren Fonksiyon
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    // Span içinde saat olanları korumak için küçük bir kontrol (Today, 21:00 vs.)
+                    if(key === 'today' || key === 'tomorrow') {
+                        const timeStr = element.textContent.split(',')[1];
+                        element.textContent = translations[lang][key] + (timeStr ? ',' + timeStr : '');
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
+
+        // Sayfa Geçiş Fonksiyonu
         function switchPage(page) {
             document.getElementById('view-home').classList.remove('active-page');
             document.getElementById('view-teams').classList.remove('active-page');
@@ -501,6 +576,7 @@
             }
         }
 
+        // Takımları Çekme Fonksiyonu
         async function loadTeams() {
             const teamsGrid = document.getElementById('teams-grid');
             const loadingText = document.getElementById('loading-text');
@@ -533,7 +609,8 @@
 
             } catch (error) {
                 console.error('Hata:', error);
-                loadingText.textContent = "Takımlar yüklenirken hata oluştu!";
+                const currentLang = document.getElementById('lang-selector').value;
+                loadingText.textContent = currentLang === 'tr' ? "Takımlar yüklenirken hata oluştu!" : "Error loading teams!";
             }
         }
     </script>
