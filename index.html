@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCC 27 - Ana Sayfa</title>
+    <title>UCC 27 - Turnuva Platformu</title>
     <style>
-        /* GENEL AYARLAR VE KIRMIZI-SİYAH RENK PALETİ */
         :root {
-            --theme-dark: #050505;        /* En Koyu Siyah (Ana Arka Plan) */
-            --theme-black: #121212;       /* Hafif Açık Siyah (Kartlar ve Menüler) */
-            --theme-dark-red: #240000;    /* Çok Koyu Kırmızı (Degrade Geçişi) */
-            --theme-red: #cc0000;         /* Ana Kırmızı */
-            --accent-color: #ff1a1a;      /* Parlak Kırmızı (Butonlar ve Vurgular) */
-            
+            --theme-dark: #050505;
+            --theme-black: #121212;
+            --theme-dark-red: #240000;
+            --theme-red: #cc0000;
+            --accent-color: #ff1a1a;
             --text-main: #ffffff;
             --text-muted: #999999;
         }
@@ -25,13 +23,12 @@
         }
 
         body {
-            /* Siyah ve Koyu Kırmızı Karışımı Arka Plan */
             background: linear-gradient(135deg, var(--theme-dark), var(--theme-dark-red));
             color: var(--text-main);
             min-height: 100vh;
         }
 
-        /* ÜST MENÜ (HEADER) */
+        /* ÜST MENÜ */
         header {
             display: flex;
             justify-content: space-between;
@@ -47,6 +44,7 @@
             color: var(--text-main);
             cursor: pointer;
             letter-spacing: 1px;
+            text-decoration: none;
         }
         
         .logo span {
@@ -65,9 +63,10 @@
             font-weight: 500;
             text-transform: uppercase;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: var(--accent-color);
         }
 
@@ -77,11 +76,15 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            transition: color 0.3s;
         }
-        
-        .user-login:hover {
-            color: var(--accent-color);
+
+        /* SAYFA YÖNETİMİ (GİZLE / GÖSTER) */
+        .page-view {
+            display: none;
+        }
+
+        .page-view.active-page {
+            display: block;
         }
 
         /* SKORBORD BÖLÜMÜ (MAÇLAR) */
@@ -147,7 +150,7 @@
             color: var(--theme-dark);
         }
 
-        /* HİKAYELER / YUVARLAK PROFİLLER BÖLÜMÜ */
+        /* HİKAYELER / YUVARLAK PROFİLLER */
         .stories-section {
             display: flex;
             align-items: center;
@@ -179,13 +182,6 @@
             transform: scale(1.1);
         }
 
-        .story-circle img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
         .story-text {
             font-size: 12px;
             font-weight: 600;
@@ -202,7 +198,6 @@
             margin: 0 auto;
         }
 
-        /* Sol Taraf - Hero */
         .hero-section {
             position: relative;
             border-radius: 12px;
@@ -235,7 +230,6 @@
             text-transform: uppercase;
         }
 
-        /* Sağ Taraf - Manşetler */
         .headlines-section {
             background-color: rgba(18, 18, 18, 0.8);
             border-radius: 12px;
@@ -281,30 +275,26 @@
             color: var(--text-main);
         }
 
-        /* TAKIMLAR BÖLÜMÜ STİLLERİ */
-        .teams-section {
+        /* TAKIMLAR SAYFASI STİLLERİ */
+        .teams-page-container {
             max-width: 1400px;
             margin: 40px auto;
-            padding: 20px 40px;
-            background-color: rgba(18, 18, 18, 0.6);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0 40px;
         }
 
-        .section-title {
-            font-size: 24px;
+        .page-title {
+            font-size: 28px;
             color: var(--text-main);
             margin-bottom: 30px;
             border-bottom: 2px solid var(--theme-red);
             padding-bottom: 10px;
-            display: inline-block;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .teams-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 20px;
         }
 
@@ -312,7 +302,7 @@
             background-color: var(--theme-black);
             border: 1px solid rgba(204, 0, 0, 0.2);
             border-radius: 10px;
-            padding: 15px 10px;
+            padding: 20px 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -357,11 +347,6 @@
             font-size: 14px;
             font-weight: 600;
             color: var(--text-main);
-            transition: color 0.3s;
-        }
-
-        .team-card:hover .team-name {
-            color: #fff;
         }
     </style>
 </head>
@@ -369,14 +354,14 @@
 
     <!-- ÜST MENÜ -->
     <header>
-        <div class="logo">UCC <span>27</span></div>
+        <a class="logo" onclick="switchPage('home')">UCC <span>27</span></a>
         <nav>
-            <a href="#">Matches</a>
-            <a href="#">UCC.tv</a>
-            <a href="#">Draws</a>
-            <a href="#">Stats</a>
-            <a href="#">Teams</a>
-            <a href="#">News</a>
+            <a id="nav-home" class="active" onclick="switchPage('home')">Matches</a>
+            <a onclick="alert('Bu sayfa yapım aşamasında!')">UCC.tv</a>
+            <a onclick="alert('Bu sayfa yapım aşamasında!')">Draws</a>
+            <a onclick="alert('Bu sayfa yapım aşamasında!')">Stats</a>
+            <a id="nav-teams" onclick="switchPage('teams')">Teams</a>
+            <a onclick="alert('Bu sayfa yapım aşamasında!')">News</a>
         </nav>
         <div class="user-login">
             <span>Log in</span>
@@ -384,102 +369,96 @@
         </div>
     </header>
 
-    <!-- SKORBORD BÖLÜMÜ -->
-    <section class="scoreboard-section">
-        <div class="matches-container">
-            <div class="match-card">
-                <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 21:00</span>
-                <div class="team-row"><span>Galatasaray</span> <span>-</span></div>
-                <div class="team-row"><span>Bayern Munich</span> <span>-</span></div>
+    <!-- 1. ANA SAYFA GÖRÜNÜMÜ -->
+    <div id="view-home" class="page-view active-page">
+        <!-- SKORBORD -->
+        <section class="scoreboard-section">
+            <div class="matches-container">
+                <div class="match-card">
+                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 21:00</span>
+                    <div class="team-row"><span>Galatasaray</span> <span>-</span></div>
+                    <div class="team-row"><span>Bayern Munich</span> <span>-</span></div>
+                </div>
+                <div class="match-card">
+                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 21:00</span>
+                    <div class="team-row"><span>Trabzonspor</span> <span>-</span></div>
+                    <div class="team-row"><span>Chelsea</span> <span>-</span></div>
+                </div>
+                <div class="match-card">
+                    <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 22:00</span>
+                    <div class="team-row"><span>Real Madrid</span> <span>-</span></div>
+                    <div class="team-row"><span>Fenerbahce</span> <span>-</span></div>
+                </div>
+                 <div class="match-card">
+                    <span style="color: var(--text-muted); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Tomorrow, 19:45</span>
+                    <div class="team-row"><span>Arsenal</span> <span>-</span></div>
+                    <div class="team-row"><span>Besiktas</span> <span>-</span></div>
+                </div>
             </div>
-            <div class="match-card">
-                <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 21:00</span>
-                <div class="team-row"><span>Trabzonspor</span> <span>-</span></div>
-                <div class="team-row"><span>Chelsea</span> <span>-</span></div>
-            </div>
-            <div class="match-card">
-                <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 22:00</span>
-                <div class="team-row"><span>Real Madrid</span> <span>-</span></div>
-                <div class="team-row"><span>Fenerbahce</span> <span>-</span></div>
-            </div>
-             <div class="match-card">
-                <span style="color: var(--text-muted); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Tomorrow, 19:45</span>
-                <div class="team-row"><span>Arsenal</span> <span>-</span></div>
-                <div class="team-row"><span>Besiktas</span> <span>-</span></div>
-            </div>
-        </div>
-        <button class="view-all-btn">View all matches</button>
-    </section>
+            <button class="view-all-btn">View all matches</button>
+        </section>
 
-    <!-- HİKAYELER / YUVARLAK PROFİLLER -->
-    <section class="stories-section">
-        <div class="story-item">
-            <div class="story-circle"></div>
-            <span class="story-text">Back to work 💪</span>
-        </div>
-        <div class="story-item">
-            <div class="story-circle"></div>
-            <span class="story-text">Transfers 🔥</span>
-        </div>
-        <div class="story-item">
-            <div class="story-circle"></div>
-            <span class="story-text">Zidane 🦊</span>
-        </div>
-        <div class="story-item">
-            <div class="story-circle"></div>
-            <span class="story-text">Klopp 🧢</span>
-        </div>
-        <div class="story-item">
-            <div class="story-circle"></div>
-            <span class="story-text">CR7 🐐</span>
-        </div>
-    </section>
+        <!-- HİKAYELER -->
+        <section class="stories-section">
+            <div class="story-item"><div class="story-circle"></div><span class="story-text">Back to work 💪</span></div>
+            <div class="story-item"><div class="story-circle"></div><span class="story-text">Transfers 🔥</span></div>
+            <div class="story-item"><div class="story-circle"></div><span class="story-text">Zidane 🦊</span></div>
+            <div class="story-item"><div class="story-circle"></div><span class="story-text">Klopp 🧢</span></div>
+            <div class="story-item"><div class="story-circle"></div><span class="story-text">CR7 🐐</span></div>
+        </section>
 
-    <!-- ANA İÇERİK BÖLÜMÜ -->
-    <main class="main-content">
-        <div class="hero-section">
-            <img src="https://images.unsplash.com/photo-1574629810360-7efbb1925536?q=80&w=1000&auto=format&fit=crop" alt="Hero Image">
-            <div class="hero-text">
-                Qualifying: Fixtures, results, format
+        <!-- ANA İÇERİK & MANŞETLER -->
+        <main class="main-content">
+            <div class="hero-section">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbb1925536?q=80&w=1000&auto=format&fit=crop" alt="Hero Image">
+                <div class="hero-text">Qualifying: Fixtures, results, format</div>
+            </div>
+            <div class="headlines-section">
+                <h2 class="headlines-title">Headlines</h2>
+                <div class="headline-item"><div class="headline-img"></div><div class="headline-text">How solidarity payments strengthen competitive balance</div></div>
+                <div class="headline-item"><div class="headline-img"></div><div class="headline-text">Men's second qualifying round delivers goals and drama</div></div>
+                <div class="headline-item"><div class="headline-img"></div><div class="headline-text">European football aligns on refereeing matters</div></div>
+                <div class="headline-item"><div class="headline-img"></div><div class="headline-text">Classic Trabzonspor goals in Europe</div></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 2. TAKIMLAR SAYFASI GÖRÜNÜMÜ (TEAMS'E TIKLAYINCA AÇILIR) -->
+    <div id="view-teams" class="page-view">
+        <div class="teams-page-container">
+            <h1 class="page-title">Participating Teams (UCC 27)</h1>
+            <div id="teams-grid" class="teams-grid">
+                <p id="loading-text" style="color: var(--accent-color); font-size: 16px; grid-column: 1 / -1; text-align: center; padding: 50px;">Takımlar yükleniyor...</p>
             </div>
         </div>
+    </div>
 
-        <div class="headlines-section">
-            <h2 class="headlines-title">Headlines</h2>
-            
-            <div class="headline-item">
-                <div class="headline-img"></div>
-                <div class="headline-text">How solidarity payments strengthen competitive balance</div>
-            </div>
-            
-            <div class="headline-item">
-                <div class="headline-img"></div>
-                <div class="headline-text">Men's second qualifying round delivers goals and drama</div>
-            </div>
-            
-            <div class="headline-item">
-                <div class="headline-img"></div>
-                <div class="headline-text">European football aligns on refereeing matters</div>
-            </div>
-            
-            <div class="headline-item">
-                <div class="headline-img"></div>
-                <div class="headline-text">Classic Trabzonspor goals in Europe</div>
-            </div>
-        </div>
-    </main>
-
-    <!-- TAKIMLAR BÖLÜMÜ (DİNAMİK OLARAK E-TABLODAN ÇEKİLİR) -->
-    <section class="teams-section">
-        <h2 class="section-title">Participating Teams (UCC 27)</h2>
-        <div id="teams-grid" class="teams-grid">
-            <p id="loading-text" style="color: var(--accent-color); text-align: center; width: 100%;">Takımlar yükleniyor...</p>
-        </div>
-    </section>
-
-    <!-- JAVASCRIPT: E-TABLODAN VERİ ÇEKME -->
+    <!-- JAVASCRIPT: SAYFA GEÇİŞİ VE E-TABLO VERİ ÇEKME -->
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwk8bPSHYIiSP4TtnDgF6UqgKhGhMNzYFZTZyvjN6HmTgZXYiyHgaFYuoVDJqX-8ir3/exec';
+        let teamsLoaded = false;
+
+        function switchPage(page) {
+            document.getElementById('view-home').classList.remove('active-page');
+            document.getElementById('view-teams').classList.remove('active-page');
+            
+            document.getElementById('nav-home').classList.remove('active');
+            document.getElementById('nav-teams').classList.remove('active');
+
+            if (page === 'home') {
+                document.getElementById('view-home').classList.add('active-page');
+                document.getElementById('nav-home').classList.add('active');
+            } else if (page === 'teams') {
+                document.getElementById('view-teams').classList.add('active-page');
+                document.getElementById('nav-teams').classList.add('active');
+                
+                // Takımlar ilk kez tıklandığında veriyi E-Tablodan çek
+                if (!teamsLoaded) {
+                    loadTeams();
+                    teamsLoaded = true;
+                }
+            }
+        }
 
         async function loadTeams() {
             const teamsGrid = document.getElementById('teams-grid');
@@ -516,8 +495,6 @@
                 loadingText.style.color = "white";
             }
         }
-
-        window.onload = loadTeams;
     </script>
 
 </body>
