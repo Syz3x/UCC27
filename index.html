@@ -38,7 +38,7 @@
             align-items: center;
             padding: 15px 40px;
             background-color: rgba(5, 5, 5, 0.9);
-            border-bottom: 2px solid var(--theme-red); /* Alt çizgi kırmızı yapıldı */
+            border-bottom: 2px solid var(--theme-red);
         }
 
         .logo {
@@ -50,7 +50,7 @@
         }
         
         .logo span {
-            color: var(--accent-color); /* UCC yazısının 27 kısmı kırmızı vurgulu olabilir */
+            color: var(--accent-color);
         }
 
         nav {
@@ -120,7 +120,7 @@
 
         .match-card:hover {
             transform: translateY(-3px);
-            background-color: var(--theme-red); /* Üzerine gelince kırmızı oluyor */
+            background-color: var(--theme-red);
             border-color: var(--accent-color);
         }
 
@@ -169,7 +169,7 @@
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            border: 2px solid var(--accent-color); /* Kırmızı Çerçeve */
+            border: 2px solid var(--accent-color);
             background-color: var(--theme-black);
             padding: 2px;
             transition: transform 0.3s;
@@ -219,14 +219,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            opacity: 0.8; /* Resmin üzerine hafif siyahlık katmak için */
+            opacity: 0.8;
         }
 
         .hero-text {
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background-color: rgba(204, 0, 0, 0.85); /* Kırmızı Şerit */
+            background-color: rgba(204, 0, 0, 0.85);
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
@@ -246,7 +246,7 @@
         .headlines-title {
             font-size: 20px;
             margin-bottom: 20px;
-            border-bottom: 1px solid rgba(204, 0, 0, 0.5); /* Kırmızı çizgi */
+            border-bottom: 1px solid rgba(204, 0, 0, 0.5);
             padding-bottom: 10px;
             color: var(--accent-color);
         }
@@ -262,7 +262,7 @@
         }
 
         .headline-item:hover {
-            background-color: rgba(204, 0, 0, 0.15); /* Üzerine gelince hafif kırmızı efekt */
+            background-color: rgba(204, 0, 0, 0.15);
             transform: translateX(5px);
         }
 
@@ -281,6 +281,88 @@
             color: var(--text-main);
         }
 
+        /* TAKIMLAR BÖLÜMÜ STİLLERİ */
+        .teams-section {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px 40px;
+            background-color: rgba(18, 18, 18, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--theme-red);
+            padding-bottom: 10px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .team-card {
+            background-color: var(--theme-black);
+            border: 1px solid rgba(204, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .team-card:hover {
+            background-color: var(--theme-red);
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-logo-container {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border-radius: 50%;
+            padding: 5px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover .team-logo-container {
+            border-color: var(--theme-dark);
+        }
+
+        .team-logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .team-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        .team-card:hover .team-name {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -305,25 +387,21 @@
     <!-- SKORBORD BÖLÜMÜ -->
     <section class="scoreboard-section">
         <div class="matches-container">
-            <!-- Örnek Maç Kartı 1 -->
             <div class="match-card">
                 <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 21:00</span>
                 <div class="team-row"><span>Galatasaray</span> <span>-</span></div>
                 <div class="team-row"><span>Bayern Munich</span> <span>-</span></div>
             </div>
-            <!-- Örnek Maç Kartı 2 -->
             <div class="match-card">
                 <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 21:00</span>
                 <div class="team-row"><span>Trabzonspor</span> <span>-</span></div>
                 <div class="team-row"><span>Chelsea</span> <span>-</span></div>
             </div>
-            <!-- Örnek Maç Kartı 3 -->
             <div class="match-card">
                 <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Today, 22:00</span>
                 <div class="team-row"><span>Real Madrid</span> <span>-</span></div>
                 <div class="team-row"><span>Fenerbahce</span> <span>-</span></div>
             </div>
-             <!-- Örnek Maç Kartı 4 -->
              <div class="match-card">
                 <span style="color: var(--text-muted); font-size: 11px; margin-bottom: 5px; font-weight: bold;">Tomorrow, 19:45</span>
                 <div class="team-row"><span>Arsenal</span> <span>-</span></div>
@@ -359,7 +437,6 @@
 
     <!-- ANA İÇERİK BÖLÜMÜ -->
     <main class="main-content">
-        <!-- Büyük Resim Alanı -->
         <div class="hero-section">
             <img src="https://images.unsplash.com/photo-1574629810360-7efbb1925536?q=80&w=1000&auto=format&fit=crop" alt="Hero Image">
             <div class="hero-text">
@@ -367,7 +444,6 @@
             </div>
         </div>
 
-        <!-- Manşetler / Yan Haberler Alanı -->
         <div class="headlines-section">
             <h2 class="headlines-title">Headlines</h2>
             
@@ -392,6 +468,57 @@
             </div>
         </div>
     </main>
+
+    <!-- TAKIMLAR BÖLÜMÜ (DİNAMİK OLARAK E-TABLODAN ÇEKİLİR) -->
+    <section class="teams-section">
+        <h2 class="section-title">Participating Teams (UCC 27)</h2>
+        <div id="teams-grid" class="teams-grid">
+            <p id="loading-text" style="color: var(--accent-color); text-align: center; width: 100%;">Takımlar yükleniyor...</p>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT: E-TABLODAN VERİ ÇEKME -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwk8bPSHYIiSP4TtnDgF6UqgKhGhMNzYFZTZyvjN6HmTgZXYiyHgaFYuoVDJqX-8ir3/exec';
+
+        async function loadTeams() {
+            const teamsGrid = document.getElementById('teams-grid');
+            const loadingText = document.getElementById('loading-text');
+
+            try {
+                const response = await fetch(scriptURL);
+                const teamsData = await response.json(); 
+
+                loadingText.style.display = 'none';
+
+                teamsData.forEach(team => {
+                    const teamName = team[0]; 
+                    const logoUrl = team[1];  
+
+                    if (!teamName || teamName === "Team Name" || teamName === "TakimAdi") return;
+
+                    const teamCard = document.createElement('div');
+                    teamCard.className = 'team-card';
+
+                    teamCard.innerHTML = `
+                        <div class="team-logo-container">
+                            <img src="${logoUrl}" alt="${teamName} Logo" onerror="this.src='https://via.placeholder.com/80?text=No+Logo'">
+                        </div>
+                        <div class="team-name">${teamName}</div>
+                    `;
+
+                    teamsGrid.appendChild(teamCard);
+                });
+
+            } catch (error) {
+                console.error('Veri çekilirken hata oluştu:', error);
+                loadingText.textContent = "Takımlar yüklenirken bir hata oluştu. Bağlantıyı kontrol et.";
+                loadingText.style.color = "white";
+            }
+        }
+
+        window.onload = loadTeams;
+    </script>
 
 </body>
 </html>
