@@ -199,6 +199,7 @@
             margin: 0 auto;
         }
 
+        /* GÜNCELLENEN BÜYÜK HABER KISMI */
         .hero-section {
             position: relative;
             border-radius: 12px;
@@ -206,6 +207,13 @@
             min-height: 400px;
             background-color: var(--theme-black);
             border: 1px solid rgba(204, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hero-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(204, 0, 0, 0.4);
         }
 
         .hero-section img {
@@ -216,19 +224,24 @@
             top: 0;
             left: 0;
             opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .hero-section:hover img {
+            opacity: 1;
         }
 
         .hero-text {
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background-color: rgba(204, 0, 0, 0.85);
+            background-color: rgba(204, 0, 0, 0.9);
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 22px;
             font-weight: bold;
-            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         .headlines-section {
@@ -400,9 +413,9 @@
             text-align: center;
         }
 
-        /* SPONSORLAR FOOTER */
+        /* GÜNCELLENEN SPONSORLAR FOOTER */
         footer {
-            background-color: #ffffff;
+            background-color: var(--theme-black); /* Arka plan koyu yapıldı */
             padding: 30px 40px;
             margin-top: auto;
             text-align: center;
@@ -410,7 +423,7 @@
         }
 
         .sponsors-title {
-            color: #333333;
+            color: var(--text-main); /* Yazı rengi beyaz/açık yapıldı */
             font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
@@ -429,17 +442,15 @@
         }
 
         .sponsors-grid img {
-            height: 40px; 
+            height: 50px; 
             max-width: 120px;
             object-fit: contain;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: all 0.3s;
+            /* Grayscale ve opacity kaldırıldı, renkli görünecekler */
+            transition: transform 0.3s;
         }
 
         .sponsors-grid img:hover {
-            filter: grayscale(0%);
-            opacity: 1;
+            transform: scale(1.1); /* Üstüne gelince hafif büyüme efekti eklendi */
         }
     </style>
 </head>
@@ -448,8 +459,7 @@
     <!-- ÜST MENÜ -->
     <header>
         <a class="logo" onclick="switchPage('home')">
-            <!-- LOGO: Hangi uzantıdaysa onu yaz (örnek: image1.png) -->
-            <img src="image1.png" alt="UCC 27 Logo">
+            <img src="image1.webp" alt="UCC 27 Logo" onerror="this.onerror=null; this.src='image1.png';">
         </a>
         
         <nav>
@@ -482,23 +492,24 @@
         <div id="view-home" class="page-view active-page">
             <section class="scoreboard-section">
                 <div class="matches-container">
+                    <!-- TARİHLER BİLİNMİYOR (TBD) OLARAK GÜNCELLENDİ -->
                     <div class="match-card">
-                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="july31">31 July</span>
+                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tbd">TBD</span>
                         <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
                         <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
                     </div>
                     <div class="match-card">
-                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="july31">31 July</span>
+                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tbd">TBD</span>
                         <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
                         <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
                     </div>
                     <div class="match-card">
-                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="july31">31 July</span>
+                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tbd">TBD</span>
                         <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
                         <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
                     </div>
                      <div class="match-card">
-                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="july31">31 July</span>
+                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tbd">TBD</span>
                         <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
                         <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
                     </div>
@@ -507,15 +518,16 @@
             </section>
 
             <main class="main-content">
-                <div class="hero-section">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbb1925536?q=80&w=1000&auto=format&fit=crop" alt="Hero Image">
-                    <div class="hero-text" data-i18n="heroText">Qualifying: Fixtures, results, format</div>
+                <!-- GÜNCELLENEN BÜYÜK HABER BÖLÜMÜ (Tıklanabilir ve image2 eklendi) -->
+                <div class="hero-section" onclick="switchPage('news')">
+                    <img src="image2.webp" alt="Draw News Image" onerror="this.onerror=null; this.src='image2.png';">
+                    <div class="hero-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
                 </div>
+                
                 <div class="headlines-section">
                     <h2 class="headlines-title" data-i18n="headlines">Headlines</h2>
                     <div class="headline-item" onclick="switchPage('news')">
-                        <!-- HABER FOTOSU: Hangi uzantıdaysa onu yaz (örnek: image2.webp) -->
-                        <img src="image2.webp" alt="Draw News" class="headline-img">
+                        <img src="image2.webp" alt="Draw News" class="headline-img" onerror="this.onerror=null; this.src='image2.png';">
                         <div class="headline-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
                     </div>
                 </div>
@@ -558,8 +570,7 @@
                 <h1 class="article-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
                 <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
                 
-                <!-- KURA FOTOSU: Hangi uzantıdaysa onu yaz -->
-                <img src="image2.webp" alt="UCC Draw Ball" class="article-image">
+                <img src="image2.webp" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.png';">
                 
                 <div class="article-content">
                     <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
@@ -575,8 +586,7 @@
                 <h1 class="article-title" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</h1>
                 <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
                 
-                <!-- HABER İÇİ FOTO: Hangi uzantıdaysa onu yaz -->
-                <img src="image2.webp" alt="UCC Draw Ball" class="article-image">
+                <img src="image2.webp" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.png';">
                 
                 <div class="article-content">
                     <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
@@ -589,21 +599,20 @@
 
     <!-- SPONSORLAR BÖLÜMÜ -->
     <footer>
-        <div class="sponsors-title" data-i18n="sponsorsText">Global Sponsors</div>
+        <div class="sponsors-title" data-i18n="sponsorsText">Sponsors</div>
         <div class="sponsors-grid">
-            <!-- DİKKAT: Hangi dosya png, hangisi webp ise klasörüne bakıp burayı ona göre değiştir -->
-            <img src="image3.png" alt="Coca-Cola">
-            <img src="image4.webp" alt="FedEx">
-            <img src="image5.png" alt="Mastercard">
-            <img src="image6.webp" alt="Sony">
-            <img src="image7.png" alt="Just Eat Takeaway">
-            <img src="image8.webp" alt="AUDI">
-            <img src="image9.png" alt="Turkish Airlines">
-            <img src="image10.webp" alt="Apple">
-            <img src="image11.png" alt="Frito-lay">
-            <img src="image12.webp" alt="Adidas">
-            <img src="image13.png" alt="Rexona">
-            <img src="image14.webp" alt="McDonald's">
+            <img src="image_370b3c.png" alt="Sponsor 1" onerror="this.onerror=null; this.src='image3.webp';">
+            <img src="image4.webp" alt="FedEx" onerror="this.onerror=null; this.src='image4.png';">
+            <img src="image5.webp" alt="Mastercard" onerror="this.onerror=null; this.src='image5.png';">
+            <img src="image6.webp" alt="Sony" onerror="this.onerror=null; this.src='image6.png';">
+            <img src="image7.webp" alt="Just Eat Takeaway" onerror="this.onerror=null; this.src='image7.png';">
+            <img src="image8.webp" alt="AUDI" onerror="this.onerror=null; this.src='image8.png';">
+            <img src="image9.webp" alt="Turkish Airlines" onerror="this.onerror=null; this.src='image9.png';">
+            <img src="image10.webp" alt="Apple" onerror="this.onerror=null; this.src='image10.png';">
+            <img src="image11.webp" alt="Frito-lay" onerror="this.onerror=null; this.src='image11.png';">
+            <img src="image12.webp" alt="Adidas" onerror="this.onerror=null; this.src='image12.png';">
+            <img src="image13.webp" alt="Rexona" onerror="this.onerror=null; this.src='image13.png';">
+            <img src="image14.webp" alt="McDonald's" onerror="this.onerror=null; this.src='image14.png';">
         </div>
     </footer>
 
@@ -616,10 +625,9 @@
             en: {
                 home: "Home", matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
                 login: "Log in", viewAll: "View all matches", headlines: "Headlines", partTeams: "Participating Teams",
-                loading: "Loading teams...", july31: "31 July", tbd: "TBD",
-                heroText: "Qualifying: Fixtures, results, format",
+                loading: "Loading teams...", tbd: "TBD",
                 newsDraw: "UCC 27 Play-off draw in Madrid",
-                sponsorsText: "Global Sponsors",
+                sponsorsText: "Sponsors", /* Güncellendi */
                 matchesNotSet: "Matches have not been determined yet.",
                 statsNotSet: "Will be updated after matches are determined.",
                 drawTitle: "UCC 27 Play-off draw",
@@ -631,10 +639,9 @@
             tr: {
                 home: "Ana Sayfa", matches: "Maçlar", draws: "Kuralar", stats: "İstatistikler", teams: "Takımlar", news: "Haberler",
                 login: "Giriş yap", viewAll: "Tüm maçları gör", headlines: "Manşetler", partTeams: "Katılan Takımlar",
-                loading: "Takımlar yükleniyor...", july31: "31 Temmuz", tbd: "Bilinmiyor",
-                heroText: "Elemeler: Fikstür, sonuçlar, format",
+                loading: "Takımlar yükleniyor...", tbd: "Bilinmiyor",
                 newsDraw: "UCC 27 Play-off kura çekimi Madrid'de",
-                sponsorsText: "Global Sponsorlar",
+                sponsorsText: "Sponsorlar", /* Güncellendi */
                 matchesNotSet: "Henüz maçlar belirlenmemiştir.",
                 statsNotSet: "Maçlar belirlendikten sonra güncellenecektir.",
                 drawTitle: "UCC 27 Play-off Kura Çekimi",
@@ -646,10 +653,9 @@
             fr: {
                 home: "Accueil", matches: "Matchs", draws: "Tirages", stats: "Stats", teams: "Équipes", news: "Actualités",
                 login: "Connexion", viewAll: "Voir tous les matchs", headlines: "À la une", partTeams: "Équipes Participantes",
-                loading: "Chargement des équipes...", july31: "31 Juillet", tbd: "À dét.",
-                heroText: "Qualifications : Calendrier, résultats, format",
+                loading: "Chargement des équipes...", tbd: "À dét.",
                 newsDraw: "Tirage au sort des barrages UCC 27 à Madrid",
-                sponsorsText: "Sponsors Mondiaux",
+                sponsorsText: "Sponsors", /* Güncellendi */
                 matchesNotSet: "Les matchs n'ont pas encore été déterminés.",
                 statsNotSet: "Sera mis à jour une fois les matchs déterminés.",
                 drawTitle: "Tirage au sort des barrages UCC 27",
@@ -661,10 +667,9 @@
             de: {
                 home: "Startseite", matches: "Spiele", draws: "Auslosungen", stats: "Statistiken", teams: "Teams", news: "News",
                 login: "Anmelden", viewAll: "Alle Spiele ansehen", headlines: "Schlagzeilen", partTeams: "Teilnehmende Teams",
-                loading: "Teams werden geladen...", july31: "31. Juli", tbd: "Offen",
-                heroText: "Qualifikation: Spielplan, Ergebnisse, Format",
+                loading: "Teams werden geladen...", tbd: "Offen",
                 newsDraw: "UCC 27 Play-off-Auslosung in Madrid",
-                sponsorsText: "Globale Sponsoren",
+                sponsorsText: "Sponsoren", /* Güncellendi */
                 matchesNotSet: "Spiele wurden noch nicht festgelegt.",
                 statsNotSet: "Wird nach der Auslosung aktualisiert.",
                 drawTitle: "UCC 27 Play-off-Auslosung",
@@ -676,10 +681,9 @@
             es: {
                 home: "Inicio", matches: "Partidos", draws: "Sorteos", stats: "Estadísticas", teams: "Equipos", news: "Noticias",
                 login: "Iniciar sesión", viewAll: "Ver todos los partidos", headlines: "Titulares", partTeams: "Equipos Participantes",
-                loading: "Cargando equipos...", july31: "31 Julio", tbd: "Por det.",
-                heroText: "Clasificación: Calendario, resultados, formato",
+                loading: "Cargando equipos...", tbd: "Por det.",
                 newsDraw: "Sorteo de play-offs UCC 27 en Madrid",
-                sponsorsText: "Patrocinadores Globales",
+                sponsorsText: "Patrocinadores", /* Güncellendi */
                 matchesNotSet: "Aún no se han determinado los partidos.",
                 statsNotSet: "Se actualizará una vez que se determinen los partidos.",
                 drawTitle: "Sorteo de play-offs UCC 27",
