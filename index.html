@@ -278,7 +278,7 @@
             align-items: center;
         }
 
-        /* ORTAK İÇERİK SAYFASI STİLLERİ (Matches, Stats, vb.) */
+        /* ORTAK İÇERİK SAYFASI STİLLERİ */
         .content-page-container {
             max-width: 1400px;
             margin: 40px auto;
@@ -400,7 +400,7 @@
             text-align: center;
         }
 
-        /* SPONSORLAR FOOTER (YENİ EKLENDİ) */
+        /* SPONSORLAR FOOTER */
         footer {
             background-color: #ffffff;
             padding: 30px 40px;
@@ -448,7 +448,8 @@
     <!-- ÜST MENÜ -->
     <header>
         <a class="logo" onclick="switchPage('home')">
-            <img src="image1" alt="UCC 27 Logo" onerror="this.onerror=null; this.src='image1.png';">
+            <!-- LOGO: Hangi uzantıdaysa onu yaz (örnek: image1.png) -->
+            <img src="image1.png" alt="UCC 27 Logo">
         </a>
         
         <nav>
@@ -461,7 +462,6 @@
         </nav>
         
         <div class="header-right">
-            <!-- DİL SEÇİM MENÜSÜ -->
             <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="en">English (EN)</option>
                 <option value="tr">Türkçe (TR)</option>
@@ -513,16 +513,16 @@
                 </div>
                 <div class="headlines-section">
                     <h2 class="headlines-title" data-i18n="headlines">Headlines</h2>
-                    <!-- Haber manşetine tıklandığında news sayfasına gidiyor -->
                     <div class="headline-item" onclick="switchPage('news')">
-                        <img src="image2" alt="Draw News" class="headline-img" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
+                        <!-- HABER FOTOSU: Hangi uzantıdaysa onu yaz (örnek: image2.webp) -->
+                        <img src="image2.webp" alt="Draw News" class="headline-img">
                         <div class="headline-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
                     </div>
                 </div>
             </main>
         </div>
 
-        <!-- 2. MAÇLAR SAYFASI GÖRÜNÜMÜ -->
+        <!-- 2. MAÇLAR SAYFASI -->
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
@@ -532,7 +532,7 @@
             </div>
         </div>
 
-        <!-- 3. İSTATİSTİKLER SAYFASI GÖRÜNÜMÜ -->
+        <!-- 3. İSTATİSTİKLER SAYFASI -->
         <div id="view-stats" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="stats">Stats</h1>
@@ -542,7 +542,7 @@
             </div>
         </div>
 
-        <!-- 4. TAKIMLAR SAYFASI GÖRÜNÜMÜ -->
+        <!-- 4. TAKIMLAR SAYFASI -->
         <div id="view-teams" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="partTeams">Participating Teams</h1>
@@ -552,13 +552,14 @@
             </div>
         </div>
 
-        <!-- 5. KURALAR (DRAWS) SAYFASI GÖRÜNÜMÜ -->
+        <!-- 5. KURALAR (DRAWS) SAYFASI -->
         <div id="view-draws" class="page-view">
             <div class="article-container">
                 <h1 class="article-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
                 <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
                 
-                <img src="image2" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
+                <!-- KURA FOTOSU: Hangi uzantıdaysa onu yaz -->
+                <img src="image2.webp" alt="UCC Draw Ball" class="article-image">
                 
                 <div class="article-content">
                     <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
@@ -568,13 +569,14 @@
             </div>
         </div>
 
-        <!-- 6. HABERLER (NEWS) SAYFASI GÖRÜNÜMÜ (Yeni) -->
+        <!-- 6. HABERLER (NEWS) SAYFASI -->
         <div id="view-news" class="page-view">
             <div class="article-container">
                 <h1 class="article-title" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</h1>
                 <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
                 
-                <img src="image2" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
+                <!-- HABER İÇİ FOTO: Hangi uzantıdaysa onu yaz -->
+                <img src="image2.webp" alt="UCC Draw Ball" class="article-image">
                 
                 <div class="article-content">
                     <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
@@ -585,22 +587,23 @@
         </div>
     </div>
 
-    <!-- SPONSORLAR BÖLÜMÜ (Tüm sayfalarda en altta görünür) -->
+    <!-- SPONSORLAR BÖLÜMÜ -->
     <footer>
         <div class="sponsors-title" data-i18n="sponsorsText">Global Sponsors</div>
         <div class="sponsors-grid">
-            <img src="image3" alt="Coca-Cola" onerror="this.onerror=null; this.src='image3.png'; this.src='image3.jpg';">
-            <img src="image4" alt="FedEx" onerror="this.onerror=null; this.src='image4.png'; this.src='image4.jpg';">
-            <img src="image5" alt="Mastercard" onerror="this.onerror=null; this.src='image5.png'; this.src='image5.jpg';">
-            <img src="image6" alt="Sony" onerror="this.onerror=null; this.src='image6.png'; this.src='image6.jpg';">
-            <img src="image7" alt="Just Eat Takeaway" onerror="this.onerror=null; this.src='image7.png'; this.src='image7.jpg';">
-            <img src="image8" alt="AUDI" onerror="this.onerror=null; this.src='image8.png'; this.src='image8.jpg';">
-            <img src="image9" alt="Turkish Airlines" onerror="this.onerror=null; this.src='image9.png'; this.src='image9.jpg';">
-            <img src="image10" alt="Apple" onerror="this.onerror=null; this.src='image10.png'; this.src='image10.jpg';">
-            <img src="image11" alt="Frito-lay" onerror="this.onerror=null; this.src='image11.png'; this.src='image11.jpg';">
-            <img src="image12" alt="Adidas" onerror="this.onerror=null; this.src='image12.png'; this.src='image12.jpg';">
-            <img src="image13" alt="Rexona" onerror="this.onerror=null; this.src='image13.png'; this.src='image13.jpg';">
-            <img src="image14" alt="McDonald's" onerror="this.onerror=null; this.src='image14.png'; this.src='image14.jpg';">
+            <!-- DİKKAT: Hangi dosya png, hangisi webp ise klasörüne bakıp burayı ona göre değiştir -->
+            <img src="image3.png" alt="Coca-Cola">
+            <img src="image4.webp" alt="FedEx">
+            <img src="image5.png" alt="Mastercard">
+            <img src="image6.webp" alt="Sony">
+            <img src="image7.png" alt="Just Eat Takeaway">
+            <img src="image8.webp" alt="AUDI">
+            <img src="image9.png" alt="Turkish Airlines">
+            <img src="image10.webp" alt="Apple">
+            <img src="image11.png" alt="Frito-lay">
+            <img src="image12.webp" alt="Adidas">
+            <img src="image13.png" alt="Rexona">
+            <img src="image14.webp" alt="McDonald's">
         </div>
     </footer>
 
@@ -609,7 +612,6 @@
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyGQYDQ6eDQDRTFRKs6DS9l3A4_lAqpFuB1m5wEKG8zuOadl1r4vo3x_Do4-U6Nm3_d/exec';
         let teamsLoaded = false;
 
-        // DİL SÖZLÜĞÜ 
         const translations = {
             en: {
                 home: "Home", matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
@@ -620,8 +622,6 @@
                 sponsorsText: "Global Sponsors",
                 matchesNotSet: "Matches have not been determined yet.",
                 statsNotSet: "Will be updated after matches are determined.",
-                
-                // Kuralar Sayfası
                 drawTitle: "UCC 27 Play-off draw",
                 drawSubtitle: "Madrid, Spain - 31 July, 22:00 CET",
                 drawP1: "The UCC 27 play-off round draw takes place in Madrid, Spain.",
@@ -637,8 +637,6 @@
                 sponsorsText: "Global Sponsorlar",
                 matchesNotSet: "Henüz maçlar belirlenmemiştir.",
                 statsNotSet: "Maçlar belirlendikten sonra güncellenecektir.",
-
-                // Kuralar Sayfası
                 drawTitle: "UCC 27 Play-off Kura Çekimi",
                 drawSubtitle: "Madrid, İspanya - 31 Temmuz, 22:00 CET",
                 drawP1: "UCC 27 play-off turu kura çekimi Madrid, İspanya'da gerçekleştirilecektir.",
@@ -654,8 +652,6 @@
                 sponsorsText: "Sponsors Mondiaux",
                 matchesNotSet: "Les matchs n'ont pas encore été déterminés.",
                 statsNotSet: "Sera mis à jour une fois les matchs déterminés.",
-                
-                // Kuralar Sayfası
                 drawTitle: "Tirage au sort des barrages UCC 27",
                 drawSubtitle: "Madrid, Espagne - 31 Juillet, 22h00 CET",
                 drawP1: "Le tirage au sort des barrages de l'UCC 27 a lieu à Madrid, en Espagne.",
@@ -671,8 +667,6 @@
                 sponsorsText: "Globale Sponsoren",
                 matchesNotSet: "Spiele wurden noch nicht festgelegt.",
                 statsNotSet: "Wird nach der Auslosung aktualisiert.",
-                
-                // Kuralar Sayfası
                 drawTitle: "UCC 27 Play-off-Auslosung",
                 drawSubtitle: "Madrid, Spanien - 31. Juli, 22:00 CET",
                 drawP1: "Die Auslosung der UCC 27 Play-off-Runde findet in Madrid, Spanien statt.",
@@ -688,8 +682,6 @@
                 sponsorsText: "Patrocinadores Globales",
                 matchesNotSet: "Aún no se han determinado los partidos.",
                 statsNotSet: "Se actualizará una vez que se determinen los partidos.",
-                
-                // Kuralar Sayfası
                 drawTitle: "Sorteo de play-offs UCC 27",
                 drawSubtitle: "Madrid, España - 31 Julio, 22:00 CET",
                 drawP1: "El sorteo de la ronda de play-offs de la UCC 27 tendrá lugar en Madrid, España.",
