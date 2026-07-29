@@ -383,8 +383,8 @@
     <!-- ÜST MENÜ -->
     <header>
         <a class="logo" onclick="switchPage('home')">
-            <!-- Github'a attığın image1.png buradan çağrılacak -->
-            <img src="image1.png" alt="UCC 27 Logo">
+            <!-- image1 çalışmazsa hemen image1.png dener, o da olmazsa image1.jpg dener (Pro Taktik) -->
+            <img src="image1" alt="UCC 27 Logo" onerror="this.onerror=null; this.src='image1.png';">
         </a>
         
         <nav>
