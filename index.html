@@ -371,7 +371,6 @@
 
     <!-- 1. ANA SAYFA GÖRÜNÜMÜ -->
     <div id="view-home" class="page-view active-page">
-        <!-- SKORBORD -->
         <section class="scoreboard-section">
             <div class="matches-container">
                 <div class="match-card">
@@ -398,7 +397,6 @@
             <button class="view-all-btn">View all matches</button>
         </section>
 
-        <!-- HİKAYELER -->
         <section class="stories-section">
             <div class="story-item"><div class="story-circle"></div><span class="story-text">Back to work 💪</span></div>
             <div class="story-item"><div class="story-circle"></div><span class="story-text">Transfers 🔥</span></div>
@@ -407,7 +405,6 @@
             <div class="story-item"><div class="story-circle"></div><span class="story-text">CR7 🐐</span></div>
         </section>
 
-        <!-- ANA İÇERİK & MANŞETLER -->
         <main class="main-content">
             <div class="hero-section">
                 <img src="https://images.unsplash.com/photo-1574629810360-7efbb1925536?q=80&w=1000&auto=format&fit=crop" alt="Hero Image">
@@ -423,7 +420,7 @@
         </main>
     </div>
 
-    <!-- 2. TAKIMLAR SAYFASI GÖRÜNÜMÜ (TEAMS'E TIKLAYINCA AÇILIR) -->
+    <!-- 2. TAKIMLAR SAYFASI GÖRÜNÜMÜ -->
     <div id="view-teams" class="page-view">
         <div class="teams-page-container">
             <h1 class="page-title">Participating Teams (UCC 27)</h1>
@@ -433,7 +430,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT: SAYFA GEÇİŞİ VE E-TABLO VERİ ÇEKME -->
+    <!-- JAVASCRIPT -->
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwk8bPSHYIiSP4TtnDgF6UqgKhGhMNzYFZTZyvjN6HmTgZXYiyHgaFYuoVDJqX-8ir3/exec';
         let teamsLoaded = false;
@@ -452,7 +449,6 @@
                 document.getElementById('view-teams').classList.add('active-page');
                 document.getElementById('nav-teams').classList.add('active');
                 
-                // Takımlar ilk kez tıklandığında veriyi E-Tablodan çek
                 if (!teamsLoaded) {
                     loadTeams();
                     teamsLoaded = true;
@@ -463,10 +459,13 @@
         async function loadTeams() {
             const teamsGrid = document.getElementById('teams-grid');
             const loadingText = document.getElementById('loading-text');
+            
+            console.log("Takımlar sunucudan isteniyor...");
 
             try {
                 const response = await fetch(scriptURL);
                 const teamsData = await response.json(); 
+                console.log("Gelen veriler:", teamsData);
 
                 loadingText.style.display = 'none';
 
@@ -488,11 +487,11 @@
 
                     teamsGrid.appendChild(teamCard);
                 });
+                console.log("Takımlar başarıyla yerleştirildi!");
 
             } catch (error) {
-                console.error('Veri çekilirken hata oluştu:', error);
-                loadingText.textContent = "Takımlar yüklenirken bir hata oluştu. Bağlantıyı kontrol et.";
-                loadingText.style.color = "white";
+                console.error('Hata:', error);
+                loadingText.textContent = "Takımlar yüklenirken hata oluştu!";
             }
         }
     </script>
