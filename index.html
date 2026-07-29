@@ -33,7 +33,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
+            padding: 10px 40px; /* Logoya yer açmak için biraz kıstım */
             background-color: var(--theme-red); 
             border-bottom: 2px solid #800000; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -46,31 +46,31 @@
         }
         
         .logo img {
-            height: 90px; /* LOGO BOYUTU BÜYÜTÜLDÜ */
+            height: 140px; /* LOGO DEVASA YAPILDI */
             filter: brightness(0) invert(1); 
             object-fit: contain;
         }
 
         nav {
             display: flex;
-            gap: 30px;
+            gap: 35px; /* Aralarını biraz açtım */
         }
 
         nav a {
             color: var(--text-main);
             text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
+            font-size: 18px; /* MENÜ YAZILARI BÜYÜTÜLDÜ */
+            font-weight: 700; /* Daha kalın yapıldı */
             text-transform: uppercase;
             transition: all 0.3s;
             cursor: pointer;
             padding-bottom: 5px;
-            border-bottom: 2px solid transparent;
+            border-bottom: 3px solid transparent;
         }
 
         nav a:hover, nav a.active {
             color: #ffffff;
-            border-bottom: 2px solid #ffffff;
+            border-bottom: 3px solid #ffffff;
         }
 
         .header-right {
@@ -84,10 +84,10 @@
             background-color: rgba(0, 0, 0, 0.2);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 6px 10px;
+            padding: 8px 12px;
             border-radius: 5px;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
             outline: none;
             transition: 0.3s;
@@ -104,7 +104,7 @@
         }
 
         .user-login {
-            font-size: 14px;
+            font-size: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -296,17 +296,19 @@
 
         .headline-img {
             width: 100px;
-            height: 60px;
+            height: 70px;
             background-color: #333;
-            border-radius: 5px;
+            border-radius: 8px;
             object-fit: cover;
         }
 
         .headline-text {
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 600;
             flex: 1;
             color: var(--text-main);
+            display: flex;
+            align-items: center;
         }
 
         /* TAKIMLAR SAYFASI STİLLERİ */
@@ -376,7 +378,7 @@
             color: var(--text-main);
         }
 
-        /* YENİ: KURALAR (DRAWS) SAYFASI STİLLERİ */
+        /* KURALAR (DRAWS) SAYFASI STİLLERİ */
         .draw-article-container {
             max-width: 1000px;
             margin: 40px auto;
@@ -428,7 +430,6 @@
         
         <nav>
             <a id="nav-home" class="active" onclick="switchPage('home')" data-i18n="matches">Matches</a>
-            <a onclick="alert('Bu sayfa yapım aşamasında!')">UEFA.tv</a> 
             <a id="nav-draws" onclick="switchPage('draws')" data-i18n="draws">Draws</a>
             <a onclick="alert('Bu sayfa yapım aşamasında!')" data-i18n="stats">Stats</a>
             <a id="nav-teams" onclick="switchPage('teams')" data-i18n="teams">Teams</a>
@@ -495,10 +496,11 @@
             </div>
             <div class="headlines-section">
                 <h2 class="headlines-title" data-i18n="headlines">Headlines</h2>
-                <div class="headline-item"><div class="headline-img"></div><div class="headline-text" data-i18n="news1">How solidarity payments strengthen competitive balance</div></div>
-                <div class="headline-item"><div class="headline-img"></div><div class="headline-text" data-i18n="news2">Men's second qualifying round delivers goals and drama</div></div>
-                <div class="headline-item"><div class="headline-img"></div><div class="headline-text" data-i18n="news3">European football aligns on refereeing matters</div></div>
-                <div class="headline-item"><div class="headline-img"></div><div class="headline-text" data-i18n="news4">Classic Trabzonspor goals in Europe</div></div>
+                <!-- MANŞETLER: Sadece Draws haberi ve image2 eklendi -->
+                <div class="headline-item" onclick="switchPage('draws')">
+                    <img src="image2" alt="Draw News" class="headline-img" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
+                    <div class="headline-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
+                </div>
             </div>
         </main>
     </div>
@@ -519,7 +521,7 @@
             <h1 class="draw-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
             <div class="draw-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 22:00 CET / 23:00 TSI</div>
             
-            <img src="image_38cdb4.jpg" alt="UCC Draw Ball" class="draw-image">
+            <img src="image2" alt="UCC Draw Ball" class="draw-image" onerror="this.onerror=null; this.src='image2.jpg'; this.src='image2.png';">
             
             <div class="draw-content">
                 <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
@@ -542,10 +544,7 @@
                 loading: "Loading teams...", today: "Today", tomorrow: "Tomorrow",
                 story1: "Back to work 💪", story2: "Transfers 🔥",
                 heroText: "Qualifying: Fixtures, results, format",
-                news1: "How solidarity payments strengthen competitive balance",
-                news2: "Men's second qualifying round delivers goals and drama",
-                news3: "European football aligns on refereeing matters",
-                news4: "Classic Trabzonspor goals in Europe",
+                newsDraw: "UCC 27 Play-off draw in Madrid",
                 
                 // Kuralar Sayfası
                 drawTitle: "UCC 27 Play-off draw",
@@ -560,10 +559,7 @@
                 loading: "Takımlar yükleniyor...", today: "Bugün", tomorrow: "Yarın",
                 story1: "İşe Dönüş 💪", story2: "Transferler 🔥",
                 heroText: "Elemeler: Fikstür, sonuçlar, format",
-                news1: "Dayanışma ödemeleri rekabet dengesini nasıl güçlendirir?",
-                news2: "Erkekler ikinci eleme turu bol gollü geçiyor",
-                news3: "Avrupa futbolunda hakem kararları uyumu",
-                news4: "Avrupa'da klasikleşmiş Trabzonspor golleri",
+                newsDraw: "UCC 27 Play-off kura çekimi Madrid'de",
 
                 // Kuralar Sayfası
                 drawTitle: "UCC 27 Play-off Kura Çekimi",
@@ -578,10 +574,7 @@
                 loading: "Chargement des équipes...", today: "Aujourd'hui", tomorrow: "Demain",
                 story1: "Retour au travail 💪", story2: "Transferts 🔥",
                 heroText: "Qualifications : Calendrier, résultats, format",
-                news1: "Comment les paiements de solidarité renforcent l'équilibre",
-                news2: "Le deuxième tour de qualification offre des buts et du drame",
-                news3: "Le football européen s'aligne sur l'arbitrage",
-                news4: "Les buts classiques de Trabzonspor en Europe",
+                newsDraw: "Tirage au sort des barrages UCC 27 à Madrid",
                 
                 // Kuralar Sayfası
                 drawTitle: "Tirage au sort des barrages UCC 27",
@@ -596,10 +589,7 @@
                 loading: "Teams werden geladen...", today: "Heute", tomorrow: "Morgen",
                 story1: "Zurück an die Arbeit 💪", story2: "Transfers 🔥",
                 heroText: "Qualifikation: Spielplan, Ergebnisse, Format",
-                news1: "Wie Solidaritätszahlungen das Wettbewerbsgleichgewicht stärken",
-                news2: "Zweite Qualifikationsrunde liefert Tore und Drama",
-                news3: "Europäischer Fußball einigt sich auf Schiedsrichterfragen",
-                news4: "Klassische Trabzonspor-Tore in Europa",
+                newsDraw: "UCC 27 Play-off-Auslosung in Madrid",
                 
                 // Kuralar Sayfası
                 drawTitle: "UCC 27 Play-off-Auslosung",
@@ -614,10 +604,7 @@
                 loading: "Cargando equipos...", today: "Hoy", tomorrow: "Mañana",
                 story1: "Vuelta al trabajo 💪", story2: "Traspasos 🔥",
                 heroText: "Clasificación: Calendario, resultados, formato",
-                news1: "Cómo los pagos de solidaridad refuerzan el equilibrio competitivo",
-                news2: "La segunda ronda de clasificación ofrece goles y drama",
-                news3: "El fútbol europeo se alinea en materia de arbitraje",
-                news4: "Goles clásicos del Trabzonspor en Europa",
+                newsDraw: "Sorteo de play-offs UCC 27 en Madrid",
                 
                 // Kuralar Sayfası
                 drawTitle: "Sorteo de play-offs UCC 27",
