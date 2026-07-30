@@ -320,10 +320,11 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        /* YENİ: GRUPLAR SAYFASI STİLLERİ */
+        /* GRUPLAR SAYFASI STİLLERİ (İSTATİSTİKLİ YENİ YAPI) */
         .groups-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            /* İstatistik sığması için kartları genişlettik */
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
@@ -346,10 +347,22 @@
             border-bottom: 2px solid #800000;
         }
 
+        .group-stats-header {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px 8px 25px;
+            background-color: rgba(0,0,0,0.5);
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-transform: uppercase;
+        }
+
         .group-row {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
+            padding: 8px 15px 8px 25px; /* Soldaki çubuk için alan */
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             background-color: rgba(0,0,0,0.2);
@@ -364,7 +377,6 @@
             border-bottom: none;
         }
 
-        /* Renkli Durum Çubukları (Status Bars) */
         .status-bar {
             position: absolute;
             left: 0;
@@ -376,11 +388,33 @@
         .status-blue { background-color: #007bff; }
         .status-orange { background-color: #fd7e14; }
 
+        .team-col {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .stat-col {
+            width: 28px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+        
+        /* Puan kısmı daha belirgin olsun */
+        .stat-col:last-child {
+            width: 32px;
+            color: var(--accent-color); 
+        }
+
         .team-logo-small {
             width: 25px;
             height: 25px;
-            margin-left: 10px;
-            margin-right: 15px;
+            margin-right: 12px;
             object-fit: contain;
         }
 
@@ -389,7 +423,7 @@
             font-weight: 600;
         }
 
-        /* Grup Sayfası Alt Bilgi (Legend) */
+        /* Grup Legend (Alt Bilgi) */
         .group-legend {
             display: flex;
             flex-wrap: wrap;
@@ -559,7 +593,7 @@
         
         <nav>
             <a id="nav-home" class="active" onclick="switchPage('home')" data-i18n="home">Home</a>
-            <a id="nav-groups" onclick="switchPage('groups')" data-i18n="groupsNav">Groups</a> <!-- YENİ EKLENDİ -->
+            <a id="nav-groups" onclick="switchPage('groups')" data-i18n="groupsNav">Groups</a>
             <a id="nav-matches" onclick="switchPage('matches')" data-i18n="matches">Matches</a>
             <a id="nav-draws" onclick="switchPage('draws')" data-i18n="draws">Draws</a>
             <a id="nav-stats" onclick="switchPage('stats')" data-i18n="stats">Stats</a>
@@ -584,7 +618,7 @@
     </header>
 
     <div class="page-content">
-        <!-- 1. ANA SAYFA GÖRÜNÜMÜ -->
+        <!-- 1. ANA SAYFA -->
         <div id="view-home" class="page-view active-page">
             <section class="scoreboard-section">
                 <div class="matches-container">
@@ -628,7 +662,7 @@
             </main>
         </div>
 
-        <!-- 2. YENİ GRUPLAR SAYFASI -->
+        <!-- 2. GRUPLAR SAYFASI (YENİ İSTATİSTİKLİ YAPI) -->
         <div id="view-groups" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="groupsTitle">Groups</h1>
@@ -685,9 +719,7 @@
             <div class="article-container">
                 <h1 class="article-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
                 <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
-                
                 <img src="image2.webp" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.png';">
-                
                 <div class="article-content">
                     <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
                     <p data-i18n="drawP2">The draw will begin at 22:00 CET. Seedings, groupings, and the procedure will be available prior to the ceremony.</p>
@@ -701,9 +733,7 @@
             <div class="article-container">
                 <h1 class="article-title" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</h1>
                 <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
-                
                 <img src="image2.webp" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.png';">
-                
                 <div class="article-content">
                     <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
                     <p data-i18n="drawP2">The draw will begin at 22:00 CET. Seedings, groupings, and the procedure will be available prior to the ceremony.</p>
@@ -736,79 +766,69 @@
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyGQYDQ6eDQDRTFRKs6DS9l3A4_lAqpFuB1m5wEKG8zuOadl1r4vo3x_Do4-U6Nm3_d/exec';
         let teamsLoaded = false;
-        let groupsGenerated = false; // Grupların 1 kere üretilmesi için
+        let groupsGenerated = false;
 
-        // DİL ÇEVİRİLERİ (YENİ KELİMELER EKLENDİ)
+        // DİL ÇEVİRİLERİ (İSTATİSTİK BAŞLIKLARI EKLENDİ)
         const translations = {
             en: {
                 home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
                 login: "Log in", viewAll: "View all matches", headlines: "Headlines", partTeams: "Participating Teams",
                 loading: "Loading teams...", tbd: "TBD", groupWord: "Group", uccQual: "UCC 27 Qualification", playoffQual: "Play-off",
-                newsDraw: "UCC 27 Play-off draw in Madrid",
-                sponsorsText: "Sponsors", 
-                matchesNotSet: "Matches have not been determined yet.",
-                statsNotSet: "Will be updated after matches are determined.",
-                drawTitle: "UCC 27 Play-off draw",
-                drawSubtitle: "Madrid, Spain - 31 July, 22:00 CET",
+                newsDraw: "UCC 27 Play-off draw in Madrid", sponsorsText: "Sponsors", 
+                matchesNotSet: "Matches have not been determined yet.", statsNotSet: "Will be updated after matches are determined.",
+                drawTitle: "UCC 27 Play-off draw", drawSubtitle: "Madrid, Spain - 31 July, 22:00 CET",
                 drawP1: "The UCC 27 play-off round draw takes place in Madrid, Spain.",
                 drawP2: "The draw will begin at 22:00 CET. Seedings, groupings, and the procedure will be available prior to the ceremony.",
-                drawP3: "Presidents of all participating clubs will be in attendance for the official ceremony."
+                drawP3: "Presidents of all participating clubs will be in attendance for the official ceremony.",
+                th_team: "Team", th_om: "Pld", th_g: "W", th_b: "D", th_m: "L", th_ag: "GF", th_yg: "GA", th_a: "GD", th_p: "Pts"
             },
             tr: {
                 home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", stats: "İstatistikler", teams: "Takımlar", news: "Haberler",
                 login: "Giriş yap", viewAll: "Tüm maçları gör", headlines: "Manşetler", partTeams: "Katılan Takımlar",
                 loading: "Takımlar yükleniyor...", tbd: "Bilinmiyor", groupWord: "Grup", uccQual: "UCC 27 Katılım", playoffQual: "Play-off",
-                newsDraw: "UCC 27 Play-off kura çekimi Madrid'de",
-                sponsorsText: "Sponsorlar", 
-                matchesNotSet: "Henüz maçlar belirlenmemiştir.",
-                statsNotSet: "Maçlar belirlendikten sonra güncellenecektir.",
-                drawTitle: "UCC 27 Play-off Kura Çekimi",
-                drawSubtitle: "Madrid, İspanya - 31 Temmuz, 22:00 CET",
+                newsDraw: "UCC 27 Play-off kura çekimi Madrid'de", sponsorsText: "Sponsorlar", 
+                matchesNotSet: "Henüz maçlar belirlenmemiştir.", statsNotSet: "Maçlar belirlendikten sonra güncellenecektir.",
+                drawTitle: "UCC 27 Play-off Kura Çekimi", drawSubtitle: "Madrid, İspanya - 31 Temmuz, 22:00 CET",
                 drawP1: "UCC 27 play-off turu kura çekimi Madrid, İspanya'da gerçekleştirilecektir.",
                 drawP2: "Kura çekimi 22:00 CET itibarıyla başlayacaktır. Torbalar, gruplandırmalar ve kura prosedürü tören öncesi açıklanacaktır.",
-                drawP3: "Katılan tüm kulüplerin başkanları resmi kura töreninde bizzat yer alacaktır."
+                drawP3: "Katılan tüm kulüplerin başkanları resmi kura töreninde bizzat yer alacaktır.",
+                th_team: "Takım", th_om: "OM", th_g: "G", th_b: "B", th_m: "M", th_ag: "AG", th_yg: "YG", th_a: "A", th_p: "P"
             },
             fr: {
                 home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", stats: "Stats", teams: "Équipes", news: "Actualités",
                 login: "Connexion", viewAll: "Voir tous les matchs", headlines: "À la une", partTeams: "Équipes Participantes",
                 loading: "Chargement des équipes...", tbd: "À dét.", groupWord: "Groupe", uccQual: "Qualification UCC 27", playoffQual: "Barrages",
-                newsDraw: "Tirage au sort des barrages UCC 27 à Madrid",
-                sponsorsText: "Sponsors", 
-                matchesNotSet: "Les matchs n'ont pas encore été déterminés.",
-                statsNotSet: "Sera mis à jour une fois les matchs déterminés.",
-                drawTitle: "Tirage au sort des barrages UCC 27",
-                drawSubtitle: "Madrid, Espagne - 31 Juillet, 22h00 CET",
+                newsDraw: "Tirage au sort des barrages UCC 27 à Madrid", sponsorsText: "Sponsors", 
+                matchesNotSet: "Les matchs n'ont pas encore été déterminés.", statsNotSet: "Sera mis à jour une fois les matchs déterminés.",
+                drawTitle: "Tirage au sort des barrages UCC 27", drawSubtitle: "Madrid, Espagne - 31 Juillet, 22h00 CET",
                 drawP1: "Le tirage au sort des barrages de l'UCC 27 a lieu à Madrid, en Espagne.",
                 drawP2: "Le tirage commencera à 22h00 CET. Les chapeaux et la procédure seront disponibles avant la cérémonie.",
-                drawP3: "Les présidents de tous les clubs participants seront présents pour la cérémonie officielle."
+                drawP3: "Les présidents de tous les clubs participants seront présents pour la cérémonie officielle.",
+                th_team: "Équipe", th_om: "J", th_g: "G", th_b: "N", th_m: "P", th_ag: "BP", th_yg: "BC", th_a: "DB", th_p: "Pts"
             },
             de: {
                 home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosungen", stats: "Statistiken", teams: "Teams", news: "News",
                 login: "Anmelden", viewAll: "Alle Spiele ansehen", headlines: "Schlagzeilen", partTeams: "Teilnehmende Teams",
                 loading: "Teams werden geladen...", tbd: "Offen", groupWord: "Gruppe", uccQual: "UCC 27 Qualifikation", playoffQual: "Play-off",
-                newsDraw: "UCC 27 Play-off-Auslosung in Madrid",
-                sponsorsText: "Sponsoren",
-                matchesNotSet: "Spiele wurden noch nicht festgelegt.",
-                statsNotSet: "Wird nach der Auslosung aktualisiert.",
-                drawTitle: "UCC 27 Play-off-Auslosung",
-                drawSubtitle: "Madrid, Spanien - 31. Juli, 22:00 CET",
+                newsDraw: "UCC 27 Play-off-Auslosung in Madrid", sponsorsText: "Sponsoren",
+                matchesNotSet: "Spiele wurden noch nicht festgelegt.", statsNotSet: "Wird nach der Auslosung aktualisiert.",
+                drawTitle: "UCC 27 Play-off-Auslosung", drawSubtitle: "Madrid, Spanien - 31. Juli, 22:00 CET",
                 drawP1: "Die Auslosung der UCC 27 Play-off-Runde findet in Madrid, Spanien statt.",
                 drawP2: "Die Auslosung beginnt um 22:00 CET. Setzlisten und Abläufe werden vor der Zeremonie bekannt gegeben.",
-                drawP3: "Die Präsidenten aller teilnehmenden Vereine werden bei der offiziellen Zeremonie anwesend sein."
+                drawP3: "Die Präsidenten aller teilnehmenden Vereine werden bei der offiziellen Zeremonie anwesend sein.",
+                th_team: "Team", th_om: "Sp", th_g: "S", th_b: "U", th_m: "N", th_ag: "T", th_yg: "GT", th_a: "TD", th_p: "Pkt"
             },
             es: {
                 home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", stats: "Estadísticas", teams: "Equipos", news: "Noticias",
                 login: "Iniciar sesión", viewAll: "Ver todos los partidos", headlines: "Titulares", partTeams: "Equipos Participantes",
                 loading: "Cargando equipos...", tbd: "Por det.", groupWord: "Grupo", uccQual: "Clasificación UCC 27", playoffQual: "Play-off",
-                newsDraw: "Sorteo de play-offs UCC 27 en Madrid",
-                sponsorsText: "Patrocinadores",
-                matchesNotSet: "Aún no se han determinado los partidos.",
-                statsNotSet: "Se actualizará una vez que se determinen los partidos.",
-                drawTitle: "Sorteo de play-offs UCC 27",
-                drawSubtitle: "Madrid, España - 31 Julio, 22:00 CET",
+                newsDraw: "Sorteo de play-offs UCC 27 en Madrid", sponsorsText: "Patrocinadores",
+                matchesNotSet: "Aún no se han determinado los partidos.", statsNotSet: "Se actualizará una vez que se determinen los partidos.",
+                drawTitle: "Sorteo de play-offs UCC 27", drawSubtitle: "Madrid, España - 31 Julio, 22:00 CET",
                 drawP1: "El sorteo de la ronda de play-offs de la UCC 27 tendrá lugar en Madrid, España.",
                 drawP2: "El sorteo comenzará a las 22:00 CET. Los bombos y el procedimiento estarán disponibles antes de la ceremonia.",
-                drawP3: "Los presidentes de todos los clubes participantes estarán presentes en la ceremonia oficial."
+                drawP3: "Los presidentes de todos los clubes participantes estarán presentes en la ceremonia oficial.",
+                th_team: "Equipo", th_om: "PJ", th_g: "G", th_b: "E", th_m: "P", th_ag: "GF", th_yg: "GC", th_a: "DG", th_p: "Pts"
             }
         };
 
@@ -816,45 +836,76 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
-                    element.innerHTML = translations[lang][key]; // HTML içeriğini de değiştirir
+                    element.innerHTML = translations[lang][key]; 
                 }
             });
         }
 
-        // JS ile 32 Grubu Otomatik Üreten Fonksiyon
+        // JS ile 32 Grubu Otomatik Üreten Fonksiyon (İstatistikli Tablo)
         function generateGroups() {
             if (groupsGenerated) return;
             const container = document.getElementById('groups-grid');
             let htmlContent = '';
             
-            // 32 adet grup oluşturuluyor (Grup 1, Grup 2, Grup 3...)
             for (let i = 1; i <= 32; i++) {
                 htmlContent += `
                 <div class="group-card">
                     <div class="group-header"><span data-i18n="groupWord">Group</span> ${i}</div>
                     
+                    <div class="group-stats-header">
+                        <div class="team-col" data-i18n="th_team">Team</div>
+                        <div class="stat-col" data-i18n="th_om">Pld</div>
+                        <div class="stat-col" data-i18n="th_g">W</div>
+                        <div class="stat-col" data-i18n="th_b">D</div>
+                        <div class="stat-col" data-i18n="th_m">L</div>
+                        <div class="stat-col" data-i18n="th_ag">GF</div>
+                        <div class="stat-col" data-i18n="th_yg">GA</div>
+                        <div class="stat-col" data-i18n="th_a">GD</div>
+                        <div class="stat-col" data-i18n="th_p">Pts</div>
+                    </div>
+
                     <div class="group-row">
                         <div class="status-bar status-blue"></div>
-                        <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
-                        <span class="group-team-name" data-i18n="tbd">TBD</span>
+                        <div class="team-col">
+                            <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
+                            <span class="group-team-name" data-i18n="tbd">TBD</span>
+                        </div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div>
                     </div>
                     
                     <div class="group-row">
                         <div class="status-bar status-orange"></div>
-                        <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
-                        <span class="group-team-name" data-i18n="tbd">TBD</span>
+                        <div class="team-col">
+                            <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
+                            <span class="group-team-name" data-i18n="tbd">TBD</span>
+                        </div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div>
                     </div>
                     
                     <div class="group-row">
                         <div class="status-bar"></div>
-                        <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
-                        <span class="group-team-name" data-i18n="tbd">TBD</span>
+                        <div class="team-col">
+                            <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
+                            <span class="group-team-name" data-i18n="tbd">TBD</span>
+                        </div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div>
                     </div>
                     
                     <div class="group-row">
                         <div class="status-bar"></div>
-                        <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
-                        <span class="group-team-name" data-i18n="tbd">TBD</span>
+                        <div class="team-col">
+                            <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
+                            <span class="group-team-name" data-i18n="tbd">TBD</span>
+                        </div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                        <div class="stat-col">0</div><div class="stat-col">0</div>
                     </div>
                 </div>`;
             }
@@ -876,14 +927,12 @@
                 document.getElementById(navId).classList.add('active');
             }
 
-            // Sayfalara tıklandığında yüklenecek veriler
             if (page === 'teams' && !teamsLoaded) {
                 loadTeams();
                 teamsLoaded = true;
             }
             if (page === 'groups') {
                 generateGroups();
-                // Gruplar üretildikten sonra mevcut dili yeni üretilen gruplara da uygula
                 changeLanguage(document.getElementById('lang-selector').value);
             }
         }
@@ -925,7 +974,6 @@
             }
         }
 
-        // Sayfa ilk açıldığında grupları arkaplanda bir kere oluştur
         window.onload = function() {
             generateGroups();
             changeLanguage(document.getElementById('lang-selector').value);
