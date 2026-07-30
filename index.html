@@ -320,10 +320,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        /* GRUPLAR SAYFASI STİLLERİ (İSTATİSTİKLİ YENİ YAPI) */
+        /* GRUPLAR SAYFASI STİLLERİ */
         .groups-grid {
             display: grid;
-            /* İstatistik sığması için kartları genişlettik */
             grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
@@ -362,7 +361,7 @@
         .group-row {
             display: flex;
             align-items: center;
-            padding: 8px 15px 8px 25px; /* Soldaki çubuk için alan */
+            padding: 8px 15px 8px 25px; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             background-color: rgba(0,0,0,0.2);
@@ -405,7 +404,6 @@
             color: var(--text-main);
         }
         
-        /* Puan kısmı daha belirgin olsun */
         .stat-col:last-child {
             width: 32px;
             color: var(--accent-color); 
@@ -423,7 +421,6 @@
             font-weight: 600;
         }
 
-        /* Grup Legend (Alt Bilgi) */
         .group-legend {
             display: flex;
             flex-wrap: wrap;
@@ -585,12 +582,10 @@
 </head>
 <body>
 
-    <!-- ÜST MENÜ -->
     <header>
         <a class="logo" onclick="switchPage('home')">
             <img src="image1.webp" alt="UCC 27 Logo" onerror="this.onerror=null; this.src='image1.png';">
         </a>
-        
         <nav>
             <a id="nav-home" class="active" onclick="switchPage('home')" data-i18n="home">Home</a>
             <a id="nav-groups" onclick="switchPage('groups')" data-i18n="groupsNav">Groups</a>
@@ -600,7 +595,6 @@
             <a id="nav-teams" onclick="switchPage('teams')" data-i18n="teams">Teams</a>
             <a id="nav-news" onclick="switchPage('news')" data-i18n="news">News</a>
         </nav>
-        
         <div class="header-right">
             <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="en">English (EN)</option>
@@ -609,10 +603,8 @@
                 <option value="de">Deutsch (DE)</option>
                 <option value="es">Español (ES)</option>
             </select>
-            
             <div class="user-login">
-                <span data-i18n="login">Log in</span>
-                👤
+                <span data-i18n="login">Log in</span> 👤
             </div>
         </div>
     </header>
@@ -645,13 +637,11 @@
                 </div>
                 <button class="view-all-btn" onclick="switchPage('matches')" data-i18n="viewAll">View all matches</button>
             </section>
-
             <main class="main-content">
                 <div class="hero-section" onclick="switchPage('news')">
                     <img src="image2.webp" alt="Draw News Image" onerror="this.onerror=null; this.src='image2.png';">
                     <div class="hero-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
                 </div>
-                
                 <div class="headlines-section">
                     <h2 class="headlines-title" data-i18n="headlines">Headlines</h2>
                     <div class="headline-item" onclick="switchPage('news')">
@@ -662,15 +652,13 @@
             </main>
         </div>
 
-        <!-- 2. GRUPLAR SAYFASI (YENİ İSTATİSTİKLİ YAPI) -->
+        <!-- 2. GRUPLAR SAYFASI -->
         <div id="view-groups" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="groupsTitle">Groups</h1>
-                
-                <!-- 32 Grup JS tarafından buraya basılacak -->
-                <div id="groups-grid" class="groups-grid"></div>
-
-                <!-- Sayfa sonu açıklamaları -->
+                <div id="groups-grid" class="groups-grid">
+                    <p id="groups-loading-text" style="color: var(--accent-color); text-align: center; padding: 50px;" data-i18n="loading">Veriler çekiliyor...</p>
+                </div>
                 <div class="group-legend">
                     <div class="legend-item">
                         <div class="legend-color-box status-blue"></div>
@@ -688,9 +676,7 @@
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
-                <div class="info-message" data-i18n="matchesNotSet">
-                    Matches have not been determined yet.
-                </div>
+                <div class="info-message" data-i18n="matchesNotSet">Matches have not been determined yet.</div>
             </div>
         </div>
 
@@ -698,9 +684,7 @@
         <div id="view-stats" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="stats">Stats</h1>
-                <div class="info-message" data-i18n="statsNotSet">
-                    Will be updated after matches are determined.
-                </div>
+                <div class="info-message" data-i18n="statsNotSet">Will be updated after matches are determined.</div>
             </div>
         </div>
 
@@ -714,7 +698,7 @@
             </div>
         </div>
 
-        <!-- 6. KURALAR (DRAWS) SAYFASI -->
+        <!-- 6. KURALAR -->
         <div id="view-draws" class="page-view">
             <div class="article-container">
                 <h1 class="article-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
@@ -728,7 +712,7 @@
             </div>
         </div>
 
-        <!-- 7. HABERLER (NEWS) SAYFASI -->
+        <!-- 7. HABERLER -->
         <div id="view-news" class="page-view">
             <div class="article-container">
                 <h1 class="article-title" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</h1>
@@ -743,7 +727,7 @@
         </div>
     </div>
 
-    <!-- SPONSORLAR BÖLÜMÜ -->
+    <!-- SPONSORLAR -->
     <footer>
         <div class="sponsors-title" data-i18n="sponsorsText">Sponsors</div>
         <div class="sponsors-grid">
@@ -762,18 +746,16 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT & ÇOKLU DİL SİSTEMİ -->
+    <!-- JAVASCRIPT & ÇOKLU DİL & VERİ ÇEKME SİSTEMİ -->
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyGQYDQ6eDQDRTFRKs6DS9l3A4_lAqpFuB1m5wEKG8zuOadl1r4vo3x_Do4-U6Nm3_d/exec';
-        let teamsLoaded = false;
-        let groupsGenerated = false;
+        let dataLoaded = false;
 
-        // DİL ÇEVİRİLERİ (İSTATİSTİK BAŞLIKLARI EKLENDİ)
         const translations = {
             en: {
                 home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
                 login: "Log in", viewAll: "View all matches", headlines: "Headlines", partTeams: "Participating Teams",
-                loading: "Loading teams...", tbd: "TBD", groupWord: "Group", uccQual: "UCC 27 Qualification", playoffQual: "Play-off",
+                loading: "Loading data...", tbd: "TBD", groupWord: "Group", uccQual: "UCC 27 Qualification", playoffQual: "Play-off",
                 newsDraw: "UCC 27 Play-off draw in Madrid", sponsorsText: "Sponsors", 
                 matchesNotSet: "Matches have not been determined yet.", statsNotSet: "Will be updated after matches are determined.",
                 drawTitle: "UCC 27 Play-off draw", drawSubtitle: "Madrid, Spain - 31 July, 22:00 CET",
@@ -785,7 +767,7 @@
             tr: {
                 home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", stats: "İstatistikler", teams: "Takımlar", news: "Haberler",
                 login: "Giriş yap", viewAll: "Tüm maçları gör", headlines: "Manşetler", partTeams: "Katılan Takımlar",
-                loading: "Takımlar yükleniyor...", tbd: "Bilinmiyor", groupWord: "Grup", uccQual: "UCC 27 Katılım", playoffQual: "Play-off",
+                loading: "Veriler çekiliyor...", tbd: "Bilinmiyor", groupWord: "Grup", uccQual: "UCC 27 Katılım", playoffQual: "Play-off",
                 newsDraw: "UCC 27 Play-off kura çekimi Madrid'de", sponsorsText: "Sponsorlar", 
                 matchesNotSet: "Henüz maçlar belirlenmemiştir.", statsNotSet: "Maçlar belirlendikten sonra güncellenecektir.",
                 drawTitle: "UCC 27 Play-off Kura Çekimi", drawSubtitle: "Madrid, İspanya - 31 Temmuz, 22:00 CET",
@@ -797,7 +779,7 @@
             fr: {
                 home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", stats: "Stats", teams: "Équipes", news: "Actualités",
                 login: "Connexion", viewAll: "Voir tous les matchs", headlines: "À la une", partTeams: "Équipes Participantes",
-                loading: "Chargement des équipes...", tbd: "À dét.", groupWord: "Groupe", uccQual: "Qualification UCC 27", playoffQual: "Barrages",
+                loading: "Chargement des données...", tbd: "À dét.", groupWord: "Groupe", uccQual: "Qualification UCC 27", playoffQual: "Barrages",
                 newsDraw: "Tirage au sort des barrages UCC 27 à Madrid", sponsorsText: "Sponsors", 
                 matchesNotSet: "Les matchs n'ont pas encore été déterminés.", statsNotSet: "Sera mis à jour une fois les matchs déterminés.",
                 drawTitle: "Tirage au sort des barrages UCC 27", drawSubtitle: "Madrid, Espagne - 31 Juillet, 22h00 CET",
@@ -809,7 +791,7 @@
             de: {
                 home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosungen", stats: "Statistiken", teams: "Teams", news: "News",
                 login: "Anmelden", viewAll: "Alle Spiele ansehen", headlines: "Schlagzeilen", partTeams: "Teilnehmende Teams",
-                loading: "Teams werden geladen...", tbd: "Offen", groupWord: "Gruppe", uccQual: "UCC 27 Qualifikation", playoffQual: "Play-off",
+                loading: "Lade Daten...", tbd: "Offen", groupWord: "Gruppe", uccQual: "UCC 27 Qualifikation", playoffQual: "Play-off",
                 newsDraw: "UCC 27 Play-off-Auslosung in Madrid", sponsorsText: "Sponsoren",
                 matchesNotSet: "Spiele wurden noch nicht festgelegt.", statsNotSet: "Wird nach der Auslosung aktualisiert.",
                 drawTitle: "UCC 27 Play-off-Auslosung", drawSubtitle: "Madrid, Spanien - 31. Juli, 22:00 CET",
@@ -821,7 +803,7 @@
             es: {
                 home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", stats: "Estadísticas", teams: "Equipos", news: "Noticias",
                 login: "Iniciar sesión", viewAll: "Ver todos los partidos", headlines: "Titulares", partTeams: "Equipos Participantes",
-                loading: "Cargando equipos...", tbd: "Por det.", groupWord: "Grupo", uccQual: "Clasificación UCC 27", playoffQual: "Play-off",
+                loading: "Cargando datos...", tbd: "Por det.", groupWord: "Grupo", uccQual: "Clasificación UCC 27", playoffQual: "Play-off",
                 newsDraw: "Sorteo de play-offs UCC 27 en Madrid", sponsorsText: "Patrocinadores",
                 matchesNotSet: "Aún no se han determinado los partidos.", statsNotSet: "Se actualizará una vez que se determinen los partidos.",
                 drawTitle: "Sorteo de play-offs UCC 27", drawSubtitle: "Madrid, España - 31 Julio, 22:00 CET",
@@ -841,141 +823,164 @@
             });
         }
 
-        // JS ile 32 Grubu Otomatik Üreten Fonksiyon (İstatistikli Tablo)
-        function generateGroups() {
-            if (groupsGenerated) return;
-            const container = document.getElementById('groups-grid');
-            let htmlContent = '';
-            
-            for (let i = 1; i <= 32; i++) {
-                htmlContent += `
-                <div class="group-card">
-                    <div class="group-header"><span data-i18n="groupWord">Group</span> ${i}</div>
-                    
-                    <div class="group-stats-header">
-                        <div class="team-col" data-i18n="th_team">Team</div>
-                        <div class="stat-col" data-i18n="th_om">Pld</div>
-                        <div class="stat-col" data-i18n="th_g">W</div>
-                        <div class="stat-col" data-i18n="th_b">D</div>
-                        <div class="stat-col" data-i18n="th_m">L</div>
-                        <div class="stat-col" data-i18n="th_ag">GF</div>
-                        <div class="stat-col" data-i18n="th_yg">GA</div>
-                        <div class="stat-col" data-i18n="th_a">GD</div>
-                        <div class="stat-col" data-i18n="th_p">Pts</div>
-                    </div>
-
-                    <div class="group-row">
-                        <div class="status-bar status-blue"></div>
-                        <div class="team-col">
-                            <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
-                            <span class="group-team-name" data-i18n="tbd">TBD</span>
-                        </div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div>
-                    </div>
-                    
-                    <div class="group-row">
-                        <div class="status-bar status-orange"></div>
-                        <div class="team-col">
-                            <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
-                            <span class="group-team-name" data-i18n="tbd">TBD</span>
-                        </div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div>
-                    </div>
-                    
-                    <div class="group-row">
-                        <div class="status-bar"></div>
-                        <div class="team-col">
-                            <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
-                            <span class="group-team-name" data-i18n="tbd">TBD</span>
-                        </div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div>
-                    </div>
-                    
-                    <div class="group-row">
-                        <div class="status-bar"></div>
-                        <div class="team-col">
-                            <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
-                            <span class="group-team-name" data-i18n="tbd">TBD</span>
-                        </div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                        <div class="stat-col">0</div><div class="stat-col">0</div>
-                    </div>
-                </div>`;
-            }
-            container.innerHTML = htmlContent;
-            groupsGenerated = true;
-        }
-
         function switchPage(page) {
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
             document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
-
-            const viewId = 'view-' + page;
-            const navId = 'nav-' + page;
-            
-            if (document.getElementById(viewId)) {
-                document.getElementById(viewId).classList.add('active-page');
+            if (document.getElementById('view-' + page)) {
+                document.getElementById('view-' + page).classList.add('active-page');
             }
-            if (document.getElementById(navId)) {
-                document.getElementById(navId).classList.add('active');
+            if (document.getElementById('nav-' + page)) {
+                document.getElementById('nav-' + page).classList.add('active');
             }
 
-            if (page === 'teams' && !teamsLoaded) {
-                loadTeams();
-                teamsLoaded = true;
-            }
-            if (page === 'groups') {
-                generateGroups();
-                changeLanguage(document.getElementById('lang-selector').value);
+            if ((page === 'teams' || page === 'groups') && !dataLoaded) {
+                fetchTournamentData();
             }
         }
 
-        async function loadTeams() {
+        // GOOGLE SHEETS VERİ ÇEKME VE DAĞITMA MOTORU
+        async function fetchTournamentData() {
+            if (dataLoaded) return;
+            
             const teamsGrid = document.getElementById('teams-grid');
-            const loadingText = document.getElementById('loading-text');
+            const groupsGrid = document.getElementById('groups-grid');
+            const loadingTextT = document.getElementById('loading-text');
+            const loadingTextG = document.getElementById('groups-loading-text');
 
             try {
                 const response = await fetch(scriptURL);
-                const teamsData = await response.json(); 
+                const data = await response.json(); 
 
-                loadingText.style.display = 'none';
+                if (loadingTextT) loadingTextT.style.display = 'none';
+                if (loadingTextG) loadingTextG.style.display = 'none';
+                
+                teamsGrid.innerHTML = '';
+                
+                // 32 Grup için boş taslak oluşturuluyor
+                const groupsData = {};
+                for(let i = 1; i <= 32; i++) {
+                    groupsData[i] = [];
+                }
 
-                teamsData.forEach(team => {
-                    const values = Object.values(team);
+                // SÜTUN SIRASI: Takım(0), Logo(1), Grup(2), OM(3), G(4), B(5), M(6), AG(7), YG(8), A(9), Puan(10)
+                data.forEach(row => {
+                    const values = Object.values(row);
                     const teamName = values[0]; 
                     const logoUrl = values[1];  
+                    const groupNum = parseInt(values[2]);
 
-                    if (!teamName || teamName === "Team Name" || teamName === "TakimAdi") return;
+                    if (!teamName || teamName === "Team Name" || teamName === "TakimAdi" || teamName === "TakımAdı") return;
 
+                    // 1. TAKIMLAR SAYFASINA KART EKLE
                     const teamCard = document.createElement('div');
                     teamCard.className = 'team-card';
-
                     teamCard.innerHTML = `
                         <div class="team-logo-container">
                             <img src="${logoUrl}" alt="${teamName} Logo" onerror="this.src='https://via.placeholder.com/80?text=No+Logo'">
                         </div>
                         <div class="team-name">${teamName}</div>
                     `;
-
                     teamsGrid.appendChild(teamCard);
+
+                    // 2. GRUPLARA VERİLERİ DAĞIT
+                    if (groupNum >= 1 && groupNum <= 32) {
+                        groupsData[groupNum].push({
+                            name: teamName,
+                            logo: logoUrl,
+                            om: values[3] || 0,
+                            g: values[4] || 0,
+                            b: values[5] || 0,
+                            m: values[6] || 0,
+                            ag: values[7] || 0,
+                            yg: values[8] || 0,
+                            a: values[9] || 0,
+                            puan: values[10] || 0
+                        });
+                    }
                 });
+
+                // Grupları Puan ve Averaja Göre Sıralayıp HTML'e Basıyoruz
+                let groupsHtml = '';
+                for(let i = 1; i <= 32; i++) {
+                    let teams = groupsData[i];
+                    
+                    // SIRALAMA ALGORİTMASI: Puan > Averaj > Atılan Gol
+                    teams.sort((a, b) => {
+                        let puanA = Number(a.puan), puanB = Number(b.puan);
+                        if (puanB !== puanA) return puanB - puanA;
+                        let averajA = Number(a.a), averajB = Number(b.a);
+                        if (averajB !== averajA) return averajB - averajA;
+                        return Number(b.ag) - Number(a.ag);
+                    });
+
+                    groupsHtml += `
+                    <div class="group-card">
+                        <div class="group-header"><span data-i18n="groupWord">Group</span> ${i}</div>
+                        <div class="group-stats-header">
+                            <div class="team-col" data-i18n="th_team">Team</div>
+                            <div class="stat-col" data-i18n="th_om">Pld</div>
+                            <div class="stat-col" data-i18n="th_g">W</div>
+                            <div class="stat-col" data-i18n="th_b">D</div>
+                            <div class="stat-col" data-i18n="th_m">L</div>
+                            <div class="stat-col" data-i18n="th_ag">GF</div>
+                            <div class="stat-col" data-i18n="th_yg">GA</div>
+                            <div class="stat-col" data-i18n="th_a">GD</div>
+                            <div class="stat-col" data-i18n="th_p">Pts</div>
+                        </div>`;
+
+                    // Her grupta tam 4 takım göstereceğiz
+                    for(let j = 0; j < 4; j++) {
+                        let statusBar = '';
+                        if (j === 0) statusBar = 'status-blue';
+                        else if (j === 1) statusBar = 'status-orange';
+
+                        if(teams[j]) {
+                            const t = teams[j];
+                            groupsHtml += `
+                            <div class="group-row">
+                                <div class="status-bar ${statusBar}"></div>
+                                <div class="team-col">
+                                    <img src="${t.logo}" alt="Logo" class="team-logo-small" onerror="this.src='https://via.placeholder.com/25?text=?'">
+                                    <span class="group-team-name">${t.name}</span>
+                                </div>
+                                <div class="stat-col">${t.om}</div><div class="stat-col">${t.g}</div><div class="stat-col">${t.b}</div>
+                                <div class="stat-col">${t.m}</div><div class="stat-col">${t.ag}</div><div class="stat-col">${t.yg}</div>
+                                <div class="stat-col">${t.a}</div><div class="stat-col">${t.puan}</div>
+                            </div>`;
+                        } else {
+                            // Takım henüz girilmemişse boş (TBD) gösterilir
+                            groupsHtml += `
+                            <div class="group-row">
+                                <div class="status-bar ${statusBar}"></div>
+                                <div class="team-col">
+                                    <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
+                                    <span class="group-team-name" data-i18n="tbd">TBD</span>
+                                </div>
+                                <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                                <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
+                                <div class="stat-col">0</div><div class="stat-col">0</div>
+                            </div>`;
+                        }
+                    }
+                    groupsHtml += `</div>`;
+                }
+                
+                groupsGrid.innerHTML = groupsHtml;
+                dataLoaded = true;
+                
+                // Gruplar geldikten sonra mevcut dili yeni tablo başlıklarına da uygula
+                changeLanguage(document.getElementById('lang-selector').value);
 
             } catch (error) {
                 console.error('Hata:', error);
                 const currentLang = document.getElementById('lang-selector').value;
-                loadingText.textContent = currentLang === 'tr' ? "Takımlar yüklenirken hata oluştu!" : "Error loading teams!";
+                if (loadingTextT) loadingTextT.textContent = currentLang === 'tr' ? "Veriler çekilirken hata oluştu!" : "Error loading data!";
+                if (loadingTextG) loadingTextG.textContent = currentLang === 'tr' ? "Veriler çekilirken hata oluştu!" : "Error loading data!";
             }
         }
 
+        // Sayfa ilk yüklendiğinde dili ayarla
         window.onload = function() {
-            generateGroups();
             changeLanguage(document.getElementById('lang-selector').value);
         }
     </script>
