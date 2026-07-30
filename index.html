@@ -199,7 +199,6 @@
             margin: 0 auto;
         }
 
-        /* GÜNCELLENEN BÜYÜK HABER KISMI */
         .hero-section {
             position: relative;
             border-radius: 12px;
@@ -321,6 +320,103 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
+        /* YENİ: GRUPLAR SAYFASI STİLLERİ */
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .group-card {
+            background-color: var(--theme-black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .group-header {
+            background-color: var(--theme-red);
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            border-bottom: 2px solid #800000;
+        }
+
+        .group-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            background-color: rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+
+        .group-row:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        .group-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Renkli Durum Çubukları (Status Bars) */
+        .status-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+        }
+
+        .status-blue { background-color: #007bff; }
+        .status-orange { background-color: #fd7e14; }
+
+        .team-logo-small {
+            width: 25px;
+            height: 25px;
+            margin-left: 10px;
+            margin-right: 15px;
+            object-fit: contain;
+        }
+
+        .group-team-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Grup Sayfası Alt Bilgi (Legend) */
+        .group-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            background-color: var(--theme-black);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .legend-color-box {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+        }
+
         /* TAKIMLAR SAYFASI STİLLERİ */
         .teams-grid {
             display: grid;
@@ -413,9 +509,9 @@
             text-align: center;
         }
 
-        /* GÜNCELLENEN SPONSORLAR FOOTER */
+        /* SPONSORLAR FOOTER */
         footer {
-            background-color: var(--theme-black); /* Arka plan koyu yapıldı */
+            background-color: var(--theme-black); 
             padding: 30px 40px;
             margin-top: auto;
             text-align: center;
@@ -423,7 +519,7 @@
         }
 
         .sponsors-title {
-            color: var(--text-main); /* Yazı rengi beyaz/açık yapıldı */
+            color: var(--text-main); 
             font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
@@ -445,12 +541,11 @@
             height: 50px; 
             max-width: 120px;
             object-fit: contain;
-            /* Grayscale ve opacity kaldırıldı, renkli görünecekler */
             transition: transform 0.3s;
         }
 
         .sponsors-grid img:hover {
-            transform: scale(1.1); /* Üstüne gelince hafif büyüme efekti eklendi */
+            transform: scale(1.1); 
         }
     </style>
 </head>
@@ -464,6 +559,7 @@
         
         <nav>
             <a id="nav-home" class="active" onclick="switchPage('home')" data-i18n="home">Home</a>
+            <a id="nav-groups" onclick="switchPage('groups')" data-i18n="groupsNav">Groups</a> <!-- YENİ EKLENDİ -->
             <a id="nav-matches" onclick="switchPage('matches')" data-i18n="matches">Matches</a>
             <a id="nav-draws" onclick="switchPage('draws')" data-i18n="draws">Draws</a>
             <a id="nav-stats" onclick="switchPage('stats')" data-i18n="stats">Stats</a>
@@ -492,7 +588,6 @@
         <div id="view-home" class="page-view active-page">
             <section class="scoreboard-section">
                 <div class="matches-container">
-                    <!-- TARİHLER BİLİNMİYOR (TBD) OLARAK GÜNCELLENDİ -->
                     <div class="match-card">
                         <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tbd">TBD</span>
                         <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
@@ -518,7 +613,6 @@
             </section>
 
             <main class="main-content">
-                <!-- GÜNCELLENEN BÜYÜK HABER BÖLÜMÜ (Tıklanabilir ve image2 eklendi) -->
                 <div class="hero-section" onclick="switchPage('news')">
                     <img src="image2.webp" alt="Draw News Image" onerror="this.onerror=null; this.src='image2.png';">
                     <div class="hero-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
@@ -534,7 +628,29 @@
             </main>
         </div>
 
-        <!-- 2. MAÇLAR SAYFASI -->
+        <!-- 2. YENİ GRUPLAR SAYFASI -->
+        <div id="view-groups" class="page-view">
+            <div class="content-page-container">
+                <h1 class="page-title" data-i18n="groupsTitle">Groups</h1>
+                
+                <!-- 32 Grup JS tarafından buraya basılacak -->
+                <div id="groups-grid" class="groups-grid"></div>
+
+                <!-- Sayfa sonu açıklamaları -->
+                <div class="group-legend">
+                    <div class="legend-item">
+                        <div class="legend-color-box status-blue"></div>
+                        <span data-i18n="uccQual">UCC 27 Qualification</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color-box status-orange"></div>
+                        <span data-i18n="playoffQual">Play-off</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. MAÇLAR SAYFASI -->
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
@@ -544,7 +660,7 @@
             </div>
         </div>
 
-        <!-- 3. İSTATİSTİKLER SAYFASI -->
+        <!-- 4. İSTATİSTİKLER SAYFASI -->
         <div id="view-stats" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="stats">Stats</h1>
@@ -554,7 +670,7 @@
             </div>
         </div>
 
-        <!-- 4. TAKIMLAR SAYFASI -->
+        <!-- 5. TAKIMLAR SAYFASI -->
         <div id="view-teams" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="partTeams">Participating Teams</h1>
@@ -564,7 +680,7 @@
             </div>
         </div>
 
-        <!-- 5. KURALAR (DRAWS) SAYFASI -->
+        <!-- 6. KURALAR (DRAWS) SAYFASI -->
         <div id="view-draws" class="page-view">
             <div class="article-container">
                 <h1 class="article-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
@@ -580,7 +696,7 @@
             </div>
         </div>
 
-        <!-- 6. HABERLER (NEWS) SAYFASI -->
+        <!-- 7. HABERLER (NEWS) SAYFASI -->
         <div id="view-news" class="page-view">
             <div class="article-container">
                 <h1 class="article-title" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</h1>
@@ -620,14 +736,16 @@
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyGQYDQ6eDQDRTFRKs6DS9l3A4_lAqpFuB1m5wEKG8zuOadl1r4vo3x_Do4-U6Nm3_d/exec';
         let teamsLoaded = false;
+        let groupsGenerated = false; // Grupların 1 kere üretilmesi için
 
+        // DİL ÇEVİRİLERİ (YENİ KELİMELER EKLENDİ)
         const translations = {
             en: {
-                home: "Home", matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
+                home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
                 login: "Log in", viewAll: "View all matches", headlines: "Headlines", partTeams: "Participating Teams",
-                loading: "Loading teams...", tbd: "TBD",
+                loading: "Loading teams...", tbd: "TBD", groupWord: "Group", uccQual: "UCC 27 Qualification", playoffQual: "Play-off",
                 newsDraw: "UCC 27 Play-off draw in Madrid",
-                sponsorsText: "Sponsors", /* Güncellendi */
+                sponsorsText: "Sponsors", 
                 matchesNotSet: "Matches have not been determined yet.",
                 statsNotSet: "Will be updated after matches are determined.",
                 drawTitle: "UCC 27 Play-off draw",
@@ -637,11 +755,11 @@
                 drawP3: "Presidents of all participating clubs will be in attendance for the official ceremony."
             },
             tr: {
-                home: "Ana Sayfa", matches: "Maçlar", draws: "Kuralar", stats: "İstatistikler", teams: "Takımlar", news: "Haberler",
+                home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", stats: "İstatistikler", teams: "Takımlar", news: "Haberler",
                 login: "Giriş yap", viewAll: "Tüm maçları gör", headlines: "Manşetler", partTeams: "Katılan Takımlar",
-                loading: "Takımlar yükleniyor...", tbd: "Bilinmiyor",
+                loading: "Takımlar yükleniyor...", tbd: "Bilinmiyor", groupWord: "Grup", uccQual: "UCC 27 Katılım", playoffQual: "Play-off",
                 newsDraw: "UCC 27 Play-off kura çekimi Madrid'de",
-                sponsorsText: "Sponsorlar", /* Güncellendi */
+                sponsorsText: "Sponsorlar", 
                 matchesNotSet: "Henüz maçlar belirlenmemiştir.",
                 statsNotSet: "Maçlar belirlendikten sonra güncellenecektir.",
                 drawTitle: "UCC 27 Play-off Kura Çekimi",
@@ -651,11 +769,11 @@
                 drawP3: "Katılan tüm kulüplerin başkanları resmi kura töreninde bizzat yer alacaktır."
             },
             fr: {
-                home: "Accueil", matches: "Matchs", draws: "Tirages", stats: "Stats", teams: "Équipes", news: "Actualités",
+                home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", stats: "Stats", teams: "Équipes", news: "Actualités",
                 login: "Connexion", viewAll: "Voir tous les matchs", headlines: "À la une", partTeams: "Équipes Participantes",
-                loading: "Chargement des équipes...", tbd: "À dét.",
+                loading: "Chargement des équipes...", tbd: "À dét.", groupWord: "Groupe", uccQual: "Qualification UCC 27", playoffQual: "Barrages",
                 newsDraw: "Tirage au sort des barrages UCC 27 à Madrid",
-                sponsorsText: "Sponsors", /* Güncellendi */
+                sponsorsText: "Sponsors", 
                 matchesNotSet: "Les matchs n'ont pas encore été déterminés.",
                 statsNotSet: "Sera mis à jour une fois les matchs déterminés.",
                 drawTitle: "Tirage au sort des barrages UCC 27",
@@ -665,11 +783,11 @@
                 drawP3: "Les présidents de tous les clubs participants seront présents pour la cérémonie officielle."
             },
             de: {
-                home: "Startseite", matches: "Spiele", draws: "Auslosungen", stats: "Statistiken", teams: "Teams", news: "News",
+                home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosungen", stats: "Statistiken", teams: "Teams", news: "News",
                 login: "Anmelden", viewAll: "Alle Spiele ansehen", headlines: "Schlagzeilen", partTeams: "Teilnehmende Teams",
-                loading: "Teams werden geladen...", tbd: "Offen",
+                loading: "Teams werden geladen...", tbd: "Offen", groupWord: "Gruppe", uccQual: "UCC 27 Qualifikation", playoffQual: "Play-off",
                 newsDraw: "UCC 27 Play-off-Auslosung in Madrid",
-                sponsorsText: "Sponsoren", /* Güncellendi */
+                sponsorsText: "Sponsoren",
                 matchesNotSet: "Spiele wurden noch nicht festgelegt.",
                 statsNotSet: "Wird nach der Auslosung aktualisiert.",
                 drawTitle: "UCC 27 Play-off-Auslosung",
@@ -679,11 +797,11 @@
                 drawP3: "Die Präsidenten aller teilnehmenden Vereine werden bei der offiziellen Zeremonie anwesend sein."
             },
             es: {
-                home: "Inicio", matches: "Partidos", draws: "Sorteos", stats: "Estadísticas", teams: "Equipos", news: "Noticias",
+                home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", stats: "Estadísticas", teams: "Equipos", news: "Noticias",
                 login: "Iniciar sesión", viewAll: "Ver todos los partidos", headlines: "Titulares", partTeams: "Equipos Participantes",
-                loading: "Cargando equipos...", tbd: "Por det.",
+                loading: "Cargando equipos...", tbd: "Por det.", groupWord: "Grupo", uccQual: "Clasificación UCC 27", playoffQual: "Play-off",
                 newsDraw: "Sorteo de play-offs UCC 27 en Madrid",
-                sponsorsText: "Patrocinadores", /* Güncellendi */
+                sponsorsText: "Patrocinadores",
                 matchesNotSet: "Aún no se han determinado los partidos.",
                 statsNotSet: "Se actualizará una vez que se determinen los partidos.",
                 drawTitle: "Sorteo de play-offs UCC 27",
@@ -698,9 +816,50 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
+                    element.innerHTML = translations[lang][key]; // HTML içeriğini de değiştirir
                 }
             });
+        }
+
+        // JS ile 32 Grubu Otomatik Üreten Fonksiyon
+        function generateGroups() {
+            if (groupsGenerated) return;
+            const container = document.getElementById('groups-grid');
+            let htmlContent = '';
+            
+            // 32 adet grup oluşturuluyor (Grup 1, Grup 2, Grup 3...)
+            for (let i = 1; i <= 32; i++) {
+                htmlContent += `
+                <div class="group-card">
+                    <div class="group-header"><span data-i18n="groupWord">Group</span> ${i}</div>
+                    
+                    <div class="group-row">
+                        <div class="status-bar status-blue"></div>
+                        <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
+                        <span class="group-team-name" data-i18n="tbd">TBD</span>
+                    </div>
+                    
+                    <div class="group-row">
+                        <div class="status-bar status-orange"></div>
+                        <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
+                        <span class="group-team-name" data-i18n="tbd">TBD</span>
+                    </div>
+                    
+                    <div class="group-row">
+                        <div class="status-bar"></div>
+                        <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
+                        <span class="group-team-name" data-i18n="tbd">TBD</span>
+                    </div>
+                    
+                    <div class="group-row">
+                        <div class="status-bar"></div>
+                        <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
+                        <span class="group-team-name" data-i18n="tbd">TBD</span>
+                    </div>
+                </div>`;
+            }
+            container.innerHTML = htmlContent;
+            groupsGenerated = true;
         }
 
         function switchPage(page) {
@@ -717,9 +876,15 @@
                 document.getElementById(navId).classList.add('active');
             }
 
+            // Sayfalara tıklandığında yüklenecek veriler
             if (page === 'teams' && !teamsLoaded) {
                 loadTeams();
                 teamsLoaded = true;
+            }
+            if (page === 'groups') {
+                generateGroups();
+                // Gruplar üretildikten sonra mevcut dili yeni üretilen gruplara da uygula
+                changeLanguage(document.getElementById('lang-selector').value);
             }
         }
 
@@ -758,6 +923,12 @@
                 const currentLang = document.getElementById('lang-selector').value;
                 loadingText.textContent = currentLang === 'tr' ? "Takımlar yüklenirken hata oluştu!" : "Error loading teams!";
             }
+        }
+
+        // Sayfa ilk açıldığında grupları arkaplanda bir kere oluştur
+        window.onload = function() {
+            generateGroups();
+            changeLanguage(document.getElementById('lang-selector').value);
         }
     </script>
 
