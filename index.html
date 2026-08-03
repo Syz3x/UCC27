@@ -192,7 +192,6 @@
         <!-- 1. ANA SAYFA -->
         <div id="view-home" class="page-view active-page">
             
-            <!-- KAYAN FİKSTÜR -->
             <div class="scoreboard-wrapper">
                 <div class="scoreboard-section" id="home-ticker">
                 </div>
@@ -204,7 +203,6 @@
                     <div class="hero-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
                 </div>
 
-                <!-- MANŞETLER -->
                 <div class="headlines-section">
                     <h2 class="headlines-title" data-i18n="latestNews">Latest News</h2>
                     <div class="headline-item" onclick="switchPage('news')">
@@ -261,7 +259,6 @@
             <div class="article-container">
                 <h1 class="article-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
                 <h3 class="article-subtitle" data-i18n="drawSub">All the details and procedures for the upcoming knockout phase draw.</h3>
-                <!-- FOTOĞRAF DÜZELTİLDİ -->
                 <img src="image2.webp" class="article-image" alt="Draw Image" onerror="this.onerror=null; this.src='image2.png';">
                 <div class="article-content">
                     <p data-i18n="drawP1">The highly anticipated UCC 27 draw will take place in Madrid. Teams that have fought hard during the group stages will finally discover their opponents for the knockout phase.</p>
@@ -275,7 +272,6 @@
             <div class="article-container">
                 <h1 class="article-title" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</h1>
                 <h3 class="article-subtitle" data-i18n="newsSub">Exclusive coverage from the event capital.</h3>
-                <!-- FOTOĞRAF DÜZELTİLDİ -->
                 <img src="image2.webp" class="article-image" alt="News Image" onerror="this.onerror=null; this.src='image2.png';">
                 <div class="article-content">
                     <p data-i18n="newsP1">Madrid is ready to host the grand draw event. Key figures from all participating clubs have arrived in the city, building anticipation for the upcoming matches.</p>
@@ -285,7 +281,7 @@
         </div>
     </div>
 
-    <!-- RENKLİ VE ORİJİNAL SPONSORLAR -->
+    <!-- SPONSORLAR -->
     <footer>
         <div class="sponsors-grid">
             <img src="image3.webp" alt="Coca Cola" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg';">
@@ -314,7 +310,6 @@
             pt: { home: "Início", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Jogos", draws: "Sorteios", teams: "Equipas", news: "Notícias", login: "Entrar", partTeams: "Equipas Participantes", loading: "Carregando...", filterGroup: "Selecionar Grupo:", latestNews: "Últimas Notícias", news1: "Fase de Grupos Concluída", news2: "Melhores Marcadores", news3: "Caminho para Madrid", drawTitle: "Sorteio do Play-off UCC 27", drawSub: "Todos os detalhes do sorteio.", drawP1: "O sorteio será em Madrid.", drawP2: "Os cabeças de série estão prontos.", newsDraw: "Sorteio UCC 27 em Madrid", newsSub: "Cobertura exclusiva.", newsP1: "Madrid está pronta.", newsP2: "Fique atento.", vs: "v" }
         };
 
-        // Aylar için çeviri sözlüğü
         const monthTranslations = {
             tr: { "Aralık": "Aralık", "Ocak": "Ocak", "Şubat": "Şubat" },
             en: { "Aralık": "Dec", "Ocak": "Jan", "Şubat": "Feb" },
@@ -325,7 +320,16 @@
             pt: { "Aralık": "Dez", "Ocak": "Jan", "Şubat": "Fev" }
         };
 
-        // Tarih Çevirme Fonksiyonu
+        // YENİ: Hata payını sıfıra indiren Kusursuzlaştırıcı Fonksiyon
+        // Bütün boşlukları siler, her şeyi küçük harf yapar, Türkçe karakterleri İngilizce yapar.
+        function formatTeamName(name) {
+            if(!name) return "";
+            return name.toString().toLowerCase()
+                .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
+                .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
+                .replace(/[^a-z0-9]/g, ''); 
+        }
+
         function translateDate(dateStr, lang) {
             if(!dateStr) return "";
             if(lang === 'tr') return dateStr;
@@ -383,7 +387,9 @@
                     const groupNum = parseInt(values[2]);
 
                     if (!teamName || teamName === "Team Name" || teamName.includes("Takim")) return;
-                    teamLogos[teamName.trim()] = logoUrl;
+                    
+                    // Logoyu hafızaya kaydederken formatTeamName ile ismini kusursuzlaştırıyoruz
+                    teamLogos[formatTeamName(teamName)] = logoUrl;
 
                     teamsGrid.innerHTML += `
                         <div class="team-card">
@@ -456,7 +462,6 @@
             const currentLang = document.getElementById('lang-selector').value;
             
             let html = '';
-            // Rastgele veya ilk 25 maçı gösterelim (Çok kasmaması için sınır koydum)
             allMatches.slice(0, 25).forEach(m => {
                 const vals = Object.values(m);
                 const ev = vals[4].trim();
@@ -467,8 +472,9 @@
                 const mDate = translateDate(vals[2], currentLang);
                 const mTime = vals[3] ? `${vals[3]} (UTC)` : '';
                 
-                const evLogo = teamLogos[ev] || 'https://via.placeholder.com/20?text=?';
-                const depLogo = teamLogos[dep] || 'https://via.placeholder.com/20?text=?';
+                // Takım ismini çekerken de formatTeamName ile eşleştiriyoruz
+                const evLogo = teamLogos[formatTeamName(ev)] || 'https://via.placeholder.com/20?text=?';
+                const depLogo = teamLogos[formatTeamName(dep)] || 'https://via.placeholder.com/20?text=?';
 
                 html += `
                 <div class="match-card">
@@ -521,8 +527,9 @@
                 html += `<div class="matchday-container"><div class="matchday-title">${haftaAdı}</div>`;
                 
                 haftaninMaclari.forEach(m => {
-                    const evLogo = teamLogos[m.ev] || 'https://via.placeholder.com/35?text=?';
-                    const depLogo = teamLogos[m.dep] || 'https://via.placeholder.com/35?text=?';
+                    // Takım ismini çekerken de formatTeamName ile eşleştiriyoruz
+                    const evLogo = teamLogos[formatTeamName(m.ev)] || 'https://via.placeholder.com/35?text=?';
+                    const depLogo = teamLogos[formatTeamName(m.dep)] || 'https://via.placeholder.com/35?text=?';
                     const mDate = translateDate(m.tarih, currentLang);
                     const mTime = m.saat ? `${m.saat} (UTC)` : '';
                     
