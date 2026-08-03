@@ -41,543 +41,107 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        .logo {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
+        .logo { cursor: pointer; display: flex; align-items: center; }
+        .logo img { height: 140px; filter: brightness(0) invert(1); object-fit: contain; }
+
+        nav { display: flex; gap: 35px; }
+        nav a { color: var(--text-main); text-decoration: none; font-size: 18px; font-weight: 700; text-transform: uppercase; transition: all 0.3s; cursor: pointer; padding-bottom: 5px; border-bottom: 3px solid transparent; }
+        nav a:hover, nav a.active { color: #ffffff; border-bottom: 3px solid #ffffff; }
+
+        .header-right { display: flex; align-items: center; gap: 25px; }
+        .lang-select { background-color: rgba(0, 0, 0, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 8px 12px; border-radius: 5px; font-weight: 600; font-size: 14px; cursor: pointer; outline: none; transition: 0.3s; }
+        .lang-select:hover { background-color: rgba(0, 0, 0, 0.4); border-color: white; }
+        .lang-select option { color: #000; font-weight: bold; }
+        .user-login { font-size: 15px; display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; }
+
+        .page-content { flex: 1; }
+        .page-view { display: none; }
+        .page-view.active-page { display: block; }
+
+        /* SKORBORD & ANA SAYFA */
+        .scoreboard-section { display: flex; align-items: center; padding: 20px 40px; gap: 15px; border-bottom: 1px solid rgba(204, 0, 0, 0.2); }
+        .matches-container { display: flex; gap: 15px; overflow-x: auto; scrollbar-width: none; }
+        .match-card { background-color: var(--theme-black); border: 1px solid rgba(255, 255, 255, 0.05); padding: 10px 15px; border-radius: 8px; min-width: 180px; font-size: 13px; display: flex; flex-direction: column; gap: 5px; cursor: pointer; transition: all 0.3s; }
+        .match-card:hover { transform: translateY(-3px); background-color: var(--theme-red); border-color: var(--text-main); }
+        .team-row { display: flex; justify-content: space-between; font-weight: 500; }
+        .view-all-btn { background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 10px 15px; border-radius: 20px; cursor: pointer; white-space: nowrap; transition: 0.3s; font-weight: bold; }
+        .view-all-btn:hover { background: var(--accent-color); color: var(--theme-dark); }
+
+        .main-content { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 40px; max-width: 1400px; margin: 0 auto; }
+        .hero-section { position: relative; border-radius: 12px; overflow: hidden; min-height: 400px; background-color: var(--theme-black); border: 1px solid rgba(204, 0, 0, 0.3); cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+        .hero-section:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(204, 0, 0, 0.4); }
+        .hero-section img { width: 100%; height: 100%; object-fit: cover; position: absolute; opacity: 0.8; transition: opacity 0.3s; }
+        .hero-section:hover img { opacity: 1; }
+        .hero-text { position: absolute; bottom: 20px; left: 20px; background-color: rgba(204, 0, 0, 0.9); color: white; padding: 15px 25px; border-radius: 8px; font-size: 22px; font-weight: bold; }
+
+        .headlines-section { background-color: rgba(18, 18, 18, 0.8); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .headlines-title { font-size: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(204, 0, 0, 0.5); padding-bottom: 10px; color: var(--accent-color); }
+        .headline-item { display: flex; gap: 15px; margin-bottom: 15px; cursor: pointer; transition: all 0.3s; padding: 10px; border-radius: 8px; }
+        .headline-item:hover { background-color: rgba(204, 0, 0, 0.15); transform: translateX(5px); }
+        .headline-img { width: 100px; height: 70px; background-color: #333; border-radius: 8px; object-fit: cover; }
+        .headline-text { font-size: 15px; font-weight: 600; flex: 1; color: var(--text-main); display: flex; align-items: center; }
+
+        .content-page-container { max-width: 1400px; margin: 40px auto; padding: 0 40px; }
+        .page-title { font-size: 28px; color: var(--text-main); margin-bottom: 30px; border-bottom: 2px solid var(--theme-red); padding-bottom: 10px; text-transform: uppercase; text-align: left; }
         
-        .logo img {
-            height: 140px; 
-            filter: brightness(0) invert(1); 
-            object-fit: contain;
-        }
-
-        nav {
-            display: flex;
-            gap: 35px; 
-        }
-
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 18px; 
-            font-weight: 700; 
-            text-transform: uppercase;
-            transition: all 0.3s;
-            cursor: pointer;
-            padding-bottom: 5px;
-            border-bottom: 3px solid transparent;
-        }
-
-        nav a:hover, nav a.active {
-            color: #ffffff;
-            border-bottom: 3px solid #ffffff;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .lang-select {
-            background-color: rgba(0, 0, 0, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .lang-select:hover {
-            background-color: rgba(0, 0, 0, 0.4);
-            border-color: white;
-        }
-
-        .lang-select option {
-            color: #000;
-            font-weight: bold;
-        }
-
-        .user-login {
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        /* SAYFA YÖNETİMİ */
-        .page-content {
-            flex: 1;
-        }
-        
-        .page-view {
-            display: none;
-        }
-
-        .page-view.active-page {
-            display: block;
-        }
-
-        /* SKORBORD BÖLÜMÜ */
-        .scoreboard-section {
-            display: flex;
-            align-items: center;
-            padding: 20px 40px;
-            gap: 15px;
-            border-bottom: 1px solid rgba(204, 0, 0, 0.2);
-        }
-
-        .matches-container {
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        
-        .matches-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .match-card {
-            background-color: var(--theme-black);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 10px 15px;
-            border-radius: 8px;
-            min-width: 180px;
-            font-size: 13px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .match-card:hover {
-            transform: translateY(-3px);
-            background-color: var(--theme-red);
-            border-color: var(--text-main);
-        }
-
-        .team-row {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 500;
-        }
-
-        .view-all-btn {
-            background: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 10px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: 0.3s;
-            font-weight: bold;
-        }
-
-        .view-all-btn:hover {
-            background: var(--accent-color);
-            color: var(--theme-dark);
-        }
-
-        /* ANA İÇERİK BÖLÜMÜ */
-        .main-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            padding: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .hero-section {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            min-height: 400px;
-            background-color: var(--theme-black);
-            border: 1px solid rgba(204, 0, 0, 0.3);
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .hero-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(204, 0, 0, 0.4);
-        }
-
-        .hero-section img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .hero-section:hover img {
-            opacity: 1;
-        }
-
-        .hero-text {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background-color: rgba(204, 0, 0, 0.9);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 8px;
-            font-size: 22px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .headlines-section {
-            background-color: rgba(18, 18, 18, 0.8);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .headlines-title {
-            font-size: 20px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(204, 0, 0, 0.5);
-            padding-bottom: 10px;
-            color: var(--accent-color);
-        }
-
-        .headline-item {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .headline-item:hover {
-            background-color: rgba(204, 0, 0, 0.15);
-            transform: translateX(5px);
-        }
-
-        .headline-img {
-            width: 100px;
-            height: 70px;
-            background-color: #333;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .headline-text {
-            font-size: 15px;
-            font-weight: 600;
-            flex: 1;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-        }
-
-        /* ORTAK İÇERİK SAYFASI STİLLERİ */
-        .content-page-container {
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 0 40px;
-            text-align: center;
-        }
-
-        .page-title {
-            font-size: 28px;
-            color: var(--text-main);
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--theme-red);
-            padding-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: left;
-        }
-        
-        .info-message {
-            background-color: var(--theme-black);
-            border: 1px solid rgba(204, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 60px 20px;
-            font-size: 20px;
-            color: var(--text-muted);
-            margin-top: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        /* GRUPLAR SAYFASI STİLLERİ */
-        .groups-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .group-card {
-            background-color: var(--theme-black);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .group-header {
-            background-color: var(--theme-red);
-            color: white;
-            padding: 12px;
-            font-weight: bold;
-            font-size: 18px;
-            text-align: center;
-            border-bottom: 2px solid #800000;
-        }
-
-        .group-stats-header {
-            display: flex;
-            align-items: center;
-            padding: 8px 15px 8px 25px;
-            background-color: rgba(0,0,0,0.5);
-            font-size: 11px;
-            color: var(--text-muted);
-            font-weight: bold;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            text-transform: uppercase;
-        }
-
-        .group-row {
-            display: flex;
-            align-items: center;
-            padding: 8px 15px 8px 25px; 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            background-color: rgba(0,0,0,0.2);
-            transition: background 0.3s;
-        }
-
-        .group-row:hover {
-            background-color: rgba(255,255,255,0.05);
-        }
-
-        .group-row:last-child {
-            border-bottom: none;
-        }
-
-        .status-bar {
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 5px;
-        }
-
+        /* GRUPLAR */
+        .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .group-card { background-color: var(--theme-black); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
+        .group-header { background-color: var(--theme-red); color: white; padding: 12px; font-weight: bold; font-size: 18px; text-align: center; border-bottom: 2px solid #800000; }
+        .group-stats-header { display: flex; align-items: center; padding: 8px 15px 8px 25px; background-color: rgba(0,0,0,0.5); font-size: 11px; color: var(--text-muted); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); text-transform: uppercase; }
+        .group-row { display: flex; align-items: center; padding: 8px 15px 8px 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; background-color: rgba(0,0,0,0.2); }
+        .group-row:hover { background-color: rgba(255,255,255,0.05); }
+        .status-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; }
         .status-blue { background-color: #007bff; }
         .status-orange { background-color: #fd7e14; }
+        .team-col { flex: 1; display: flex; align-items: center; overflow: hidden; text-overflow: ellipsis; }
+        .stat-col { width: 28px; text-align: center; font-size: 13px; font-weight: bold; color: var(--text-main); }
+        .stat-col:last-child { width: 32px; color: var(--accent-color); }
+        .team-logo-small { width: 25px; height: 25px; margin-right: 12px; object-fit: contain; }
+        .group-team-name { font-size: 14px; font-weight: 600; }
 
-        .team-col {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .stat-col {
-            width: 28px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: bold;
-            color: var(--text-main);
-        }
+        /* MAÇLAR (FIXTURES) STİLLERİ YENİ */
+        .fixtures-header-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; background: var(--theme-black); padding: 15px 25px; border-radius: 10px; border: 1px solid rgba(204, 0, 0, 0.3); }
+        .group-select-dropdown { padding: 10px 20px; font-size: 16px; font-weight: bold; background: var(--theme-red); color: white; border: none; border-radius: 8px; cursor: pointer; outline: none; }
+        .group-select-dropdown option { background: var(--theme-black); color: white; }
         
-        .stat-col:last-child {
-            width: 32px;
-            color: var(--accent-color); 
-        }
+        .matchday-container { margin-bottom: 40px; }
+        .matchday-title { font-size: 20px; color: var(--accent-color); margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; font-weight: bold; }
+        
+        .fixture-row { display: flex; background: rgba(18, 18, 18, 0.8); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 10px; border-radius: 8px; padding: 12px 20px; align-items: center; transition: background 0.3s; }
+        .fixture-row:hover { background: rgba(204, 0, 0, 0.15); }
+        
+        .fixture-time-info { width: 150px; display: flex; flex-direction: column; font-size: 13px; color: var(--text-muted); border-right: 1px solid rgba(255,255,255,0.1); padding-right: 15px; }
+        .fixture-date { font-weight: bold; color: #ddd; }
+        
+        .fixture-teams-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 0 20px; }
+        .fixture-team { flex: 1; display: flex; align-items: center; font-size: 16px; font-weight: 600; }
+        .fixture-team.home { justify-content: flex-end; text-align: right; }
+        .fixture-team.away { justify-content: flex-start; text-align: left; }
+        
+        .fixture-logo { width: 35px; height: 35px; object-fit: contain; margin: 0 15px; }
+        
+        .fixture-score-box { background: var(--theme-black); border: 1px solid rgba(204,0,0,0.5); border-radius: 6px; padding: 6px 15px; font-size: 18px; font-weight: bold; color: var(--text-main); min-width: 70px; text-align: center; margin: 0 15px; letter-spacing: 2px; }
+        .fixture-score-box.unplayed { color: var(--text-muted); font-size: 14px; letter-spacing: normal; background: transparent; border-color: rgba(255,255,255,0.1); }
 
-        .team-logo-small {
-            width: 25px;
-            height: 25px;
-            margin-right: 12px;
-            object-fit: contain;
-        }
+        /* TAKIMLAR */
+        .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
+        .team-card { background-color: var(--theme-black); border: 1px solid rgba(204, 0, 0, 0.2); border-radius: 10px; padding: 20px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; cursor: pointer; transition: all 0.3s ease; text-align: center; }
+        .team-card:hover { background-color: var(--theme-red); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); }
+        .team-logo-container { width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; }
+        .team-logo-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .team-name { font-size: 14px; font-weight: 600; }
 
-        .group-team-name {
-            font-size: 14px;
-            font-weight: 600;
-        }
+        /* MAKALELER */
+        .article-container { max-width: 1000px; margin: 40px auto; background-color: var(--theme-black); border-radius: 12px; border: 1px solid rgba(204, 0, 0, 0.2); padding: 40px; }
+        .article-title { font-size: 36px; font-weight: bold; margin-bottom: 10px; }
+        .article-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 30px; font-weight: 500; }
+        .article-image { width: 100%; border-radius: 12px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.1); }
+        .article-content p { font-size: 17px; line-height: 1.6; margin-bottom: 20px; color: #ddd; text-align: center; }
 
-        .group-legend {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            background-color: var(--theme-black);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 20px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .legend-color-box {
-            width: 18px;
-            height: 18px;
-            border-radius: 4px;
-        }
-
-        /* TAKIMLAR SAYFASI STİLLERİ */
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 20px;
-        }
-
-        .team-card {
-            background-color: var(--theme-black);
-            border: 1px solid rgba(204, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .team-card:hover {
-            background-color: var(--theme-red);
-            border-color: var(--accent-color);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .team-logo-container {
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: transparent; 
-            border: none;
-        }
-
-        .team-logo-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .team-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        /* MAKALELER (DRAWS & NEWS) SAYFASI STİLLERİ */
-        .article-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            background-color: var(--theme-black);
-            border-radius: 12px;
-            border: 1px solid rgba(204, 0, 0, 0.2);
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .article-title {
-            font-size: 36px;
-            font-weight: bold;
-            color: var(--text-main);
-            margin-bottom: 10px;
-        }
-
-        .article-subtitle {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .article-image {
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            object-fit: cover;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .article-content p {
-            font-size: 17px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #dddddd;
-            text-align: center;
-        }
-
-        /* SPONSORLAR FOOTER */
-        footer {
-            background-color: var(--theme-black); 
-            padding: 30px 40px;
-            margin-top: auto;
-            text-align: center;
-            border-top: 4px solid var(--theme-red);
-        }
-
-        .sponsors-title {
-            color: var(--text-main); 
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-
-        .sponsors-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .sponsors-grid img {
-            height: 50px; 
-            max-width: 120px;
-            object-fit: contain;
-            transition: transform 0.3s;
-        }
-
-        .sponsors-grid img:hover {
-            transform: scale(1.1); 
-        }
+        footer { background-color: var(--theme-black); padding: 30px 40px; margin-top: auto; text-align: center; border-top: 4px solid var(--theme-red); }
+        .sponsors-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .sponsors-grid img { height: 50px; max-width: 120px; object-fit: contain; }
     </style>
 </head>
 <body>
@@ -591,7 +155,6 @@
             <a id="nav-groups" onclick="switchPage('groups')" data-i18n="groupsNav">Groups</a>
             <a id="nav-matches" onclick="switchPage('matches')" data-i18n="matches">Matches</a>
             <a id="nav-draws" onclick="switchPage('draws')" data-i18n="draws">Draws</a>
-            <a id="nav-stats" onclick="switchPage('stats')" data-i18n="stats">Stats</a>
             <a id="nav-teams" onclick="switchPage('teams')" data-i18n="teams">Teams</a>
             <a id="nav-news" onclick="switchPage('news')" data-i18n="news">News</a>
         </nav>
@@ -599,219 +162,88 @@
             <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="en">English (EN)</option>
                 <option value="tr">Türkçe (TR)</option>
-                <option value="fr">Français (FR)</option>
-                <option value="de">Deutsch (DE)</option>
-                <option value="es">Español (ES)</option>
             </select>
-            <div class="user-login">
-                <span data-i18n="login">Log in</span> 👤
-            </div>
+            <div class="user-login"><span data-i18n="login">Log in</span> 👤</div>
         </div>
     </header>
 
     <div class="page-content">
         <!-- 1. ANA SAYFA -->
         <div id="view-home" class="page-view active-page">
-            <section class="scoreboard-section">
-                <div class="matches-container">
-                    <div class="match-card">
-                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tbd">TBD</span>
-                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
-                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
-                    </div>
-                    <div class="match-card">
-                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tbd">TBD</span>
-                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
-                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
-                    </div>
-                    <div class="match-card">
-                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tbd">TBD</span>
-                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
-                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
-                    </div>
-                     <div class="match-card">
-                        <span style="color: var(--accent-color); font-size: 11px; margin-bottom: 5px; font-weight: bold;" data-i18n="tbd">TBD</span>
-                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
-                        <div class="team-row"><span data-i18n="tbd">TBD</span> <span>-</span></div>
-                    </div>
-                </div>
-                <button class="view-all-btn" onclick="switchPage('matches')" data-i18n="viewAll">View all matches</button>
-            </section>
             <main class="main-content">
                 <div class="hero-section" onclick="switchPage('news')">
                     <img src="image2.webp" alt="Draw News Image" onerror="this.onerror=null; this.src='image2.png';">
                     <div class="hero-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
                 </div>
-                <div class="headlines-section">
-                    <h2 class="headlines-title" data-i18n="headlines">Headlines</h2>
-                    <div class="headline-item" onclick="switchPage('news')">
-                        <img src="image2.webp" alt="Draw News" class="headline-img" onerror="this.onerror=null; this.src='image2.png';">
-                        <div class="headline-text" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</div>
-                    </div>
-                </div>
             </main>
         </div>
 
-        <!-- 2. GRUPLAR SAYFASI -->
+        <!-- 2. GRUPLAR -->
         <div id="view-groups" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="groupsTitle">Groups</h1>
-                <div id="groups-grid" class="groups-grid">
-                    <p id="groups-loading-text" style="color: var(--accent-color); text-align: center; padding: 50px;" data-i18n="loading">Veriler çekiliyor...</p>
-                </div>
-                <div class="group-legend">
-                    <div class="legend-item">
-                        <div class="legend-color-box status-blue"></div>
-                        <span data-i18n="uccQual">UCC 27 Qualification</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color-box status-orange"></div>
-                        <span data-i18n="playoffQual">Play-off</span>
-                    </div>
-                </div>
+                <div id="groups-grid" class="groups-grid"><p id="groups-loading-text" data-i18n="loading">Veriler çekiliyor...</p></div>
             </div>
         </div>
 
-        <!-- 3. MAÇLAR SAYFASI -->
+        <!-- 3. MAÇLAR (YENİ YAPI) -->
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
-                <div class="info-message" data-i18n="matchesNotSet">Matches have not been determined yet.</div>
+                
+                <div class="fixtures-header-controls">
+                    <span style="font-size: 18px; font-weight: bold;" data-i18n="filterGroup">Filter by Group:</span>
+                    <select id="fixture-group-select" class="group-select-dropdown" onchange="renderFixtures(this.value)">
+                        <!-- JS ile Grup 1'den 32'ye kadar dolacak -->
+                    </select>
+                </div>
+
+                <div id="fixtures-container">
+                    <p id="fixtures-loading-text" style="color: var(--accent-color); text-align: center; padding: 50px;" data-i18n="loading">Fikstür yükleniyor...</p>
+                </div>
             </div>
         </div>
 
-        <!-- 4. İSTATİSTİKLER SAYFASI -->
-        <div id="view-stats" class="page-view">
-            <div class="content-page-container">
-                <h1 class="page-title" data-i18n="stats">Stats</h1>
-                <div class="info-message" data-i18n="statsNotSet">Will be updated after matches are determined.</div>
-            </div>
-        </div>
-
-        <!-- 5. TAKIMLAR SAYFASI -->
+        <!-- 5. TAKIMLAR -->
         <div id="view-teams" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="partTeams">Participating Teams</h1>
-                <div id="teams-grid" class="teams-grid">
-                    <p id="loading-text" style="color: var(--accent-color); font-size: 16px; grid-column: 1 / -1; text-align: center; padding: 50px;" data-i18n="loading">Loading teams...</p>
-                </div>
+                <div id="teams-grid" class="teams-grid"></div>
             </div>
         </div>
 
-        <!-- 6. KURALAR -->
+        <!-- DRAWS & NEWS -->
         <div id="view-draws" class="page-view">
             <div class="article-container">
                 <h1 class="article-title" data-i18n="drawTitle">UCC 27 Play-off draw</h1>
-                <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
-                <img src="image2.webp" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.png';">
-                <div class="article-content">
-                    <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
-                    <p data-i18n="drawP2">The draw will begin at 22:00 CET. Seedings, groupings, and the procedure will be available prior to the ceremony.</p>
-                    <p data-i18n="drawP3">Presidents of all participating clubs will be in attendance for the official ceremony.</p>
-                </div>
             </div>
         </div>
-
-        <!-- 7. HABERLER -->
         <div id="view-news" class="page-view">
             <div class="article-container">
                 <h1 class="article-title" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</h1>
-                <div class="article-subtitle" data-i18n="drawSubtitle">Madrid, Spain - 31 July, 22:00 CET</div>
-                <img src="image2.webp" alt="UCC Draw Ball" class="article-image" onerror="this.onerror=null; this.src='image2.png';">
-                <div class="article-content">
-                    <p data-i18n="drawP1">The UCC 27 play-off round draw takes place in Madrid, Spain.</p>
-                    <p data-i18n="drawP2">The draw will begin at 22:00 CET. Seedings, groupings, and the procedure will be available prior to the ceremony.</p>
-                    <p data-i18n="drawP3">Presidents of all participating clubs will be in attendance for the official ceremony.</p>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- SPONSORLAR -->
     <footer>
-        <div class="sponsors-title" data-i18n="sponsorsText">Sponsors</div>
         <div class="sponsors-grid">
             <img src="image_370b3c.png" alt="Sponsor 1" onerror="this.onerror=null; this.src='image3.webp';">
-            <img src="image4.webp" alt="FedEx" onerror="this.onerror=null; this.src='image4.png';">
-            <img src="image5.webp" alt="Mastercard" onerror="this.onerror=null; this.src='image5.png';">
-            <img src="image6.webp" alt="Sony" onerror="this.onerror=null; this.src='image6.png';">
-            <img src="image7.webp" alt="Just Eat Takeaway" onerror="this.onerror=null; this.src='image7.png';">
-            <img src="image8.webp" alt="AUDI" onerror="this.onerror=null; this.src='image8.png';">
-            <img src="image9.webp" alt="Turkish Airlines" onerror="this.onerror=null; this.src='image9.png';">
-            <img src="image10.webp" alt="Apple" onerror="this.onerror=null; this.src='image10.png';">
-            <img src="image11.webp" alt="Frito-lay" onerror="this.onerror=null; this.src='image11.png';">
-            <img src="image12.webp" alt="Adidas" onerror="this.onerror=null; this.src='image12.png';">
-            <img src="image13.webp" alt="Rexona" onerror="this.onerror=null; this.src='image13.png';">
-            <img src="image14.webp" alt="McDonald's" onerror="this.onerror=null; this.src='image14.png';">
         </div>
     </footer>
 
-    <!-- JAVASCRIPT & ÇOKLU DİL & VERİ ÇEKME SİSTEMİ -->
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyGQYDQ6eDQDRTFRKs6DS9l3A4_lAqpFuB1m5wEKG8zuOadl1r4vo3x_Do4-U6Nm3_d/exec';
+        // Yeni API Linki Buraya Eklendi!
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxELrTmQYM5hUQJoLGJxmUuncrcIySepKVLX3vtmU3gVnpX7ujSfeMoEKZd2QA7snS0/exec';
+        
         let dataLoaded = false;
+        let matchesLoaded = false;
+        
+        let teamLogos = {}; // Takım logolarını hafızada tutacağımız yer (Otomatik eşleşme için)
+        let allMatches = []; // Tüm fikstürü tutacağımız dizi
 
         const translations = {
-            en: {
-                home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", stats: "Stats", teams: "Teams", news: "News",
-                login: "Log in", viewAll: "View all matches", headlines: "Headlines", partTeams: "Participating Teams",
-                loading: "Loading data...", tbd: "TBD", groupWord: "Group", uccQual: "UCC 27 Qualification", playoffQual: "Play-off",
-                newsDraw: "UCC 27 Play-off draw in Madrid", sponsorsText: "Sponsors", 
-                matchesNotSet: "Matches have not been determined yet.", statsNotSet: "Will be updated after matches are determined.",
-                drawTitle: "UCC 27 Play-off draw", drawSubtitle: "Madrid, Spain - 31 July, 22:00 CET",
-                drawP1: "The UCC 27 play-off round draw takes place in Madrid, Spain.",
-                drawP2: "The draw will begin at 22:00 CET. Seedings, groupings, and the procedure will be available prior to the ceremony.",
-                drawP3: "Presidents of all participating clubs will be in attendance for the official ceremony.",
-                th_team: "Team", th_om: "Pld", th_g: "W", th_b: "D", th_m: "L", th_ag: "GF", th_yg: "GA", th_a: "GD", th_p: "Pts"
-            },
-            tr: {
-                home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", stats: "İstatistikler", teams: "Takımlar", news: "Haberler",
-                login: "Giriş yap", viewAll: "Tüm maçları gör", headlines: "Manşetler", partTeams: "Katılan Takımlar",
-                loading: "Veriler çekiliyor...", tbd: "Bilinmiyor", groupWord: "Grup", uccQual: "UCC 27 Katılım", playoffQual: "Play-off",
-                newsDraw: "UCC 27 Play-off kura çekimi Madrid'de", sponsorsText: "Sponsorlar", 
-                matchesNotSet: "Henüz maçlar belirlenmemiştir.", statsNotSet: "Maçlar belirlendikten sonra güncellenecektir.",
-                drawTitle: "UCC 27 Play-off Kura Çekimi", drawSubtitle: "Madrid, İspanya - 31 Temmuz, 22:00 CET",
-                drawP1: "UCC 27 play-off turu kura çekimi Madrid, İspanya'da gerçekleştirilecektir.",
-                drawP2: "Kura çekimi 22:00 CET itibarıyla başlayacaktır. Torbalar, gruplandırmalar ve kura prosedürü tören öncesi açıklanacaktır.",
-                drawP3: "Katılan tüm kulüplerin başkanları resmi kura töreninde bizzat yer alacaktır.",
-                th_team: "Takım", th_om: "OM", th_g: "G", th_b: "B", th_m: "M", th_ag: "AG", th_yg: "YG", th_a: "A", th_p: "P"
-            },
-            fr: {
-                home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", stats: "Stats", teams: "Équipes", news: "Actualités",
-                login: "Connexion", viewAll: "Voir tous les matchs", headlines: "À la une", partTeams: "Équipes Participantes",
-                loading: "Chargement des données...", tbd: "À dét.", groupWord: "Groupe", uccQual: "Qualification UCC 27", playoffQual: "Barrages",
-                newsDraw: "Tirage au sort des barrages UCC 27 à Madrid", sponsorsText: "Sponsors", 
-                matchesNotSet: "Les matchs n'ont pas encore été déterminés.", statsNotSet: "Sera mis à jour une fois les matchs déterminés.",
-                drawTitle: "Tirage au sort des barrages UCC 27", drawSubtitle: "Madrid, Espagne - 31 Juillet, 22h00 CET",
-                drawP1: "Le tirage au sort des barrages de l'UCC 27 a lieu à Madrid, en Espagne.",
-                drawP2: "Le tirage commencera à 22h00 CET. Les chapeaux et la procédure seront disponibles avant la cérémonie.",
-                drawP3: "Les présidents de tous les clubs participants seront présents pour la cérémonie officielle.",
-                th_team: "Équipe", th_om: "J", th_g: "G", th_b: "N", th_m: "P", th_ag: "BP", th_yg: "BC", th_a: "DB", th_p: "Pts"
-            },
-            de: {
-                home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosungen", stats: "Statistiken", teams: "Teams", news: "News",
-                login: "Anmelden", viewAll: "Alle Spiele ansehen", headlines: "Schlagzeilen", partTeams: "Teilnehmende Teams",
-                loading: "Lade Daten...", tbd: "Offen", groupWord: "Gruppe", uccQual: "UCC 27 Qualifikation", playoffQual: "Play-off",
-                newsDraw: "UCC 27 Play-off-Auslosung in Madrid", sponsorsText: "Sponsoren",
-                matchesNotSet: "Spiele wurden noch nicht festgelegt.", statsNotSet: "Wird nach der Auslosung aktualisiert.",
-                drawTitle: "UCC 27 Play-off-Auslosung", drawSubtitle: "Madrid, Spanien - 31. Juli, 22:00 CET",
-                drawP1: "Die Auslosung der UCC 27 Play-off-Runde findet in Madrid, Spanien statt.",
-                drawP2: "Die Auslosung beginnt um 22:00 CET. Setzlisten und Abläufe werden vor der Zeremonie bekannt gegeben.",
-                drawP3: "Die Präsidenten aller teilnehmenden Vereine werden bei der offiziellen Zeremonie anwesend sein.",
-                th_team: "Team", th_om: "Sp", th_g: "S", th_b: "U", th_m: "N", th_ag: "T", th_yg: "GT", th_a: "TD", th_p: "Pkt"
-            },
-            es: {
-                home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", stats: "Estadísticas", teams: "Equipos", news: "Noticias",
-                login: "Iniciar sesión", viewAll: "Ver todos los partidos", headlines: "Titulares", partTeams: "Equipos Participantes",
-                loading: "Cargando datos...", tbd: "Por det.", groupWord: "Grupo", uccQual: "Clasificación UCC 27", playoffQual: "Play-off",
-                newsDraw: "Sorteo de play-offs UCC 27 en Madrid", sponsorsText: "Patrocinadores",
-                matchesNotSet: "Aún no se han determinado los partidos.", statsNotSet: "Se actualizará una vez que se determinen los partidos.",
-                drawTitle: "Sorteo de play-offs UCC 27", drawSubtitle: "Madrid, España - 31 Julio, 22:00 CET",
-                drawP1: "El sorteo de la ronda de play-offs de la UCC 27 tendrá lugar en Madrid, España.",
-                drawP2: "El sorteo comenzará a las 22:00 CET. Los bombos y el procedimiento estarán disponibles antes de la ceremonia.",
-                drawP3: "Los presidentes de todos los clubes participantes estarán presentes en la ceremonia oficial.",
-                th_team: "Equipo", th_om: "PJ", th_g: "G", th_b: "E", th_m: "P", th_ag: "GF", th_yg: "GC", th_a: "DG", th_p: "Pts"
-            }
+            en: { home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", login: "Log in", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", tbd: "TBD", groupWord: "Group", newsDraw: "UCC 27 Play-off draw in Madrid", drawTitle: "UCC 27 Play-off draw", th_team: "Team", th_om: "Pld", th_g: "W", th_b: "D", th_m: "L", th_ag: "GF", th_yg: "GA", th_a: "GD", th_p: "Pts", vs: "v" },
+            tr: { home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", login: "Giriş yap", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", tbd: "Bilinmiyor", groupWord: "Grup", newsDraw: "UCC 27 Play-off kura çekimi Madrid'de", drawTitle: "UCC 27 Play-off Kura Çekimi", th_team: "Takım", th_om: "OM", th_g: "G", th_b: "B", th_m: "M", th_ag: "AG", th_yg: "YG", th_a: "A", th_p: "P", vs: "v" }
         };
 
         function changeLanguage(lang) {
@@ -821,169 +253,201 @@
                     element.innerHTML = translations[lang][key]; 
                 }
             });
+            if(matchesLoaded) renderFixtures(document.getElementById('fixture-group-select').value);
         }
 
         function switchPage(page) {
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
             document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
-            if (document.getElementById('view-' + page)) {
-                document.getElementById('view-' + page).classList.add('active-page');
-            }
-            if (document.getElementById('nav-' + page)) {
-                document.getElementById('nav-' + page).classList.add('active');
-            }
+            if (document.getElementById('view-' + page)) document.getElementById('view-' + page).classList.add('active-page');
+            if (document.getElementById('nav-' + page)) document.getElementById('nav-' + page).classList.add('active');
 
-            if ((page === 'teams' || page === 'groups') && !dataLoaded) {
+            if ((page === 'teams' || page === 'groups' || page === 'matches') && !dataLoaded) {
                 fetchTournamentData();
             }
         }
 
-        // GOOGLE SHEETS VERİ ÇEKME VE DAĞITMA MOTORU
+        // 1. TAKIMLARI VE GRUPLARI ÇEKME
         async function fetchTournamentData() {
             if (dataLoaded) return;
-            
             const teamsGrid = document.getElementById('teams-grid');
             const groupsGrid = document.getElementById('groups-grid');
-            const loadingTextT = document.getElementById('loading-text');
-            const loadingTextG = document.getElementById('groups-loading-text');
 
             try {
+                // Ana tabloyu (Takımlar) çekiyoruz
                 const response = await fetch(scriptURL);
                 const data = await response.json(); 
-
-                if (loadingTextT) loadingTextT.style.display = 'none';
-                if (loadingTextG) loadingTextG.style.display = 'none';
                 
                 teamsGrid.innerHTML = '';
-                
-                // 32 Grup için boş taslak oluşturuluyor
                 const groupsData = {};
-                for(let i = 1; i <= 32; i++) {
-                    groupsData[i] = [];
-                }
+                for(let i = 1; i <= 32; i++) groupsData[i] = [];
 
-                // SÜTUN SIRASI: Takım(0), Logo(1), Grup(2), OM(3), G(4), B(5), M(6), AG(7), YG(8), A(9), Puan(10)
                 data.forEach(row => {
                     const values = Object.values(row);
                     const teamName = values[0]; 
                     const logoUrl = values[1];  
                     const groupNum = parseInt(values[2]);
 
-                    if (!teamName || teamName === "Team Name" || teamName === "TakimAdi" || teamName === "TakımAdı") return;
+                    if (!teamName || teamName === "Team Name" || teamName.includes("Takim")) return;
 
-                    // 1. TAKIMLAR SAYFASINA KART EKLE
-                    const teamCard = document.createElement('div');
-                    teamCard.className = 'team-card';
-                    teamCard.innerHTML = `
-                        <div class="team-logo-container">
-                            <img src="${logoUrl}" alt="${teamName} Logo" onerror="this.src='https://via.placeholder.com/80?text=No+Logo'">
-                        </div>
-                        <div class="team-name">${teamName}</div>
-                    `;
-                    teamsGrid.appendChild(teamCard);
+                    // LOGOYU SİSTEME KAYDET (Fikstürde otomatik çekmek için)
+                    teamLogos[teamName.trim()] = logoUrl;
 
-                    // 2. GRUPLARA VERİLERİ DAĞIT
+                    teamsGrid.innerHTML += `
+                        <div class="team-card">
+                            <div class="team-logo-container"><img src="${logoUrl}"></div>
+                            <div class="team-name">${teamName}</div>
+                        </div>`;
+
                     if (groupNum >= 1 && groupNum <= 32) {
                         groupsData[groupNum].push({
-                            name: teamName,
-                            logo: logoUrl,
-                            om: values[3] || 0,
-                            g: values[4] || 0,
-                            b: values[5] || 0,
-                            m: values[6] || 0,
-                            ag: values[7] || 0,
-                            yg: values[8] || 0,
-                            a: values[9] || 0,
-                            puan: values[10] || 0
+                            name: teamName, logo: logoUrl,
+                            om: values[3]||0, g: values[4]||0, b: values[5]||0, m: values[6]||0,
+                            ag: values[7]||0, yg: values[8]||0, a: values[9]||0, puan: values[10]||0
                         });
                     }
                 });
 
-                // Grupları Puan ve Averaja Göre Sıralayıp HTML'e Basıyoruz
+                // Grupları sıralayıp ekrana basma
                 let groupsHtml = '';
                 for(let i = 1; i <= 32; i++) {
                     let teams = groupsData[i];
-                    
-                    // SIRALAMA ALGORİTMASI: Puan > Averaj > Atılan Gol
                     teams.sort((a, b) => {
-                        let puanA = Number(a.puan), puanB = Number(b.puan);
-                        if (puanB !== puanA) return puanB - puanA;
-                        let averajA = Number(a.a), averajB = Number(b.a);
-                        if (averajB !== averajA) return averajB - averajA;
+                        if (Number(b.puan) !== Number(a.puan)) return Number(b.puan) - Number(a.puan);
+                        if (Number(b.a) !== Number(a.a)) return Number(b.a) - Number(a.a);
                         return Number(b.ag) - Number(a.ag);
                     });
 
-                    groupsHtml += `
-                    <div class="group-card">
-                        <div class="group-header"><span data-i18n="groupWord">Group</span> ${i}</div>
-                        <div class="group-stats-header">
-                            <div class="team-col" data-i18n="th_team">Team</div>
-                            <div class="stat-col" data-i18n="th_om">Pld</div>
-                            <div class="stat-col" data-i18n="th_g">W</div>
-                            <div class="stat-col" data-i18n="th_b">D</div>
-                            <div class="stat-col" data-i18n="th_m">L</div>
-                            <div class="stat-col" data-i18n="th_ag">GF</div>
-                            <div class="stat-col" data-i18n="th_yg">GA</div>
-                            <div class="stat-col" data-i18n="th_a">GD</div>
-                            <div class="stat-col" data-i18n="th_p">Pts</div>
-                        </div>`;
+                    groupsHtml += `<div class="group-card"><div class="group-header">Grup ${i}</div>`;
+                    groupsHtml += `<div class="group-stats-header"><div class="team-col">Takım</div><div class="stat-col">OM</div><div class="stat-col">G</div><div class="stat-col">B</div><div class="stat-col">M</div><div class="stat-col">AG</div><div class="stat-col">YG</div><div class="stat-col">A</div><div class="stat-col">P</div></div>`;
 
-                    // Her grupta tam 4 takım göstereceğiz
                     for(let j = 0; j < 4; j++) {
-                        let statusBar = '';
-                        if (j === 0) statusBar = 'status-blue';
-                        else if (j === 1) statusBar = 'status-orange';
-
+                        let bar = j === 0 ? 'status-blue' : (j === 1 ? 'status-orange' : '');
                         if(teams[j]) {
                             const t = teams[j];
-                            groupsHtml += `
-                            <div class="group-row">
-                                <div class="status-bar ${statusBar}"></div>
-                                <div class="team-col">
-                                    <img src="${t.logo}" alt="Logo" class="team-logo-small" onerror="this.src='https://via.placeholder.com/25?text=?'">
-                                    <span class="group-team-name">${t.name}</span>
-                                </div>
-                                <div class="stat-col">${t.om}</div><div class="stat-col">${t.g}</div><div class="stat-col">${t.b}</div>
-                                <div class="stat-col">${t.m}</div><div class="stat-col">${t.ag}</div><div class="stat-col">${t.yg}</div>
-                                <div class="stat-col">${t.a}</div><div class="stat-col">${t.puan}</div>
-                            </div>`;
-                        } else {
-                            // Takım henüz girilmemişse boş (TBD) gösterilir
-                            groupsHtml += `
-                            <div class="group-row">
-                                <div class="status-bar ${statusBar}"></div>
-                                <div class="team-col">
-                                    <img src="https://via.placeholder.com/25?text=?" alt="Logo" class="team-logo-small">
-                                    <span class="group-team-name" data-i18n="tbd">TBD</span>
-                                </div>
-                                <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                                <div class="stat-col">0</div><div class="stat-col">0</div><div class="stat-col">0</div>
-                                <div class="stat-col">0</div><div class="stat-col">0</div>
-                            </div>`;
+                            groupsHtml += `<div class="group-row"><div class="status-bar ${bar}"></div><div class="team-col"><img src="${t.logo}" class="team-logo-small"><span class="group-team-name">${t.name}</span></div><div class="stat-col">${t.om}</div><div class="stat-col">${t.g}</div><div class="stat-col">${t.b}</div><div class="stat-col">${t.m}</div><div class="stat-col">${t.ag}</div><div class="stat-col">${t.yg}</div><div class="stat-col">${t.a}</div><div class="stat-col">${t.puan}</div></div>`;
                         }
                     }
                     groupsHtml += `</div>`;
                 }
-                
                 groupsGrid.innerHTML = groupsHtml;
                 dataLoaded = true;
-                
-                // Gruplar geldikten sonra mevcut dili yeni tablo başlıklarına da uygula
-                changeLanguage(document.getElementById('lang-selector').value);
+
+                // Takımlar yüklendikten hemen sonra Fikstürü çekiyoruz!
+                fetchFixtures();
 
             } catch (error) {
                 console.error('Hata:', error);
-                const currentLang = document.getElementById('lang-selector').value;
-                if (loadingTextT) loadingTextT.textContent = currentLang === 'tr' ? "Veriler çekilirken hata oluştu!" : "Error loading data!";
-                if (loadingTextG) loadingTextG.textContent = currentLang === 'tr' ? "Veriler çekilirken hata oluştu!" : "Error loading data!";
             }
         }
 
-        // Sayfa ilk yüklendiğinde dili ayarla
+        // 2. FİKSTÜRÜ ÇEKME (Yeni Fikstur Sekmesinden)
+        async function fetchFixtures() {
+            try {
+                // Apps Script'e '?sayfa=Fikstur' parametresini gönderiyoruz
+                const response = await fetch(scriptURL + "?sayfa=Fikstur");
+                allMatches = await response.json();
+                
+                // Dropdown menüyü 32 grup için doldur
+                const selectEl = document.getElementById('fixture-group-select');
+                selectEl.innerHTML = '';
+                for(let i = 1; i <= 32; i++) {
+                    selectEl.innerHTML += `<option value="Grup ${i}">Grup ${i}</option>`;
+                }
+
+                matchesLoaded = true;
+                // İlk açılışta Grup 1'i ekrana bas
+                renderFixtures("Grup 1");
+
+            } catch (error) {
+                console.error('Fikstür çekilirken hata:', error);
+                document.getElementById('fixtures-container').innerHTML = "Fikstür yüklenemedi. Lütfen Apps Script kodunu güncellediğinizden emin olun.";
+            }
+        }
+
+        // 3. SEÇİLEN GRUBUN FİKSTÜRÜNÜ EKRANA BASMA
+        function renderFixtures(selectedGroup) {
+            if(!matchesLoaded) return;
+            
+            const container = document.getElementById('fixtures-container');
+            const currentLang = document.getElementById('lang-selector').value;
+            const vsText = translations[currentLang].vs;
+            
+            // Sadece seçilen gruba ait maçları filtrele
+            const groupMatches = allMatches.filter(m => Object.values(m)[0] === selectedGroup);
+            
+            if(groupMatches.length === 0) {
+                container.innerHTML = `<p style="text-align:center; padding:30px;">Bu grupta henüz maç bulunmuyor.</p>`;
+                return;
+            }
+
+            // Maçları haftalara göre grupla (1. Hafta, 2. Hafta vs.)
+            const matchesByWeek = {};
+            groupMatches.forEach(match => {
+                const vals = Object.values(match);
+                const hafta = vals[1]; // "1. Hafta"
+                if(!matchesByWeek[hafta]) matchesByWeek[hafta] = [];
+                matchesByWeek[hafta].push({
+                    tarih: vals[2],
+                    saat: vals[3],
+                    ev: vals[4].trim(),
+                    dep: vals[5].trim(),
+                    evSkor: vals[6],
+                    depSkor: vals[7],
+                    durum: vals[8]
+                });
+            });
+
+            let html = '';
+            // Her hafta için ayrı bir blok oluştur
+            for (const [haftaAdı, haftaninMaclari] of Object.entries(matchesByWeek)) {
+                html += `
+                <div class="matchday-container">
+                    <div class="matchday-title">${haftaAdı}</div>`;
+                
+                haftaninMaclari.forEach(m => {
+                    // Logoları Takımlar listesinden otomatik bul
+                    const evLogo = teamLogos[m.ev] || 'https://via.placeholder.com/35?text=?';
+                    const depLogo = teamLogos[m.dep] || 'https://via.placeholder.com/35?text=?';
+                    
+                    // Maç oynandıysa skoru, oynanmadıysa "v" harfini göster
+                    let scoreHtml = '';
+                    if (m.durum === "Oynanmadı" || m.evSkor === "" || m.evSkor === undefined) {
+                        scoreHtml = `<div class="fixture-score-box unplayed">${vsText}</div>`;
+                    } else {
+                        scoreHtml = `<div class="fixture-score-box">${m.evSkor} - ${m.depSkor}</div>`;
+                    }
+
+                    html += `
+                    <div class="fixture-row">
+                        <div class="fixture-time-info">
+                            <span class="fixture-date">${m.tarih}</span>
+                            <span>${m.saat}</span>
+                        </div>
+                        <div class="fixture-teams-wrapper">
+                            <div class="fixture-team home">
+                                ${m.ev}
+                                <img src="${evLogo}" class="fixture-logo">
+                            </div>
+                            
+                            ${scoreHtml}
+                            
+                            <div class="fixture-team away">
+                                <img src="${depLogo}" class="fixture-logo">
+                                ${m.dep}
+                            </div>
+                        </div>
+                    </div>`;
+                });
+                
+                html += `</div>`;
+            }
+            container.innerHTML = html;
+        }
+
         window.onload = function() {
             changeLanguage(document.getElementById('lang-selector').value);
         }
     </script>
-
 </body>
 </html>
