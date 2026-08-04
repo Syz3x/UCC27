@@ -320,14 +320,64 @@
             pt: { "Aralık": "Dez", "Ocak": "Jan", "Şubat": "Fev" }
         };
 
-        // YENİ: Hata payını sıfıra indiren Kusursuzlaştırıcı Fonksiyon
-        // Bütün boşlukları siler, her şeyi küçük harf yapar, Türkçe karakterleri İngilizce yapar.
+        // YENİ: Takım isimlerindeki bütün ufak hataları temizler (boşlukları siler, ingilizce harfe çevirir vb.)
         function formatTeamName(name) {
             if(!name) return "";
             return name.toString().toLowerCase()
                 .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
                 .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
                 .replace(/[^a-z0-9]/g, ''); 
+        }
+
+        // YENİ: Yapay Zeka gibi çalışan, senin attığın tüm hatalı takımları tanıyan Akıllı Logo Bulucu
+        function findLogo(rawName) {
+            if(!rawName) return 'https://via.placeholder.com/35?text=?';
+            
+            let baseName = formatTeamName(rawName);
+            
+            // 1. Direkt temizlenmiş hali uyuşuyorsa bulur
+            if (teamLogos[baseName]) return teamLogos[baseName];
+
+            // 2. Senin hatalı veya Türkçe yazdığın takımların doğrusunu bilen sözlük (Alias Map)
+            const aliases = {
+                "spartaprag": ["spartapraha", "spartaprague"],
+                "monaci": ["monaco", "asmonaco"],
+                "milan": ["acmilan", "milan"],
+                "leverkusen": ["bayerleverkusen", "bayer04"],
+                "slaviaprag": ["slaviapraha", "slaviaprague"],
+                "koln": ["fckoln", "cologne", "1fckoln"],
+                "marsilya": ["marseille", "olympiquedemarseille"],
+                "parissaintgilloise": ["parissg", "psg", "parissaintgermain", "royaleunionsg", "unionsg"],
+                "unionsaintgilliose": ["unionsg", "unionsaintgilloise", "royaleunionsg"],
+                "olympiakos": ["olympiacos", "olympiacosfc"],
+                "roma": ["asroma", "roma"],
+                "guimares": ["vitoriasc", "vitoriaguimaraes", "guimaraes"],
+                "aek": ["aekathens", "aekathensfc"],
+                "stvv": ["sinttruiden", "sinttruidense"],
+                "sportinglizbon": ["sportingcp", "sporting", "sportinglisbon"],
+                "rayovallecona": ["rayovallecano", "rayo"],
+                "celta": ["celtavigo", "rccelta", "celtadevigo"],
+                "monchengladbach": ["borussiamonchengladbach", "bmonchengladbach", "gladbach"]
+            };
+
+            // Eğer listede varsa doğru takımın logosunu çeker
+            if(aliases[baseName]) {
+                for(let alias of aliases[baseName]) {
+                    if(teamLogos[alias]) return teamLogos[alias];
+                }
+            }
+
+            // 3. FUZZY MATCH (Örn: "roma" yazdıysan ve takımın adı "asroma" ise, roma kelimesi asroma'nın içinde geçtiği için anında yakalar!)
+            for(let key in teamLogos) {
+                if(baseName.length > 3 && key.length > 3) {
+                    if(key.includes(baseName) || baseName.includes(key)) {
+                        return teamLogos[key];
+                    }
+                }
+            }
+
+            // Hiçbiri yoksa varsayılan boş logo atar
+            return 'https://via.placeholder.com/35?text=?';
         }
 
         function translateDate(dateStr, lang) {
@@ -388,7 +438,7 @@
 
                     if (!teamName || teamName === "Team Name" || teamName.includes("Takim")) return;
                     
-                    // Logoyu hafızaya kaydederken formatTeamName ile ismini kusursuzlaştırıyoruz
+                    // Takım logolarını formatlayarak hafızaya alıyoruz (Kusursuz eşleşme için)
                     teamLogos[formatTeamName(teamName)] = logoUrl;
 
                     teamsGrid.innerHTML += `
@@ -472,9 +522,9 @@
                 const mDate = translateDate(vals[2], currentLang);
                 const mTime = vals[3] ? `${vals[3]} (UTC)` : '';
                 
-                // Takım ismini çekerken de formatTeamName ile eşleştiriyoruz
-                const evLogo = teamLogos[formatTeamName(ev)] || 'https://via.placeholder.com/20?text=?';
-                const depLogo = teamLogos[formatTeamName(dep)] || 'https://via.placeholder.com/20?text=?';
+                // ARTIK AKILLI FIND LOGO KULLANIYORUZ
+                const evLogo = findLogo(ev);
+                const depLogo = findLogo(dep);
 
                 html += `
                 <div class="match-card">
@@ -527,9 +577,9 @@
                 html += `<div class="matchday-container"><div class="matchday-title">${haftaAdı}</div>`;
                 
                 haftaninMaclari.forEach(m => {
-                    // Takım ismini çekerken de formatTeamName ile eşleştiriyoruz
-                    const evLogo = teamLogos[formatTeamName(m.ev)] || 'https://via.placeholder.com/35?text=?';
-                    const depLogo = teamLogos[formatTeamName(m.dep)] || 'https://via.placeholder.com/35?text=?';
+                    // ARTIK AKILLI FIND LOGO KULLANIYORUZ
+                    const evLogo = findLogo(m.ev);
+                    const depLogo = findLogo(m.dep);
                     const mDate = translateDate(m.tarih, currentLang);
                     const mTime = m.saat ? `${m.saat} (UTC)` : '';
                     
