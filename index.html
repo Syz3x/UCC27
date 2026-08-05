@@ -71,7 +71,7 @@
         .scoreboard-section {
             display: inline-flex;
             gap: 15px;
-            animation: scrollLeft 55s linear infinite; /* 64 maç için süreyi biraz uzattık */
+            animation: scrollLeft 55s linear infinite; 
             padding-left: 100vw;
         }
         .scoreboard-section:hover {
@@ -293,6 +293,8 @@
     </footer>
 
     <script>
+        console.log("UCC27 Script - Reference Error Fixed!"); 
+
         const scriptURL = 'https://script.google.com/macros/s/AKfycby0XMGVbOylzSqD3srolRzucoCO7ZHIEHBwvHm87Owl0r0xTetdil00phlANwoaESJQ/exec';
         
         let dataLoaded = false;
@@ -302,25 +304,14 @@
 
         const translations = {
             en: { home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", login: "Log in", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", latestNews: "Latest News", news1: "UCC 27 Group Stages Conclude with Drama", news2: "Top Scorers of the Tournament So Far", news3: "Road to the Final in Madrid Gathers Pace", drawTitle: "UCC 27 Play-off draw", drawSub: "All the details and procedures for the upcoming knockout phase draw.", drawP1: "The highly anticipated UCC 27 draw will take place in Madrid. Teams that have fought hard during the group stages will finally discover their opponents for the knockout phase.", drawP2: "Seedings will be determined based on group placements, ensuring a fair and competitive structure for the ultimate journey to the grand final.", newsDraw: "UCC 27 Play-off draw in Madrid", newsSub: "Exclusive coverage from the event capital.", newsP1: "Madrid is ready to host the grand draw event. Key figures from all participating clubs have arrived in the city, building anticipation for the upcoming matches.", newsP2: "Stay tuned for live updates, manager reactions, and deep-dive analysis on the toughest matchups of the round.", vs: "v" },
-            tr: { home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", login: "Giriş yap", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", latestNews: "Son Haberler", news1: "UCC 27 Grup Aşamaları Nefes Kesti", news2: "Turnuvanın Şu Ana Kadarki Gol Kralları", news3: "Madrid'deki Finale Giden Yol Hızlanıyor", drawTitle: "UCC 27 Play-off Kura Çekimi", drawSub: "Yaklaşan eleme aşaması kura çekimi için tüm detaylar ve prosedürler.", drawP1: "Büyük merakla beklenen UCC 27 kura çekimi Madrid'de gerçekleşecek. Grup aşamalarında kıyasıya mücadele eden takımlar nihayet eleme aşamasındaki rakiplerini öğrenecek.", drawP2: "Seri başları grup sıralamalarına göre belirlenecek ve büyük finale giden nihai yolculuk için adil ve rekabetçi yapı sağlanacak.", newsDraw: "UCC 27 Play-off kura çekimi Madrid'de", newsSub: "Etkinlik başkentinden özel yayın.", newsP1: "Madrid büyük kura etkinliğine ev sahipliği yapmaya hazır. Tüm katılımcı kulüplerin önemli isimleri şehre geldi ve yaklaşan maçlar için beklenti artıyor.", newsP2: "Canlı güncellemeler, teknik direktör tepkileri ve turun en zorlu eşleşmelerine dair derinlemesine analizler için bizi takip etmeye devam edin.", vs: "v" },
-            es: { home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", teams: "Equipos", news: "Noticias", login: "Iniciar", partTeams: "Equipos Participantes", loading: "Cargando...", filterGroup: "Seleccionar Grupo:", latestNews: "Últimas Noticias", news1: "Concluye la Fase de Grupos", news2: "Máximos Goleadores", news3: "El Camino a Madrid", drawTitle: "Sorteo de Play-offs UCC 27", drawSub: "Todos los detalles del sorteo.", drawP1: "El sorteo se realizará en Madrid.", drawP2: "Los cabezas de serie están listos.", newsDraw: "Sorteo UCC 27 en Madrid", newsSub: "Cobertura exclusiva.", newsP1: "Madrid está lista para el sorteo.", newsP2: "Mantente al tanto.", vs: "v" },
-            fr: { home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", teams: "Équipes", news: "Actualités", login: "Connexion", partTeams: "Équipes Participantes", loading: "Chargement...", filterGroup: "Sélectionner Groupe:", latestNews: "Dernières Nouvelles", news1: "Fin de la phase de groupes", news2: "Meilleurs buteurs", news3: "En route pour Madrid", drawTitle: "Tirage au sort UCC 27", drawSub: "Tous les détails du tirage.", drawP1: "Le tirage aura lieu à Madrid.", drawP2: "Les têtes de série sont prêtes.", newsDraw: "Tirage UCC 27 à Madrid", newsSub: "Couverture exclusive.", newsP1: "Madrid est prête.", newsP2: "Restez à l'écoute.", vs: "v" },
-            de: { home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosung", teams: "Teams", news: "News", login: "Anmelden", partTeams: "Teilnehmende Teams", loading: "Wird geladen...", filterGroup: "Gruppe wählen:", latestNews: "Neueste Nachrichten", news1: "Gruppenphase abgeschlossen", news2: "Torschützenkönige", news3: "Weg nach Madrid", drawTitle: "UCC 27 Play-off-Auslosung", drawSub: "Alle Details zur Auslosung.", drawP1: "Die Auslosung findet in Madrid statt.", drawP2: "Setzlisten sind bereit.", newsDraw: "UCC 27 Auslosung in Madrid", newsSub: "Exklusive Berichterstattung.", newsP1: "Madrid ist bereit.", newsP2: "Bleiben Sie dran.", vs: "v" },
-            it: { home: "Home", groupsNav: "Gironi", groupsTitle: "Gironi", matches: "Partite", draws: "Sorteggi", teams: "Squadre", news: "Notizie", login: "Accedi", partTeams: "Squadre Partecipanti", loading: "Caricamento...", filterGroup: "Seleziona Gruppo:", latestNews: "Ultime Notizie", news1: "Conclusa la fase a gironi", news2: "Migliori Marcatori", news3: "Verso Madrid", drawTitle: "Sorteggio Play-off UCC 27", drawSub: "Tutti i dettagli del sorteggio.", drawP1: "Il sorteggio si terrà a Madrid.", drawP2: "Le teste di serie sono pronte.", newsDraw: "Sorteggio UCC 27 a Madrid", newsSub: "Copertura esclusiva.", newsP1: "Madrid è pronta.", newsP2: "Resta sintonizzato.", vs: "v" },
-            pt: { home: "Início", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Jogos", draws: "Sorteios", teams: "Equipas", news: "Notícias", login: "Entrar", partTeams: "Equipas Participantes", loading: "Carregando...", filterGroup: "Selecionar Grupo:", latestNews: "Últimas Notícias", news1: "Fase de Grupos Concluída", news2: "Melhores Marcadores", news3: "Caminho para Madrid", drawTitle: "Sorteio do Play-off UCC 27", drawSub: "Todos os detalhes do sorteio.", drawP1: "O sorteio será em Madrid.", drawP2: "Os cabeças de série estão prontos.", newsDraw: "Sorteio UCC 27 em Madrid", newsSub: "Cobertura exclusiva.", newsP1: "Madrid está pronta.", newsP2: "Fique atento.", vs: "v" }
+            tr: { home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", login: "Giriş yap", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", latestNews: "Son Haberler", news1: "UCC 27 Grup Aşamaları Nefes Kesti", news2: "Turnuvanın Şu Ana Kadarki Gol Kralları", news3: "Madrid'deki Finale Giden Yol Hızlanıyor", drawTitle: "UCC 27 Play-off Kura Çekimi", drawSub: "Yaklaşan eleme aşaması kura çekimi için tüm detaylar ve prosedürler.", drawP1: "Büyük merakla beklenen UCC 27 kura çekimi Madrid'de gerçekleşecek. Grup aşamalarında kıyasıya mücadele eden takımlar nihayet eleme aşamasındaki rakiplerini öğrenecek.", drawP2: "Seri başları grup sıralamalarına göre belirlenecek ve büyük finale giden nihai yolculuk için adil ve rekabetçi yapı sağlanacak.", newsDraw: "UCC 27 Play-off kura çekimi Madrid'de", newsSub: "Etkinlik başkentinden özel yayın.", newsP1: "Madrid büyük kura etkinliğine ev sahipliği yapmaya hazır. Tüm katılımcı kulüplerin önemli isimleri şehre geldi ve yaklaşan maçlar için beklenti artıyor.", newsP2: "Canlı güncellemeler, teknik direktör tepkileri ve turun en zorlu eşleşmelerine dair derinlemesine analizler için bizi takip etmeye devam edin.", vs: "v" }
         };
 
         const monthTranslations = {
             tr: { "Aralık": "Aralık", "Ocak": "Ocak", "Şubat": "Şubat" },
-            en: { "Aralık": "Dec", "Ocak": "Jan", "Şubat": "Feb" },
-            es: { "Aralık": "Dic", "Ocak": "Ene", "Şubat": "Feb" },
-            fr: { "Aralık": "Déc", "Ocak": "Jan", "Şubat": "Fév" },
-            de: { "Aralık": "Dez", "Ocak": "Jan", "Şubat": "Feb" },
-            it: { "Aralık": "Dic", "Ocak": "Gen", "Şubat": "Feb" },
-            pt: { "Aralık": "Dez", "Ocak": "Jan", "Şubat": "Fev" }
+            en: { "Aralık": "Dec", "Ocak": "Jan", "Şubat": "Feb" }
         };
 
-        // KUSURSUZ HARF TEMİZLEYİCİ
         function formatTeamName(name) {
             if(!name) return "";
             return name.toString().toLowerCase()
@@ -329,7 +320,6 @@
                 .replace(/[^a-z0-9]/g, ''); 
         }
 
-        // AKILLI İSİM ÇEVİRİCİ
         function getProperName(rawName) {
             if(!rawName) return "";
             let base = formatTeamName(rawName);
@@ -362,7 +352,6 @@
             return names[base] ? names[base] : rawName.trim();
         }
 
-        // KUSURSUZ LOGO BULUCU
         function findLogo(rawName) {
             if(!rawName) return 'https://via.placeholder.com/35?text=?';
             let baseName = formatTeamName(rawName);
@@ -406,14 +395,13 @@
             return 'https://via.placeholder.com/35?text=?';
         }
 
-        // GÜÇLENDİRİLMİŞ TARİH SIRALAYICI (Hata Payı 0)
         function parseMatchDate(dateStr, timeStr) {
             try {
                 if (!dateStr) return 9999999999999;
                 
                 let dStr = String(dateStr).trim();
                 let tStr = String(timeStr || "00:00").trim();
-                tStr = tStr.replace('.', ':'); // Saatlerde nokta varsa iki noktaya çevir
+                tStr = tStr.replace('.', ':'); 
                 
                 let day = 1, month = 0, year = 2026;
                 let dParts = dStr.split(/\s+/);
@@ -576,7 +564,6 @@
             if(!ticker || !matchesLoaded) return;
             const currentLang = document.getElementById('lang-selector').value;
             
-            // Garantili Sütun Tespiti (JSON Sırası Karışsa Bile Tarih/Saati Bulur)
             let sortedMatches = [...allMatches].sort((a, b) => {
                 const keysA = Object.keys(a);
                 const keysB = Object.keys(b);
@@ -591,13 +578,16 @@
             });
 
             let html = '';
-            // Tam 64 maç (1. Haftanın Tamamı) akacak!
+            
             sortedMatches.slice(0, 64).forEach(m => {
                 const keys = Object.keys(m);
                 const mDateRaw = m[keys.find(k => k.includes('Tarih')) || keys[2]];
                 const mTimeRaw = m[keys.find(k => k.includes('Saat')) || keys[3]];
                 const evRaw = m[keys.find(k => k.includes('Ev S')) || keys[4]] || "";
-                const depRaw = m[keys.find(k => k.includes('Dep')) && !k.includes('Skor') ? k : keys[5]] || "";
+                
+                // İŞTE K HARFİ HATASININ DÜZELDİĞİ YER
+                const depRaw = m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
+                
                 const evSkor = m[keys.find(k => k.includes('Ev Skor')) || keys[6]];
                 const depSkor = m[keys.find(k => k.includes('Dep Skor')) || keys[7]];
                 const durum = m[keys.find(k => k.includes('Durum')) || keys[8]];
@@ -646,11 +636,12 @@
                 const hafta = m[keys.find(k => k.includes('Hafta')) || keys[1]]; 
                 if(!matchesByWeek[hafta]) matchesByWeek[hafta] = [];
                 
+                // İŞTE K HARFİ HATASININ DÜZELDİĞİ DİĞER YER
                 matchesByWeek[hafta].push({
                     tarih: m[keys.find(k => k.includes('Tarih')) || keys[2]],
                     saat: m[keys.find(k => k.includes('Saat')) || keys[3]],
                     ev: m[keys.find(k => k.includes('Ev S')) || keys[4]] || "",
-                    dep: m[keys.find(k => k.includes('Dep')) && !k.includes('Skor') ? k : keys[5]] || "",
+                    dep: m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "",
                     evSkor: m[keys.find(k => k.includes('Ev Skor')) || keys[6]],
                     depSkor: m[keys.find(k => k.includes('Dep Skor')) || keys[7]],
                     durum: m[keys.find(k => k.includes('Durum')) || keys[8]]
