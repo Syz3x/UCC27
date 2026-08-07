@@ -30,36 +30,54 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            overflow-x: hidden;
         }
 
-        /* ÖRÜMCEK ADAM TEMASI (GİZLİ) */
-        .spidey-overlay {
+        /* ÖRÜMCEK ADAM TEMASI EFEKTLERİ */
+        .web-corner {
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            width: 350px;
+            height: 350px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 L100,0 M0,0 L0,100 M0,0 L80,45 M0,0 L45,80 M0,0 L100,100 M0,0 L95,20 M0,0 L20,95" stroke="%23ffffff" stroke-width="0.5" opacity="0.3"/><path d="M 0 15 Q 12 15 15 0 M 0 30 Q 22 26 30 0 M 0 50 Q 38 42 50 0 M 0 70 Q 55 58 70 0 M 0 90 Q 72 75 90 0 M 0 110 Q 90 95 110 0" fill="none" stroke="%23ffffff" stroke-width="0.7" opacity="0.4"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
             pointer-events: none;
-            z-index: 9998;
-            display: none;
-            /* Yapay Zeka Çizimi Zarif Örümcek Ağları */
-            background: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"><path d="M0,0 L200,200 M0,200 L200,0 M100,0 L100,200 M0,100 L200,100"/><circle cx="100" cy="100" r="20"/><circle cx="100" cy="100" r="40"/><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="80"/><circle cx="100" cy="100" r="100"/></svg>') repeat;
-            background-size: 300px 300px;
+            z-index: 9997;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
+        .web-top-left { top: -20px; left: -20px; }
+        .web-top-right { top: -20px; right: -20px; transform: scaleX(-1); }
+        
         .spidey-mask {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
+            bottom: -50px;
+            right: -30px;
+            width: 250px; 
             z-index: 9999;
-            opacity: 0.8;
-            filter: drop-shadow(0px 0px 15px rgba(255,0,0,0.8));
-            display: none;
+            opacity: 0;
+            transform: translateY(50px) rotate(10deg);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             pointer-events: none;
+            filter: drop-shadow(0px 0px 20px rgba(255,0,0,0.4));
         }
-        body.spidey-theme .spidey-overlay,
-        body.spidey-theme .spidey-mask {
-            display: block;
-            animation: fadeIn 1s ease-in-out;
+
+        .spidey-spider {
+            position: fixed;
+            width: 80px;
+            opacity: 0;
+            z-index: 9998;
+            pointer-events: none;
+            transition: all 0.8s ease;
+            filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.8));
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 0.8; } }
+        .spider-1 { top: 10px; left: 80px; transform: rotate(15deg) translateY(-50px); }
+        .spider-2 { bottom: 180px; right: 190px; width: 60px; transform: rotate(-35deg) scale(0.5); }
+
+        body.spidey-theme .web-corner { opacity: 1; }
+        body.spidey-theme .spidey-mask { opacity: 0.9; transform: translateY(0) rotate(-5deg); }
+        body.spidey-theme .spider-1 { opacity: 0.7; transform: rotate(25deg) translateY(0); }
+        body.spidey-theme .spider-2 { opacity: 0.6; transform: rotate(-15deg) scale(1); }
 
         /* ÜST MENÜ */
         header {
@@ -84,7 +102,7 @@
         .header-right { display: flex; align-items: center; gap: 20px; }
         
         .theme-btn { background: var(--theme-black); color: white; border: 1px solid var(--accent-color); padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
-        .theme-btn:hover { background: var(--accent-color); color: var(--theme-black); }
+        .theme-btn:hover { background: var(--accent-color); color: var(--theme-black); box-shadow: 0 0 10px var(--accent-color); }
 
         .lang-select { background-color: rgba(0, 0, 0, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 8px 12px; border-radius: 5px; font-weight: 600; font-size: 14px; cursor: pointer; outline: none; transition: 0.3s; }
         .lang-select:hover { background-color: rgba(0, 0, 0, 0.4); border-color: white; }
@@ -205,23 +223,20 @@
         .article-image { width: 100%; border-radius: 12px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.1); object-fit: cover; max-height: 500px; }
         .article-content p { font-size: 17px; line-height: 1.6; margin-bottom: 20px; color: #ddd; text-align: left; }
 
-        /* FOOTER (SPIDER-MAN REKLAMI) */
+        /* SİNEMA REKLAMI (FOOTER) - KUSURSUZ İNGİLİZCE VE TÜRKÇE */
         footer { background-color: var(--theme-black); padding: 35px 40px; margin-top: auto; text-align: center; border-top: 4px solid var(--theme-red); position: relative; z-index: 10; }
-        .movie-promo { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.8); }
+        .movie-promo { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: 1.5px; text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.8); }
     </style>
 </head>
 <body>
 
-    <!-- ÖRÜMCEK AĞI VE MASKE KATMANI -->
-    <div class="spidey-overlay"></div>
-    <div class="spidey-mask">
-        <svg viewBox="0 0 100 100" width="100" height="100">
-            <ellipse cx="50" cy="50" rx="40" ry="50" fill="#e60000" stroke="#000" stroke-width="3"/>
-            <path d="M 20 45 Q 35 30 45 45 Q 35 55 20 45 Z" fill="#fff" stroke="#000" stroke-width="3"/>
-            <path d="M 80 45 Q 65 30 55 45 Q 65 55 80 45 Z" fill="#fff" stroke="#000" stroke-width="3"/>
-            <path d="M 50 0 L 50 100 M 10 50 L 90 50 M 20 20 L 80 80 M 20 80 L 80 20" stroke="#000" stroke-width="2" opacity="0.6"/>
-        </svg>
-    </div>
+    <!-- ÖRÜMCEK AĞI, MASKE VE ÖRÜMCEKLER (TEMA) -->
+    <div class="web-corner web-top-left"></div>
+    <div class="web-corner web-top-right"></div>
+    
+    <img src="image_712011.png" class="spidey-mask" alt="Spider Mask">
+    <img src="image_711d11.png" class="spidey-spider spider-1" alt="Spider">
+    <img src="image_711d11.png" class="spidey-spider spider-2" alt="Spider">
 
     <header>
         <a class="logo" onclick="switchPage('home')">
@@ -369,9 +384,9 @@
         </div>
     </div>
 
-    <!-- SİNEMA REKLAMI (FOOTER) -->
+    <!-- SİNEMA REKLAMI (FOOTER) - KUSURSUZ İNGİLİZCE VE TÜRKÇE YAZIMIYLA -->
     <footer>
-        <div class="movie-promo" data-i18n="moviePromo">Spider-Man: Brand New Day — Now Exclusively in Theaters!</div>
+        <div class="movie-promo" data-i18n="moviePromo">SPIDER-MAN: BRAND NEW DAY — NOW EXCLUSIVELY IN THEATERS!</div>
     </footer>
 
     <script>
@@ -385,7 +400,7 @@
         const translations = {
             en: { 
                 home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", goBack: "← Back to News", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", latestNews: "Latest News", groupWord: "Group", vs: "v",
-                moviePromo: "Spider-Man: Brand New Day — Now Exclusively in Theaters!",
+                moviePromo: "SPIDER-MAN: BRAND NEW DAY — NOW EXCLUSIVELY IN THEATERS!",
                 themeBtn: "🕸️ Theme",
                 news1: "UCC 27 Platform Officially Launched!", launchSub: "A new era begins for the ultimate club championship.", launchP1: "The official UCC 27 platform is now live! Fans from all around the world can track their favorite teams, follow live match scores, and dive into exclusive tournament statistics.", launchP2: "Prepare yourself for a highly competitive season as 32 teams battle for glory.",
                 news2: "Groups and Fixtures Have Been Announced", groupsSub: "The wait is over. All 32 groups have been finalized.", groupsP1: "The official group assignments and full 6-week match fixtures have been announced. Intense matchups are expected in the 'groups of death'.", groupsP2: "Check the 'Matches' tab to see when your favorite team is playing.",
@@ -393,17 +408,17 @@
             },
             tr: { 
                 home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", goBack: "← Haberlere Dön", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", latestNews: "Son Haberler", groupWord: "Grup", vs: "v",
-                moviePromo: "Spider-Man: Brand New Day — Şimdi Sadece Sinemalarda!",
+                moviePromo: "SPIDER-MAN: BRAND NEW DAY — ŞİMDİ SADECE SİNEMALARDA!",
                 themeBtn: "🕸️ Tema",
                 news1: "UCC 27 Sitesi Kullanıma Açıldı!", launchSub: "Klüpler şampiyonası için yeni bir dönem başlıyor.", launchP1: "Resmi UCC 27 platformu artık yayında! Dünyanın dört bir yanından taraftarlar favori takımlarını takip edebilir, canlı skorlara ulaşabilir ve özel turnuva istatistiklerini inceleyebilir.", launchP2: "32 takımın zafere giden yoldaki kıyasıya mücadelesine hazır olun.",
                 news2: "Gruplar ve Maçlar Belli Oldu", groupsSub: "Bekleyiş sona erdi. Tüm 32 grup kesinleşti.", groupsP1: "Resmi grup kuraları ve tam 6 haftalık maç fikstürü açıklandı. Ölüm gruplarında nefes kesen maçlar bekleniyor.", groupsP2: "Favori takımınızın ne zaman oynayacağını görmek için 'Maçlar' sekmesine göz atın.",
                 news3: "Kura Çekimi Etkinlik Detayları Madrid'de", drawSub: "Yaklaşan eleme aşaması kura çekimi için tüm detaylar ve prosedürler.", drawP1: "Büyük merakla beklenen UCC 27 kura çekimi Madrid'de gerçekleşecek. Grup aşamalarında kıyasıya mücadele eden takımlar nihayet eleme aşamasındaki rakiplerini öğrenecek.", drawP2: "Seri başları grup sıralamalarına göre belirlenecek ve büyük finale giden nihai yolculuk için adil ve rekabetçi yapı sağlanacak."
             },
-            es: { home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", teams: "Equipos", news: "Noticias", goBack: "← Volver", partTeams: "Equipos Participantes", loading: "Cargando...", filterGroup: "Seleccionar Grupo:", latestNews: "Últimas Noticias", groupWord: "Grupo", vs: "v", moviePromo: "Spider-Man: Brand New Day — ¡Exclusivamente en cines!", themeBtn: "🕸️ Tema", news1: "¡Plataforma UCC 27 Lanzada!", launchSub: "Comienza una nueva era.", launchP1: "¡La plataforma ya está activa!", launchP2: "Prepárate para la temporada.", news2: "Grupos y Partidos Anunciados", groupsSub: "La espera ha terminado.", groupsP1: "Los grupos oficiales han sido anunciados.", groupsP2: "Revisa la pestaña de Partidos.", news3: "Detalles del Sorteo en Madrid", drawSub: "Procedimientos del sorteo.", drawP1: "El sorteo se realizará en Madrid.", drawP2: "Los cabezas de serie están listos." },
-            fr: { home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", teams: "Équipes", news: "Actualités", goBack: "← Retour", partTeams: "Équipes Participantes", loading: "Chargement...", filterGroup: "Sélectionner Groupe:", latestNews: "Dernières Nouvelles", groupWord: "Groupe", vs: "v", moviePromo: "Spider-Man: Brand New Day — Actuellement au cinéma !", themeBtn: "🕸️ Thème", news1: "Plateforme UCC 27 Lancée !", launchSub: "Une nouvelle ère commence.", launchP1: "La plateforme est en ligne !", launchP2: "Préparez-vous.", news2: "Groupes et Matchs Annoncés", groupsSub: "L'attente est terminée.", groupsP1: "Les groupes officiels sont annoncés.", groupsP2: "Vérifiez les matchs.", news3: "Détails du Tirage à Madrid", drawSub: "Procédures du tirage.", drawP1: "Le tirage aura lieu à Madrid.", drawP2: "Les équipes sont prêtes." },
-            de: { home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosung", teams: "Teams", news: "News", goBack: "← Zurück", partTeams: "Teilnehmende Teams", loading: "Laden...", filterGroup: "Gruppe wählen:", latestNews: "Neueste Nachrichten", groupWord: "Gruppe", vs: "v", moviePromo: "Spider-Man: Brand New Day — Jetzt exklusiv im Kino!", themeBtn: "🕸️ Design", news1: "UCC 27 Plattform gestartet!", launchSub: "Eine neue Ära beginnt.", launchP1: "Plattform ist online!", launchP2: "Mach dich bereit.", news2: "Gruppen und Spiele veröffentlicht", groupsSub: "Das Warten hat ein Ende.", groupsP1: "Die Gruppen sind offiziell.", groupsP2: "Sieh dir die Spiele an.", news3: "Details zur Auslosung in Madrid", drawSub: "Details zur Auslosung.", drawP1: "Die Auslosung ist in Madrid.", drawP2: "Teams sind bereit." },
-            it: { home: "Home", groupsNav: "Gironi", groupsTitle: "Gironi", matches: "Partite", draws: "Sorteggi", teams: "Squadre", news: "Notizie", goBack: "← Indietro", partTeams: "Squadre Partecipanti", loading: "Caricamento...", filterGroup: "Seleziona Gruppo:", latestNews: "Ultime Notizie", groupWord: "Gruppo", vs: "v", moviePromo: "Spider-Man: Brand New Day — Ora al cinema!", themeBtn: "🕸️ Tema", news1: "Piattaforma UCC 27 Lanciata!", launchSub: "Inizia una nuova era.", launchP1: "Piattaforma online!", launchP2: "Preparati.", news2: "Gironi e Partite Annunciati", groupsSub: "L'attesa è finita.", groupsP1: "I gironi sono ufficiali.", groupsP2: "Controlla le partite.", news3: "Dettagli del Sorteggio a Madrid", drawSub: "Dettagli del sorteggio.", drawP1: "Il sorteggio è a Madrid.", drawP2: "Squadre pronte." },
-            pt: { home: "Início", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Jogos", draws: "Sorteios", teams: "Equipas", news: "Notícias", goBack: "← Voltar", partTeams: "Equipas Participantes", loading: "Carregando...", filterGroup: "Selecionar Grupo:", latestNews: "Últimas Notícias", groupWord: "Grupo", vs: "v", moviePromo: "Spider-Man: Brand New Day — Exclusivamente nos cinemas!", themeBtn: "🕸️ Tema", news1: "Plataforma UCC 27 Lançada!", launchSub: "Uma nova era.", launchP1: "Plataforma online!", launchP2: "Prepare-se.", news2: "Grupos e Jogos Anunciados", groupsSub: "A espera acabou.", groupsP1: "Os grupos são oficiais.", groupsP2: "Veja os jogos.", news3: "Detalhes do Sorteio em Madrid", drawSub: "Detalhes do sorteio.", drawP1: "O sorteio é em Madrid.", drawP2: "Equipas prontas." }
+            es: { home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", teams: "Equipos", news: "Noticias", goBack: "← Volver", partTeams: "Equipos Participantes", loading: "Cargando...", filterGroup: "Seleccionar Grupo:", latestNews: "Últimas Noticias", groupWord: "Grupo", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — ¡EXCLUSIVAMENTE EN CINES!", themeBtn: "🕸️ Tema", news1: "¡Plataforma UCC 27 Lanzada!", launchSub: "Comienza una nueva era.", launchP1: "¡La plataforma ya está activa!", launchP2: "Prepárate para la temporada.", news2: "Grupos y Partidos Anunciados", groupsSub: "La espera ha terminado.", groupsP1: "Los grupos oficiales han sido anunciados.", groupsP2: "Revisa la pestaña de Partidos.", news3: "Detalles del Sorteo en Madrid", drawSub: "Procedimientos del sorteo.", drawP1: "El sorteo se realizará en Madrid.", drawP2: "Los cabezas de serie están listos." },
+            fr: { home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", teams: "Équipes", news: "Actualités", goBack: "← Retour", partTeams: "Équipes Participantes", loading: "Chargement...", filterGroup: "Sélectionner Groupe:", latestNews: "Dernières Nouvelles", groupWord: "Groupe", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — ACTUELLEMENT AU CINÉMA !", themeBtn: "🕸️ Thème", news1: "Plateforme UCC 27 Lancée !", launchSub: "Une nouvelle ère commence.", launchP1: "La plateforme est en ligne !", launchP2: "Préparez-vous.", news2: "Groupes et Matchs Annoncés", groupsSub: "L'attente est terminée.", groupsP1: "Les groupes officiels sont annoncés.", groupsP2: "Vérifiez les matchs.", news3: "Détails du Tirage à Madrid", drawSub: "Procédures du tirage.", drawP1: "Le tirage aura lieu à Madrid.", drawP2: "Les équipes sont prêtes." },
+            de: { home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosung", teams: "Teams", news: "News", goBack: "← Zurück", partTeams: "Teilnehmende Teams", loading: "Laden...", filterGroup: "Gruppe wählen:", latestNews: "Neueste Nachrichten", groupWord: "Gruppe", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — JETZT EXKLUSIV IM KINO!", themeBtn: "🕸️ Design", news1: "UCC 27 Plattform gestartet!", launchSub: "Eine neue Ära beginnt.", launchP1: "Plattform ist online!", launchP2: "Mach dich bereit.", news2: "Gruppen und Spiele veröffentlicht", groupsSub: "Das Warten hat ein Ende.", groupsP1: "Die Gruppen sind offiziell.", groupsP2: "Sieh dir die Spiele an.", news3: "Details zur Auslosung in Madrid", drawSub: "Details zur Auslosung.", drawP1: "Die Auslosung ist in Madrid.", drawP2: "Teams sind bereit." },
+            it: { home: "Home", groupsNav: "Gironi", groupsTitle: "Gironi", matches: "Partite", draws: "Sorteggi", teams: "Squadre", news: "Notizie", goBack: "← Indietro", partTeams: "Squadre Partecipanti", loading: "Caricamento...", filterGroup: "Seleziona Gruppo:", latestNews: "Ultime Notizie", groupWord: "Gruppo", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — ORA AL CINEMA!", themeBtn: "🕸️ Tema", news1: "Piattaforma UCC 27 Lanciata!", launchSub: "Inizia una nuova era.", launchP1: "Piattaforma online!", launchP2: "Preparati.", news2: "Gironi e Partite Annunciati", groupsSub: "L'attesa è finita.", groupsP1: "I gironi sono ufficiali.", groupsP2: "Controlla le partite.", news3: "Dettagli del Sorteggio a Madrid", drawSub: "Dettagli del sorteggio.", drawP1: "Il sorteggio è a Madrid.", drawP2: "Squadre pronte." },
+            pt: { home: "Início", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Jogos", draws: "Sorteios", teams: "Equipas", news: "Notícias", goBack: "← Voltar", partTeams: "Equipas Participantes", loading: "Carregando...", filterGroup: "Selecionar Grupo:", latestNews: "Últimas Notícias", groupWord: "Grupo", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — EXCLUSIVAMENTE NOS CINEMAS!", themeBtn: "🕸️ Tema", news1: "Plataforma UCC 27 Lançada!", launchSub: "Uma nova era.", launchP1: "Plataforma online!", launchP2: "Prepare-se.", news2: "Grupos e Jogos Anunciados", groupsSub: "A espera acabou.", groupsP1: "Os grupos são oficiais.", groupsP2: "Veja os jogos.", news3: "Detalhes do Sorteio em Madrid", drawSub: "Detalhes do sorteio.", drawP1: "O sorteio é em Madrid.", drawP2: "Equipas prontas." }
         };
 
         const monthTranslations = {
