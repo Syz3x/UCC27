@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UCC 27 - Turnuva Platformu</title>
-    <!-- YouTube API -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <style>
         :root {
@@ -30,7 +29,37 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
+
+        /* ÖRÜMCEK ADAM TEMASI (GİZLİ) */
+        .spidey-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 9998;
+            display: none;
+            /* Yapay Zeka Çizimi Zarif Örümcek Ağları */
+            background: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"><path d="M0,0 L200,200 M0,200 L200,0 M100,0 L100,200 M0,100 L200,100"/><circle cx="100" cy="100" r="20"/><circle cx="100" cy="100" r="40"/><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="80"/><circle cx="100" cy="100" r="100"/></svg>') repeat;
+            background-size: 300px 300px;
+        }
+        .spidey-mask {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 9999;
+            opacity: 0.8;
+            filter: drop-shadow(0px 0px 15px rgba(255,0,0,0.8));
+            display: none;
+            pointer-events: none;
+        }
+        body.spidey-theme .spidey-overlay,
+        body.spidey-theme .spidey-mask {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 0.8; } }
 
         /* ÜST MENÜ */
         header {
@@ -41,6 +70,8 @@
             background-color: var(--theme-red); 
             border-bottom: 2px solid #800000; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 100;
         }
 
         .logo { cursor: pointer; display: flex; align-items: center; }
@@ -50,12 +81,16 @@
         nav a { color: var(--text-main); text-decoration: none; font-size: 18px; font-weight: 700; text-transform: uppercase; transition: all 0.3s; cursor: pointer; padding-bottom: 5px; border-bottom: 3px solid transparent; }
         nav a:hover, nav a.active { color: #ffffff; border-bottom: 3px solid #ffffff; }
 
-        .header-right { display: flex; align-items: center; gap: 25px; }
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        
+        .theme-btn { background: var(--theme-black); color: white; border: 1px solid var(--accent-color); padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
+        .theme-btn:hover { background: var(--accent-color); color: var(--theme-black); }
+
         .lang-select { background-color: rgba(0, 0, 0, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 8px 12px; border-radius: 5px; font-weight: 600; font-size: 14px; cursor: pointer; outline: none; transition: 0.3s; }
         .lang-select:hover { background-color: rgba(0, 0, 0, 0.4); border-color: white; }
         .lang-select option { color: #000; font-weight: bold; }
 
-        .page-content { flex: 1; }
+        .page-content { flex: 1; position: relative; z-index: 10; }
         .page-view { display: none; }
         .page-view.active-page { display: block; }
 
@@ -84,23 +119,21 @@
         }
 
         .match-card { background-color: var(--theme-black); border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 15px; border-radius: 8px; min-width: 180px; font-size: 13px; display: flex; flex-direction: column; gap: 5px; cursor: pointer; transition: all 0.3s; }
-        .match-card:hover { transform: translateY(-3px); background-color: var(--theme-red); border-color: var(--text-main); }
+        .match-card:hover { transform: translateY(-3px); background-color: var(--theme-red); border-color: var(--text-main); box-shadow: 0 5px 15px rgba(204,0,0,0.4); }
         .team-row { display: flex; justify-content: space-between; font-weight: 500; align-items: center; }
 
-        /* ANA SAYFA - MÜZİK ÇALAR & MANŞETLER */
+        /* ANA SAYFA İÇERİĞİ */
         .main-content { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 40px; max-width: 1400px; margin: 0 auto; }
         
-        /* SPOTIFY TARZI PLAYER */
-        .music-player-container { background: #181818; border-radius: 12px; padding: 25px; display: flex; align-items: center; gap: 25px; border: 1px solid rgba(204, 0, 0, 0.3); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .album-art { width: 150px; height: 150px; border-radius: 10px; object-fit: cover; border: 2px solid var(--theme-red); box-shadow: 0 4px 10px rgba(204,0,0,0.3); }
-        .player-info { flex: 1; }
-        .song-title { font-size: 24px; font-weight: bold; color: white; margin-bottom: 5px; }
-        .artist-name { font-size: 16px; color: var(--text-muted); margin-bottom: 20px; }
-        .player-controls { display: flex; align-items: center; gap: 20px; }
-        .control-btn { background: none; border: none; color: white; font-size: 28px; cursor: pointer; transition: 0.2s; }
+        /* MİNİMALİST MÜZİK ÇALAR */
+        .music-player-container { background: #181818; border-radius: 12px; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 1px solid rgba(204, 0, 0, 0.3); box-shadow: 0 10px 20px rgba(0,0,0,0.5); min-height: 300px; position: relative; overflow: hidden; }
+        .song-title { font-size: 26px; font-weight: bold; color: white; margin-bottom: 10px; z-index: 2; position: relative; }
+        .artist-name { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; z-index: 2; position: relative; }
+        .player-controls { display: flex; align-items: center; gap: 30px; z-index: 2; position: relative; }
+        .control-btn { background: none; border: none; color: white; font-size: 32px; cursor: pointer; transition: 0.2s; }
         .control-btn:hover { color: var(--theme-red); transform: scale(1.1); }
-        .play-btn { background: var(--accent-color); border: none; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; cursor: pointer; transition: 0.2s; }
-        .play-btn:hover { transform: scale(1.05); background: #ff3333; }
+        .play-btn { background: var(--accent-color); border: none; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; cursor: pointer; transition: 0.2s; box-shadow: 0 0 15px rgba(255, 26, 26, 0.5); }
+        .play-btn:hover { transform: scale(1.05); background: #ff3333; box-shadow: 0 0 20px rgba(255, 26, 26, 0.8); }
 
         .headlines-section { background-color: rgba(18, 18, 18, 0.8); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.05); }
         .headlines-title { font-size: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(204, 0, 0, 0.5); padding-bottom: 10px; color: var(--accent-color); }
@@ -154,21 +187,41 @@
         .team-logo-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .team-name { font-size: 14px; font-weight: 600; }
 
-        /* MAKALELER */
-        .article-container { max-width: 1000px; margin: 40px auto; background-color: var(--theme-black); border-radius: 12px; border: 1px solid rgba(204, 0, 0, 0.2); padding: 40px; }
+        /* HABER HUB (NEWS LİSTESİ) */
+        .news-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 20px; }
+        .news-hub-card { background: var(--theme-black); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: 0.3s; }
+        .news-hub-card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 8px 15px rgba(204,0,0,0.3); }
+        .news-hub-img { width: 100%; height: 220px; object-fit: cover; }
+        .news-hub-content { padding: 20px; }
+        .news-hub-title { font-size: 20px; font-weight: bold; color: var(--text-main); margin-bottom: 10px; line-height: 1.3; }
+        .news-hub-desc { font-size: 14px; color: var(--text-muted); }
+
+        /* MAKALELER (TEKİL OKUMA SAYFASI) */
+        .article-container { max-width: 1000px; margin: 40px auto; background-color: var(--theme-black); border-radius: 12px; border: 1px solid rgba(204, 0, 0, 0.2); padding: 40px; position: relative; }
+        .back-btn { background: transparent; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-bottom: 20px; transition: 0.3s; }
+        .back-btn:hover { background: rgba(255,255,255,0.1); color: white; }
         .article-title { font-size: 36px; font-weight: bold; margin-bottom: 10px; }
-        .article-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 30px; font-weight: 500; }
-        .article-image { width: 100%; border-radius: 12px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.1); object-fit: cover; }
+        .article-subtitle { font-size: 16px; color: var(--accent-color); margin-bottom: 30px; font-weight: 500; }
+        .article-image { width: 100%; border-radius: 12px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.1); object-fit: cover; max-height: 500px; }
         .article-content p { font-size: 17px; line-height: 1.6; margin-bottom: 20px; color: #ddd; text-align: left; }
 
-        /* SPONSORLAR */
-        footer { background-color: var(--theme-black); padding: 30px 40px; margin-top: auto; text-align: center; border-top: 4px solid var(--theme-red); }
-        .sponsors-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; }
-        .sponsors-grid img { height: 45px; max-width: 120px; object-fit: contain; transition: 0.3s; }
-        .sponsors-grid img:hover { transform: scale(1.1); }
+        /* FOOTER (SPIDER-MAN REKLAMI) */
+        footer { background-color: var(--theme-black); padding: 35px 40px; margin-top: auto; text-align: center; border-top: 4px solid var(--theme-red); position: relative; z-index: 10; }
+        .movie-promo { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.8); }
     </style>
 </head>
 <body>
+
+    <!-- ÖRÜMCEK AĞI VE MASKE KATMANI -->
+    <div class="spidey-overlay"></div>
+    <div class="spidey-mask">
+        <svg viewBox="0 0 100 100" width="100" height="100">
+            <ellipse cx="50" cy="50" rx="40" ry="50" fill="#e60000" stroke="#000" stroke-width="3"/>
+            <path d="M 20 45 Q 35 30 45 45 Q 35 55 20 45 Z" fill="#fff" stroke="#000" stroke-width="3"/>
+            <path d="M 80 45 Q 65 30 55 45 Q 65 55 80 45 Z" fill="#fff" stroke="#000" stroke-width="3"/>
+            <path d="M 50 0 L 50 100 M 10 50 L 90 50 M 20 20 L 80 80 M 20 80 L 80 20" stroke="#000" stroke-width="2" opacity="0.6"/>
+        </svg>
+    </div>
 
     <header>
         <a class="logo" onclick="switchPage('home')">
@@ -183,6 +236,10 @@
             <a id="nav-news" onclick="switchPage('news')" data-i18n="news">News</a>
         </nav>
         <div class="header-right">
+            <!-- TEMA BUTONU -->
+            <button class="theme-btn" onclick="toggleTheme()">
+                <span data-i18n="themeBtn">🕸️ Theme</span>
+            </button>
             <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="en">English (EN)</option>
                 <option value="tr">Türkçe (TR)</option>
@@ -205,37 +262,30 @@
             </div>
 
             <main class="main-content">
-                <!-- MÜZİK ÇALAR (SPOTIFY TARZI) -->
+                <!-- MÜZİK ÇALAR (SADE & MİNİMAL) -->
                 <div class="music-player-container">
-                    <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=500&auto=format&fit=crop" class="album-art" alt="Album Art">
-                    <div class="player-info">
-                        <div class="song-title">UCC 27 Official Anthem</div>
-                        <div class="artist-name">UEFA Music - The Champions</div>
-                        <div class="player-controls">
-                            <button class="control-btn" onclick="seekMusic(-10)" title="Geri Sar (10sn)">⏮</button>
-                            <button class="play-btn" id="play-pause-btn" onclick="togglePlayMusic()">▶</button>
-                            <button class="control-btn" onclick="seekMusic(10)" title="İleri Sar (10sn)">⏭</button>
-                        </div>
+                    <div class="song-title">UCC 27 Official Anthem</div>
+                    <div class="artist-name">UEFA Music - The Champions</div>
+                    <div class="player-controls">
+                        <button class="control-btn" onclick="seekMusic(-10)" title="Geri Sar (10sn)">⏮</button>
+                        <button class="play-btn" id="play-pause-btn" onclick="togglePlayMusic()">▶</button>
+                        <button class="control-btn" onclick="seekMusic(10)" title="İleri Sar (10sn)">⏭</button>
                     </div>
-                    <!-- Arka planda gizli YouTube oynatıcısı -->
                     <div id="youtube-audio-player" style="display:none; position:absolute; width:0; height:0;"></div>
                 </div>
 
                 <!-- MANŞETLER YENİLENDİ -->
                 <div class="headlines-section">
                     <h2 class="headlines-title" data-i18n="latestNews">Latest News</h2>
-                    <!-- HABER 1 (ÜST): Site Açıldı -->
-                    <div class="headline-item" onclick="switchPage('news')">
+                    <div class="headline-item" onclick="openArticle('launch')">
                         <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=300&auto=format&fit=crop" class="headline-img">
                         <div class="headline-text" data-i18n="news1">UCC 27 Platform Officially Launched!</div>
                     </div>
-                    <!-- HABER 2 (ORTA): Gruplar ve Maçlar -->
-                    <div class="headline-item" onclick="switchPage('groups')">
+                    <div class="headline-item" onclick="openArticle('groups')">
                         <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=300&auto=format&fit=crop" class="headline-img">
                         <div class="headline-text" data-i18n="news2">Groups and Fixtures Have Been Announced</div>
                     </div>
-                    <!-- HABER 3 (ALT): Kura Detayları -->
-                    <div class="headline-item" onclick="switchPage('news')">
+                    <div class="headline-item" onclick="openArticle('draw')">
                         <img src="image2.webp" class="headline-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=300&auto=format&fit=crop';">
                         <div class="headline-text" data-i18n="news3">Play-off Draw Event Details in Madrid</div>
                     </div>
@@ -255,13 +305,11 @@
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
-                
                 <div class="fixtures-header-controls">
                     <span style="font-size: 18px; font-weight: bold;" data-i18n="filterGroup">Filter by Group:</span>
                     <select id="fixture-group-select" class="group-select-dropdown" onchange="renderFixtures(this.value)">
                     </select>
                 </div>
-
                 <div id="fixtures-container">
                     <p id="fixtures-loading-text" style="color: var(--accent-color); text-align: center; padding: 50px;" data-i18n="loading">Fikstür yükleniyor...</p>
                 </div>
@@ -276,29 +324,54 @@
             </div>
         </div>
 
-        <!-- NEWS -->
+        <!-- YENİ: NEWS HUB (Haberler Listesi) -->
         <div id="view-news" class="page-view">
+            <div class="content-page-container">
+                <h1 class="page-title" data-i18n="news">News</h1>
+                <div class="news-hub-grid">
+                    <div class="news-hub-card" onclick="openArticle('launch')">
+                        <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
+                        <div class="news-hub-content">
+                            <h3 class="news-hub-title" data-i18n="news1">UCC 27 Platform Officially Launched!</h3>
+                            <div class="news-hub-desc" data-i18n="launchSub">A new era begins for the ultimate club championship.</div>
+                        </div>
+                    </div>
+                    <div class="news-hub-card" onclick="openArticle('groups')">
+                        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
+                        <div class="news-hub-content">
+                            <h3 class="news-hub-title" data-i18n="news2">Groups and Fixtures Have Been Announced</h3>
+                            <div class="news-hub-desc" data-i18n="groupsSub">The wait is over. All 32 groups have been finalized.</div>
+                        </div>
+                    </div>
+                    <div class="news-hub-card" onclick="openArticle('draw')">
+                        <img src="image2.webp" class="news-hub-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=800&auto=format&fit=crop';">
+                        <div class="news-hub-content">
+                            <h3 class="news-hub-title" data-i18n="news3">Play-off Draw Event Details in Madrid</h3>
+                            <div class="news-hub-desc" data-i18n="drawSub">All the details and procedures for the upcoming knockout phase draw.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- YENİ: TEKİL MAKALE OKUMA SAYFASI (Dinamik) -->
+        <div id="view-article" class="page-view">
             <div class="article-container">
-                <h1 class="article-title" data-i18n="newsDraw">UCC 27 Play-off draw in Madrid</h1>
-                <h3 class="article-subtitle" data-i18n="newsSub">Exclusive coverage from the event capital.</h3>
-                <img src="image2.webp" class="article-image" alt="News Image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=1000&auto=format&fit=crop';">
+                <button class="back-btn" onclick="switchPage('news')" data-i18n="goBack">← Back to News</button>
+                <h1 class="article-title" id="dyn-art-title">Title</h1>
+                <h3 class="article-subtitle" id="dyn-art-sub">Subtitle</h3>
+                <img src="" class="article-image" id="dyn-art-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=1000&auto=format&fit=crop';">
                 <div class="article-content">
-                    <p data-i18n="newsP1">Madrid is ready to host the grand draw event. Key figures from all participating clubs have arrived in the city, building anticipation for the upcoming matches.</p>
-                    <p data-i18n="newsP2">Stay tuned for live updates, manager reactions, and deep-dive analysis on the toughest matchups of the round.</p>
+                    <p id="dyn-art-p1">Paragraph 1</p>
+                    <p id="dyn-art-p2">Paragraph 2</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SPONSORLAR -->
+    <!-- SİNEMA REKLAMI (FOOTER) -->
     <footer>
-        <div class="sponsors-grid">
-            <img src="image3.webp" alt="Coca Cola" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg';">
-            <img src="image4.webp" alt="Heineken" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/1/14/Heineken_Logo.svg';">
-            <img src="image5.webp" alt="Mastercard" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg';">
-            <img src="image6.webp" alt="PlayStation 5" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/PlayStation_logo.svg';">
-            <img src="image7.webp" alt="Lays" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/c/c8/Lay%27s_logo.svg';">
-        </div>
+        <div class="movie-promo" data-i18n="moviePromo">Spider-Man: Brand New Day — Now Exclusively in Theaters!</div>
     </footer>
 
     <script>
@@ -310,13 +383,27 @@
         let allMatches = []; 
 
         const translations = {
-            en: { home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", login: "Log in", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", latestNews: "Latest News", news1: "UCC 27 Platform Officially Launched!", news2: "Groups and Fixtures Have Been Announced", news3: "Play-off Draw Event Details in Madrid", newsDraw: "UCC 27 Play-off draw in Madrid", newsSub: "Exclusive coverage from the event capital.", newsP1: "Madrid is ready to host the grand draw event. Key figures from all participating clubs have arrived in the city, building anticipation for the upcoming matches.", newsP2: "Stay tuned for live updates, manager reactions, and deep-dive analysis on the toughest matchups of the round.", vs: "v", groupWord: "Group" },
-            tr: { home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", login: "Giriş yap", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", latestNews: "Son Haberler", news1: "UCC 27 Sitesi Kullanıma Açıldı!", news2: "Gruplar ve Maçlar Belli Oldu", news3: "Kura Çekimi Etkinlik Detayları Madrid'de", newsDraw: "UCC 27 Play-off kura çekimi Madrid'de", newsSub: "Etkinlik başkentinden özel yayın.", newsP1: "Madrid büyük kura etkinliğine ev sahipliği yapmaya hazır. Tüm katılımcı kulüplerin önemli isimleri şehre geldi ve yaklaşan maçlar için beklenti artıyor.", newsP2: "Canlı güncellemeler, teknik direktör tepkileri ve turun en zorlu eşleşmelerine dair derinlemesine analizler için bizi takip etmeye devam edin.", vs: "v", groupWord: "Grup" },
-            es: { home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", teams: "Equipos", news: "Noticias", login: "Iniciar", partTeams: "Equipos Participantes", loading: "Cargando...", filterGroup: "Seleccionar Grupo:", latestNews: "Últimas Noticias", news1: "¡Plataforma UCC 27 Lanzada!", news2: "Grupos y Partidos Anunciados", news3: "Detalles del Sorteo en Madrid", newsDraw: "Sorteo UCC 27 en Madrid", newsSub: "Cobertura exclusiva.", newsP1: "Madrid está lista para el sorteo.", newsP2: "Mantente al tanto.", vs: "v", groupWord: "Grupo" },
-            fr: { home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", teams: "Équipes", news: "Actualités", login: "Connexion", partTeams: "Équipes Participantes", loading: "Chargement...", filterGroup: "Sélectionner Groupe:", latestNews: "Dernières Nouvelles", news1: "Plateforme UCC 27 Lancée !", news2: "Groupes et Matchs Annoncés", news3: "Détails du Tirage à Madrid", newsDraw: "Tirage UCC 27 à Madrid", newsSub: "Couverture exclusive.", newsP1: "Madrid est prête.", newsP2: "Restez à l'écoute.", vs: "v", groupWord: "Groupe" },
-            de: { home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosung", teams: "Teams", news: "News", login: "Anmelden", partTeams: "Teilnehmende Teams", loading: "Wird geladen...", filterGroup: "Gruppe wählen:", latestNews: "Neueste Nachrichten", news1: "UCC 27 Plattform gestartet!", news2: "Gruppen und Spiele veröffentlicht", news3: "Details zur Auslosung in Madrid", newsDraw: "UCC 27 Auslosung in Madrid", newsSub: "Exklusive Berichterstattung.", newsP1: "Madrid ist bereit.", newsP2: "Bleiben Sie dran.", vs: "v", groupWord: "Gruppe" },
-            it: { home: "Home", groupsNav: "Gironi", groupsTitle: "Gironi", matches: "Partite", draws: "Sorteggi", teams: "Squadre", news: "Notizie", login: "Accedi", partTeams: "Squadre Partecipanti", loading: "Caricamento...", filterGroup: "Seleziona Gruppo:", latestNews: "Ultime Notizie", news1: "Piattaforma UCC 27 Lanciata!", news2: "Gironi e Partite Annunciati", news3: "Dettagli del Sorteggio a Madrid", newsDraw: "Sorteggio UCC 27 a Madrid", newsSub: "Copertura esclusiva.", newsP1: "Madrid è pronta.", newsP2: "Resta sintonizzato.", vs: "v", groupWord: "Gruppo" },
-            pt: { home: "Início", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Jogos", draws: "Sorteios", teams: "Equipas", news: "Notícias", login: "Entrar", partTeams: "Equipas Participantes", loading: "Carregando...", filterGroup: "Selecionar Grupo:", latestNews: "Últimas Notícias", news1: "Plataforma UCC 27 Lançada!", news2: "Grupos e Jogos Anunciados", news3: "Detalhes do Sorteio em Madrid", newsDraw: "Sorteio UCC 27 em Madrid", newsSub: "Cobertura exclusiva.", newsP1: "Madrid está pronta.", newsP2: "Fique atento.", vs: "v", groupWord: "Grupo" }
+            en: { 
+                home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", goBack: "← Back to News", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", latestNews: "Latest News", groupWord: "Group", vs: "v",
+                moviePromo: "Spider-Man: Brand New Day — Now Exclusively in Theaters!",
+                themeBtn: "🕸️ Theme",
+                news1: "UCC 27 Platform Officially Launched!", launchSub: "A new era begins for the ultimate club championship.", launchP1: "The official UCC 27 platform is now live! Fans from all around the world can track their favorite teams, follow live match scores, and dive into exclusive tournament statistics.", launchP2: "Prepare yourself for a highly competitive season as 32 teams battle for glory.",
+                news2: "Groups and Fixtures Have Been Announced", groupsSub: "The wait is over. All 32 groups have been finalized.", groupsP1: "The official group assignments and full 6-week match fixtures have been announced. Intense matchups are expected in the 'groups of death'.", groupsP2: "Check the 'Matches' tab to see when your favorite team is playing.",
+                news3: "Play-off Draw Event Details in Madrid", drawSub: "All the details and procedures for the upcoming knockout phase draw.", drawP1: "The highly anticipated UCC 27 draw will take place in Madrid. Teams that have fought hard during the group stages will finally discover their opponents for the knockout phase.", drawP2: "Seedings will be determined based on group placements, ensuring a fair and competitive structure for the ultimate journey to the grand final."
+            },
+            tr: { 
+                home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", goBack: "← Haberlere Dön", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", latestNews: "Son Haberler", groupWord: "Grup", vs: "v",
+                moviePromo: "Spider-Man: Brand New Day — Şimdi Sadece Sinemalarda!",
+                themeBtn: "🕸️ Tema",
+                news1: "UCC 27 Sitesi Kullanıma Açıldı!", launchSub: "Klüpler şampiyonası için yeni bir dönem başlıyor.", launchP1: "Resmi UCC 27 platformu artık yayında! Dünyanın dört bir yanından taraftarlar favori takımlarını takip edebilir, canlı skorlara ulaşabilir ve özel turnuva istatistiklerini inceleyebilir.", launchP2: "32 takımın zafere giden yoldaki kıyasıya mücadelesine hazır olun.",
+                news2: "Gruplar ve Maçlar Belli Oldu", groupsSub: "Bekleyiş sona erdi. Tüm 32 grup kesinleşti.", groupsP1: "Resmi grup kuraları ve tam 6 haftalık maç fikstürü açıklandı. Ölüm gruplarında nefes kesen maçlar bekleniyor.", groupsP2: "Favori takımınızın ne zaman oynayacağını görmek için 'Maçlar' sekmesine göz atın.",
+                news3: "Kura Çekimi Etkinlik Detayları Madrid'de", drawSub: "Yaklaşan eleme aşaması kura çekimi için tüm detaylar ve prosedürler.", drawP1: "Büyük merakla beklenen UCC 27 kura çekimi Madrid'de gerçekleşecek. Grup aşamalarında kıyasıya mücadele eden takımlar nihayet eleme aşamasındaki rakiplerini öğrenecek.", drawP2: "Seri başları grup sıralamalarına göre belirlenecek ve büyük finale giden nihai yolculuk için adil ve rekabetçi yapı sağlanacak."
+            },
+            es: { home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", teams: "Equipos", news: "Noticias", goBack: "← Volver", partTeams: "Equipos Participantes", loading: "Cargando...", filterGroup: "Seleccionar Grupo:", latestNews: "Últimas Noticias", groupWord: "Grupo", vs: "v", moviePromo: "Spider-Man: Brand New Day — ¡Exclusivamente en cines!", themeBtn: "🕸️ Tema", news1: "¡Plataforma UCC 27 Lanzada!", launchSub: "Comienza una nueva era.", launchP1: "¡La plataforma ya está activa!", launchP2: "Prepárate para la temporada.", news2: "Grupos y Partidos Anunciados", groupsSub: "La espera ha terminado.", groupsP1: "Los grupos oficiales han sido anunciados.", groupsP2: "Revisa la pestaña de Partidos.", news3: "Detalles del Sorteo en Madrid", drawSub: "Procedimientos del sorteo.", drawP1: "El sorteo se realizará en Madrid.", drawP2: "Los cabezas de serie están listos." },
+            fr: { home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", teams: "Équipes", news: "Actualités", goBack: "← Retour", partTeams: "Équipes Participantes", loading: "Chargement...", filterGroup: "Sélectionner Groupe:", latestNews: "Dernières Nouvelles", groupWord: "Groupe", vs: "v", moviePromo: "Spider-Man: Brand New Day — Actuellement au cinéma !", themeBtn: "🕸️ Thème", news1: "Plateforme UCC 27 Lancée !", launchSub: "Une nouvelle ère commence.", launchP1: "La plateforme est en ligne !", launchP2: "Préparez-vous.", news2: "Groupes et Matchs Annoncés", groupsSub: "L'attente est terminée.", groupsP1: "Les groupes officiels sont annoncés.", groupsP2: "Vérifiez les matchs.", news3: "Détails du Tirage à Madrid", drawSub: "Procédures du tirage.", drawP1: "Le tirage aura lieu à Madrid.", drawP2: "Les équipes sont prêtes." },
+            de: { home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosung", teams: "Teams", news: "News", goBack: "← Zurück", partTeams: "Teilnehmende Teams", loading: "Laden...", filterGroup: "Gruppe wählen:", latestNews: "Neueste Nachrichten", groupWord: "Gruppe", vs: "v", moviePromo: "Spider-Man: Brand New Day — Jetzt exklusiv im Kino!", themeBtn: "🕸️ Design", news1: "UCC 27 Plattform gestartet!", launchSub: "Eine neue Ära beginnt.", launchP1: "Plattform ist online!", launchP2: "Mach dich bereit.", news2: "Gruppen und Spiele veröffentlicht", groupsSub: "Das Warten hat ein Ende.", groupsP1: "Die Gruppen sind offiziell.", groupsP2: "Sieh dir die Spiele an.", news3: "Details zur Auslosung in Madrid", drawSub: "Details zur Auslosung.", drawP1: "Die Auslosung ist in Madrid.", drawP2: "Teams sind bereit." },
+            it: { home: "Home", groupsNav: "Gironi", groupsTitle: "Gironi", matches: "Partite", draws: "Sorteggi", teams: "Squadre", news: "Notizie", goBack: "← Indietro", partTeams: "Squadre Partecipanti", loading: "Caricamento...", filterGroup: "Seleziona Gruppo:", latestNews: "Ultime Notizie", groupWord: "Gruppo", vs: "v", moviePromo: "Spider-Man: Brand New Day — Ora al cinema!", themeBtn: "🕸️ Tema", news1: "Piattaforma UCC 27 Lanciata!", launchSub: "Inizia una nuova era.", launchP1: "Piattaforma online!", launchP2: "Preparati.", news2: "Gironi e Partite Annunciati", groupsSub: "L'attesa è finita.", groupsP1: "I gironi sono ufficiali.", groupsP2: "Controlla le partite.", news3: "Dettagli del Sorteggio a Madrid", drawSub: "Dettagli del sorteggio.", drawP1: "Il sorteggio è a Madrid.", drawP2: "Squadre pronte." },
+            pt: { home: "Início", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Jogos", draws: "Sorteios", teams: "Equipas", news: "Notícias", goBack: "← Voltar", partTeams: "Equipas Participantes", loading: "Carregando...", filterGroup: "Selecionar Grupo:", latestNews: "Últimas Notícias", groupWord: "Grupo", vs: "v", moviePromo: "Spider-Man: Brand New Day — Exclusivamente nos cinemas!", themeBtn: "🕸️ Tema", news1: "Plataforma UCC 27 Lançada!", launchSub: "Uma nova era.", launchP1: "Plataforma online!", launchP2: "Prepare-se.", news2: "Grupos e Jogos Anunciados", groupsSub: "A espera acabou.", groupsP1: "Os grupos são oficiais.", groupsP2: "Veja os jogos.", news3: "Detalhes do Sorteio em Madrid", drawSub: "Detalhes do sorteio.", drawP1: "O sorteio é em Madrid.", drawP2: "Equipas prontas." }
         };
 
         const monthTranslations = {
@@ -324,7 +411,16 @@
             en: { "Aralık": "Dec", "Ocak": "Jan", "Şubat": "Feb" }
         };
 
-        // KUSURSUZ HARF TEMİZLEYİCİ
+        const articleData = {
+            'launch': { img: 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=1000&auto=format&fit=crop', tKey: 'news1', sKey: 'launchSub', p1Key: 'launchP1', p2Key: 'launchP2' },
+            'groups': { img: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1000&auto=format&fit=crop', tKey: 'news2', sKey: 'groupsSub', p1Key: 'groupsP1', p2Key: 'groupsP2' },
+            'draw': { img: 'image2.webp', tKey: 'news3', sKey: 'drawSub', p1Key: 'drawP1', p2Key: 'drawP2' }
+        };
+
+        function toggleTheme() {
+            document.body.classList.toggle('spidey-theme');
+        }
+
         function formatTeamName(name) {
             if(!name) return "";
             return name.toString().toLowerCase()
@@ -333,94 +429,53 @@
                 .replace(/[^a-z0-9]/g, ''); 
         }
 
-        // AKILLI İSİM ÇEVİRİCİ
         function getProperName(rawName) {
             if(!rawName) return "";
             let base = formatTeamName(rawName);
             const names = {
-                "monaci": "AS Monaco",
-                "monaco": "AS Monaco",
-                "marsilya": "Marseille",
-                "sportinglizbon": "Sporting CP",
-                "bayernmunih": "Bayern Munich",
-                "slaviaprag": "Slavia Prague",
-                "spartaprag": "Sparta Prague",
-                "koln": "1. FC Köln",
-                "parissaintgilloise": "Paris SG",
-                "unionsaintgilliose": "Union SG",
-                "olympiakos": "Olympiacos",
-                "roma": "AS Roma",
-                "guimares": "Vitória de Guimarães",
-                "vitoriaguimaraes": "Vitória de Guimarães",
-                "rayovallecona": "Rayo Vallecano",
-                "celta": "Celta Vigo",
-                "monchengladbach": "Borussia Mönchengladbach",
-                "leverkusen": "Bayer 04 Leverkusen",
-                "aek": "AEK Athens",
-                "stvv": "Sint-Truiden",
-                "besiktas": "Beşiktaş",
-                "galatasaray": "Galatasaray",
-                "fenerbahce": "Fenerbahçe",
-                "basaksehir": "Başakşehir"
+                "monaci": "AS Monaco", "monaco": "AS Monaco", "marsilya": "Marseille", "sportinglizbon": "Sporting CP",
+                "bayernmunih": "Bayern Munich", "slaviaprag": "Slavia Prague", "spartaprag": "Sparta Prague", "koln": "1. FC Köln",
+                "parissaintgilloise": "Paris SG", "unionsaintgilliose": "Union SG", "olympiakos": "Olympiacos", "roma": "AS Roma",
+                "guimares": "Vitória de Guimarães", "rayovallecona": "Rayo Vallecano", "celta": "Celta Vigo",
+                "monchengladbach": "Borussia Mönchengladbach", "leverkusen": "Bayer 04 Leverkusen", "aek": "AEK Athens",
+                "stvv": "Sint-Truiden", "besiktas": "Beşiktaş", "galatasaray": "Galatasaray", "fenerbahce": "Fenerbahçe", "basaksehir": "Başakşehir"
             };
             return names[base] ? names[base] : rawName.trim();
         }
 
-        // KUSURSUZ LOGO BULUCU
         function findLogo(rawName) {
             if(!rawName) return 'https://via.placeholder.com/35?text=?';
             let baseName = formatTeamName(rawName);
-            
             if (teamLogos[baseName]) return teamLogos[baseName];
 
             const aliases = {
-                "spartaprag": ["spartapraha", "spartaprague"],
-                "monaci": ["monaco", "asmonaco"],
-                "milan": ["acmilan", "milan"],
-                "leverkusen": ["bayerleverkusen", "bayer04"],
-                "slaviaprag": ["slaviapraha", "slaviaprague"],
-                "koln": ["fckoln", "cologne", "1fckoln"],
-                "marsilya": ["marseille", "olympiquedemarseille"],
-                "parissaintgilloise": ["parissg", "psg", "parissaintgermain", "royaleunionsg"],
-                "unionsaintgilliose": ["unionsg", "unionsaintgilloise"],
-                "olympiakos": ["olympiacos", "olympiacosfc"],
-                "roma": ["asroma", "roma"],
-                "guimares": ["vitoriasc", "vitoriaguimaraes", "guimaraes"],
-                "aek": ["aekathens", "aekathensfc"],
-                "stvv": ["sinttruiden", "sinttruidense"],
-                "sportinglizbon": ["sportingcp", "sporting", "sportinglisbon"],
-                "rayovallecona": ["rayovallecano", "rayo"],
-                "celta": ["celtavigo", "rccelta"],
+                "spartaprag": ["spartapraha", "spartaprague"], "monaci": ["monaco", "asmonaco"], "milan": ["acmilan", "milan"],
+                "leverkusen": ["bayerleverkusen", "bayer04"], "slaviaprag": ["slaviapraha", "slaviaprague"], "koln": ["fckoln", "cologne", "1fckoln"],
+                "marsilya": ["marseille", "olympiquedemarseille"], "parissaintgilloise": ["parissg", "psg", "parissaintgermain", "royaleunionsg"],
+                "unionsaintgilliose": ["unionsg", "unionsaintgilloise"], "olympiakos": ["olympiacos", "olympiacosfc"], "roma": ["asroma", "roma"],
+                "guimares": ["vitoriasc", "vitoriaguimaraes", "guimaraes"], "aek": ["aekathens", "aekathensfc"], "stvv": ["sinttruiden", "sinttruidense"],
+                "sportinglizbon": ["sportingcp", "sporting", "sportinglisbon"], "rayovallecona": ["rayovallecano", "rayo"], "celta": ["celtavigo", "rccelta"],
                 "monchengladbach": ["borussiamonchengladbach", "bmonchengladbach", "gladbach"]
             };
 
             if(aliases[baseName]) {
-                for(let alias of aliases[baseName]) {
-                    if(teamLogos[alias]) return teamLogos[alias];
-                }
+                for(let alias of aliases[baseName]) { if(teamLogos[alias]) return teamLogos[alias]; }
             }
-
             for(let key in teamLogos) {
                 if(baseName.length > 3 && key.length > 3) {
-                    if(key.includes(baseName) || baseName.includes(key)) {
-                        return teamLogos[key];
-                    }
+                    if(key.includes(baseName) || baseName.includes(key)) return teamLogos[key];
                 }
             }
             return 'https://via.placeholder.com/35?text=?';
         }
 
-        // KESİN, HATASIZ, KRONOLOJİK TARİH SÖKÜCÜ
         function parseMatchDate(dateStr, timeStr) {
             try {
                 let dStr = String(dateStr || "").trim().toLowerCase();
                 let tStr = String(timeStr || "00:00").trim().replace('.', ':');
                 
                 let dayMatch = dStr.match(/\d+/);
-                let yearMatch = dStr.match(/\d{4}/);
-                
                 let day = dayMatch ? parseInt(dayMatch[0]) : 1;
-                let year = yearMatch ? parseInt(yearMatch[0]) : 2026;
                 
                 let month = 0;
                 if(dStr.includes("ocak")) month = 0;
@@ -435,6 +490,9 @@
                 else if(dStr.includes("ekim")) month = 9;
                 else if(dStr.includes("kasım") || dStr.includes("kasim")) month = 10;
                 else if(dStr.includes("aralık") || dStr.includes("aralik")) month = 11;
+
+                let yearMatch = dStr.match(/\d{4}/);
+                let year = yearMatch ? parseInt(yearMatch[0]) : ((month < 6) ? 2027 : 2026);
                 
                 let hours = 0, minutes = 0;
                 let tParts = tStr.split(':');
@@ -475,6 +533,24 @@
             if(currentVal) selectEl.value = currentVal;
         }
 
+        let currentArticleId = 'launch'; 
+        function openArticle(id) {
+            currentArticleId = id;
+            const data = articleData[id];
+            const lang = document.getElementById('lang-selector').value;
+            const dict = translations[lang] || translations['en'];
+
+            document.getElementById('dyn-art-img').src = data.img;
+            document.getElementById('dyn-art-title').innerHTML = dict[data.tKey];
+            document.getElementById('dyn-art-sub').innerHTML = dict[data.sKey];
+            document.getElementById('dyn-art-p1').innerHTML = dict[data.p1Key];
+            document.getElementById('dyn-art-p2').innerHTML = dict[data.p2Key];
+
+            document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
+            document.getElementById('view-article').classList.add('active-page');
+            window.scrollTo(0, 0);
+        }
+
         function changeLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
@@ -485,6 +561,10 @@
                 }
             });
             
+            if(document.getElementById('view-article').classList.contains('active-page')) {
+                openArticle(currentArticleId); 
+            }
+
             if(matchesLoaded) {
                 populateGroupDropdown(lang);
                 renderFixtures(document.getElementById('fixture-group-select').value);
@@ -495,8 +575,12 @@
         function switchPage(page) {
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
             document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
+            
+            let activeNavId = page;
+            if(page === 'article') activeNavId = 'news';
+            if (document.getElementById('nav-' + activeNavId)) document.getElementById('nav-' + activeNavId).classList.add('active');
+            
             if (document.getElementById('view-' + page)) document.getElementById('view-' + page).classList.add('active-page');
-            if (document.getElementById('nav-' + page)) document.getElementById('nav-' + page).classList.add('active');
 
             if ((page === 'teams' || page === 'groups' || page === 'matches' || page === 'home') && !dataLoaded) {
                 fetchTournamentData();
@@ -591,7 +675,6 @@
             if(!ticker || !matchesLoaded) return;
             const currentLang = document.getElementById('lang-selector').value;
             
-            // KUSURSUZ SIRALAMA
             let sortedMatches = [...allMatches].sort((a, b) => {
                 const keysA = Object.keys(a);
                 const keysB = Object.keys(b);
@@ -607,7 +690,6 @@
 
             let html = '';
             
-            // Tam 64 maç
             sortedMatches.slice(0, 64).forEach(m => {
                 const keys = Object.keys(m);
                 const mDateRaw = m[keys.find(k => k.includes('Tarih')) || keys[2]];
@@ -650,7 +732,6 @@
             const currentLang = document.getElementById('lang-selector').value;
             const vsText = translations[currentLang] && translations[currentLang].vs ? translations[currentLang].vs : "v";
             
-            // "Grup 1" haricinde dropdown value olarak gelen İngilizce/İspanyolca kelimeyi düzeltip "Grup X" olarak filtrele
             let targetGroup = selectedGroup;
             if(!targetGroup.startsWith("Grup")) {
                 let parts = targetGroup.split(" ");
@@ -732,7 +813,7 @@
             player = new YT.Player('youtube-audio-player', {
                 height: '0',
                 width: '0',
-                videoId: 'nZFNut0RGlQ', // Gönderdiğin marş linki
+                videoId: 'nZFNut0RGlQ', 
                 playerVars: {
                     'autoplay': 0,
                     'controls': 0,
