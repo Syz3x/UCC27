@@ -3,198 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UEFA CLUB CHAMPIONSHIP 2027</title>
+    <title>UCC 27 - Turnuva Platformu</title>
     <script src="https://www.youtube.com/iframe_api"></script>
     <style>
         :root {
-            --theme-dark: #050505;
-            --theme-black: #121212;
-            --theme-dark-red: #240000;
-            --theme-red: #b30000;
-            --accent-color: #ff1a1a;
-            --text-main: #ffffff;
-            --text-muted: #999999;
+            --theme-dark: #0a0a0a;
+            --theme-black: #141414;
+            --theme-dark-red: #1a0505;
+            --theme-red: #cc0000;
+            --accent-color: #ff3333;
+            --text-main: #f0f0f0;
+            --text-muted: #888888;
+            --border-light: rgba(255, 255, 255, 0.08);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, var(--theme-dark), var(--theme-dark-red));
+            background: linear-gradient(180deg, var(--theme-dark) 0%, var(--theme-dark-red) 100%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            position: relative;
             overflow-x: hidden;
         }
 
-
-        /* ÜST MENÜ */
+        /* ÜST MENÜ - SADELEŞTİRİLDİ */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 40px;
-            background-color: var(--theme-red); 
-            border-bottom: 2px solid #800000; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            position: relative;
+            padding: 15px 50px;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light); 
+            position: sticky;
+            top: 0;
             z-index: 100;
         }
 
         .logo { cursor: pointer; display: flex; align-items: center; }
-        .logo img { height: 140px; filter: brightness(0) invert(1); object-fit: contain; }
+        .logo img { height: 90px; filter: brightness(0) invert(1); object-fit: contain; transition: 0.3s; }
+        .logo img:hover { transform: scale(1.05); }
 
-        nav { display: flex; gap: 35px; }
-        nav a { color: var(--text-main); text-decoration: none; font-size: 18px; font-weight: 700; text-transform: uppercase; transition: all 0.3s; cursor: pointer; padding-bottom: 5px; border-bottom: 3px solid transparent; }
-        nav a:hover, nav a.active { color: #ffffff; border-bottom: 3px solid #ffffff; }
+        nav { display: flex; gap: 40px; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s; cursor: pointer; position: relative; }
+        nav a:hover, nav a.active { color: #ffffff; }
+        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: 0.3s; }
+        nav a.active::after { width: 100%; }
 
         .header-right { display: flex; align-items: center; gap: 20px; }
+        .lang-select { background-color: transparent; color: white; border: 1px solid var(--border-light); padding: 8px 15px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; outline: none; transition: 0.3s; }
+        .lang-select:hover { border-color: var(--text-muted); }
+        .lang-select option { background-color: var(--theme-black); color: white; font-weight: bold; }
+
+        .page-content { flex: 1; position: relative; z-index: 10; padding-bottom: 50px; }
+        .page-view { display: none; opacity: 0; transition: opacity 0.4s ease; }
+        .page-view.active-page { display: block; opacity: 1; }
+
+        /* KAYAN MAÇLAR (TICKER) - DAHA ZARİF */
+        .scoreboard-wrapper { width: 100%; overflow: hidden; background-color: var(--theme-black); padding: 12px 0; border-bottom: 1px solid var(--border-light); white-space: nowrap; position: relative; }
+        .scoreboard-section { display: inline-flex; gap: 20px; animation: scrollLeft 60s linear infinite; padding-left: 100vw; }
+        .scoreboard-section:hover { animation-play-state: paused; }
+        @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         
-        .theme-btn { background: var(--theme-black); color: white; border: 1px solid var(--accent-color); padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
-        .theme-btn:hover { background: var(--accent-color); color: var(--theme-black); box-shadow: 0 0 10px var(--accent-color); }
-
-        .lang-select { background-color: rgba(0, 0, 0, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 8px 12px; border-radius: 5px; font-weight: 600; font-size: 14px; cursor: pointer; outline: none; transition: 0.3s; }
-        .lang-select:hover { background-color: rgba(0, 0, 0, 0.4); border-color: white; }
-        .lang-select option { color: #000; font-weight: bold; }
-
-        .page-content { flex: 1; position: relative; z-index: 10; }
-        .page-view { display: none; }
-        .page-view.active-page { display: block; }
-
-        /* KAYAN MAÇLAR (TICKER) */
-        .scoreboard-wrapper {
-            width: 100%;
-            overflow: hidden;
-            background-color: rgba(18, 18, 18, 0.9);
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(204, 0, 0, 0.3);
-            white-space: nowrap;
-            position: relative;
-        }
-        .scoreboard-section {
-            display: inline-flex;
-            gap: 15px;
-            animation: scrollLeft 55s linear infinite; 
-            padding-left: 100vw;
-        }
-        .scoreboard-section:hover {
-            animation-play-state: paused;
-        }
-        @keyframes scrollLeft {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .match-card { background-color: var(--theme-black); border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 15px; border-radius: 8px; min-width: 180px; font-size: 13px; display: flex; flex-direction: column; gap: 5px; cursor: pointer; transition: all 0.3s; }
-        .match-card:hover { transform: translateY(-3px); background-color: var(--theme-red); border-color: var(--text-main); box-shadow: 0 5px 15px rgba(204,0,0,0.4); }
-        .team-row { display: flex; justify-content: space-between; font-weight: 500; align-items: center; }
+        .match-card { background-color: transparent; border-right: 1px solid var(--border-light); padding: 0 25px; min-width: 180px; font-size: 13px; display: flex; flex-direction: column; gap: 8px; cursor: pointer; transition: all 0.3s; }
+        .match-card:hover { transform: scale(1.05); }
+        .team-row { display: flex; justify-content: space-between; font-weight: 600; align-items: center; }
 
         /* ANA SAYFA İÇERİĞİ */
-        .main-content { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 40px; max-width: 1400px; margin: 0 auto; }
+        .main-content { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 50px 40px; max-width: 1400px; margin: 0 auto; }
         
         /* MİNİMALİST MÜZİK ÇALAR */
-        .music-player-container { background: #181818; border-radius: 12px; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 1px solid rgba(204, 0, 0, 0.3); box-shadow: 0 10px 20px rgba(0,0,0,0.5); min-height: 300px; position: relative; overflow: hidden; }
-        .song-title { font-size: 26px; font-weight: bold; color: white; margin-bottom: 10px; z-index: 2; position: relative; }
-        .artist-name { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; z-index: 2; position: relative; }
-        .player-controls { display: flex; align-items: center; gap: 30px; z-index: 2; position: relative; }
-        .control-btn { background: none; border: none; color: white; font-size: 32px; cursor: pointer; transition: 0.2s; }
-        .control-btn:hover { color: var(--theme-red); transform: scale(1.1); }
-        .play-btn { background: var(--accent-color); border: none; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; cursor: pointer; transition: 0.2s; box-shadow: 0 0 15px rgba(255, 26, 26, 0.5); }
-        .play-btn:hover { transform: scale(1.05); background: #ff3333; box-shadow: 0 0 20px rgba(255, 26, 26, 0.8); }
+        .music-player-container { background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0)); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 1px solid var(--border-light); min-height: 350px; position: relative; overflow: hidden; }
+        .song-title { font-size: 28px; font-weight: 800; color: white; margin-bottom: 8px; letter-spacing: 1px; }
+        .artist-name { font-size: 14px; color: var(--accent-color); margin-bottom: 35px; text-transform: uppercase; letter-spacing: 2px; }
+        .player-controls { display: flex; align-items: center; gap: 40px; }
+        .control-btn { background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; transition: 0.2s; }
+        .control-btn:hover { color: white; transform: scale(1.1); }
+        .play-btn { background: white; border: none; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: black; cursor: pointer; transition: 0.3s; }
+        .play-btn:hover { transform: scale(1.05); background: var(--accent-color); color: white; }
 
-        .headlines-section { background-color: rgba(18, 18, 18, 0.8); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.05); }
-        .headlines-title { font-size: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(204, 0, 0, 0.5); padding-bottom: 10px; color: var(--accent-color); }
-        .headline-item { display: flex; gap: 15px; margin-bottom: 15px; cursor: pointer; transition: all 0.3s; padding: 10px; border-radius: 8px; background: rgba(0,0,0,0.3); border: 1px solid transparent; }
-        .headline-item:hover { background-color: rgba(204, 0, 0, 0.15); transform: translateX(5px); border-color: rgba(204, 0, 0, 0.3); }
-        .headline-img { width: 100px; height: 70px; background-color: #333; border-radius: 8px; object-fit: cover; }
-        .headline-text { font-size: 15px; font-weight: 600; flex: 1; color: var(--text-main); display: flex; align-items: center; line-height: 1.4; }
+        /* MANŞETLER (SADE) */
+        .headlines-section { background-color: transparent; display: flex; flex-direction: column; gap: 20px; }
+        .headlines-title { font-size: 18px; margin-bottom: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
+        .headline-item { display: flex; gap: 20px; cursor: pointer; transition: all 0.3s; padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-light); align-items: center; }
+        .headline-item:hover { background-color: rgba(255,255,255,0.05); transform: translateX(5px); border-color: rgba(255,255,255,0.1); }
+        .headline-img { width: 110px; height: 80px; border-radius: 8px; object-fit: cover; }
+        .headline-text { font-size: 16px; font-weight: 500; flex: 1; color: var(--text-main); line-height: 1.5; }
 
-        .content-page-container { max-width: 1400px; margin: 40px auto; padding: 0 40px; }
-        .page-title { font-size: 28px; color: var(--text-main); margin-bottom: 30px; border-bottom: 2px solid var(--theme-red); padding-bottom: 10px; text-transform: uppercase; text-align: left; }
+        .content-page-container { max-width: 1400px; margin: 50px auto; padding: 0 40px; }
+        .page-title { font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px; }
         
         /* GRUPLAR */
-        .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .group-card { background-color: var(--theme-black); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
-        .group-header { background-color: var(--theme-red); color: white; padding: 12px; font-weight: bold; font-size: 18px; text-align: center; border-bottom: 2px solid #800000; }
-        .group-stats-header { display: flex; align-items: center; padding: 8px 15px 8px 25px; background-color: rgba(0,0,0,0.5); font-size: 11px; color: var(--text-muted); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); text-transform: uppercase; }
-        .group-row { display: flex; align-items: center; padding: 8px 15px 8px 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; background-color: rgba(0,0,0,0.2); }
-        .group-row:hover { background-color: rgba(255,255,255,0.05); }
-        .status-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; }
-        .status-blue { background-color: #007bff; }
-        .status-orange { background-color: #fd7e14; }
-        .team-col { flex: 1; display: flex; align-items: center; overflow: hidden; text-overflow: ellipsis; }
-        .stat-col { width: 28px; text-align: center; font-size: 13px; font-weight: bold; color: var(--text-main); }
-        .stat-col:last-child { width: 32px; color: var(--accent-color); }
-        .team-logo-small { width: 25px; height: 25px; margin-right: 12px; object-fit: contain; }
-        .group-team-name { font-size: 14px; font-weight: 600; }
+        .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 30px; }
+        .group-card { background-color: var(--theme-black); border: 1px solid var(--border-light); border-radius: 12px; overflow: hidden; }
+        .group-header { background-color: rgba(255,255,255,0.03); color: white; padding: 15px; font-weight: bold; font-size: 16px; text-align: center; border-bottom: 1px solid var(--border-light); letter-spacing: 1px; }
+        .group-stats-header { display: flex; align-items: center; padding: 10px 15px 10px 25px; background-color: rgba(0,0,0,0.5); font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+        .group-row { display: flex; align-items: center; padding: 10px 15px 10px 25px; border-top: 1px solid var(--border-light); position: relative; transition: 0.2s; }
+        .group-row:hover { background-color: rgba(255,255,255,0.02); }
+        .status-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+        .status-blue { background-color: #3388ff; }
+        .status-orange { background-color: #ff8833; }
+        .team-col { flex: 1; display: flex; align-items: center; overflow: hidden; }
+        .stat-col { width: 30px; text-align: center; font-size: 13px; font-weight: 500; color: var(--text-main); }
+        .stat-col:last-child { width: 35px; color: white; font-weight: bold; }
+        .team-logo-small { width: 28px; height: 28px; margin-right: 15px; object-fit: contain; }
+        .group-team-name { font-size: 14px; font-weight: 500; }
 
         /* MAÇLAR */
-        .fixtures-header-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; background: var(--theme-black); padding: 15px 25px; border-radius: 10px; border: 1px solid rgba(204, 0, 0, 0.3); }
-        .group-select-dropdown { padding: 10px 20px; font-size: 16px; font-weight: bold; background: var(--theme-red); color: white; border: none; border-radius: 8px; cursor: pointer; outline: none; }
-        .group-select-dropdown option { background: var(--theme-black); color: white; }
-        .matchday-container { margin-bottom: 40px; }
-        .matchday-title { font-size: 20px; color: var(--accent-color); margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; font-weight: bold; }
-        .fixture-row { display: flex; background: rgba(18, 18, 18, 0.8); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 10px; border-radius: 8px; padding: 12px 20px; align-items: center; transition: background 0.3s; }
-        .fixture-row:hover { background: rgba(204, 0, 0, 0.15); }
-        .fixture-time-info { width: 150px; display: flex; flex-direction: column; font-size: 13px; color: var(--text-muted); border-right: 1px solid rgba(255,255,255,0.1); padding-right: 15px; }
-        .fixture-date { font-weight: bold; color: #ddd; }
-        .fixture-teams-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 0 20px; }
-        .fixture-team { flex: 1; display: flex; align-items: center; font-size: 16px; font-weight: 600; }
+        .fixtures-header-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .group-select-dropdown { padding: 12px 25px; font-size: 15px; font-weight: 600; background: var(--theme-black); color: white; border: 1px solid var(--border-light); border-radius: 8px; cursor: pointer; outline: none; }
+        .matchday-container { margin-bottom: 50px; }
+        .matchday-title { font-size: 18px; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .fixture-row { display: flex; background: var(--theme-black); border: 1px solid var(--border-light); margin-bottom: 12px; border-radius: 10px; padding: 15px 25px; align-items: center; transition: 0.3s; }
+        .fixture-row:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        .fixture-time-info { width: 150px; display: flex; flex-direction: column; font-size: 12px; color: var(--text-muted); border-right: 1px solid var(--border-light); padding-right: 20px; }
+        .fixture-date { font-weight: 600; color: #ccc; margin-bottom: 4px; }
+        .fixture-teams-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 0 30px; }
+        .fixture-team { flex: 1; display: flex; align-items: center; font-size: 15px; font-weight: 500; }
         .fixture-team.home { justify-content: flex-end; text-align: right; }
         .fixture-team.away { justify-content: flex-start; text-align: left; }
-        .fixture-logo { width: 35px; height: 35px; object-fit: contain; margin: 0 15px; }
-        .fixture-score-box { background: var(--theme-black); border: 1px solid rgba(204,0,0,0.5); border-radius: 6px; padding: 6px 15px; font-size: 18px; font-weight: bold; color: var(--text-main); min-width: 70px; text-align: center; margin: 0 15px; letter-spacing: 2px; }
-        .fixture-score-box.unplayed { color: var(--text-muted); font-size: 14px; letter-spacing: normal; background: transparent; border-color: rgba(255,255,255,0.1); }
+        .fixture-logo { width: 35px; height: 35px; object-fit: contain; margin: 0 20px; }
+        .fixture-score-box { background: rgba(0,0,0,0.5); border-radius: 6px; padding: 8px 20px; font-size: 18px; font-weight: bold; color: white; min-width: 80px; text-align: center; margin: 0 20px; letter-spacing: 1px; }
+        .fixture-score-box.unplayed { color: var(--text-muted); font-size: 13px; letter-spacing: normal; background: transparent; }
 
         /* TAKIMLAR */
-        .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
-        .team-card { background-color: var(--theme-black); border: 1px solid rgba(204, 0, 0, 0.2); border-radius: 10px; padding: 20px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; cursor: pointer; transition: all 0.3s ease; text-align: center; }
-        .team-card:hover { background-color: var(--theme-red); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); }
-        .team-logo-container { width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; }
+        .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 25px; }
+        .team-card { background-color: var(--theme-black); border: 1px solid var(--border-light); border-radius: 12px; padding: 25px 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center; }
+        .team-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.02); }
+        .team-logo-container { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; }
         .team-logo-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .team-name { font-size: 14px; font-weight: 600; }
+        .team-name { font-size: 13px; font-weight: 600; color: #ddd; }
 
-        /* HABER HUB (NEWS LİSTESİ) */
-        .news-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 20px; }
-        .news-hub-card { background: var(--theme-black); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: 0.3s; }
-        .news-hub-card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 8px 15px rgba(204,0,0,0.3); }
-        .news-hub-img { width: 100%; height: 220px; object-fit: cover; }
-        .news-hub-content { padding: 20px; }
-        .news-hub-title { font-size: 20px; font-weight: bold; color: var(--text-main); margin-bottom: 10px; line-height: 1.3; }
-        .news-hub-desc { font-size: 14px; color: var(--text-muted); }
+        /* HABER HUB */
+        .news-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 20px; }
+        .news-hub-card { background: var(--theme-black); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-light); cursor: pointer; transition: 0.3s; }
+        .news-hub-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); }
+        .news-hub-img { width: 100%; height: 240px; object-fit: cover; }
+        .news-hub-content { padding: 25px; }
+        .news-hub-title { font-size: 20px; font-weight: 700; color: white; margin-bottom: 12px; line-height: 1.4; }
+        .news-hub-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
-        /* MAKALELER (TEKİL OKUMA SAYFASI) */
-        .article-container { max-width: 1000px; margin: 40px auto; background-color: var(--theme-black); border-radius: 12px; border: 1px solid rgba(204, 0, 0, 0.2); padding: 40px; position: relative; }
-        .back-btn { background: transparent; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-bottom: 20px; transition: 0.3s; }
-        .back-btn:hover { background: rgba(255,255,255,0.1); color: white; }
-        .article-title { font-size: 36px; font-weight: bold; margin-bottom: 10px; }
-        .article-subtitle { font-size: 16px; color: var(--accent-color); margin-bottom: 30px; font-weight: 500; }
-        .article-image { width: 100%; border-radius: 12px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.1); object-fit: cover; max-height: 500px; }
-        .article-content p { font-size: 17px; line-height: 1.6; margin-bottom: 20px; color: #ddd; text-align: left; }
+        /* MAKALELER */
+        .article-container { max-width: 900px; margin: 40px auto; background-color: transparent; padding: 0; position: relative; }
+        .back-btn { background: transparent; color: var(--text-muted); border: none; cursor: pointer; font-size: 14px; margin-bottom: 30px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .back-btn:hover { color: white; transform: translateX(-5px); }
+        .article-title { font-size: 40px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; }
+        .article-subtitle { font-size: 18px; color: var(--text-muted); margin-bottom: 40px; font-weight: 400; line-height: 1.5; }
+        .article-image { width: 100%; border-radius: 16px; margin-bottom: 40px; object-fit: cover; max-height: 500px; border: 1px solid var(--border-light); }
+        .article-content p { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #ccc; }
 
-        /* SİNEMA REKLAMI (FOOTER) - KUSURSUZ İNGİLİZCE VE TÜRKÇE */
-        footer { background-color: var(--theme-black); padding: 35px 40px; margin-top: auto; text-align: center; border-top: 4px solid var(--theme-red); position: relative; z-index: 10; }
-        .movie-promo { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: 1.5px; text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.8); }
+        /* FOOTER & YENİ VİDEOLU SPONSORLAR & AVENGERS REKLAMI */
+        footer { background-color: var(--theme-black); padding: 50px 40px 30px; margin-top: auto; border-top: 1px solid var(--border-light); position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        
+        /* Videolu Sponsor Alanı */
+        .video-sponsors-container { width: 100%; max-width: 1200px; text-align: center; }
+        .sponsors-title { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; font-weight: bold; }
+        .video-sponsors-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .sponsor-video { width: 220px; height: 120px; border-radius: 8px; object-fit: cover; filter: grayscale(100%) opacity(0.6); transition: 0.4s; border: 1px solid transparent; }
+        .sponsor-video:hover { filter: grayscale(0%) opacity(1); border-color: rgba(255,255,255,0.2); transform: scale(1.05); }
+
+        .movie-promo { font-size: 28px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; max-width: 800px; }
+        .movie-promo span { color: #00cc66; } /* Doomsday Vurgusu */
     </style>
 </head>
 <body>
 
-    <!-- ÖRÜMCEK AĞI, MASKE VE ÖRÜMCEKLER (TEMA) -->
-    <div class="web-corner web-top-left"></div>
-    <div class="web-corner web-top-right"></div>
-    
-    <img src="image_712011.png" class="spidey-mask" alt="Spider Mask">
-    <img src="image_711d11.png" class="spidey-spider spider-1" alt="Spider">
-    <img src="image_711d11.png" class="spidey-spider spider-2" alt="Spider">
-
     <header>
         <a class="logo" onclick="switchPage('home')">
+            <!-- Logonun modern, sade hali -->
             <img src="image1.webp" alt="UCC 27 Logo" onerror="this.onerror=null; this.src='image1.png';">
         </a>
         <nav>
@@ -206,18 +189,14 @@
             <a id="nav-news" onclick="switchPage('news')" data-i18n="news">News</a>
         </nav>
         <div class="header-right">
-            <!-- TEMA BUTONU -->
-            <button class="theme-btn" onclick="toggleTheme()">
-                <span data-i18n="themeBtn">🕸️ Theme</span>
-            </button>
             <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
-                <option value="en">English (EN)</option>
-                <option value="tr">Türkçe (TR)</option>
-                <option value="es">Español (ES)</option>
-                <option value="fr">Français (FR)</option>
-                <option value="de">Deutsch (DE)</option>
-                <option value="it">Italiano (IT)</option>
-                <option value="pt">Português (PT)</option>
+                <option value="en">EN</option>
+                <option value="tr" selected>TR</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+                <option value="de">DE</option>
+                <option value="it">IT</option>
+                <option value="pt">PT</option>
             </select>
         </div>
     </header>
@@ -225,26 +204,25 @@
     <div class="page-content">
         <!-- 1. ANA SAYFA -->
         <div id="view-home" class="page-view active-page">
-            
             <div class="scoreboard-wrapper">
                 <div class="scoreboard-section" id="home-ticker">
                 </div>
             </div>
 
             <main class="main-content">
-                <!-- MÜZİK ÇALAR (SADE & MİNİMAL) -->
+                <!-- MİNİMALİST MÜZİK ÇALAR -->
                 <div class="music-player-container">
                     <div class="song-title">UCC 27 Official Anthem</div>
-                    <div class="artist-name">UEFA Music - The Champions</div>
+                    <div class="artist-name">UEFA Music</div>
                     <div class="player-controls">
-                        <button class="control-btn" onclick="seekMusic(-10)" title="Geri Sar (10sn)">⏮</button>
+                        <button class="control-btn" onclick="seekMusic(-10)">⏮</button>
                         <button class="play-btn" id="play-pause-btn" onclick="togglePlayMusic()">▶</button>
-                        <button class="control-btn" onclick="seekMusic(10)" title="İleri Sar (10sn)">⏭</button>
+                        <button class="control-btn" onclick="seekMusic(10)">⏭</button>
                     </div>
                     <div id="youtube-audio-player" style="display:none; position:absolute; width:0; height:0;"></div>
                 </div>
 
-                <!-- MANŞETLER YENİLENDİ -->
+                <!-- MANŞETLER (SADE) -->
                 <div class="headlines-section">
                     <h2 class="headlines-title" data-i18n="latestNews">Latest News</h2>
                     <div class="headline-item" onclick="openArticle('launch')">
@@ -276,12 +254,11 @@
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
                 <div class="fixtures-header-controls">
-                    <span style="font-size: 18px; font-weight: bold;" data-i18n="filterGroup">Filter by Group:</span>
                     <select id="fixture-group-select" class="group-select-dropdown" onchange="renderFixtures(this.value)">
                     </select>
                 </div>
                 <div id="fixtures-container">
-                    <p id="fixtures-loading-text" style="color: var(--accent-color); text-align: center; padding: 50px;" data-i18n="loading">Fikstür yükleniyor...</p>
+                    <p id="fixtures-loading-text" style="color: var(--text-muted); text-align: center; padding: 50px;" data-i18n="loading">Fikstür yükleniyor...</p>
                 </div>
             </div>
         </div>
@@ -294,7 +271,7 @@
             </div>
         </div>
 
-        <!-- YENİ: NEWS HUB (Haberler Listesi) -->
+        <!-- HABER HUB (NEWS) -->
         <div id="view-news" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="news">News</h1>
@@ -324,10 +301,10 @@
             </div>
         </div>
 
-        <!-- YENİ: TEKİL MAKALE OKUMA SAYFASI (Dinamik) -->
+        <!-- TEKİL MAKALE -->
         <div id="view-article" class="page-view">
             <div class="article-container">
-                <button class="back-btn" onclick="switchPage('news')" data-i18n="goBack">← Back to News</button>
+                <button class="back-btn" onclick="switchPage('news')" data-i18n="goBack">← Back</button>
                 <h1 class="article-title" id="dyn-art-title">Title</h1>
                 <h3 class="article-subtitle" id="dyn-art-sub">Subtitle</h3>
                 <img src="" class="article-image" id="dyn-art-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=1000&auto=format&fit=crop';">
@@ -339,9 +316,18 @@
         </div>
     </div>
 
-    <!-- SİNEMA REKLAMI (FOOTER) - KUSURSUZ İNGİLİZCE VE TÜRKÇE YAZIMIYLA -->
+    <!-- YENİ VİDEOLU SPONSORLAR VE AVENGERS REKLAMI -->
     <footer>
-        <div class="movie-promo" data-i18n="moviePromo">AVENGERS: DOOMSDAY — IN THEATERS ON DECEMBER 18</div>
+        <div class="video-sponsors-container">
+            <div class="sponsors-title" data-i18n="sponsorsTitle">Official Sponsors</div>
+            <div class="video-sponsors-grid">
+                <!-- Şimdilik estetik soyut videolar yer tutucu olarak eklendi. Kendi video linklerinle değiştirebilirsin -->
+                <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video>
+                <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
+                <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
+            </div>
+        </div>
+        <div class="movie-promo" data-i18n="moviePromo">AVENGERS: DOOMSDAY — NOW EXCLUSIVELY IN THEATERS!</div>
     </footer>
 
     <script>
@@ -354,26 +340,24 @@
 
         const translations = {
             en: { 
-                home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", goBack: "← Back to News", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", latestNews: "Latest News", groupWord: "Group", vs: "v",
-                moviePromo: "SPIDER-MAN: BRAND NEW DAY — NOW EXCLUSIVELY IN THEATERS!",
-                themeBtn: "🕸️ Theme",
+                home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", goBack: "← Back", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", latestNews: "Latest News", groupWord: "Group", vs: "v", sponsorsTitle: "Official Partners",
+                moviePromo: "AVENGERS: DOOMSDAY — NOW EXCLUSIVELY IN THEATERS!",
                 news1: "UCC 27 Platform Officially Launched!", launchSub: "A new era begins for the ultimate club championship.", launchP1: "The official UCC 27 platform is now live! Fans from all around the world can track their favorite teams, follow live match scores, and dive into exclusive tournament statistics.", launchP2: "Prepare yourself for a highly competitive season as 32 teams battle for glory.",
                 news2: "Groups and Fixtures Have Been Announced", groupsSub: "The wait is over. All 32 groups have been finalized.", groupsP1: "The official group assignments and full 6-week match fixtures have been announced. Intense matchups are expected in the 'groups of death'.", groupsP2: "Check the 'Matches' tab to see when your favorite team is playing.",
                 news3: "Play-off Draw Event Details in Madrid", drawSub: "All the details and procedures for the upcoming knockout phase draw.", drawP1: "The highly anticipated UCC 27 draw will take place in Madrid. Teams that have fought hard during the group stages will finally discover their opponents for the knockout phase.", drawP2: "Seedings will be determined based on group placements, ensuring a fair and competitive structure for the ultimate journey to the grand final."
             },
             tr: { 
-                home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", goBack: "← Haberlere Dön", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", latestNews: "Son Haberler", groupWord: "Grup", vs: "v",
-                moviePromo: "SPIDER-MAN: BRAND NEW DAY — ŞİMDİ SADECE SİNEMALARDA!",
-                themeBtn: "🕸️ Tema",
+                home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", goBack: "← Geri Dön", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", latestNews: "Son Haberler", groupWord: "Grup", vs: "v", sponsorsTitle: "Resmi Sponsorlar",
+                moviePromo: "AVENGERS: DOOMSDAY — YAKINDA SİNEMALARDA!",
                 news1: "UCC 27 Sitesi Kullanıma Açıldı!", launchSub: "Klüpler şampiyonası için yeni bir dönem başlıyor.", launchP1: "Resmi UCC 27 platformu artık yayında! Dünyanın dört bir yanından taraftarlar favori takımlarını takip edebilir, canlı skorlara ulaşabilir ve özel turnuva istatistiklerini inceleyebilir.", launchP2: "32 takımın zafere giden yoldaki kıyasıya mücadelesine hazır olun.",
                 news2: "Gruplar ve Maçlar Belli Oldu", groupsSub: "Bekleyiş sona erdi. Tüm 32 grup kesinleşti.", groupsP1: "Resmi grup kuraları ve tam 6 haftalık maç fikstürü açıklandı. Ölüm gruplarında nefes kesen maçlar bekleniyor.", groupsP2: "Favori takımınızın ne zaman oynayacağını görmek için 'Maçlar' sekmesine göz atın.",
                 news3: "Kura Çekimi Etkinlik Detayları Madrid'de", drawSub: "Yaklaşan eleme aşaması kura çekimi için tüm detaylar ve prosedürler.", drawP1: "Büyük merakla beklenen UCC 27 kura çekimi Madrid'de gerçekleşecek. Grup aşamalarında kıyasıya mücadele eden takımlar nihayet eleme aşamasındaki rakiplerini öğrenecek.", drawP2: "Seri başları grup sıralamalarına göre belirlenecek ve büyük finale giden nihai yolculuk için adil ve rekabetçi yapı sağlanacak."
             },
-            es: { home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", teams: "Equipos", news: "Noticias", goBack: "← Volver", partTeams: "Equipos Participantes", loading: "Cargando...", filterGroup: "Seleccionar Grupo:", latestNews: "Últimas Noticias", groupWord: "Grupo", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — ¡EXCLUSIVAMENTE EN CINES!", themeBtn: "🕸️ Tema", news1: "¡Plataforma UCC 27 Lanzada!", launchSub: "Comienza una nueva era.", launchP1: "¡La plataforma ya está activa!", launchP2: "Prepárate para la temporada.", news2: "Grupos y Partidos Anunciados", groupsSub: "La espera ha terminado.", groupsP1: "Los grupos oficiales han sido anunciados.", groupsP2: "Revisa la pestaña de Partidos.", news3: "Detalles del Sorteo en Madrid", drawSub: "Procedimientos del sorteo.", drawP1: "El sorteo se realizará en Madrid.", drawP2: "Los cabezas de serie están listos." },
-            fr: { home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", teams: "Équipes", news: "Actualités", goBack: "← Retour", partTeams: "Équipes Participantes", loading: "Chargement...", filterGroup: "Sélectionner Groupe:", latestNews: "Dernières Nouvelles", groupWord: "Groupe", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — ACTUELLEMENT AU CINÉMA !", themeBtn: "🕸️ Thème", news1: "Plateforme UCC 27 Lancée !", launchSub: "Une nouvelle ère commence.", launchP1: "La plateforme est en ligne !", launchP2: "Préparez-vous.", news2: "Groupes et Matchs Annoncés", groupsSub: "L'attente est terminée.", groupsP1: "Les groupes officiels sont annoncés.", groupsP2: "Vérifiez les matchs.", news3: "Détails du Tirage à Madrid", drawSub: "Procédures du tirage.", drawP1: "Le tirage aura lieu à Madrid.", drawP2: "Les équipes sont prêtes." },
-            de: { home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosung", teams: "Teams", news: "News", goBack: "← Zurück", partTeams: "Teilnehmende Teams", loading: "Laden...", filterGroup: "Gruppe wählen:", latestNews: "Neueste Nachrichten", groupWord: "Gruppe", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — JETZT EXKLUSIV IM KINO!", themeBtn: "🕸️ Design", news1: "UCC 27 Plattform gestartet!", launchSub: "Eine neue Ära beginnt.", launchP1: "Plattform ist online!", launchP2: "Mach dich bereit.", news2: "Gruppen und Spiele veröffentlicht", groupsSub: "Das Warten hat ein Ende.", groupsP1: "Die Gruppen sind offiziell.", groupsP2: "Sieh dir die Spiele an.", news3: "Details zur Auslosung in Madrid", drawSub: "Details zur Auslosung.", drawP1: "Die Auslosung ist in Madrid.", drawP2: "Teams sind bereit." },
-            it: { home: "Home", groupsNav: "Gironi", groupsTitle: "Gironi", matches: "Partite", draws: "Sorteggi", teams: "Squadre", news: "Notizie", goBack: "← Indietro", partTeams: "Squadre Partecipanti", loading: "Caricamento...", filterGroup: "Seleziona Gruppo:", latestNews: "Ultime Notizie", groupWord: "Gruppo", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — ORA AL CINEMA!", themeBtn: "🕸️ Tema", news1: "Piattaforma UCC 27 Lanciata!", launchSub: "Inizia una nuova era.", launchP1: "Piattaforma online!", launchP2: "Preparati.", news2: "Gironi e Partite Annunciati", groupsSub: "L'attesa è finita.", groupsP1: "I gironi sono ufficiali.", groupsP2: "Controlla le partite.", news3: "Dettagli del Sorteggio a Madrid", drawSub: "Dettagli del sorteggio.", drawP1: "Il sorteggio è a Madrid.", drawP2: "Squadre pronte." },
-            pt: { home: "Início", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Jogos", draws: "Sorteios", teams: "Equipas", news: "Notícias", goBack: "← Voltar", partTeams: "Equipas Participantes", loading: "Carregando...", filterGroup: "Selecionar Grupo:", latestNews: "Últimas Notícias", groupWord: "Grupo", vs: "v", moviePromo: "SPIDER-MAN: BRAND NEW DAY — EXCLUSIVAMENTE NOS CINEMAS!", themeBtn: "🕸️ Tema", news1: "Plataforma UCC 27 Lançada!", launchSub: "Uma nova era.", launchP1: "Plataforma online!", launchP2: "Prepare-se.", news2: "Grupos e Jogos Anunciados", groupsSub: "A espera acabou.", groupsP1: "Os grupos são oficiais.", groupsP2: "Veja os jogos.", news3: "Detalhes do Sorteio em Madrid", drawSub: "Detalhes do sorteio.", drawP1: "O sorteio é em Madrid.", drawP2: "Equipas prontas." }
+            es: { home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", teams: "Equipos", news: "Noticias", goBack: "← Volver", partTeams: "Equipos Participantes", loading: "Cargando...", filterGroup: "Seleccionar Grupo:", latestNews: "Últimas Noticias", groupWord: "Grupo", vs: "v", sponsorsTitle: "Patrocinadores Oficiales", moviePromo: "AVENGERS: DOOMSDAY — ¡PRÓXIMAMENTE EN CINES!", news1: "¡Plataforma UCC 27 Lanzada!", launchSub: "Comienza una nueva era.", launchP1: "¡La plataforma ya está activa!", launchP2: "Prepárate para la temporada.", news2: "Grupos y Partidos Anunciados", groupsSub: "La espera ha terminado.", groupsP1: "Los grupos oficiales han sido anunciados.", groupsP2: "Revisa la pestaña de Partidos.", news3: "Detalles del Sorteo en Madrid", drawSub: "Procedimientos del sorteo.", drawP1: "El sorteo se realizará en Madrid.", drawP2: "Los cabezas de serie están listos." },
+            fr: { home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", teams: "Équipes", news: "Actualités", goBack: "← Retour", partTeams: "Équipes Participantes", loading: "Chargement...", filterGroup: "Sélectionner Groupe:", latestNews: "Dernières Nouvelles", groupWord: "Groupe", vs: "v", sponsorsTitle: "Partenaires Officiels", moviePromo: "AVENGERS: DOOMSDAY — BIENTÔT AU CINÉMA !", news1: "Plateforme UCC 27 Lancée !", launchSub: "Une nouvelle ère commence.", launchP1: "La plateforme est en ligne !", launchP2: "Préparez-vous.", news2: "Groupes et Matchs Annoncés", groupsSub: "L'attente est terminée.", groupsP1: "Les groupes officiels sont annoncés.", groupsP2: "Vérifiez les matchs.", news3: "Détails du Tirage à Madrid", drawSub: "Procédures du tirage.", drawP1: "Le tirage aura lieu à Madrid.", drawP2: "Les équipes sont prêtes." },
+            de: { home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosung", teams: "Teams", news: "News", goBack: "← Zurück", partTeams: "Teilnehmende Teams", loading: "Laden...", filterGroup: "Gruppe wählen:", latestNews: "Neueste Nachrichten", groupWord: "Gruppe", vs: "v", sponsorsTitle: "Offizielle Sponsoren", moviePromo: "AVENGERS: DOOMSDAY — DEMNÄCHST IM KINO!", news1: "UCC 27 Plattform gestartet!", launchSub: "Eine neue Ära beginnt.", launchP1: "Plattform ist online!", launchP2: "Mach dich bereit.", news2: "Gruppen und Spiele veröffentlicht", groupsSub: "Das Warten hat ein Ende.", groupsP1: "Die Gruppen sind offiziell.", groupsP2: "Sieh dir die Spiele an.", news3: "Details zur Auslosung in Madrid", drawSub: "Details zur Auslosung.", drawP1: "Die Auslosung ist in Madrid.", drawP2: "Teams sind bereit." },
+            it: { home: "Home", groupsNav: "Gironi", groupsTitle: "Gironi", matches: "Partite", draws: "Sorteggi", teams: "Squadre", news: "Notizie", goBack: "← Indietro", partTeams: "Squadre Partecipanti", loading: "Caricamento...", filterGroup: "Seleziona Gruppo:", latestNews: "Ultime Notizie", groupWord: "Gruppo", vs: "v", sponsorsTitle: "Sponsor Ufficiali", moviePromo: "AVENGERS: DOOMSDAY — PRESTO AL CINEMA!", news1: "Piattaforma UCC 27 Lanciata!", launchSub: "Inizia una nuova era.", launchP1: "Piattaforma online!", launchP2: "Preparati.", news2: "Gironi e Partite Annunciati", groupsSub: "L'attesa è finita.", groupsP1: "I gironi sono ufficiali.", groupsP2: "Controlla le partite.", news3: "Dettagli del Sorteggio a Madrid", drawSub: "Dettagli del sorteggio.", drawP1: "Il sorteggio è a Madrid.", drawP2: "Squadre pronte." },
+            pt: { home: "Início", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Jogos", draws: "Sorteios", teams: "Equipas", news: "Notícias", goBack: "← Voltar", partTeams: "Equipas Participantes", loading: "Carregando...", filterGroup: "Selecionar Grupo:", latestNews: "Últimas Notícias", groupWord: "Grupo", vs: "v", sponsorsTitle: "Patrocinadores Oficiais", moviePromo: "AVENGERS: DOOMSDAY — EM BREVE NOS CINEMAS!", news1: "Plataforma UCC 27 Lançada!", launchSub: "Uma nova era.", launchP1: "Plataforma online!", launchP2: "Prepare-se.", news2: "Grupos e Jogos Anunciados", groupsSub: "A espera acabou.", groupsP1: "Os grupos são oficiais.", groupsP2: "Veja os jogos.", news3: "Detalhes do Sorteio em Madrid", drawSub: "Detalhes do sorteio.", drawP1: "O sorteio é em Madrid.", drawP2: "Equipas prontas." }
         };
 
         const monthTranslations = {
@@ -386,10 +370,6 @@
             'groups': { img: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1000&auto=format&fit=crop', tKey: 'news2', sKey: 'groupsSub', p1Key: 'groupsP1', p2Key: 'groupsP2' },
             'draw': { img: 'image2.webp', tKey: 'news3', sKey: 'drawSub', p1Key: 'drawP1', p2Key: 'drawP2' }
         };
-
-        function toggleTheme() {
-            document.body.classList.toggle('spidey-theme');
-        }
 
         function formatTeamName(name) {
             if(!name) return "";
@@ -684,11 +664,11 @@
                     <div style="font-size:11px; color:var(--text-muted); margin-bottom:5px;">${mDate} - ${mTime}</div>
                     <div class="team-row">
                         <span style="display:flex;align-items:center;gap:8px;"><img src="${evLogo}" width="18" height="18" style="object-fit:contain;">${evName}</span>
-                        <span style="font-weight:bold; color:var(--accent-color);">${(durum !== "Oynanmadı" && evSkor !== "") ? evSkor : ''}</span>
+                        <span style="font-weight:bold; color:var(--text-main);">${(durum !== "Oynanmadı" && evSkor !== "") ? evSkor : ''}</span>
                     </div>
                     <div class="team-row" style="margin-top:5px;">
                         <span style="display:flex;align-items:center;gap:8px;"><img src="${depLogo}" width="18" height="18" style="object-fit:contain;">${depName}</span>
-                        <span style="font-weight:bold; color:var(--accent-color);">${(durum !== "Oynanmadı" && depSkor !== "") ? depSkor : ''}</span>
+                        <span style="font-weight:bold; color:var(--text-main);">${(durum !== "Oynanmadı" && depSkor !== "") ? depSkor : ''}</span>
                     </div>
                 </div>`;
             });
