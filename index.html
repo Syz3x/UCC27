@@ -217,14 +217,14 @@
         .article-image { width: 100%; border-radius: 16px; margin-bottom: 40px; object-fit: cover; max-height: 500px; border: 1px solid var(--border-light); }
         .article-content p { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #ccc; }
 
-        /* 6x2 VİDEO SPONSOR ALANI (IZGARA DÜZENİ) */
+        /* YOUTUBE SPONSOR KUTUCUKLARI (6x2) */
         footer { background-color: var(--theme-black); padding: 50px 40px 30px; margin-top: auto; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; gap: 40px; position: relative; z-index: 10; }
-        .video-sponsors-container { width: 100%; max-width: 1200px; text-align: center; }
+        .video-sponsors-container { width: 100%; max-width: 1400px; text-align: center; }
         .sponsors-title { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; font-weight: bold; }
         
         .video-sponsors-grid { 
             display: grid; 
-            grid-template-columns: repeat(6, 1fr); /* TAM 6 ÜST, 6 ALT DÜZENİ */
+            grid-template-columns: repeat(6, 1fr); 
             gap: 20px; 
             justify-content: center;
         }
@@ -233,8 +233,31 @@
         @media (max-width: 480px) { .video-sponsors-grid { grid-template-columns: repeat(2, 1fr); } }
 
         .sponsor-box { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; }
-        .sponsor-video { width: 100%; height: 90px; border-radius: 8px; object-fit: cover; filter: grayscale(100%) opacity(0.5); transition: 0.4s; border: 1px solid var(--border-light); background: #000; }
-        .sponsor-box:hover .sponsor-video { filter: grayscale(0%) opacity(1); border-color: rgba(255,255,255,0.3); transform: scale(1.05); }
+        
+        /* YouTube Videosunu Kutucuğa Tam Oturtmak İçin Özel Wrapper (Taşmaları Gizler) */
+        .sponsor-iframe-container { 
+            width: 100%; 
+            height: 90px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            position: relative; 
+            filter: grayscale(100%) opacity(0.5); 
+            transition: 0.4s; 
+            border: 1px solid var(--border-light); 
+            background: #000; 
+            pointer-events: none; /* Tıklanıp Youtube'a gitmesini engeller */
+        }
+        .sponsor-box:hover .sponsor-iframe-container { filter: grayscale(0%) opacity(1); border-color: rgba(255,255,255,0.3); transform: scale(1.05); }
+        .sponsor-iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 180%; /* Logoları gizlemek için videoyu büyütüp kırpıyoruz */
+            height: 250%;
+            transform: translate(-50%, -50%);
+            border: none;
+        }
+
         .sponsor-name { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-align: center; }
         .sponsor-box:hover .sponsor-name { color: white; }
 
@@ -344,7 +367,7 @@
             </main>
         </div>
 
-        <!-- GRUPLAR VE EFSANE -->
+        <!-- GRUPLAR -->
         <div id="view-groups" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="groupsTitle">Groups</h1>
@@ -357,7 +380,7 @@
             </div>
         </div>
 
-        <!-- MAÇLAR (TARİHE GÖRE SEÇİM) -->
+        <!-- MAÇLAR -->
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
@@ -373,7 +396,7 @@
             </div>
         </div>
 
-        <!-- İSTATİSTİKLER (TAKIM VE OYUNCU) -->
+        <!-- İSTATİSTİKLER -->
         <div id="view-stats" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="stats">Stats</h1>
@@ -383,7 +406,7 @@
                     <button class="stats-tab-btn" onclick="switchStatsTab('team')" id="tab-btn-team" data-i18n="teamStats">Team Stats</button>
                 </div>
 
-                <!-- OYUNCU İSTATİSTİKLERİ -->
+                <!-- OYUNCU -->
                 <div id="stats-player" class="stats-section active">
                     <div class="stats-grid">
                         <div class="stat-box">
@@ -413,7 +436,7 @@
                     </div>
                 </div>
 
-                <!-- TAKIM İSTATİSTİKLERİ -->
+                <!-- TAKIM -->
                 <div id="stats-team" class="stats-section">
                     <div class="stats-grid">
                         <div class="stat-box">
@@ -438,7 +461,7 @@
                         </div>
                     </div>
                 </div>
-                <p style="text-align: center; color: var(--text-muted); margin-top: 30px; font-size: 14px;" data-i18n="statsNote">* İstatistikler Puan Tablosu ve Sheets verilerinden otomatik/manuel güncellenir.</p>
+                <p style="text-align: center; color: var(--text-muted); margin-top: 30px; font-size: 14px;" data-i18n="statsNote">* İstatistikler Puan Tablosu ve veritabanı üzerinden güncellenir.</p>
             </div>
         </div>
 
@@ -527,86 +550,105 @@
         </div>
     </div>
 
-    <!-- 12 KUTUCUKLU VİDEO SPONSOR ALANI (6 ÜST, 6 ALT) -->
+    <!-- VİDEOLU SPONSORLAR VE AVENGERS REKLAMI -->
     <footer>
         <div class="video-sponsors-container">
             <div class="sponsors-title" data-i18n="sponsorsTitle">Official Sponsors</div>
             <div class="video-sponsors-grid">
                 
-                <!-- SPONSOR 1: COCA-COLA -->
+                <!-- COCA-COLA -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video">
-                        <!-- VİDEO EKLİYORSAN BURAYA LİNKİNİ YAPIŞTIR -->
-                        <source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4">
-                    </video>
-                    <!-- EĞER GIF (FOTO) EKLİYORSAN ÜSTTEKİ <video> ETİKETİNİ SİLİP ŞUNU YAZ: -->
-                    <!-- <img src="senin-gif-linkin.gif" class="sponsor-video"> -->
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/BkcfPYQ_35E?autoplay=1&mute=1&controls=0&loop=1&playlist=BkcfPYQ_35E&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">COCA-COLA</div>
                 </div>
 
-                <!-- SPONSOR 2: FedEx -->
+                <!-- FedEx -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/PMHSbBsIXm0?autoplay=1&mute=1&controls=0&loop=1&playlist=PMHSbBsIXm0&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">FedEx</div>
                 </div>
 
-                <!-- SPONSOR 3: Mastercard -->
+                <!-- Mastercard -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/SDm-y9d0zeE?autoplay=1&mute=1&controls=0&loop=1&playlist=SDm-y9d0zeE&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">Mastercard</div>
                 </div>
 
-                <!-- SPONSOR 4: Sony Interactive Entertainment -->
+                <!-- Sony IE (Playstation 5) -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/1BU4VXofbQk?autoplay=1&mute=1&controls=0&loop=1&playlist=1BU4VXofbQk&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">Sony IE</div>
                 </div>
 
-                <!-- SPONSOR 5: Just Eat Takeaway -->
+                <!-- Just Eat -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/Icrg31BzMTA?autoplay=1&mute=1&controls=0&loop=1&playlist=Icrg31BzMTA&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">Just Eat</div>
                 </div>
 
-                <!-- SPONSOR 6: AUDI -->
+                <!-- AUDI -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/8GElvLxSxfI?autoplay=1&mute=1&controls=0&loop=1&playlist=8GElvLxSxfI&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">AUDI</div>
                 </div>
 
-                <!-- SPONSOR 7: Turkish Airlines -->
+                <!-- Turkish Airlines -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://www.youtube.com/watch?v=NThw4kUOP4U" type="https://www.youtube.com/watch?v=NThw4kUOP4U"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/NThw4kUOP4U?autoplay=1&mute=1&controls=0&loop=1&playlist=NThw4kUOP4U&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">Turkish Airlines</div>
                 </div>
 
-                <!-- SPONSOR 8: Apple -->
+                <!-- Apple -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/1WLqGs7c_yA?autoplay=1&mute=1&controls=0&loop=1&playlist=1WLqGs7c_yA&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">Apple</div>
                 </div>
 
-                <!-- SPONSOR 9: Frito-lay (PepsiCO) -->
+                <!-- Frito-lay -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/V97vW902d3c?autoplay=1&mute=1&controls=0&loop=1&playlist=V97vW902d3c&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">Frito-lay</div>
                 </div>
 
-                <!-- SPONSOR 10: Adidas -->
+                <!-- Adidas -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/EK2qa9A1TNc?autoplay=1&mute=1&controls=0&loop=1&playlist=EK2qa9A1TNc&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">Adidas</div>
                 </div>
 
-                <!-- SPONSOR 11: Rexona -->
+                <!-- Rexona -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/vxauHCLKyFU?autoplay=1&mute=1&controls=0&loop=1&playlist=vxauHCLKyFU&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">Rexona</div>
                 </div>
 
-                <!-- SPONSOR 12: McDonald's -->
+                <!-- McDonald's -->
                 <div class="sponsor-box">
-                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-iframe-container">
+                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/O1SiLAFzRas?autoplay=1&mute=1&controls=0&loop=1&playlist=O1SiLAFzRas&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
+                    </div>
                     <div class="sponsor-name">McDonald's</div>
                 </div>
 
@@ -616,7 +658,7 @@
     </footer>
 
     <script>
-        // DEV MAÇLARI BURADAN DEĞİŞTİR (Exceldeki ingilizce formatlarıyla yazmalısın)
+        // DEV MAÇLARI BURADAN DEĞİŞTİR 
         const manualFeaturedMatches = [
             { ev: "Real Madrid", dep: "Galatasaray" },
             { ev: "Bayern Munich", dep: "Manchester City" }
@@ -957,6 +999,7 @@
                     </div>`;
                 }
             });
+
             if(html === '') { html = `<p style="color:var(--text-muted); font-size:14px;">Şu an için öne çıkan maç bulunmuyor.</p>`; }
             container.innerHTML = html;
         }
