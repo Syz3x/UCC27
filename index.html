@@ -19,7 +19,7 @@
             --glass-bg: rgba(10, 10, 10, 0.95);
         }
 
-        /* 3. MADDE: DOOMSDAY TEMASI (Göz Yormayan Zümrüt Yeşili & Altın) */
+        /* DOOMSDAY TEMASI (Göz Yormayan Zümrüt Yeşili & Altın) */
         body.theme-doomsday {
             --theme-dark: #022c22;
             --theme-black: #064e3b;
@@ -85,7 +85,7 @@
         /* ANA SAYFA İÇERİĞİ */
         .main-content { display: grid; grid-template-columns: 1fr; gap: 40px; padding: 40px; max-width: 1200px; margin: 0 auto; }
         
-        /* 1. MADDE: SAĞ ALT MİNİ MÜZİK ÇALAR (PICTURE-IN-PICTURE TARZI) */
+        /* SAĞ ALT MİNİ MÜZİK ÇALAR */
         .mini-player { position: fixed; bottom: 20px; right: 20px; width: 320px; background: rgba(20, 20, 20, 0.95); backdrop-filter: blur(10px); border: 1px solid var(--border-light); border-radius: 12px; padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; gap: 10px; z-index: 9999; transition: transform 0.3s; }
         .mini-player:hover { transform: translateY(-5px); border-color: var(--accent-color); }
         .mp-info { display: flex; flex-direction: column; }
@@ -102,7 +102,7 @@
         .section-header { font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; border-left: 4px solid var(--accent-color); padding-left: 15px; }
         .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
         .feat-match-card { background: linear-gradient(135deg, var(--theme-black), rgba(0,0,0,0.8)); border: 1px solid var(--border-light); border-radius: 12px; padding: 30px; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s; cursor: pointer; }
-        .feat-match-card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .feat-match-card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 15px 40px rgba(255, 51, 51, 0.2); }
         .feat-match-date { position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: white; padding: 4px 15px; border-radius: 0 0 8px 8px; font-size: 11px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
         .feat-team { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 40%; }
         .feat-logo { width: 80px; height: 80px; object-fit: contain; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
@@ -137,12 +137,11 @@
         .team-logo-small { width: 28px; height: 28px; margin-right: 15px; object-fit: contain; }
         .group-team-name { font-size: 14px; font-weight: 500; }
 
-        /* 5. MADDE: GRUPLAR EFSANESİ (AÇIKLAMA) */
         .groups-legend { display: flex; justify-content: center; gap: 30px; padding: 20px; background: var(--theme-black); border-radius: 8px; border: 1px solid var(--border-light); margin-bottom: 30px; }
         .legend-item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--text-muted); }
         .legend-color { width: 15px; height: 15px; border-radius: 3px; }
 
-        /* 6. MADDE: MAÇLAR (TARİHE GÖRE) */
+        /* MAÇLAR (TARİHE GÖRE) */
         .fixtures-header-controls { display: flex; justify-content: flex-start; align-items: center; margin-bottom: 40px; gap: 20px;}
         .group-select-dropdown { padding: 12px 25px; font-size: 15px; font-weight: 600; background: var(--theme-black); color: white; border: 1px solid var(--border-light); border-radius: 8px; cursor: pointer; outline: none; min-width: 250px;}
         .matchday-container { margin-bottom: 50px; }
@@ -168,15 +167,14 @@
         .team-logo-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .team-name { font-size: 14px; font-weight: 700; color: #fff; position: relative; z-index: 2; letter-spacing: 0.5px; }
 
-        /* 7. MADDE: İSTATİSTİKLER (TAKIM VE OYUNCU) */
+        /* İSTATİSTİKLER */
         .stats-tabs { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; border-bottom: 1px solid var(--border-light); padding-bottom: 20px; }
         .stats-tab-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--border-light); padding: 12px 30px; border-radius: 30px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .stats-tab-btn:hover { color: white; border-color: var(--text-muted); }
         .stats-tab-btn.active { background: var(--accent-color); color: white; border-color: var(--accent-color); box-shadow: 0 5px 15px rgba(255,51,51,0.3); }
-        
         .stats-section { display: none; }
         .stats-section.active { display: block; animation: fadeIn 0.5s; }
-        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .stat-box { background: var(--theme-black); border-radius: 12px; border: 1px solid var(--border-light); padding: 25px; }
         .stat-box-title { font-size: 16px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; text-transform: uppercase; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; display: inline-block; }
@@ -219,15 +217,25 @@
         .article-image { width: 100%; border-radius: 16px; margin-bottom: 40px; object-fit: cover; max-height: 500px; border: 1px solid var(--border-light); }
         .article-content p { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #ccc; }
 
-        /* 2. MADDE: 12 KUTUCUKLU VİDEO SPONSOR ALANI */
-        footer { background-color: var(--theme-black); padding: 50px 40px 30px; margin-top: auto; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; gap: 40px; }
-        .video-sponsors-container { width: 100%; max-width: 1400px; text-align: center; }
+        /* 6x2 VİDEO SPONSOR ALANI (IZGARA DÜZENİ) */
+        footer { background-color: var(--theme-black); padding: 50px 40px 30px; margin-top: auto; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; gap: 40px; position: relative; z-index: 10; }
+        .video-sponsors-container { width: 100%; max-width: 1200px; text-align: center; }
         .sponsors-title { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; font-weight: bold; }
-        .video-sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px; }
+        
+        .video-sponsors-grid { 
+            display: grid; 
+            grid-template-columns: repeat(6, 1fr); /* TAM 6 ÜST, 6 ALT DÜZENİ */
+            gap: 20px; 
+            justify-content: center;
+        }
+        @media (max-width: 1024px) { .video-sponsors-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 768px) { .video-sponsors-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 480px) { .video-sponsors-grid { grid-template-columns: repeat(2, 1fr); } }
+
         .sponsor-box { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; }
-        .sponsor-video { width: 100%; height: 80px; border-radius: 8px; object-fit: cover; filter: grayscale(100%) opacity(0.5); transition: 0.4s; border: 1px solid var(--border-light); background: #000; }
+        .sponsor-video { width: 100%; height: 90px; border-radius: 8px; object-fit: cover; filter: grayscale(100%) opacity(0.5); transition: 0.4s; border: 1px solid var(--border-light); background: #000; }
         .sponsor-box:hover .sponsor-video { filter: grayscale(0%) opacity(1); border-color: rgba(255,255,255,0.3); transform: scale(1.05); }
-        .sponsor-name { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .sponsor-name { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-align: center; }
         .sponsor-box:hover .sponsor-name { color: white; }
 
         .movie-promo { font-size: 28px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; max-width: 800px; transition: color 0.5s; }
@@ -236,7 +244,7 @@
 </head>
 <body>
 
-    <!-- 1. MADDE: SAĞ ALT MİNİ YOUTUBE PLAYER -->
+    <!-- SAĞ ALT MİNİ YOUTUBE PLAYER -->
     <div class="mini-player">
         <div class="mp-info">
             <div class="mp-title" id="music-title">UCC 27 Official Anthem</div>
@@ -247,7 +255,7 @@
             <button class="mp-play" id="play-pause-btn" onclick="togglePlayMusic()">▶</button>
             <button class="mp-btn" onclick="nextTrack()">⏭</button>
         </div>
-        <div class="mp-track-count" id="music-counter">1 / 3</div>
+        <div class="mp-track-count" id="music-counter">1 / 2</div>
         <div id="youtube-audio-player" style="display:none; position:absolute; width:0; height:0;"></div>
     </div>
 
@@ -266,7 +274,6 @@
             <a id="nav-news" onclick="switchPage('news')" data-i18n="news">News</a>
         </nav>
         <div class="header-right">
-            <!-- 3. MADDE: TEMA BUTONU -->
             <button class="theme-btn" onclick="cycleTheme()" id="theme-btn-text">TEMA: UCC</button>
             <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="en">EN</option>
@@ -337,13 +344,12 @@
             </main>
         </div>
 
-        <!-- GRUPLAR -->
+        <!-- GRUPLAR VE EFSANE -->
         <div id="view-groups" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="groupsTitle">Groups</h1>
                 <div id="groups-grid" class="groups-grid"><p id="groups-loading-text" data-i18n="loading">Veriler çekiliyor...</p></div>
                 
-                <!-- 5. MADDE: GRUPLAR EFSANESİ -->
                 <div class="groups-legend">
                     <div class="legend-item"><div class="legend-color" style="background:#3388ff;"></div><span data-i18n="directQual">UCC 27 Direkt Katılım</span></div>
                     <div class="legend-item"><div class="legend-color" style="background:#ff8833;"></div><span data-i18n="playoffQual">UCC 27 Play-off Turu</span></div>
@@ -351,7 +357,7 @@
             </div>
         </div>
 
-        <!-- 6. MADDE: MAÇLAR (TARİHE GÖRE SEÇİM) -->
+        <!-- MAÇLAR (TARİHE GÖRE SEÇİM) -->
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
@@ -367,7 +373,7 @@
             </div>
         </div>
 
-        <!-- 7. MADDE: İSTATİSTİKLER (TAKIM VE OYUNCU) -->
+        <!-- İSTATİSTİKLER (TAKIM VE OYUNCU) -->
         <div id="view-stats" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="stats">Stats</h1>
@@ -521,32 +527,96 @@
         </div>
     </div>
 
-    <!-- 2. MADDE: 12 KUTUCUKLU VİDEO SPONSOR ALANI -->
+    <!-- 12 KUTUCUKLU VİDEO SPONSOR ALANI (6 ÜST, 6 ALT) -->
     <footer>
         <div class="video-sponsors-container">
             <div class="sponsors-title" data-i18n="sponsorsTitle">Official Sponsors</div>
             <div class="video-sponsors-grid">
-                <!-- Buradaki video src kısımlarına istediğin gif veya kısa video linklerini ekleyebilirsin -->
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">COCA-COLA</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">FedEx</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">Mastercard</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">Sony IE</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">Just Eat</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">AUDI</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">Turkish Airlines</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">Apple</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">Frito-lay</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">Adidas</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">Rexona</div></div>
-                <div class="sponsor-box"><video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video><div class="sponsor-name">McDonald's</div></div>
+                
+                <!-- SPONSOR 1: COCA-COLA -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video">
+                        <!-- VİDEO EKLİYORSAN BURAYA LİNKİNİ YAPIŞTIR -->
+                        <source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4">
+                    </video>
+                    <!-- EĞER GIF (FOTO) EKLİYORSAN ÜSTTEKİ <video> ETİKETİNİ SİLİP ŞUNU YAZ: -->
+                    <!-- <img src="senin-gif-linkin.gif" class="sponsor-video"> -->
+                    <div class="sponsor-name">COCA-COLA</div>
+                </div>
+
+                <!-- SPONSOR 2: FedEx -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">FedEx</div>
+                </div>
+
+                <!-- SPONSOR 3: Mastercard -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">Mastercard</div>
+                </div>
+
+                <!-- SPONSOR 4: Sony Interactive Entertainment -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">Sony IE</div>
+                </div>
+
+                <!-- SPONSOR 5: Just Eat Takeaway -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">Just Eat</div>
+                </div>
+
+                <!-- SPONSOR 6: AUDI -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">AUDI</div>
+                </div>
+
+                <!-- SPONSOR 7: Turkish Airlines -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://www.youtube.com/watch?v=NThw4kUOP4U" type="video/mp4"></video>
+                    <div class="sponsor-name">Turkish Airlines</div>
+                </div>
+
+                <!-- SPONSOR 8: Apple -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">Apple</div>
+                </div>
+
+                <!-- SPONSOR 9: Frito-lay (PepsiCO) -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">Frito-lay</div>
+                </div>
+
+                <!-- SPONSOR 10: Adidas -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">Adidas</div>
+                </div>
+
+                <!-- SPONSOR 11: Rexona -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">Rexona</div>
+                </div>
+
+                <!-- SPONSOR 12: McDonald's -->
+                <div class="sponsor-box">
+                    <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
+                    <div class="sponsor-name">McDonald's</div>
+                </div>
+
             </div>
         </div>
         <div class="movie-promo" id="movie-promo-text" data-i18n="moviePromo"><span>AVENGERS: DOOMSDAY</span> — NOW EXCLUSIVELY IN THEATERS!</div>
     </footer>
 
     <script>
-        // 4. MADDE: KULLANICININ MANUEL SEÇTİĞİ HAFTANIN DEV MAÇLARI
-        // Buraya istediğin takımları yaz, ana sayfada onlar çıksın! (İngilizce formatla yaz)
+        // DEV MAÇLARI BURADAN DEĞİŞTİR (Exceldeki ingilizce formatlarıyla yazmalısın)
         const manualFeaturedMatches = [
             { ev: "Real Madrid", dep: "Galatasaray" },
             { ev: "Bayern Munich", dep: "Manchester City" }
@@ -558,7 +628,7 @@
         let matchesLoaded = false;
         let teamLogos = {}; 
         let allMatches = []; 
-        let uniqueDates = []; // Fikstür tarihleri için
+        let uniqueDates = []; 
 
         const translations = {
             en: { 
@@ -601,7 +671,6 @@
             'draw': { img: 'image2.webp', tKey: 'news3', sKey: 'drawSub', p1Key: 'drawP1', p2Key: 'drawP2' }
         };
 
-        // 3. MADDE: TEMALAR (SADECE KLASİK VE DOOMSDAY)
         const themes = ['default', 'doomsday'];
         let currentThemeIndex = 0;
         function cycleTheme() {
@@ -614,7 +683,6 @@
             if(t === 'doomsday') btn.innerHTML = "TEMA: DOOMSDAY";
         }
 
-        // 7. MADDE: İSTATİSTİKLER SEKME DEĞİŞTİRİCİ
         function switchStatsTab(tab) {
             document.querySelectorAll('.stats-tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.stats-section').forEach(s => s.classList.remove('active'));
@@ -719,7 +787,7 @@
             });
             if(document.getElementById('view-article').classList.contains('active-page')) { openArticle(currentArticleId); }
             if(matchesLoaded) { 
-                populateDateDropdown(); // 6. Madde
+                populateDateDropdown(); 
                 renderFixturesByDate(document.getElementById('fixture-date-select').value); 
                 renderTicker(); 
                 renderFeaturedMatches();
@@ -787,18 +855,16 @@
                 allMatches = await response.json();
                 matchesLoaded = true;
                 
-                // Benzersiz tarihleri çıkar ve sırala
                 uniqueDates = [...new Set(allMatches.map(m => m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]]))].filter(d => d);
                 uniqueDates.sort((a,b) => parseMatchDate(a, "00:00") - parseMatchDate(b, "00:00"));
 
                 populateDateDropdown();
-                renderFixturesByDate(uniqueDates[0]); // İlk günü göster
+                renderFixturesByDate(uniqueDates[0]); 
                 renderTicker();
                 renderFeaturedMatches(); 
             } catch (error) { console.error('Fikstür çekilirken hata:', error); }
         }
 
-        // 6. MADDE: MAÇKOLİK TARZI TARİHE GÖRE SEÇİM VE GRUP GRUP AYIRMA
         function populateDateDropdown() {
             const selectEl = document.getElementById('fixture-date-select');
             const currentLang = document.getElementById('lang-selector').value;
@@ -815,18 +881,14 @@
             const currentLang = document.getElementById('lang-selector').value;
             const vsText = translations[currentLang] && translations[currentLang].vs ? translations[currentLang].vs : "v";
             
-            // Sadece o günün maçlarını filtrele
             const dayMatches = allMatches.filter(m => m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]] === selectedDateRaw);
-            
             if(dayMatches.length === 0) { container.innerHTML = `<p style="text-align:center; padding:30px;">Bu tarihte maç bulunmuyor.</p>`; return; }
 
-            // O günün maçlarını "Grup" bazında ayır
             const matchesByGroup = {};
             dayMatches.forEach(m => {
                 const keys = Object.keys(m);
-                const grup = m[keys[0]]; // Grup adı 1. sütunda
+                const grup = m[keys[0]]; 
                 if(!matchesByGroup[grup]) matchesByGroup[grup] = [];
-                
                 matchesByGroup[grup].push({
                     saat: m[keys.find(k => k.includes('Saat')) || keys[3]],
                     ev: m[keys.find(k => k.includes('Ev S')) || keys[4]] || "",
@@ -837,11 +899,9 @@
                 });
             });
 
-            // Saatlere göre sırala ve HTML'e dök
             let html = '';
             for (const [grupAdi, grupMaclari] of Object.entries(matchesByGroup)) {
                 grupMaclari.sort((a,b) => parseMatchDate("01 Ocak 2026", a.saat) - parseMatchDate("01 Ocak 2026", b.saat));
-                
                 html += `<div class="matchday-container"><div class="matchday-title">${grupAdi}</div>`;
                 grupMaclari.forEach(m => {
                     const evName = getProperName(m.ev); const depName = getProperName(m.dep);
@@ -864,7 +924,6 @@
             container.innerHTML = html;
         }
 
-        // 4. MADDE: MANUEL DEV MAÇLARI EKRANA BAS
         function renderFeaturedMatches() {
             const container = document.getElementById('featured-matches-container');
             if(!container || !matchesLoaded) return;
@@ -873,7 +932,6 @@
 
             let html = '';
             manualFeaturedMatches.forEach(fm => {
-                // allMatches içinden bu eşleşmeyi bul
                 let matchData = allMatches.find(m => {
                     const keys = Object.keys(m);
                     const e = m[keys.find(k => k.includes('Ev S')) || keys[4]] || "";
@@ -899,7 +957,6 @@
                     </div>`;
                 }
             });
-
             if(html === '') { html = `<p style="color:var(--text-muted); font-size:14px;">Şu an için öne çıkan maç bulunmuyor.</p>`; }
             container.innerHTML = html;
         }
@@ -942,7 +999,6 @@
             ticker.innerHTML = html;
         }
 
-        // MÜZİK PLAYER (PLAYLIST DESTEKLİ SAĞ ALT KUTUCUK)
         let player; 
         let isMusicPlaying = false;
         let currentTrackIndex = 0;
