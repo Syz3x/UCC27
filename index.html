@@ -6,6 +6,7 @@
     <title>UCC 27 - Turnuva Platformu</title>
     <script src="https://www.youtube.com/iframe_api"></script>
     <style>
+        /* VARSAYILAN UCC TEMASI (Kırmızı & Siyah) */
         :root {
             --theme-dark: #0a0a0a;
             --theme-black: #141414;
@@ -15,14 +16,30 @@
             --text-main: #f0f0f0;
             --text-muted: #888888;
             --border-light: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(10, 10, 10, 0.95);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* AVENGERS TEMASI (Gece Mavisi & Altın) */
+        body.theme-avengers {
+            --theme-dark: #0f172a;
+            --theme-black: #020617;
+            --theme-dark-red: #1e1b4b;
+            --theme-red: #b45309;
+            --accent-color: #fbbf24;
+            --glass-bg: rgba(2, 6, 23, 0.95);
         }
+
+        /* SPIDER-MAN TEMASI (Kırmızı & Lacivert) */
+        body.theme-spiderman {
+            --theme-dark: #050b14;
+            --theme-black: #0b1120;
+            --theme-dark-red: #450a0a;
+            --theme-red: #991b1b;
+            --accent-color: #ef4444;
+            --glass-bg: rgba(5, 11, 20, 0.95);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
         body {
             background: linear-gradient(180deg, var(--theme-dark) 0%, var(--theme-dark-red) 100%);
@@ -31,33 +48,31 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            transition: background 0.5s ease;
         }
 
-        /* ÜST MENÜ - SADELEŞTİRİLDİ */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-light); 
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        /* SPIDER-MAN TEMA AĞ EFEKTLERİ */
+        .web-corner { position: fixed; width: 300px; height: 300px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 L100,0 M0,0 L0,100 M0,0 L80,45 M0,0 L45,80 M0,0 L100,100" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/><path d="M 0 15 Q 12 15 15 0 M 0 30 Q 22 26 30 0 M 0 50 Q 38 42 50 0 M 0 70 Q 55 58 70 0" fill="none" stroke="%23ffffff" stroke-width="0.7" opacity="0.2"/></svg>'); background-size: contain; background-repeat: no-repeat; pointer-events: none; z-index: 9997; opacity: 0; transition: opacity 1s ease; }
+        .web-top-left { top: -20px; left: -20px; }
+        .web-top-right { top: -20px; right: -20px; transform: scaleX(-1); }
+        body.theme-spiderman .web-corner { opacity: 1; }
 
+        /* ÜST MENÜ */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: var(--glass-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-light); position: sticky; top: 0; z-index: 100; transition: background-color 0.5s; }
         .logo { cursor: pointer; display: flex; align-items: center; }
         .logo img { height: 90px; filter: brightness(0) invert(1); object-fit: contain; transition: 0.3s; }
         .logo img:hover { transform: scale(1.05); }
 
-        nav { display: flex; gap: 40px; }
-        nav a { color: var(--text-muted); text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s; cursor: pointer; position: relative; }
+        nav { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s; cursor: pointer; position: relative; padding: 5px; }
         nav a:hover, nav a.active { color: #ffffff; }
-        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: 0.3s; }
+        nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: 0.3s; }
         nav a.active::after { width: 100%; }
 
-        .header-right { display: flex; align-items: center; gap: 20px; }
+        .header-right { display: flex; align-items: center; gap: 15px; }
+        .theme-btn { background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 12px; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .theme-btn:hover { background: var(--accent-color); color: var(--theme-black); }
+        
         .lang-select { background-color: transparent; color: white; border: 1px solid var(--border-light); padding: 8px 15px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; outline: none; transition: 0.3s; }
         .lang-select:hover { border-color: var(--text-muted); }
         .lang-select option { background-color: var(--theme-black); color: white; font-weight: bold; }
@@ -66,8 +81,16 @@
         .page-view { display: none; opacity: 0; transition: opacity 0.4s ease; }
         .page-view.active-page { display: block; opacity: 1; }
 
-        /* KAYAN MAÇLAR (TICKER) - DAHA ZARİF */
-        .scoreboard-wrapper { width: 100%; overflow: hidden; background-color: var(--theme-black); padding: 12px 0; border-bottom: 1px solid var(--border-light); white-space: nowrap; position: relative; }
+        /* SAYAÇ (COUNTDOWN) */
+        .countdown-container { background: var(--theme-black); border-bottom: 1px solid var(--border-light); padding: 20px 0; text-align: center; }
+        .countdown-title { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-weight: 600; }
+        .countdown-timer { display: flex; justify-content: center; gap: 20px; }
+        .cd-box { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.03); padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border-light); min-width: 90px; }
+        .cd-num { font-size: 28px; font-weight: 900; color: var(--accent-color); letter-spacing: 1px; }
+        .cd-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+
+        /* KAYAN MAÇLAR */
+        .scoreboard-wrapper { width: 100%; overflow: hidden; background-color: rgba(0,0,0,0.4); padding: 12px 0; border-bottom: 1px solid var(--border-light); white-space: nowrap; position: relative; }
         .scoreboard-section { display: inline-flex; gap: 20px; animation: scrollLeft 60s linear infinite; padding-left: 100vw; }
         .scoreboard-section:hover { animation-play-state: paused; }
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
@@ -77,25 +100,39 @@
         .team-row { display: flex; justify-content: space-between; font-weight: 600; align-items: center; }
 
         /* ANA SAYFA İÇERİĞİ */
-        .main-content { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 50px 40px; max-width: 1400px; margin: 0 auto; }
+        .main-content { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 40px; max-width: 1400px; margin: 0 auto; }
         
-        /* MİNİMALİST MÜZİK ÇALAR */
+        /* ÖNEMLİ MAÇLAR (FEATURED MATCHES) */
+        .featured-matches-section { grid-column: 1 / -1; margin-bottom: 20px; }
+        .section-header { font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; border-left: 4px solid var(--accent-color); padding-left: 15px; }
+        .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+        .feat-match-card { background: linear-gradient(135deg, var(--theme-black), rgba(0,0,0,0.8)); border: 1px solid var(--accent-color); border-radius: 12px; padding: 30px; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s; cursor: pointer; }
+        .feat-match-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255, 51, 51, 0.2); }
+        .feat-match-date { position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: white; padding: 4px 15px; border-radius: 0 0 8px 8px; font-size: 11px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+        .feat-team { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 40%; }
+        .feat-logo { width: 80px; height: 80px; object-fit: contain; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+        .feat-name { font-size: 16px; font-weight: 700; text-align: center; }
+        .feat-vs { font-size: 24px; font-weight: 900; color: var(--text-muted); }
+
+        /* MÜZİK ÇALAR YENİ TASARIM */
         .music-player-container { background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0)); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 1px solid var(--border-light); min-height: 350px; position: relative; overflow: hidden; }
-        .song-title { font-size: 28px; font-weight: 800; color: white; margin-bottom: 8px; letter-spacing: 1px; }
-        .artist-name { font-size: 14px; color: var(--accent-color); margin-bottom: 35px; text-transform: uppercase; letter-spacing: 2px; }
+        .song-title { font-size: 28px; font-weight: 800; color: white; margin-bottom: 8px; letter-spacing: 1px; transition: 0.3s; }
+        .artist-name { font-size: 14px; color: var(--accent-color); margin-bottom: 35px; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
         .player-controls { display: flex; align-items: center; gap: 40px; }
-        .control-btn { background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; transition: 0.2s; }
+        .control-btn { background: none; border: none; color: var(--text-muted); font-size: 28px; cursor: pointer; transition: 0.2s; }
         .control-btn:hover { color: white; transform: scale(1.1); }
         .play-btn { background: white; border: none; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: black; cursor: pointer; transition: 0.3s; }
         .play-btn:hover { transform: scale(1.05); background: var(--accent-color); color: white; }
+        .playlist-info { font-size: 12px; color: var(--text-muted); margin-top: 20px; letter-spacing: 1px; }
 
-        /* MANŞETLER (SADE) */
-        .headlines-section { background-color: transparent; display: flex; flex-direction: column; gap: 20px; }
-        .headlines-title { font-size: 18px; margin-bottom: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
-        .headline-item { display: flex; gap: 20px; cursor: pointer; transition: all 0.3s; padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-light); align-items: center; }
+        /* MANŞETLER VE TARİH ETİKETLERİ */
+        .headlines-section { background-color: transparent; display: flex; flex-direction: column; gap: 15px; }
+        .headline-item { display: flex; gap: 20px; cursor: pointer; transition: all 0.3s; padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-light); align-items: center; position: relative; }
         .headline-item:hover { background-color: rgba(255,255,255,0.05); transform: translateX(5px); border-color: rgba(255,255,255,0.1); }
         .headline-img { width: 110px; height: 80px; border-radius: 8px; object-fit: cover; }
-        .headline-text { font-size: 16px; font-weight: 500; flex: 1; color: var(--text-main); line-height: 1.5; }
+        .headline-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+        .headline-text { font-size: 15px; font-weight: 600; color: var(--text-main); line-height: 1.4; }
+        .news-date { font-size: 11px; color: var(--accent-color); font-weight: 500; letter-spacing: 0.5px; }
 
         .content-page-container { max-width: 1400px; margin: 50px auto; padding: 0 40px; }
         .page-title { font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px; }
@@ -121,31 +158,58 @@
         .group-select-dropdown { padding: 12px 25px; font-size: 15px; font-weight: 600; background: var(--theme-black); color: white; border: 1px solid var(--border-light); border-radius: 8px; cursor: pointer; outline: none; }
         .matchday-container { margin-bottom: 50px; }
         .matchday-title { font-size: 18px; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .fixture-row { display: flex; background: var(--theme-black); border: 1px solid var(--border-light); margin-bottom: 12px; border-radius: 10px; padding: 15px 25px; align-items: center; transition: 0.3s; }
-        .fixture-row:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
-        .fixture-time-info { width: 150px; display: flex; flex-direction: column; font-size: 12px; color: var(--text-muted); border-right: 1px solid var(--border-light); padding-right: 20px; }
-        .fixture-date { font-weight: 600; color: #ccc; margin-bottom: 4px; }
+        .fixture-row { display: flex; background: linear-gradient(90deg, rgba(20,20,20,1) 0%, rgba(30,30,30,1) 100%); border: 1px solid var(--border-light); margin-bottom: 12px; border-radius: 12px; padding: 20px 25px; align-items: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .fixture-row:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.5); }
+        .fixture-time-info { width: 140px; display: flex; flex-direction: column; font-size: 12px; color: var(--text-muted); border-right: 1px solid var(--border-light); padding-right: 20px; text-transform: uppercase; }
+        .fixture-date { font-weight: bold; color: #fff; margin-bottom: 5px; font-size: 14px; }
         .fixture-teams-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 0 30px; }
-        .fixture-team { flex: 1; display: flex; align-items: center; font-size: 15px; font-weight: 500; }
+        .fixture-team { flex: 1; display: flex; align-items: center; font-size: 16px; font-weight: 600; }
         .fixture-team.home { justify-content: flex-end; text-align: right; }
         .fixture-team.away { justify-content: flex-start; text-align: left; }
-        .fixture-logo { width: 35px; height: 35px; object-fit: contain; margin: 0 20px; }
-        .fixture-score-box { background: rgba(0,0,0,0.5); border-radius: 6px; padding: 8px 20px; font-size: 18px; font-weight: bold; color: white; min-width: 80px; text-align: center; margin: 0 20px; letter-spacing: 1px; }
-        .fixture-score-box.unplayed { color: var(--text-muted); font-size: 13px; letter-spacing: normal; background: transparent; }
+        .fixture-logo { width: 45px; height: 45px; object-fit: contain; margin: 0 25px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); }
+        .fixture-score-box { background: rgba(0,0,0,0.6); border-radius: 8px; padding: 10px 25px; font-size: 22px; font-weight: 800; color: white; min-width: 100px; text-align: center; margin: 0 20px; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.05); }
+        .fixture-score-box.unplayed { color: var(--text-muted); font-size: 15px; letter-spacing: normal; background: transparent; border: none; }
 
         /* TAKIMLAR */
-        .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 25px; }
-        .team-card { background-color: var(--theme-black); border: 1px solid var(--border-light); border-radius: 12px; padding: 25px 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center; }
-        .team-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.02); }
-        .team-logo-container { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; }
+        .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 30px; }
+        .team-card { background: linear-gradient(145deg, var(--theme-black), var(--theme-dark)); border: 1px solid var(--border-light); border-radius: 16px; padding: 30px 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; cursor: pointer; transition: all 0.4s ease; text-align: center; position: relative; overflow: hidden; }
+        .team-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); opacity: 0; transition: 0.4s; }
+        .team-card:hover { transform: translateY(-10px); border-color: var(--accent-color); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .team-card:hover::before { opacity: 1; }
+        .team-logo-container { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
         .team-logo-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .team-name { font-size: 13px; font-weight: 600; color: #ddd; }
+        .team-name { font-size: 14px; font-weight: 700; color: #fff; position: relative; z-index: 2; letter-spacing: 0.5px; }
+
+        /* İSTATİSTİKLER */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .stat-box { background: var(--theme-black); border-radius: 12px; border: 1px solid var(--border-light); padding: 25px; }
+        .stat-box-title { font-size: 18px; font-weight: 700; color: var(--accent-color); margin-bottom: 20px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .stat-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .stat-row:last-child { border: none; }
+        .stat-player-info { display: flex; align-items: center; gap: 15px; }
+        .stat-number { font-size: 16px; font-weight: bold; color: var(--text-muted); width: 20px; }
+        .stat-name { font-size: 15px; font-weight: 600; color: white; }
+        .stat-team { font-size: 12px; color: var(--text-muted); }
+        .stat-value { font-size: 18px; font-weight: 800; color: white; }
+
+        /* YÖNETMELİK & CEZALAR */
+        .doc-container { max-width: 1000px; margin: 0 auto; background: var(--theme-black); padding: 50px; border-radius: 16px; border: 1px solid var(--border-light); }
+        .doc-title { font-size: 32px; font-weight: 800; color: white; margin-bottom: 30px; text-transform: uppercase; border-bottom: 2px solid var(--theme-red); padding-bottom: 15px; }
+        .doc-content h3 { font-size: 20px; color: var(--accent-color); margin: 30px 0 15px; }
+        .doc-content p, .doc-content li { font-size: 16px; color: #ccc; line-height: 1.7; margin-bottom: 15px; }
+        .doc-content ul { padding-left: 20px; }
+        .penalty-card { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); border-left: 4px solid var(--theme-red); padding: 15px 25px; border-radius: 0 8px 8px 0; margin-bottom: 15px; }
+        .penalty-info { display: flex; flex-direction: column; gap: 5px; }
+        .penalty-name { font-size: 16px; font-weight: bold; color: white; }
+        .penalty-reason { font-size: 13px; color: var(--text-muted); }
+        .penalty-duration { font-weight: bold; color: var(--accent-color); font-size: 15px; }
 
         /* HABER HUB */
         .news-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 20px; }
-        .news-hub-card { background: var(--theme-black); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-light); cursor: pointer; transition: 0.3s; }
+        .news-hub-card { background: var(--theme-black); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-light); cursor: pointer; transition: 0.3s; position: relative; }
         .news-hub-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); }
         .news-hub-img { width: 100%; height: 240px; object-fit: cover; }
+        .news-hub-date { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.8); padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; color: var(--accent-color); letter-spacing: 1px; }
         .news-hub-content { padding: 25px; }
         .news-hub-title { font-size: 20px; font-weight: 700; color: white; margin-bottom: 12px; line-height: 1.4; }
         .news-hub-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
@@ -159,36 +223,40 @@
         .article-image { width: 100%; border-radius: 16px; margin-bottom: 40px; object-fit: cover; max-height: 500px; border: 1px solid var(--border-light); }
         .article-content p { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #ccc; }
 
-        /* FOOTER & YENİ VİDEOLU SPONSORLAR & AVENGERS REKLAMI */
+        /* FOOTER & VİDEOLU SPONSORLAR & AVENGERS REKLAMI */
         footer { background-color: var(--theme-black); padding: 50px 40px 30px; margin-top: auto; border-top: 1px solid var(--border-light); position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 40px; }
-        
-        /* Videolu Sponsor Alanı */
         .video-sponsors-container { width: 100%; max-width: 1200px; text-align: center; }
         .sponsors-title { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; font-weight: bold; }
         .video-sponsors-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
         .sponsor-video { width: 220px; height: 120px; border-radius: 8px; object-fit: cover; filter: grayscale(100%) opacity(0.6); transition: 0.4s; border: 1px solid transparent; }
         .sponsor-video:hover { filter: grayscale(0%) opacity(1); border-color: rgba(255,255,255,0.2); transform: scale(1.05); }
-
-        .movie-promo { font-size: 28px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; max-width: 800px; }
-        .movie-promo span { color: #00cc66; } /* Doomsday Vurgusu */
+        .movie-promo { font-size: 28px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; max-width: 800px; transition: color 0.5s; }
+        .movie-promo span { color: var(--accent-color); transition: color 0.5s; }
     </style>
 </head>
 <body>
 
+    <!-- AĞ EFEKTLERİ (Sadece Spidey temasında görünür) -->
+    <div class="web-corner web-top-left"></div>
+    <div class="web-corner web-top-right"></div>
+
     <header>
         <a class="logo" onclick="switchPage('home')">
-            <!-- Logonun modern, sade hali -->
-            <img src="image1.webp" alt="UCC 27 Logo" onerror="this.onerror=null; this.src='image1.png';">
+            <img src="image1.webp" alt="UCC Logo" onerror="this.onerror=null; this.src='image1.png';">
         </a>
         <nav>
             <a id="nav-home" class="active" onclick="switchPage('home')" data-i18n="home">Home</a>
             <a id="nav-groups" onclick="switchPage('groups')" data-i18n="groupsNav">Groups</a>
             <a id="nav-matches" onclick="switchPage('matches')" data-i18n="matches">Matches</a>
-            <a id="nav-draws" onclick="switchPage('groups')" data-i18n="draws">Draws</a>
+            <a id="nav-stats" onclick="switchPage('stats')" data-i18n="stats">Stats</a>
             <a id="nav-teams" onclick="switchPage('teams')" data-i18n="teams">Teams</a>
+            <a id="nav-rules" onclick="switchPage('rules')" data-i18n="rules">Rules</a>
+            <a id="nav-penalties" onclick="switchPage('penalties')" data-i18n="penalties">Penalties</a>
             <a id="nav-news" onclick="switchPage('news')" data-i18n="news">News</a>
         </nav>
         <div class="header-right">
+            <!-- 10. MADDE: TEMA BUTONU -->
+            <button class="theme-btn" onclick="cycleTheme()" id="theme-btn-text">TEMA: UCC</button>
             <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="en">EN</option>
                 <option value="tr" selected>TR</option>
@@ -201,41 +269,70 @@
         </div>
     </header>
 
+    <!-- 13. MADDE: SAYAÇ (COUNTDOWN) -->
+    <div class="countdown-container" id="countdown-section">
+        <div class="countdown-title" data-i18n="countdownTitle">UCC 27 Kick-off In</div>
+        <div class="countdown-timer">
+            <div class="cd-box"><span class="cd-num" id="cd-days">00</span><span class="cd-label" data-i18n="cdDays">Days</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-hours">00</span><span class="cd-label" data-i18n="cdHours">Hours</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-mins">00</span><span class="cd-label" data-i18n="cdMins">Mins</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-secs">00</span><span class="cd-label" data-i18n="cdSecs">Secs</span></div>
+        </div>
+    </div>
+
     <div class="page-content">
         <!-- 1. ANA SAYFA -->
         <div id="view-home" class="page-view active-page">
             <div class="scoreboard-wrapper">
-                <div class="scoreboard-section" id="home-ticker">
-                </div>
+                <div class="scoreboard-section" id="home-ticker"></div>
             </div>
 
             <main class="main-content">
-                <!-- MİNİMALİST MÜZİK ÇALAR -->
-                <div class="music-player-container">
-                    <div class="song-title">UCC 27 Official Anthem</div>
-                    <div class="artist-name">UEFA Music</div>
-                    <div class="player-controls">
-                        <button class="control-btn" onclick="seekMusic(-10)">⏮</button>
-                        <button class="play-btn" id="play-pause-btn" onclick="togglePlayMusic()">▶</button>
-                        <button class="control-btn" onclick="seekMusic(10)">⏭</button>
+                
+                <!-- 12. MADDE: ÖNEMLİ MAÇLAR (FEATURED) -->
+                <div class="featured-matches-section">
+                    <h2 class="section-header" data-i18n="featuredMatches">Featured Matches of the Week</h2>
+                    <div class="featured-grid" id="featured-matches-container">
+                        <p style="color: var(--text-muted); font-size:14px;" data-i18n="loading">Veriler çekiliyor...</p>
                     </div>
+                </div>
+
+                <!-- 11. MADDE: ÇOKLU MÜZİK ÇALAR -->
+                <div class="music-player-container">
+                    <div class="song-title" id="music-title">UCC 27 Official Anthem</div>
+                    <div class="artist-name" id="music-artist">UEFA Music</div>
+                    <div class="player-controls">
+                        <button class="control-btn" onclick="prevTrack()">⏮</button>
+                        <button class="play-btn" id="play-pause-btn" onclick="togglePlayMusic()">▶</button>
+                        <button class="control-btn" onclick="nextTrack()">⏭</button>
+                    </div>
+                    <div class="playlist-info" id="music-counter">Track 1 of 3</div>
                     <div id="youtube-audio-player" style="display:none; position:absolute; width:0; height:0;"></div>
                 </div>
 
-                <!-- MANŞETLER (SADE) -->
+                <!-- 14. MADDE: MANŞETLER (TARİHLİ) -->
                 <div class="headlines-section">
                     <h2 class="headlines-title" data-i18n="latestNews">Latest News</h2>
                     <div class="headline-item" onclick="openArticle('launch')">
                         <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=300&auto=format&fit=crop" class="headline-img">
-                        <div class="headline-text" data-i18n="news1">UCC 27 Platform Officially Launched!</div>
+                        <div class="headline-content">
+                            <div class="headline-text" data-i18n="news1">UCC 27 Platform Officially Launched!</div>
+                            <div class="news-date">10 Ekim 2026 - 09:00</div>
+                        </div>
                     </div>
                     <div class="headline-item" onclick="openArticle('groups')">
                         <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=300&auto=format&fit=crop" class="headline-img">
-                        <div class="headline-text" data-i18n="news2">Groups and Fixtures Have Been Announced</div>
+                        <div class="headline-content">
+                            <div class="headline-text" data-i18n="news2">Groups and Fixtures Have Been Announced</div>
+                            <div class="news-date">12 Ekim 2026 - 14:30</div>
+                        </div>
                     </div>
                     <div class="headline-item" onclick="openArticle('draw')">
                         <img src="image2.webp" class="headline-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=300&auto=format&fit=crop';">
-                        <div class="headline-text" data-i18n="news3">Play-off Draw Event Details in Madrid</div>
+                        <div class="headline-content">
+                            <div class="headline-text" data-i18n="news3">Play-off Draw Event Details in Madrid</div>
+                            <div class="news-date">15 Ekim 2026 - 18:00</div>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -254,8 +351,7 @@
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
                 <div class="fixtures-header-controls">
-                    <select id="fixture-group-select" class="group-select-dropdown" onchange="renderFixtures(this.value)">
-                    </select>
+                    <select id="fixture-group-select" class="group-select-dropdown" onchange="renderFixtures(this.value)"></select>
                 </div>
                 <div id="fixtures-container">
                     <p id="fixtures-loading-text" style="color: var(--text-muted); text-align: center; padding: 50px;" data-i18n="loading">Fikstür yükleniyor...</p>
@@ -263,7 +359,30 @@
             </div>
         </div>
 
-        <!-- 5. TAKIMLAR -->
+        <!-- İSTATİSTİKLER -->
+        <div id="view-stats" class="page-view">
+            <div class="content-page-container">
+                <h1 class="page-title" data-i18n="stats">Stats</h1>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-box-title" data-i18n="topScorers">Top Scorers</div>
+                        <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Erling Haaland</div><div class="stat-team">Manchester City</div></div></div><div class="stat-value">0</div></div>
+                        <div class="stat-row"><div class="stat-player-info"><span class="stat-number">2</span><div><div class="stat-name">Kylian Mbappé</div><div class="stat-team">Real Madrid</div></div></div><div class="stat-value">0</div></div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-title" data-i18n="topAssists">Top Assists</div>
+                        <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Kevin De Bruyne</div><div class="stat-team">Manchester City</div></div></div><div class="stat-value">0</div></div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-title" data-i18n="cleanSheets">Clean Sheets</div>
+                        <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Alisson Becker</div><div class="stat-team">Liverpool</div></div></div><div class="stat-value">0</div></div>
+                    </div>
+                </div>
+                <p style="text-align: center; color: var(--text-muted); margin-top: 30px; font-size: 14px;" data-i18n="statsNote">* İstatistikler turnuva başladıktan sonra güncellenecektir.</p>
+            </div>
+        </div>
+
+        <!-- TAKIMLAR -->
         <div id="view-teams" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="partTeams">Participating Teams</h1>
@@ -271,13 +390,44 @@
             </div>
         </div>
 
-        <!-- HABER HUB (NEWS) -->
+        <!-- YÖNETMELİK -->
+        <div id="view-rules" class="page-view">
+            <div class="content-page-container">
+                <div class="doc-container">
+                    <h1 class="doc-title" data-i18n="rules">Tournament Rules</h1>
+                    <div class="doc-content">
+                        <h3 data-i18n="rule1Title">1. Group Stage Format</h3>
+                        <p data-i18n="rule1Desc">32 teams are divided into 8 groups of 4. Each team plays the others in their group home and away in a round-robin format.</p>
+                        <h3 data-i18n="rule2Title">2. Points System</h3>
+                        <ul><li data-i18n="rule2Desc1">Win: 3 Points</li><li data-i18n="rule2Desc2">Draw: 1 Point</li><li data-i18n="rule2Desc3">Loss: 0 Points</li></ul>
+                        <h3 data-i18n="rule3Title">3. Tie-Breaking Criteria</h3>
+                        <p data-i18n="rule3Desc">If two or more teams are equal on points, the following criteria are applied in order:</p>
+                        <ul><li data-i18n="rule3Point1">Head-to-head points</li><li data-i18n="rule3Point2">Head-to-head goal difference</li><li data-i18n="rule3Point3">Overall goal difference</li><li data-i18n="rule3Point4">Overall goals scored</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CEZALAR -->
+        <div id="view-penalties" class="page-view">
+            <div class="content-page-container">
+                <div class="doc-container">
+                    <h1 class="doc-title" data-i18n="penalties">Suspensions & Penalties</h1>
+                    <div class="penalty-card"><div class="penalty-info"><div class="penalty-name">Örnek Oyuncu 1 (Real Madrid)</div><div class="penalty-reason">Direct Red Card</div></div><div class="penalty-duration">2 Matches</div></div>
+                    <div class="penalty-card"><div class="penalty-info"><div class="penalty-name">Örnek Oyuncu 2 (Galatasaray)</div><div class="penalty-reason">Accumulation of Yellow Cards</div></div><div class="penalty-duration">1 Match</div></div>
+                    <p style="color: var(--text-muted); margin-top: 30px; font-size: 14px;" data-i18n="penaltiesNote">* Cezalı oyuncular listesi maç raporlarına göre yetkililer tarafından güncellenir.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- HABER HUB -->
         <div id="view-news" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="news">News</h1>
                 <div class="news-hub-grid">
                     <div class="news-hub-card" onclick="openArticle('launch')">
                         <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
+                        <div class="news-hub-date">10 Ekim 2026 - 09:00</div>
                         <div class="news-hub-content">
                             <h3 class="news-hub-title" data-i18n="news1">UCC 27 Platform Officially Launched!</h3>
                             <div class="news-hub-desc" data-i18n="launchSub">A new era begins for the ultimate club championship.</div>
@@ -285,6 +435,7 @@
                     </div>
                     <div class="news-hub-card" onclick="openArticle('groups')">
                         <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
+                        <div class="news-hub-date">12 Ekim 2026 - 14:30</div>
                         <div class="news-hub-content">
                             <h3 class="news-hub-title" data-i18n="news2">Groups and Fixtures Have Been Announced</h3>
                             <div class="news-hub-desc" data-i18n="groupsSub">The wait is over. All 32 groups have been finalized.</div>
@@ -292,6 +443,7 @@
                     </div>
                     <div class="news-hub-card" onclick="openArticle('draw')">
                         <img src="image2.webp" class="news-hub-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=800&auto=format&fit=crop';">
+                        <div class="news-hub-date">15 Ekim 2026 - 18:00</div>
                         <div class="news-hub-content">
                             <h3 class="news-hub-title" data-i18n="news3">Play-off Draw Event Details in Madrid</h3>
                             <div class="news-hub-desc" data-i18n="drawSub">All the details and procedures for the upcoming knockout phase draw.</div>
@@ -316,18 +468,17 @@
         </div>
     </div>
 
-    <!-- YENİ VİDEOLU SPONSORLAR VE AVENGERS REKLAMI -->
+    <!-- VİDEOLU SPONSORLAR VE AVENGERS REKLAMI -->
     <footer>
         <div class="video-sponsors-container">
-            <div class="sponsors-title" data-i18n="sponsorsTitle">Official Sponsors</div>
+            <div class="sponsors-title" data-i18n="sponsorsTitle">Official Partners</div>
             <div class="video-sponsors-grid">
-                <!-- Şimdilik estetik soyut videolar yer tutucu olarak eklendi. Kendi video linklerinle değiştirebilirsin -->
                 <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2020/05/25/40141-425345759_tiny.mp4" type="video/mp4"></video>
                 <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2019/04/24/23011-332483109_tiny.mp4" type="video/mp4"></video>
                 <video autoplay loop muted playsinline class="sponsor-video"><source src="https://cdn.pixabay.com/video/2016/09/21/5320-183786499_tiny.mp4" type="video/mp4"></video>
             </div>
         </div>
-        <div class="movie-promo" data-i18n="moviePromo">AVENGERS: DOOMSDAY — NOW EXCLUSIVELY IN THEATERS!</div>
+        <div class="movie-promo" id="movie-promo-text" data-i18n="moviePromo"><span>AVENGERS: DOOMSDAY</span> — NOW EXCLUSIVELY IN THEATERS!</div>
     </footer>
 
     <script>
@@ -340,36 +491,86 @@
 
         const translations = {
             en: { 
-                home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", goBack: "← Back", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", latestNews: "Latest News", groupWord: "Group", vs: "v", sponsorsTitle: "Official Partners",
-                moviePromo: "AVENGERS: DOOMSDAY — NOW EXCLUSIVELY IN THEATERS!",
-                news1: "UCC 27 Platform Officially Launched!", launchSub: "A new era begins for the ultimate club championship.", launchP1: "The official UCC 27 platform is now live! Fans from all around the world can track their favorite teams, follow live match scores, and dive into exclusive tournament statistics.", launchP2: "Prepare yourself for a highly competitive season as 32 teams battle for glory.",
-                news2: "Groups and Fixtures Have Been Announced", groupsSub: "The wait is over. All 32 groups have been finalized.", groupsP1: "The official group assignments and full 6-week match fixtures have been announced. Intense matchups are expected in the 'groups of death'.", groupsP2: "Check the 'Matches' tab to see when your favorite team is playing.",
-                news3: "Play-off Draw Event Details in Madrid", drawSub: "All the details and procedures for the upcoming knockout phase draw.", drawP1: "The highly anticipated UCC 27 draw will take place in Madrid. Teams that have fought hard during the group stages will finally discover their opponents for the knockout phase.", drawP2: "Seedings will be determined based on group placements, ensuring a fair and competitive structure for the ultimate journey to the grand final."
+                home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", stats: "Stats", rules: "Rules", penalties: "Penalties",
+                goBack: "← Back", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", latestNews: "Latest News", groupWord: "Group", vs: "v", sponsorsTitle: "Official Partners",
+                moviePromo: "<span>AVENGERS: DOOMSDAY</span> — NOW EXCLUSIVELY IN THEATERS!",
+                spideyPromo: "<span>SPIDER-MAN: BRAND NEW DAY</span> — NOW EXCLUSIVELY IN THEATERS!",
+                featuredMatches: "Featured Matches of the Week", countdownTitle: "UCC 27 Kick-off In", cdDays: "Days", cdHours: "Hours", cdMins: "Mins", cdSecs: "Secs",
+                topScorers: "Top Scorers", topAssists: "Top Assists", cleanSheets: "Clean Sheets", statsNote: "* Stats will be updated once the tournament begins.",
+                rule1Title: "1. Group Stage Format", rule1Desc: "32 teams are divided into 8 groups of 4. Each team plays the others in their group home and away.",
+                rule2Title: "2. Points System", rule2Desc1: "Win: 3 Points", rule2Desc2: "Draw: 1 Point", rule2Desc3: "Loss: 0 Points",
+                rule3Title: "3. Tie-Breaking Criteria", rule3Desc: "If teams are equal on points, the following apply:", rule3Point1: "Head-to-head points", rule3Point2: "Head-to-head goal difference", rule3Point3: "Overall goal difference", rule3Point4: "Overall goals scored",
+                penaltiesNote: "* Suspension lists are updated by officials based on match reports.",
+                news1: "UCC 27 Platform Officially Launched!", launchSub: "A new era begins for the ultimate club championship.", launchP1: "The official UCC 27 platform is now live! Fans from all around the world can track their favorite teams.", launchP2: "Prepare yourself for a highly competitive season.",
+                news2: "Groups and Fixtures Have Been Announced", groupsSub: "The wait is over. All 32 groups have been finalized.", groupsP1: "The official group assignments and full 6-week match fixtures have been announced.", groupsP2: "Check the 'Matches' tab to see when your favorite team is playing.",
+                news3: "Play-off Draw Event Details in Madrid", drawSub: "All the details and procedures for the upcoming knockout phase draw.", drawP1: "The highly anticipated UCC 27 draw will take place in Madrid.", drawP2: "Seedings will be determined based on group placements."
             },
             tr: { 
-                home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", goBack: "← Geri Dön", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", latestNews: "Son Haberler", groupWord: "Grup", vs: "v", sponsorsTitle: "Resmi Sponsorlar",
-                moviePromo: "AVENGERS: DOOMSDAY — YAKINDA SİNEMALARDA!",
-                news1: "UCC 27 Sitesi Kullanıma Açıldı!", launchSub: "Klüpler şampiyonası için yeni bir dönem başlıyor.", launchP1: "Resmi UCC 27 platformu artık yayında! Dünyanın dört bir yanından taraftarlar favori takımlarını takip edebilir, canlı skorlara ulaşabilir ve özel turnuva istatistiklerini inceleyebilir.", launchP2: "32 takımın zafere giden yoldaki kıyasıya mücadelesine hazır olun.",
-                news2: "Gruplar ve Maçlar Belli Oldu", groupsSub: "Bekleyiş sona erdi. Tüm 32 grup kesinleşti.", groupsP1: "Resmi grup kuraları ve tam 6 haftalık maç fikstürü açıklandı. Ölüm gruplarında nefes kesen maçlar bekleniyor.", groupsP2: "Favori takımınızın ne zaman oynayacağını görmek için 'Maçlar' sekmesine göz atın.",
-                news3: "Kura Çekimi Etkinlik Detayları Madrid'de", drawSub: "Yaklaşan eleme aşaması kura çekimi için tüm detaylar ve prosedürler.", drawP1: "Büyük merakla beklenen UCC 27 kura çekimi Madrid'de gerçekleşecek. Grup aşamalarında kıyasıya mücadele eden takımlar nihayet eleme aşamasındaki rakiplerini öğrenecek.", drawP2: "Seri başları grup sıralamalarına göre belirlenecek ve büyük finale giden nihai yolculuk için adil ve rekabetçi yapı sağlanacak."
-            },
-            es: { home: "Inicio", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Partidos", draws: "Sorteos", teams: "Equipos", news: "Noticias", goBack: "← Volver", partTeams: "Equipos Participantes", loading: "Cargando...", filterGroup: "Seleccionar Grupo:", latestNews: "Últimas Noticias", groupWord: "Grupo", vs: "v", sponsorsTitle: "Patrocinadores Oficiales", moviePromo: "AVENGERS: DOOMSDAY — ¡PRÓXIMAMENTE EN CINES!", news1: "¡Plataforma UCC 27 Lanzada!", launchSub: "Comienza una nueva era.", launchP1: "¡La plataforma ya está activa!", launchP2: "Prepárate para la temporada.", news2: "Grupos y Partidos Anunciados", groupsSub: "La espera ha terminado.", groupsP1: "Los grupos oficiales han sido anunciados.", groupsP2: "Revisa la pestaña de Partidos.", news3: "Detalles del Sorteo en Madrid", drawSub: "Procedimientos del sorteo.", drawP1: "El sorteo se realizará en Madrid.", drawP2: "Los cabezas de serie están listos." },
-            fr: { home: "Accueil", groupsNav: "Groupes", groupsTitle: "Groupes", matches: "Matchs", draws: "Tirages", teams: "Équipes", news: "Actualités", goBack: "← Retour", partTeams: "Équipes Participantes", loading: "Chargement...", filterGroup: "Sélectionner Groupe:", latestNews: "Dernières Nouvelles", groupWord: "Groupe", vs: "v", sponsorsTitle: "Partenaires Officiels", moviePromo: "AVENGERS: DOOMSDAY — BIENTÔT AU CINÉMA !", news1: "Plateforme UCC 27 Lancée !", launchSub: "Une nouvelle ère commence.", launchP1: "La plateforme est en ligne !", launchP2: "Préparez-vous.", news2: "Groupes et Matchs Annoncés", groupsSub: "L'attente est terminée.", groupsP1: "Les groupes officiels sont annoncés.", groupsP2: "Vérifiez les matchs.", news3: "Détails du Tirage à Madrid", drawSub: "Procédures du tirage.", drawP1: "Le tirage aura lieu à Madrid.", drawP2: "Les équipes sont prêtes." },
-            de: { home: "Startseite", groupsNav: "Gruppen", groupsTitle: "Gruppen", matches: "Spiele", draws: "Auslosung", teams: "Teams", news: "News", goBack: "← Zurück", partTeams: "Teilnehmende Teams", loading: "Laden...", filterGroup: "Gruppe wählen:", latestNews: "Neueste Nachrichten", groupWord: "Gruppe", vs: "v", sponsorsTitle: "Offizielle Sponsoren", moviePromo: "AVENGERS: DOOMSDAY — DEMNÄCHST IM KINO!", news1: "UCC 27 Plattform gestartet!", launchSub: "Eine neue Ära beginnt.", launchP1: "Plattform ist online!", launchP2: "Mach dich bereit.", news2: "Gruppen und Spiele veröffentlicht", groupsSub: "Das Warten hat ein Ende.", groupsP1: "Die Gruppen sind offiziell.", groupsP2: "Sieh dir die Spiele an.", news3: "Details zur Auslosung in Madrid", drawSub: "Details zur Auslosung.", drawP1: "Die Auslosung ist in Madrid.", drawP2: "Teams sind bereit." },
-            it: { home: "Home", groupsNav: "Gironi", groupsTitle: "Gironi", matches: "Partite", draws: "Sorteggi", teams: "Squadre", news: "Notizie", goBack: "← Indietro", partTeams: "Squadre Partecipanti", loading: "Caricamento...", filterGroup: "Seleziona Gruppo:", latestNews: "Ultime Notizie", groupWord: "Gruppo", vs: "v", sponsorsTitle: "Sponsor Ufficiali", moviePromo: "AVENGERS: DOOMSDAY — PRESTO AL CINEMA!", news1: "Piattaforma UCC 27 Lanciata!", launchSub: "Inizia una nuova era.", launchP1: "Piattaforma online!", launchP2: "Preparati.", news2: "Gironi e Partite Annunciati", groupsSub: "L'attesa è finita.", groupsP1: "I gironi sono ufficiali.", groupsP2: "Controlla le partite.", news3: "Dettagli del Sorteggio a Madrid", drawSub: "Dettagli del sorteggio.", drawP1: "Il sorteggio è a Madrid.", drawP2: "Squadre pronte." },
-            pt: { home: "Início", groupsNav: "Grupos", groupsTitle: "Grupos", matches: "Jogos", draws: "Sorteios", teams: "Equipas", news: "Notícias", goBack: "← Voltar", partTeams: "Equipas Participantes", loading: "Carregando...", filterGroup: "Selecionar Grupo:", latestNews: "Últimas Notícias", groupWord: "Grupo", vs: "v", sponsorsTitle: "Patrocinadores Oficiais", moviePromo: "AVENGERS: DOOMSDAY — EM BREVE NOS CINEMAS!", news1: "Plataforma UCC 27 Lançada!", launchSub: "Uma nova era.", launchP1: "Plataforma online!", launchP2: "Prepare-se.", news2: "Grupos e Jogos Anunciados", groupsSub: "A espera acabou.", groupsP1: "Os grupos são oficiais.", groupsP2: "Veja os jogos.", news3: "Detalhes do Sorteio em Madrid", drawSub: "Detalhes do sorteio.", drawP1: "O sorteio é em Madrid.", drawP2: "Equipas prontas." }
+                home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", stats: "İstatistikler", rules: "Yönetmelik", penalties: "Cezalar",
+                goBack: "← Geri Dön", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", latestNews: "Son Haberler", groupWord: "Grup", vs: "v", sponsorsTitle: "Resmi Sponsorlar",
+                moviePromo: "<span>AVENGERS: DOOMSDAY</span> — YAKINDA SİNEMALARDA!",
+                spideyPromo: "<span>SPIDER-MAN: BRAND NEW DAY</span> — ŞİMDİ SADECE SİNEMALARDA!",
+                featuredMatches: "Haftanın Dev Maçları", countdownTitle: "UCC 27 Başlamasına Kalan Süre", cdDays: "Gün", cdHours: "Saat", cdMins: "Dakika", cdSecs: "Saniye",
+                topScorers: "Gol Krallığı", topAssists: "Asist Krallığı", cleanSheets: "Gol Yemeyen Maç", statsNote: "* İstatistikler turnuva başladıktan sonra güncellenecektir.",
+                rule1Title: "1. Grup Aşaması Formatı", rule1Desc: "32 takım 4'erli 8 gruba ayrılır. Takımlar rakipleriyle iç ve dış sahada karşılaşır.",
+                rule2Title: "2. Puan Sistemi", rule2Desc1: "Galibiyet: 3 Puan", rule2Desc2: "Beraberlik: 1 Puan", rule2Desc3: "Mağlubiyet: 0 Puan",
+                rule3Title: "3. Eşitlik Bozma Kriterleri", rule3Desc: "Puan eşitliğinde sırasıyla şunlara bakılır:", rule3Point1: "İkili averaj", rule3Point2: "İkili averaj gol farkı", rule3Point3: "Genel averaj", rule3Point4: "Atılan gol",
+                penaltiesNote: "* Cezalı oyuncular listesi maç raporlarına göre yetkililer tarafından güncellenir.",
+                news1: "UCC 27 Sitesi Kullanıma Açıldı!", launchSub: "Klüpler şampiyonası için yeni bir dönem.", launchP1: "Resmi UCC 27 platformu artık yayında! Takımlarınızı buradan takip edebilirsiniz.", launchP2: "Kıyasıya bir mücadeleye hazır olun.",
+                news2: "Gruplar ve Maçlar Belli Oldu", groupsSub: "Bekleyiş sona erdi. Tüm 32 grup kesinleşti.", groupsP1: "Resmi grup kuraları ve tam 6 haftalık maç fikstürü açıklandı.", groupsP2: "Favori takımınızın ne zaman oynayacağını Maçlar sekmesinden görebilirsiniz.",
+                news3: "Kura Çekimi Etkinlik Detayları Madrid'de", drawSub: "Yaklaşan kura çekimi için prosedürler.", drawP1: "Merakla beklenen kura çekimi Madrid'de gerçekleşecek.", drawP2: "Seri başları grup sıralamalarına göre belirlenecek."
+            }
         };
 
-        const monthTranslations = {
-            tr: { "Aralık": "Aralık", "Ocak": "Ocak", "Şubat": "Şubat" },
-            en: { "Aralık": "Dec", "Ocak": "Jan", "Şubat": "Feb" }
-        };
+        const monthTranslations = { tr: { "Aralık": "Aralık", "Ocak": "Ocak", "Şubat": "Şubat" }, en: { "Aralık": "Dec", "Ocak": "Jan", "Şubat": "Feb" } };
 
         const articleData = {
             'launch': { img: 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=1000&auto=format&fit=crop', tKey: 'news1', sKey: 'launchSub', p1Key: 'launchP1', p2Key: 'launchP2' },
             'groups': { img: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1000&auto=format&fit=crop', tKey: 'news2', sKey: 'groupsSub', p1Key: 'groupsP1', p2Key: 'groupsP2' },
             'draw': { img: 'image2.webp', tKey: 'news3', sKey: 'drawSub', p1Key: 'drawP1', p2Key: 'drawP2' }
         };
+
+        // MADDE 10: TEMA SİSTEMİ
+        const themes = ['default', 'avengers', 'spiderman'];
+        let currentThemeIndex = 0;
+        function cycleTheme() {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            const t = themes[currentThemeIndex];
+            document.body.className = (t === 'default') ? '' : `theme-${t}`;
+            
+            const btn = document.getElementById('theme-btn-text');
+            if(t === 'default') btn.innerHTML = "TEMA: UCC";
+            if(t === 'avengers') btn.innerHTML = "TEMA: AVENGERS";
+            if(t === 'spiderman') btn.innerHTML = "🕸️ SPIDER-MAN";
+
+            // Alt reklam yazısını temaya göre ayarla
+            const lang = document.getElementById('lang-selector').value;
+            const promoEl = document.getElementById('movie-promo-text');
+            if(t === 'spiderman') {
+                promoEl.innerHTML = translations[lang].spideyPromo || translations['en'].spideyPromo;
+            } else {
+                promoEl.innerHTML = translations[lang].moviePromo || translations['en'].moviePromo;
+            }
+        }
+
+        // MADDE 13: SAYAÇ
+        function initCountdown() {
+            // Turnuva başlangıcını 22 Aralık 2026 olarak ayarlıyoruz (Fikstürdeki ilk maç tarihi)
+            const countDownDate = new Date("Dec 22, 2026 13:00:00").getTime();
+            setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+                if (distance < 0) {
+                    document.getElementById("countdown-section").style.display = "none";
+                    return;
+                }
+                document.getElementById("cd-days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("cd-hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("cd-mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("cd-secs").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }, 1000);
+        }
+        initCountdown();
 
         function formatTeamName(name) {
             if(!name) return "";
@@ -397,7 +598,6 @@
             if(!rawName) return 'https://via.placeholder.com/35?text=?';
             let baseName = formatTeamName(rawName);
             if (teamLogos[baseName]) return teamLogos[baseName];
-
             const aliases = {
                 "spartaprag": ["spartapraha", "spartaprague"], "monaci": ["monaco", "asmonaco"], "milan": ["acmilan", "milan"],
                 "leverkusen": ["bayerleverkusen", "bayer04"], "slaviaprag": ["slaviapraha", "slaviaprague"], "koln": ["fckoln", "cologne", "1fckoln"],
@@ -407,15 +607,8 @@
                 "sportinglizbon": ["sportingcp", "sporting", "sportinglisbon"], "rayovallecona": ["rayovallecano", "rayo"], "celta": ["celtavigo", "rccelta"],
                 "monchengladbach": ["borussiamonchengladbach", "bmonchengladbach", "gladbach"]
             };
-
-            if(aliases[baseName]) {
-                for(let alias of aliases[baseName]) { if(teamLogos[alias]) return teamLogos[alias]; }
-            }
-            for(let key in teamLogos) {
-                if(baseName.length > 3 && key.length > 3) {
-                    if(key.includes(baseName) || baseName.includes(key)) return teamLogos[key];
-                }
-            }
+            if(aliases[baseName]) { for(let alias of aliases[baseName]) { if(teamLogos[alias]) return teamLogos[alias]; } }
+            for(let key in teamLogos) { if(baseName.length > 3 && key.length > 3) { if(key.includes(baseName) || baseName.includes(key)) return teamLogos[key]; } }
             return 'https://via.placeholder.com/35?text=?';
         }
 
@@ -423,52 +616,20 @@
             try {
                 let dStr = String(dateStr || "").trim().toLowerCase();
                 let tStr = String(timeStr || "00:00").trim().replace('.', ':');
-                
-                let dayMatch = dStr.match(/\d+/);
-                let day = dayMatch ? parseInt(dayMatch[0]) : 1;
-                
+                let dayMatch = dStr.match(/\d+/); let day = dayMatch ? parseInt(dayMatch[0]) : 1;
                 let month = 0;
-                if(dStr.includes("ocak")) month = 0;
-                else if(dStr.includes("şubat") || dStr.includes("subat")) month = 1;
-                else if(dStr.includes("mart")) month = 2;
-                else if(dStr.includes("nisan")) month = 3;
-                else if(dStr.includes("mayıs") || dStr.includes("mayis")) month = 4;
-                else if(dStr.includes("haziran")) month = 5;
-                else if(dStr.includes("temmuz")) month = 6;
-                else if(dStr.includes("ağustos") || dStr.includes("agustos")) month = 7;
-                else if(dStr.includes("eylül") || dStr.includes("eylul")) month = 8;
-                else if(dStr.includes("ekim")) month = 9;
-                else if(dStr.includes("kasım") || dStr.includes("kasim")) month = 10;
-                else if(dStr.includes("aralık") || dStr.includes("aralik")) month = 11;
-
-                let yearMatch = dStr.match(/\d{4}/);
-                let year = yearMatch ? parseInt(yearMatch[0]) : ((month < 6) ? 2027 : 2026);
-                
-                let hours = 0, minutes = 0;
-                let tParts = tStr.split(':');
-                if(tParts.length >= 2) {
-                    hours = parseInt(tParts[0]);
-                    minutes = parseInt(tParts[1]);
-                }
-                
+                if(dStr.includes("ocak")) month = 0; else if(dStr.includes("şubat")||dStr.includes("subat")) month = 1; else if(dStr.includes("mart")) month = 2; else if(dStr.includes("nisan")) month = 3; else if(dStr.includes("mayıs")||dStr.includes("mayis")) month = 4; else if(dStr.includes("haziran")) month = 5; else if(dStr.includes("temmuz")) month = 6; else if(dStr.includes("ağustos")||dStr.includes("agustos")) month = 7; else if(dStr.includes("eylül")||dStr.includes("eylul")) month = 8; else if(dStr.includes("ekim")) month = 9; else if(dStr.includes("kasım")||dStr.includes("kasim")) month = 10; else if(dStr.includes("aralık")||dStr.includes("aralik")) month = 11;
+                let yearMatch = dStr.match(/\d{4}/); let year = yearMatch ? parseInt(yearMatch[0]) : ((month < 6) ? 2027 : 2026);
+                let hours = 0, minutes = 0; let tParts = tStr.split(':'); if(tParts.length >= 2) { hours = parseInt(tParts[0]); minutes = parseInt(tParts[1]); }
                 return new Date(year, month, day, hours, minutes).getTime();
-            } catch(e) {
-                return 9999999999999;
-            }
+            } catch(e) { return 9999999999999; }
         }
 
         function translateDate(dateStr, lang) {
             if(!dateStr) return "";
             if(lang === 'tr') return dateStr;
             let newDate = dateStr;
-            if(monthTranslations[lang]) {
-                for (let trMonth in monthTranslations['tr']) {
-                    if(dateStr.includes(trMonth)) {
-                        newDate = dateStr.replace(trMonth, monthTranslations[lang][trMonth]);
-                        break;
-                    }
-                }
-            }
+            if(monthTranslations[lang]) { for (let trMonth in monthTranslations['tr']) { if(dateStr.includes(trMonth)) { newDate = dateStr.replace(trMonth, monthTranslations[lang][trMonth]); break; } } }
             return newDate;
         }
 
@@ -477,25 +638,20 @@
             const currentVal = selectEl.value;
             selectEl.innerHTML = '';
             const word = translations[lang] && translations[lang].groupWord ? translations[lang].groupWord : "Group";
-            for(let i = 1; i <= 32; i++) {
-                selectEl.innerHTML += `<option value="Grup ${i}">${word} ${i}</option>`;
-            }
+            for(let i = 1; i <= 32; i++) { selectEl.innerHTML += `<option value="Grup ${i}">${word} ${i}</option>`; }
             if(currentVal) selectEl.value = currentVal;
         }
 
-        let currentArticleId = 'launch'; 
         function openArticle(id) {
             currentArticleId = id;
             const data = articleData[id];
             const lang = document.getElementById('lang-selector').value;
             const dict = translations[lang] || translations['en'];
-
             document.getElementById('dyn-art-img').src = data.img;
             document.getElementById('dyn-art-title').innerHTML = dict[data.tKey];
             document.getElementById('dyn-art-sub').innerHTML = dict[data.sKey];
             document.getElementById('dyn-art-p1').innerHTML = dict[data.p1Key];
             document.getElementById('dyn-art-p2').innerHTML = dict[data.p2Key];
-
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
             document.getElementById('view-article').classList.add('active-page');
             window.scrollTo(0, 0);
@@ -504,89 +660,61 @@
         function changeLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    element.innerHTML = translations[lang][key]; 
-                } else if (translations['en'][key]) {
-                    element.innerHTML = translations['en'][key];
-                }
+                if (translations[lang] && translations[lang][key]) { element.innerHTML = translations[lang][key]; } else if (translations['en'][key]) { element.innerHTML = translations['en'][key]; }
             });
-            
-            if(document.getElementById('view-article').classList.contains('active-page')) {
-                openArticle(currentArticleId); 
+            if(document.getElementById('view-article').classList.contains('active-page')) { openArticle(currentArticleId); }
+            if(matchesLoaded) { 
+                populateGroupDropdown(lang); 
+                renderFixtures(document.getElementById('fixture-group-select').value); 
+                renderTicker(); 
+                renderFeaturedMatches(); // Dili değişince dev maçları da çevir
             }
-
-            if(matchesLoaded) {
-                populateGroupDropdown(lang);
-                renderFixtures(document.getElementById('fixture-group-select').value);
-                renderTicker();
+            // Reklam yazısını güncelle
+            if(document.body.classList.contains('theme-spiderman')) {
+                document.getElementById('movie-promo-text').innerHTML = translations[lang].spideyPromo || translations['en'].spideyPromo;
             }
         }
 
         function switchPage(page) {
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
             document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
-            
-            let activeNavId = page;
-            if(page === 'article') activeNavId = 'news';
+            let activeNavId = page; if(page === 'article') activeNavId = 'news';
             if (document.getElementById('nav-' + activeNavId)) document.getElementById('nav-' + activeNavId).classList.add('active');
-            
             if (document.getElementById('view-' + page)) document.getElementById('view-' + page).classList.add('active-page');
-
-            if ((page === 'teams' || page === 'groups' || page === 'matches' || page === 'home') && !dataLoaded) {
-                fetchTournamentData();
-            }
+            if ((page === 'teams' || page === 'groups' || page === 'matches' || page === 'home') && !dataLoaded) { fetchTournamentData(); }
         }
 
         async function fetchTournamentData() {
             if (dataLoaded) return;
             const teamsGrid = document.getElementById('teams-grid');
             const groupsGrid = document.getElementById('groups-grid');
-
             try {
                 const response = await fetch(scriptURL);
                 const data = await response.json(); 
-                
                 teamsGrid.innerHTML = '';
                 const groupsData = {};
                 for(let i = 1; i <= 32; i++) groupsData[i] = [];
-
                 data.forEach(row => {
                     const values = Object.values(row);
-                    const teamName = values[0]; 
-                    const logoUrl = values[1];  
-                    const groupNum = parseInt(values[2]);
-
+                    const teamName = values[0]; const logoUrl = values[1]; const groupNum = parseInt(values[2]);
                     if (!teamName || teamName === "Team Name" || teamName.includes("Takim")) return;
-                    
                     teamLogos[formatTeamName(teamName)] = logoUrl;
-
                     teamsGrid.innerHTML += `
                         <div class="team-card">
                             <div class="team-logo-container"><img src="${logoUrl}"></div>
                             <div class="team-name">${getProperName(teamName)}</div>
                         </div>`;
-
                     if (groupNum >= 1 && groupNum <= 32) {
-                        groupsData[groupNum].push({
-                            name: teamName, logo: logoUrl,
-                            om: values[3]||0, g: values[4]||0, b: values[5]||0, m: values[6]||0,
-                            ag: values[7]||0, yg: values[8]||0, a: values[9]||0, puan: values[10]||0
-                        });
+                        groupsData[groupNum].push({ name: teamName, logo: logoUrl, om: values[3]||0, g: values[4]||0, b: values[5]||0, m: values[6]||0, ag: values[7]||0, yg: values[8]||0, a: values[9]||0, puan: values[10]||0 });
                     }
                 });
 
                 let groupsHtml = '';
                 for(let i = 1; i <= 32; i++) {
                     let teams = groupsData[i];
-                    teams.sort((a, b) => {
-                        if (Number(b.puan) !== Number(a.puan)) return Number(b.puan) - Number(a.puan);
-                        if (Number(b.a) !== Number(a.a)) return Number(b.a) - Number(a.a);
-                        return Number(b.ag) - Number(a.ag);
-                    });
-
+                    teams.sort((a, b) => { if (Number(b.puan) !== Number(a.puan)) return Number(b.puan) - Number(a.puan); if (Number(b.a) !== Number(a.a)) return Number(b.a) - Number(a.a); return Number(b.ag) - Number(a.ag); });
                     groupsHtml += `<div class="group-card"><div class="group-header">Grup ${i}</div>`;
                     groupsHtml += `<div class="group-stats-header"><div class="team-col">Takım</div><div class="stat-col">OM</div><div class="stat-col">G</div><div class="stat-col">B</div><div class="stat-col">M</div><div class="stat-col">AG</div><div class="stat-col">YG</div><div class="stat-col">A</div><div class="stat-col">P</div></div>`;
-
                     for(let j = 0; j < 4; j++) {
                         let bar = j === 0 ? 'status-blue' : (j === 1 ? 'status-orange' : '');
                         if(teams[j]) {
@@ -599,65 +727,87 @@
                 groupsGrid.innerHTML = groupsHtml;
                 dataLoaded = true;
                 fetchFixtures();
-
-            } catch (error) {
-                console.error('Hata:', error);
-            }
+            } catch (error) { console.error('Hata:', error); }
         }
 
         async function fetchFixtures() {
             try {
                 const response = await fetch(scriptURL + "?sayfa=Fikstur");
                 allMatches = await response.json();
-                
                 matchesLoaded = true;
                 populateGroupDropdown(document.getElementById('lang-selector').value);
                 renderFixtures("Grup 1");
                 renderTicker();
+                renderFeaturedMatches(); // 12. MADDE
+            } catch (error) { console.error('Fikstür çekilirken hata:', error); }
+        }
 
-            } catch (error) {
-                console.error('Fikstür çekilirken hata:', error);
-            }
+        // MADDE 12: ÖNEMLİ MAÇLARI RENDER ET
+        function renderFeaturedMatches() {
+            const container = document.getElementById('featured-matches-container');
+            if(!container || !matchesLoaded) return;
+            const currentLang = document.getElementById('lang-selector').value;
+            const vsText = translations[currentLang] && translations[currentLang].vs ? translations[currentLang].vs : "v";
+
+            // Vitrin için 1. Haftanın ilk 2 maçını çekelim
+            let sortedMatches = [...allMatches].sort((a, b) => {
+                const kA = Object.keys(a), kB = Object.keys(b);
+                let timeA = parseMatchDate(a[kA.find(k => k.includes('Tarih'))||kA[2]], a[kA.find(k => k.includes('Saat'))||kA[3]]);
+                let timeB = parseMatchDate(b[kB.find(k => k.includes('Tarih'))||kB[2]], b[kB.find(k => k.includes('Saat'))||kB[3]]);
+                return timeA - timeB;
+            });
+
+            let html = '';
+            sortedMatches.slice(0, 2).forEach(m => {
+                const keys = Object.keys(m);
+                const evRaw = m[keys.find(k => k.includes('Ev S')) || keys[4]] || "";
+                const depRaw = m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
+                const mDate = translateDate(m[keys.find(k => k.includes('Tarih')) || keys[2]], currentLang);
+                const mTime = m[keys.find(k => k.includes('Saat')) || keys[3]] ? `${m[keys.find(k => k.includes('Saat')) || keys[3]]}` : '';
+                
+                const evName = getProperName(evRaw);
+                const depName = getProperName(depRaw);
+                const evLogo = findLogo(evRaw);
+                const depLogo = findLogo(depRaw);
+
+                html += `
+                <div class="feat-match-card" onclick="switchPage('matches')">
+                    <div class="feat-match-date">${mDate} - ${mTime}</div>
+                    <div class="feat-team">
+                        <img src="${evLogo}" class="feat-logo">
+                        <span class="feat-name">${evName}</span>
+                    </div>
+                    <div class="feat-vs">${vsText}</div>
+                    <div class="feat-team">
+                        <img src="${depLogo}" class="feat-logo">
+                        <span class="feat-name">${depName}</span>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
         }
 
         function renderTicker() {
             const ticker = document.getElementById('home-ticker');
             if(!ticker || !matchesLoaded) return;
             const currentLang = document.getElementById('lang-selector').value;
-            
             let sortedMatches = [...allMatches].sort((a, b) => {
-                const keysA = Object.keys(a);
-                const keysB = Object.keys(b);
-                const tA_date = a[keysA.find(k => k.includes('Tarih')) || keysA[2]];
-                const tA_time = a[keysA.find(k => k.includes('Saat')) || keysA[3]];
-                const tB_date = b[keysB.find(k => k.includes('Tarih')) || keysB[2]];
-                const tB_time = b[keysB.find(k => k.includes('Saat')) || keysB[3]];
-
-                let timeA = parseMatchDate(tA_date, tA_time);
-                let timeB = parseMatchDate(tB_date, tB_time);
+                const keysA = Object.keys(a); const keysB = Object.keys(b);
+                const tA_date = a[keysA.find(k => k.includes('Tarih')) || keysA[2]]; const tA_time = a[keysA.find(k => k.includes('Saat')) || keysA[3]];
+                const tB_date = b[keysB.find(k => k.includes('Tarih')) || keysB[2]]; const tB_time = b[keysB.find(k => k.includes('Saat')) || keysB[3]];
+                let timeA = parseMatchDate(tA_date, tA_time); let timeB = parseMatchDate(tB_date, tB_time);
                 return timeA - timeB;
             });
 
             let html = '';
-            
             sortedMatches.slice(0, 64).forEach(m => {
                 const keys = Object.keys(m);
-                const mDateRaw = m[keys.find(k => k.includes('Tarih')) || keys[2]];
-                const mTimeRaw = m[keys.find(k => k.includes('Saat')) || keys[3]];
-                const evRaw = m[keys.find(k => k.includes('Ev S')) || keys[4]] || "";
-                const depRaw = m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
-                
-                const evSkor = m[keys.find(k => k.includes('Ev Skor')) || keys[6]];
-                const depSkor = m[keys.find(k => k.includes('Dep Skor')) || keys[7]];
-                const durum = m[keys.find(k => k.includes('Durum')) || keys[8]];
-
-                const mDate = translateDate(mDateRaw, currentLang);
-                const mTime = mTimeRaw ? `${mTimeRaw} (UTC)` : '';
-                
-                const evName = getProperName(evRaw);
-                const depName = getProperName(depRaw);
-                const evLogo = findLogo(evRaw);
-                const depLogo = findLogo(depRaw);
+                const mDateRaw = m[keys.find(k => k.includes('Tarih')) || keys[2]]; const mTimeRaw = m[keys.find(k => k.includes('Saat')) || keys[3]];
+                const evRaw = m[keys.find(k => k.includes('Ev S')) || keys[4]] || ""; const depRaw = m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
+                const evSkor = m[keys.find(k => k.includes('Ev Skor')) || keys[6]]; const depSkor = m[keys.find(k => k.includes('Dep Skor')) || keys[7]]; const durum = m[keys.find(k => k.includes('Durum')) || keys[8]];
+                const mDate = translateDate(mDateRaw, currentLang); const mTime = mTimeRaw ? `${mTimeRaw} (UTC)` : '';
+                const evName = getProperName(evRaw); const depName = getProperName(depRaw);
+                const evLogo = findLogo(evRaw); const depLogo = findLogo(depRaw);
 
                 html += `
                 <div class="match-card">
@@ -677,60 +827,36 @@
 
         function renderFixtures(selectedGroup) {
             if(!matchesLoaded) return;
-            
             const container = document.getElementById('fixtures-container');
             const currentLang = document.getElementById('lang-selector').value;
             const vsText = translations[currentLang] && translations[currentLang].vs ? translations[currentLang].vs : "v";
-            
             let targetGroup = selectedGroup;
-            if(!targetGroup.startsWith("Grup")) {
-                let parts = targetGroup.split(" ");
-                targetGroup = "Grup " + parts[parts.length - 1];
-            }
+            if(!targetGroup.startsWith("Grup")) { let parts = targetGroup.split(" "); targetGroup = "Grup " + parts[parts.length - 1]; }
 
             const groupMatches = allMatches.filter(m => Object.values(m)[0] === targetGroup);
-            
-            if(groupMatches.length === 0) {
-                container.innerHTML = `<p style="text-align:center; padding:30px;">Bu grupta henüz maç bulunmuyor.</p>`;
-                return;
-            }
+            if(groupMatches.length === 0) { container.innerHTML = `<p style="text-align:center; padding:30px;">Bu grupta henüz maç bulunmuyor.</p>`; return; }
 
             const matchesByWeek = {};
             groupMatches.forEach(m => {
                 const keys = Object.keys(m);
                 const hafta = m[keys.find(k => k.includes('Hafta')) || keys[1]]; 
                 if(!matchesByWeek[hafta]) matchesByWeek[hafta] = [];
-                
                 matchesByWeek[hafta].push({
-                    tarih: m[keys.find(k => k.includes('Tarih')) || keys[2]],
-                    saat: m[keys.find(k => k.includes('Saat')) || keys[3]],
-                    ev: m[keys.find(k => k.includes('Ev S')) || keys[4]] || "",
-                    dep: m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "",
-                    evSkor: m[keys.find(k => k.includes('Ev Skor')) || keys[6]],
-                    depSkor: m[keys.find(k => k.includes('Dep Skor')) || keys[7]],
-                    durum: m[keys.find(k => k.includes('Durum')) || keys[8]]
+                    tarih: m[keys.find(k => k.includes('Tarih')) || keys[2]], saat: m[keys.find(k => k.includes('Saat')) || keys[3]],
+                    ev: m[keys.find(k => k.includes('Ev S')) || keys[4]] || "", dep: m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "",
+                    evSkor: m[keys.find(k => k.includes('Ev Skor')) || keys[6]], depSkor: m[keys.find(k => k.includes('Dep Skor')) || keys[7]], durum: m[keys.find(k => k.includes('Durum')) || keys[8]]
                 });
             });
 
             let html = '';
             for (const [haftaAdı, haftaninMaclari] of Object.entries(matchesByWeek)) {
                 html += `<div class="matchday-container"><div class="matchday-title">${haftaAdı}</div>`;
-                
                 haftaninMaclari.forEach(m => {
-                    const evName = getProperName(m.ev);
-                    const depName = getProperName(m.dep);
-                    const evLogo = findLogo(m.ev);
-                    const depLogo = findLogo(m.dep);
-                    const mDate = translateDate(m.tarih, currentLang);
-                    const mTime = m.saat ? `${m.saat} (UTC)` : '';
-                    
+                    const evName = getProperName(m.ev); const depName = getProperName(m.dep);
+                    const evLogo = findLogo(m.ev); const depLogo = findLogo(m.dep);
+                    const mDate = translateDate(m.tarih, currentLang); const mTime = m.saat ? `${m.saat} (UTC)` : '';
                     let scoreHtml = '';
-                    if (m.durum === "Oynanmadı" || m.evSkor === "" || m.evSkor === undefined) {
-                        scoreHtml = `<div class="fixture-score-box unplayed">${vsText}</div>`;
-                    } else {
-                        scoreHtml = `<div class="fixture-score-box">${m.evSkor} - ${m.depSkor}</div>`;
-                    }
-
+                    if (m.durum === "Oynanmadı" || m.evSkor === "" || m.evSkor === undefined) { scoreHtml = `<div class="fixture-score-box unplayed">${vsText}</div>`; } else { scoreHtml = `<div class="fixture-score-box">${m.evSkor} - ${m.depSkor}</div>`; }
                     html += `
                     <div class="fixture-row">
                         <div class="fixture-time-info">
@@ -755,45 +881,59 @@
             container.innerHTML = html;
         }
 
-        // YOUTUBE MÜZİK PLAYER SİSTEMİ
-        let player;
+        // MADDE 11: YOUTUBE MÜZİK PLAYER (PLAYLIST DESTEKLİ)
+        let player; 
         let isMusicPlaying = false;
+        let currentTrackIndex = 0;
         
+        // Playlist (Farklı Müzikler)
+        const playlist = [
+            { id: 'nZFNut0RGlQ', title: 'UCC 27 Official Anthem', artist: 'UEFA Music' },
+            { id: 'FOabQEpsO0s', title: 'Avengers Epic Suite', artist: 'Alan Silvestri' },
+            { id: 'mcA7EetL2hw', title: 'Spider-Man Theme', artist: 'Michael Giacchino' }
+        ];
+
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-audio-player', {
-                height: '0',
-                width: '0',
-                videoId: 'nZFNut0RGlQ', 
-                playerVars: {
-                    'autoplay': 0,
-                    'controls': 0,
-                    'disablekb': 1
-                }
+                height: '0', width: '0', videoId: playlist[0].id, 
+                playerVars: { 'autoplay': 0, 'controls': 0, 'disablekb': 1 }
             });
         }
 
+        function updateMusicUI() {
+            document.getElementById('music-title').innerText = playlist[currentTrackIndex].title;
+            document.getElementById('music-artist').innerText = playlist[currentTrackIndex].artist;
+            document.getElementById('music-counter').innerText = `Track ${currentTrackIndex + 1} of ${playlist.length}`;
+        }
+
         function togglePlayMusic() {
-            if(!player) return;
+            if(!player) return; 
             const btn = document.getElementById('play-pause-btn');
-            if(isMusicPlaying) {
-                player.pauseVideo();
-                btn.innerHTML = "▶";
-            } else {
-                player.playVideo();
-                btn.innerHTML = "⏸";
-            }
+            if(isMusicPlaying) { player.pauseVideo(); btn.innerHTML = "▶"; } 
+            else { player.playVideo(); btn.innerHTML = "⏸"; }
             isMusicPlaying = !isMusicPlaying;
         }
 
-        function seekMusic(seconds) {
+        function nextTrack() {
             if(!player) return;
-            const currentTime = player.getCurrentTime();
-            player.seekTo(currentTime + seconds, true);
+            currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+            player.loadVideoById(playlist[currentTrackIndex].id);
+            if(!isMusicPlaying) togglePlayMusic();
+            updateMusicUI();
+        }
+
+        function prevTrack() {
+            if(!player) return;
+            currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+            player.loadVideoById(playlist[currentTrackIndex].id);
+            if(!isMusicPlaying) togglePlayMusic();
+            updateMusicUI();
         }
 
         window.onload = function() {
             fetchTournamentData();
             changeLanguage(document.getElementById('lang-selector').value);
+            updateMusicUI();
         }
     </script>
 </body>
