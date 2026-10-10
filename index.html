@@ -217,47 +217,18 @@
         .article-image { width: 100%; border-radius: 16px; margin-bottom: 40px; object-fit: cover; max-height: 500px; border: 1px solid var(--border-light); }
         .article-content p { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #ccc; }
 
-        /* YOUTUBE SPONSOR KUTUCUKLARI (6x2) */
+        /* 12 KUTUCUKLU VİDEO SPONSOR ALANI */
         footer { background-color: var(--theme-black); padding: 50px 40px 30px; margin-top: auto; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; gap: 40px; position: relative; z-index: 10; }
         .video-sponsors-container { width: 100%; max-width: 1400px; text-align: center; }
         .sponsors-title { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; font-weight: bold; }
-        
-        .video-sponsors-grid { 
-            display: grid; 
-            grid-template-columns: repeat(6, 1fr); 
-            gap: 20px; 
-            justify-content: center;
-        }
+        .video-sponsors-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; justify-content: center; }
         @media (max-width: 1024px) { .video-sponsors-grid { grid-template-columns: repeat(4, 1fr); } }
         @media (max-width: 768px) { .video-sponsors-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 480px) { .video-sponsors-grid { grid-template-columns: repeat(2, 1fr); } }
-
         .sponsor-box { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; }
-        
-        /* YouTube Videosunu Kutucuğa Tam Oturtmak İçin Özel Wrapper (Taşmaları Gizler) */
-        .sponsor-iframe-container { 
-            width: 100%; 
-            height: 90px; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            position: relative; 
-            filter: grayscale(100%) opacity(0.5); 
-            transition: 0.4s; 
-            border: 1px solid var(--border-light); 
-            background: #000; 
-            pointer-events: none; /* Tıklanıp Youtube'a gitmesini engeller */
-        }
+        .sponsor-iframe-container { width: 100%; height: 90px; border-radius: 8px; overflow: hidden; position: relative; filter: grayscale(100%) opacity(0.5); transition: 0.4s; border: 1px solid var(--border-light); background: #000; pointer-events: none; }
         .sponsor-box:hover .sponsor-iframe-container { filter: grayscale(0%) opacity(1); border-color: rgba(255,255,255,0.3); transform: scale(1.05); }
-        .sponsor-iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 180%; /* Logoları gizlemek için videoyu büyütüp kırpıyoruz */
-            height: 250%;
-            transform: translate(-50%, -50%);
-            border: none;
-        }
-
+        .sponsor-iframe { position: absolute; top: 50%; left: 50%; width: 180%; height: 250%; transform: translate(-50%, -50%); border: none; }
         .sponsor-name { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-align: center; }
         .sponsor-box:hover .sponsor-name { color: white; }
 
@@ -329,7 +300,7 @@
             </div>
 
             <main class="main-content">
-                <!-- MANUEL DEV MAÇLAR -->
+                <!-- DİNAMİK DEV MAÇLAR (! İŞARETİYLE SEÇİLENLER) -->
                 <div class="featured-matches-section">
                     <h2 class="section-header" data-i18n="featuredMatches">Featured Matches of the Week</h2>
                     <div class="featured-grid" id="featured-matches-container">
@@ -367,7 +338,7 @@
             </main>
         </div>
 
-        <!-- GRUPLAR -->
+        <!-- GRUPLAR VE EFSANE -->
         <div id="view-groups" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="groupsTitle">Groups</h1>
@@ -380,7 +351,7 @@
             </div>
         </div>
 
-        <!-- MAÇLAR -->
+        <!-- MAÇLAR (TARİHE GÖRE SEÇİM) -->
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="matches">Matches</h1>
@@ -396,7 +367,7 @@
             </div>
         </div>
 
-        <!-- İSTATİSTİKLER -->
+        <!-- İSTATİSTİKLER (TAKIM VE OYUNCU) -->
         <div id="view-stats" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="stats">Stats</h1>
@@ -550,13 +521,12 @@
         </div>
     </div>
 
-    <!-- VİDEOLU SPONSORLAR VE AVENGERS REKLAMI -->
+    <!-- 12 KUTUCUKLU VİDEO SPONSOR ALANI -->
     <footer>
         <div class="video-sponsors-container">
             <div class="sponsors-title" data-i18n="sponsorsTitle">Official Sponsors</div>
             <div class="video-sponsors-grid">
                 
-                <!-- COCA-COLA -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/BkcfPYQ_35E?autoplay=1&mute=1&controls=0&loop=1&playlist=BkcfPYQ_35E&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -564,7 +534,6 @@
                     <div class="sponsor-name">COCA-COLA</div>
                 </div>
 
-                <!-- FedEx -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/PMHSbBsIXm0?autoplay=1&mute=1&controls=0&loop=1&playlist=PMHSbBsIXm0&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -572,7 +541,6 @@
                     <div class="sponsor-name">FedEx</div>
                 </div>
 
-                <!-- Mastercard -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/SDm-y9d0zeE?autoplay=1&mute=1&controls=0&loop=1&playlist=SDm-y9d0zeE&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -580,7 +548,6 @@
                     <div class="sponsor-name">Mastercard</div>
                 </div>
 
-                <!-- Sony IE (Playstation 5) -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/1BU4VXofbQk?autoplay=1&mute=1&controls=0&loop=1&playlist=1BU4VXofbQk&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -588,7 +555,6 @@
                     <div class="sponsor-name">Sony IE</div>
                 </div>
 
-                <!-- Just Eat -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/Icrg31BzMTA?autoplay=1&mute=1&controls=0&loop=1&playlist=Icrg31BzMTA&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -596,7 +562,6 @@
                     <div class="sponsor-name">Just Eat</div>
                 </div>
 
-                <!-- AUDI -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/8GElvLxSxfI?autoplay=1&mute=1&controls=0&loop=1&playlist=8GElvLxSxfI&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -604,7 +569,6 @@
                     <div class="sponsor-name">AUDI</div>
                 </div>
 
-                <!-- Turkish Airlines -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/NThw4kUOP4U?autoplay=1&mute=1&controls=0&loop=1&playlist=NThw4kUOP4U&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -612,7 +576,6 @@
                     <div class="sponsor-name">Turkish Airlines</div>
                 </div>
 
-                <!-- Apple -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/1WLqGs7c_yA?autoplay=1&mute=1&controls=0&loop=1&playlist=1WLqGs7c_yA&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -620,7 +583,6 @@
                     <div class="sponsor-name">Apple</div>
                 </div>
 
-                <!-- Frito-lay -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/V97vW902d3c?autoplay=1&mute=1&controls=0&loop=1&playlist=V97vW902d3c&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -628,7 +590,6 @@
                     <div class="sponsor-name">Frito-lay</div>
                 </div>
 
-                <!-- Adidas -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/EK2qa9A1TNc?autoplay=1&mute=1&controls=0&loop=1&playlist=EK2qa9A1TNc&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -636,7 +597,6 @@
                     <div class="sponsor-name">Adidas</div>
                 </div>
 
-                <!-- Rexona -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/vxauHCLKyFU?autoplay=1&mute=1&controls=0&loop=1&playlist=vxauHCLKyFU&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -644,7 +604,6 @@
                     <div class="sponsor-name">Rexona</div>
                 </div>
 
-                <!-- McDonald's -->
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/O1SiLAFzRas?autoplay=1&mute=1&controls=0&loop=1&playlist=O1SiLAFzRas&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
@@ -658,12 +617,6 @@
     </footer>
 
     <script>
-        // DEV MAÇLARI BURADAN DEĞİŞTİR 
-        const manualFeaturedMatches = [
-            { ev: "Real Madrid", dep: "Galatasaray" },
-            { ev: "Bayern Munich", dep: "Manchester City" }
-        ];
-
         const scriptURL = 'https://script.google.com/macros/s/AKfycby0XMGVbOylzSqD3srolRzucoCO7ZHIEHBwvHm87Owl0r0xTetdil00phlANwoaESJQ/exec';
         
         let dataLoaded = false;
@@ -746,9 +699,15 @@
         }
         initCountdown();
 
+        // Her yerde '!' işaretini görmezden gelmek ve temizlemek için özel fonksiyon
+        function cleanValue(val) {
+            if(typeof val === 'string') return val.replace(/!/g, '').trim();
+            return val;
+        }
+
         function formatTeamName(name) {
             if(!name) return "";
-            return name.toString().toLowerCase()
+            return cleanValue(name).toString().toLowerCase()
                 .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
                 .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
                 .replace(/[^a-z0-9]/g, ''); 
@@ -765,7 +724,7 @@
                 "monchengladbach": "Borussia Mönchengladbach", "leverkusen": "Bayer 04 Leverkusen", "aek": "AEK Athens",
                 "stvv": "Sint-Truiden", "besiktas": "Beşiktaş", "galatasaray": "Galatasaray", "fenerbahce": "Fenerbahçe", "basaksehir": "Başakşehir"
             };
-            return names[base] ? names[base] : rawName.trim();
+            return names[base] ? names[base] : cleanValue(rawName);
         }
 
         function findLogo(rawName) {
@@ -788,8 +747,8 @@
 
         function parseMatchDate(dateStr, timeStr) {
             try {
-                let dStr = String(dateStr || "").trim().toLowerCase();
-                let tStr = String(timeStr || "00:00").trim().replace('.', ':');
+                let dStr = String(dateStr || "").trim().toLowerCase().replace(/!/g, '');
+                let tStr = String(timeStr || "00:00").trim().replace('.', ':').replace(/!/g, '');
                 let dayMatch = dStr.match(/\d+/); let day = dayMatch ? parseInt(dayMatch[0]) : 1;
                 let month = 0;
                 if(dStr.includes("ocak")) month = 0; else if(dStr.includes("şubat")||dStr.includes("subat")) month = 1; else if(dStr.includes("mart")) month = 2; else if(dStr.includes("nisan")) month = 3; else if(dStr.includes("mayıs")||dStr.includes("mayis")) month = 4; else if(dStr.includes("haziran")) month = 5; else if(dStr.includes("temmuz")) month = 6; else if(dStr.includes("ağustos")||dStr.includes("agustos")) month = 7; else if(dStr.includes("eylül")||dStr.includes("eylul")) month = 8; else if(dStr.includes("ekim")) month = 9; else if(dStr.includes("kasım")||dStr.includes("kasim")) month = 10; else if(dStr.includes("aralık")||dStr.includes("aralik")) month = 11;
@@ -801,10 +760,21 @@
 
         function translateDate(dateStr, lang) {
             if(!dateStr) return "";
-            if(lang === 'tr') return dateStr;
-            let newDate = dateStr;
-            if(monthTranslations[lang]) { for (let trMonth in monthTranslations['tr']) { if(dateStr.includes(trMonth)) { newDate = dateStr.replace(trMonth, monthTranslations[lang][trMonth]); break; } } }
+            let cleanStr = cleanValue(dateStr);
+            if(lang === 'tr') return cleanStr;
+            let newDate = cleanStr;
+            if(monthTranslations[lang]) { for (let trMonth in monthTranslations['tr']) { if(cleanStr.includes(trMonth)) { newDate = cleanStr.replace(trMonth, monthTranslations[lang][trMonth]); break; } } }
             return newDate;
+        }
+
+        function populateDateDropdown() {
+            const selectEl = document.getElementById('fixture-date-select');
+            const currentLang = document.getElementById('lang-selector').value;
+            selectEl.innerHTML = '';
+            uniqueDates.forEach(dateRaw => {
+                const displayDate = translateDate(dateRaw, currentLang);
+                selectEl.innerHTML += `<option value="${dateRaw}">${displayDate}</option>`;
+            });
         }
 
         function openArticle(id) {
@@ -857,7 +827,7 @@
                 for(let i = 1; i <= 32; i++) groupsData[i] = [];
                 data.forEach(row => {
                     const values = Object.values(row);
-                    const teamName = values[0]; const logoUrl = values[1]; const groupNum = parseInt(values[2]);
+                    const teamName = cleanValue(values[0]); const logoUrl = values[1]; const groupNum = parseInt(values[2]);
                     if (!teamName || teamName === "Team Name" || teamName.includes("Takim")) return;
                     teamLogos[formatTeamName(teamName)] = logoUrl;
                     teamsGrid.innerHTML += `
@@ -897,7 +867,7 @@
                 allMatches = await response.json();
                 matchesLoaded = true;
                 
-                uniqueDates = [...new Set(allMatches.map(m => m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]]))].filter(d => d);
+                uniqueDates = [...new Set(allMatches.map(m => cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]])))].filter(d => d);
                 uniqueDates.sort((a,b) => parseMatchDate(a, "00:00") - parseMatchDate(b, "00:00"));
 
                 populateDateDropdown();
@@ -907,37 +877,27 @@
             } catch (error) { console.error('Fikstür çekilirken hata:', error); }
         }
 
-        function populateDateDropdown() {
-            const selectEl = document.getElementById('fixture-date-select');
-            const currentLang = document.getElementById('lang-selector').value;
-            selectEl.innerHTML = '';
-            uniqueDates.forEach(dateRaw => {
-                const displayDate = translateDate(dateRaw, currentLang);
-                selectEl.innerHTML += `<option value="${dateRaw}">${displayDate}</option>`;
-            });
-        }
-
         function renderFixturesByDate(selectedDateRaw) {
             if(!matchesLoaded) return;
             const container = document.getElementById('fixtures-container');
             const currentLang = document.getElementById('lang-selector').value;
             const vsText = translations[currentLang] && translations[currentLang].vs ? translations[currentLang].vs : "v";
             
-            const dayMatches = allMatches.filter(m => m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]] === selectedDateRaw);
+            const dayMatches = allMatches.filter(m => cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]]) === selectedDateRaw);
             if(dayMatches.length === 0) { container.innerHTML = `<p style="text-align:center; padding:30px;">Bu tarihte maç bulunmuyor.</p>`; return; }
 
             const matchesByGroup = {};
             dayMatches.forEach(m => {
                 const keys = Object.keys(m);
-                const grup = m[keys[0]]; 
+                const grup = cleanValue(m[keys[0]]); 
                 if(!matchesByGroup[grup]) matchesByGroup[grup] = [];
                 matchesByGroup[grup].push({
-                    saat: m[keys.find(k => k.includes('Saat')) || keys[3]],
-                    ev: m[keys.find(k => k.includes('Ev S')) || keys[4]] || "",
-                    dep: m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "",
-                    evSkor: m[keys.find(k => k.includes('Ev Skor')) || keys[6]],
-                    depSkor: m[keys.find(k => k.includes('Dep Skor')) || keys[7]],
-                    durum: m[keys.find(k => k.includes('Durum')) || keys[8]]
+                    saat: cleanValue(m[keys.find(k => k.includes('Saat')) || keys[3]]),
+                    ev: cleanValue(m[keys.find(k => k.includes('Ev S')) || keys[4]]) || "",
+                    dep: cleanValue(m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]]) || "",
+                    evSkor: cleanValue(m[keys.find(k => k.includes('Ev Skor')) || keys[6]]),
+                    depSkor: cleanValue(m[keys.find(k => k.includes('Dep Skor')) || keys[7]]),
+                    durum: cleanValue(m[keys.find(k => k.includes('Durum')) || keys[8]])
                 });
             });
 
@@ -966,41 +926,44 @@
             container.innerHTML = html;
         }
 
+        // ! İŞARETİNİ ALGILAYAN YENİ ÖNEMLİ MAÇLAR SİSTEMİ
         function renderFeaturedMatches() {
             const container = document.getElementById('featured-matches-container');
             if(!container || !matchesLoaded) return;
             const currentLang = document.getElementById('lang-selector').value;
             const vsText = translations[currentLang] && translations[currentLang].vs ? translations[currentLang].vs : "v";
 
-            let html = '';
-            manualFeaturedMatches.forEach(fm => {
-                let matchData = allMatches.find(m => {
-                    const keys = Object.keys(m);
-                    const e = m[keys.find(k => k.includes('Ev S')) || keys[4]] || "";
-                    const d = m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
-                    return formatTeamName(e) === formatTeamName(fm.ev) && formatTeamName(d) === formatTeamName(fm.dep);
-                });
-
-                if(matchData) {
-                    const keys = Object.keys(matchData);
-                    const mDate = translateDate(matchData[keys.find(k => k.includes('Tarih')) || keys[2]], currentLang);
-                    const mTime = matchData[keys.find(k => k.includes('Saat')) || keys[3]] ? matchData[keys.find(k => k.includes('Saat')) || keys[3]] : '';
-                    const evName = getProperName(fm.ev);
-                    const depName = getProperName(fm.dep);
-                    const evLogo = findLogo(fm.ev);
-                    const depLogo = findLogo(fm.dep);
-
-                    html += `
-                    <div class="feat-match-card" onclick="switchPage('matches')">
-                        <div class="feat-match-date">${mDate} - ${mTime}</div>
-                        <div class="feat-team"><img src="${evLogo}" class="feat-logo"><span class="feat-name">${evName}</span></div>
-                        <div class="feat-vs">${vsText}</div>
-                        <div class="feat-team"><img src="${depLogo}" class="feat-logo"><span class="feat-name">${depName}</span></div>
-                    </div>`;
-                }
+            // Bütün değerleri tarayıp içinde "!" işareti olan satırları buluyoruz
+            let featuredMatches = allMatches.filter(m => {
+                return Object.values(m).some(val => typeof val === 'string' && val.includes('!'));
             });
 
-            if(html === '') { html = `<p style="color:var(--text-muted); font-size:14px;">Şu an için öne çıkan maç bulunmuyor.</p>`; }
+            let html = '';
+            featuredMatches.slice(0, 2).forEach(matchData => {
+                const keys = Object.keys(matchData);
+                const mDateRaw = matchData[keys.find(k => k.includes('Tarih')) || keys[2]] || "";
+                const mTimeRaw = matchData[keys.find(k => k.includes('Saat')) || keys[3]] || "";
+                const evRaw = matchData[keys.find(k => k.includes('Ev S')) || keys[4]] || "";
+                const depRaw = matchData[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
+                
+                const mDate = translateDate(mDateRaw, currentLang);
+                const mTime = cleanValue(mTimeRaw) ? cleanValue(mTimeRaw) : '';
+                
+                const evName = getProperName(evRaw);
+                const depName = getProperName(depRaw);
+                const evLogo = findLogo(evRaw);
+                const depLogo = findLogo(depRaw);
+
+                html += `
+                <div class="feat-match-card" onclick="switchPage('matches')">
+                    <div class="feat-match-date">${mDate} - ${mTime}</div>
+                    <div class="feat-team"><img src="${evLogo}" class="feat-logo"><span class="feat-name">${evName}</span></div>
+                    <div class="feat-vs">${vsText}</div>
+                    <div class="feat-team"><img src="${depLogo}" class="feat-logo"><span class="feat-name">${depName}</span></div>
+                </div>`;
+            });
+
+            if(html === '') { html = `<p style="color:var(--text-muted); font-size:14px;">Şu an için öne çıkan maç bulunmuyor. (Sheets'te bir maçın yanına ! işareti koyun)</p>`; }
             container.innerHTML = html;
         }
 
@@ -1021,8 +984,8 @@
                 const keys = Object.keys(m);
                 const mDateRaw = m[keys.find(k => k.includes('Tarih')) || keys[2]]; const mTimeRaw = m[keys.find(k => k.includes('Saat')) || keys[3]];
                 const evRaw = m[keys.find(k => k.includes('Ev S')) || keys[4]] || ""; const depRaw = m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
-                const evSkor = m[keys.find(k => k.includes('Ev Skor')) || keys[6]]; const depSkor = m[keys.find(k => k.includes('Dep Skor')) || keys[7]]; const durum = m[keys.find(k => k.includes('Durum')) || keys[8]];
-                const mDate = translateDate(mDateRaw, currentLang); const mTime = mTimeRaw ? `${mTimeRaw} (UTC)` : '';
+                const evSkor = cleanValue(m[keys.find(k => k.includes('Ev Skor')) || keys[6]]); const depSkor = cleanValue(m[keys.find(k => k.includes('Dep Skor')) || keys[7]]); const durum = cleanValue(m[keys.find(k => k.includes('Durum')) || keys[8]]);
+                const mDate = translateDate(mDateRaw, currentLang); const mTime = cleanValue(mTimeRaw) ? `${cleanValue(mTimeRaw)} (UTC)` : '';
                 const evName = getProperName(evRaw); const depName = getProperName(depRaw);
                 const evLogo = findLogo(evRaw); const depLogo = findLogo(depRaw);
 
