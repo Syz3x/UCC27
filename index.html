@@ -186,12 +186,26 @@
         .stat-team { font-size: 12px; color: var(--text-muted); }
         .stat-value { font-size: 18px; font-weight: 800; color: white; }
 
-        /* YÖNETMELİK & CEZALAR */
+        /* YÖNETMELİK & CEZALAR EKRANLARI */
         .doc-container { max-width: 1000px; margin: 0 auto; background: var(--theme-black); padding: 50px; border-radius: 16px; border: 1px solid var(--border-light); }
-        .doc-title { font-size: 32px; font-weight: 800; color: white; margin-bottom: 30px; text-transform: uppercase; border-bottom: 2px solid var(--accent-color); padding-bottom: 15px; }
-        .doc-content h3 { font-size: 20px; color: var(--accent-color); margin: 30px 0 15px; }
-        .doc-content p, .doc-content li { font-size: 16px; color: #ccc; line-height: 1.7; margin-bottom: 15px; }
-        .doc-content ul { padding-left: 20px; }
+        
+        /* YÖNETMELİK ÖZEL STİLLERİ */
+        .rule-title-main { font-size: 32px; font-weight: 800; color: white; margin-bottom: 10px; text-align: center; }
+        .rule-intro-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent-color); margin-bottom: 40px; }
+        .rule-intro-box p { font-size: 16px; font-weight: 600; color: var(--text-main); margin-bottom: 5px; line-height: 1.6; }
+        .rule-section-title { font-size: 22px; color: var(--accent-color); margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .rule-content { font-size: 15px; color: #ccc; line-height: 1.8; margin-bottom: 15px; }
+        .rule-list { padding-left: 20px; margin-bottom: 20px; }
+        .rule-list li { font-size: 15px; color: #ccc; line-height: 1.8; margin-bottom: 8px; }
+        .rule-sub-box { background: rgba(0,0,0,0.4); padding: 20px; border-radius: 8px; border: 1px solid var(--border-light); margin-top: 15px; margin-bottom: 25px; }
+        .rule-sub-box li { list-style: none; margin-bottom: 10px; color: #bbb; }
+        .rule-sub-box li b { color: white; }
+        .rule-calendar-list { list-style: none; padding: 0; }
+        .rule-calendar-list li { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; font-size: 15px; color: #ccc; }
+        .rule-calendar-date { font-weight: bold; color: var(--text-main); background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 4px; min-width: 220px; }
+        .last-update { text-align: right; font-size: 12px; color: var(--text-muted); font-style: italic; margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
+
+        /* CEZALAR */
         .penalty-card { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); border-left: 4px solid var(--accent-color); padding: 15px 25px; border-radius: 0 8px 8px 0; margin-bottom: 15px; }
         .penalty-info { display: flex; flex-direction: column; gap: 5px; }
         .penalty-name { font-size: 16px; font-weight: bold; color: white; }
@@ -217,7 +231,7 @@
         .article-image { width: 100%; border-radius: 16px; margin-bottom: 40px; object-fit: cover; max-height: 500px; border: 1px solid var(--border-light); }
         .article-content p { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #ccc; }
 
-        /* YOUTUBE SPONSOR KUTUCUKLARI (6x2) */
+        /* 12 KUTUCUKLU VİDEO SPONSOR ALANI */
         footer { background-color: var(--theme-black); padding: 50px 40px 30px; margin-top: auto; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; gap: 40px; position: relative; z-index: 10; }
         .video-sponsors-container { width: 100%; max-width: 1400px; text-align: center; }
         .sponsors-title { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; font-weight: bold; }
@@ -258,37 +272,31 @@
             <img src="image1.webp" alt="UCC Logo" onerror="this.onerror=null; this.src='image1.png';">
         </a>
         <nav>
-            <a id="nav-home" class="active" onclick="switchPage('home')" data-i18n="home">Home</a>
-            <a id="nav-groups" onclick="switchPage('groups')" data-i18n="groupsNav">Groups</a>
-            <a id="nav-matches" onclick="switchPage('matches')" data-i18n="matches">Matches</a>
-            <a id="nav-stats" onclick="switchPage('stats')" data-i18n="stats">Stats</a>
-            <a id="nav-teams" onclick="switchPage('teams')" data-i18n="teams">Teams</a>
-            <a id="nav-rules" onclick="switchPage('rules')" data-i18n="rules">Rules</a>
-            <a id="nav-penalties" onclick="switchPage('penalties')" data-i18n="penalties">Penalties</a>
-            <a id="nav-news" onclick="switchPage('news')" data-i18n="news">News</a>
+            <a id="nav-home" class="active" onclick="switchPage('home')">ANA SAYFA</a>
+            <a id="nav-groups" onclick="switchPage('groups')">GRUPLAR</a>
+            <a id="nav-matches" onclick="switchPage('matches')">MAÇLAR</a>
+            <a id="nav-stats" onclick="switchPage('stats')">İSTATİSTİKLER</a>
+            <a id="nav-teams" onclick="switchPage('teams')">TAKIMLAR</a>
+            <a id="nav-rules" onclick="switchPage('rules')">YÖNETMELİK</a>
+            <a id="nav-penalties" onclick="switchPage('penalties')">CEZALAR</a>
+            <a id="nav-news" onclick="switchPage('news')">HABERLER</a>
         </nav>
         <div class="header-right">
             <button class="theme-btn" onclick="cycleTheme()" id="theme-btn-text">TEMA: UCC KLASİK</button>
-            <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
-                <option value="en">EN</option>
+            <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)" style="display:none;">
                 <option value="tr" selected>TR</option>
-                <option value="es">ES</option>
-                <option value="fr">FR</option>
-                <option value="de">DE</option>
-                <option value="it">IT</option>
-                <option value="pt">PT</option>
             </select>
         </div>
     </header>
 
     <!-- SAYAÇ -->
     <div class="countdown-container" id="countdown-section">
-        <div class="countdown-title" data-i18n="countdownTitle">UCC 27 Kick-off In</div>
+        <div class="countdown-title">UCC 27 BAŞLAMASINA KALAN SÜRE</div>
         <div class="countdown-timer">
-            <div class="cd-box"><span class="cd-num" id="cd-days">00</span><span class="cd-label" data-i18n="cdDays">Days</span></div>
-            <div class="cd-box"><span class="cd-num" id="cd-hours">00</span><span class="cd-label" data-i18n="cdHours">Hours</span></div>
-            <div class="cd-box"><span class="cd-num" id="cd-mins">00</span><span class="cd-label" data-i18n="cdMins">Mins</span></div>
-            <div class="cd-box"><span class="cd-num" id="cd-secs">00</span><span class="cd-label" data-i18n="cdSecs">Secs</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-days">00</span><span class="cd-label">GÜN</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">SAAT</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">DAKİKA</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">SANİYE</span></div>
         </div>
     </div>
 
@@ -302,34 +310,34 @@
             <main class="main-content">
                 <!-- DİNAMİK DEV MAÇLAR (! İŞARETİYLE SEÇİLENLER) -->
                 <div class="featured-matches-section">
-                    <h2 class="section-header" data-i18n="featuredMatches">Featured Matches of the Week</h2>
+                    <h2 class="section-header">HAFTANIN DEV MAÇLARI</h2>
                     <div class="featured-grid" id="featured-matches-container">
-                        <p style="color: var(--text-muted); font-size:14px;" data-i18n="loading">Veriler çekiliyor...</p>
+                        <p style="color: var(--text-muted); font-size:14px;">Veriler çekiliyor...</p>
                     </div>
                 </div>
 
                 <!-- MANŞETLER -->
                 <div class="headlines-section">
-                    <h2 class="section-header" style="font-size: 18px; margin-bottom: 15px;" data-i18n="latestNews">Latest News</h2>
+                    <h2 class="section-header" style="font-size: 18px; margin-bottom: 15px;">SON HABERLER</h2>
                     <div class="headlines-grid">
                         <div class="headline-item" onclick="openArticle('launch')">
                             <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=300&auto=format&fit=crop" class="headline-img">
                             <div class="headline-content">
-                                <div class="headline-text" data-i18n="news1">UCC 27 Platform Officially Launched!</div>
+                                <div class="headline-text">UCC 27 Platformu Resmen Açıldı!</div>
                                 <div class="news-date">10 Ekim 2026 - 09:00</div>
                             </div>
                         </div>
                         <div class="headline-item" onclick="openArticle('groups')">
                             <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=300&auto=format&fit=crop" class="headline-img">
                             <div class="headline-content">
-                                <div class="headline-text" data-i18n="news2">Groups and Fixtures Have Been Announced</div>
+                                <div class="headline-text">Gruplar ve Maçlar Belli Oldu</div>
                                 <div class="news-date">12 Ekim 2026 - 14:30</div>
                             </div>
                         </div>
                         <div class="headline-item" onclick="openArticle('draw')">
                             <img src="image2.webp" class="headline-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=300&auto=format&fit=crop';">
                             <div class="headline-content">
-                                <div class="headline-text" data-i18n="news3">Play-off Draw Event Details in Madrid</div>
+                                <div class="headline-text">Kura Çekimi Etkinlik Detayları Madrid'de</div>
                                 <div class="news-date">15 Ekim 2026 - 18:00</div>
                             </div>
                         </div>
@@ -341,12 +349,12 @@
         <!-- GRUPLAR VE EFSANE -->
         <div id="view-groups" class="page-view">
             <div class="content-page-container">
-                <h1 class="page-title" data-i18n="groupsTitle">Groups</h1>
-                <div id="groups-grid" class="groups-grid"><p id="groups-loading-text" data-i18n="loading">Veriler çekiliyor...</p></div>
+                <h1 class="page-title">GRUPLAR</h1>
+                <div id="groups-grid" class="groups-grid"><p id="groups-loading-text">Veriler çekiliyor...</p></div>
                 
                 <div class="groups-legend">
-                    <div class="legend-item"><div class="legend-color" style="background:#3388ff;"></div><span data-i18n="directQual">UCC 27 Direkt Katılım</span></div>
-                    <div class="legend-item"><div class="legend-color" style="background:#ff8833;"></div><span data-i18n="playoffQual">UCC 27 Play-off Turu</span></div>
+                    <div class="legend-item"><div class="legend-color" style="background:#3388ff;"></div><span>UCC 27 Direkt Katılım</span></div>
+                    <div class="legend-item"><div class="legend-color" style="background:#ff8833;"></div><span>UCC 27 Play-off Turu</span></div>
                 </div>
             </div>
         </div>
@@ -354,15 +362,15 @@
         <!-- MAÇLAR (TARİHE GÖRE SEÇİM) -->
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
-                <h1 class="page-title" data-i18n="matches">Matches</h1>
+                <h1 class="page-title">MAÇLAR</h1>
                 <div class="fixtures-header-controls">
-                    <span style="font-size: 16px; font-weight: bold; color: var(--text-muted);" data-i18n="filterDate">Select Date:</span>
+                    <span style="font-size: 16px; font-weight: bold; color: var(--text-muted);">Tarih Seçin:</span>
                     <select id="fixture-date-select" class="group-select-dropdown" onchange="renderFixturesByDate(this.value)">
                         <option>Yükleniyor...</option>
                     </select>
                 </div>
                 <div id="fixtures-container">
-                    <p id="fixtures-loading-text" style="color: var(--text-muted); text-align: center; padding: 50px;" data-i18n="loading">Fikstür yükleniyor...</p>
+                    <p id="fixtures-loading-text" style="color: var(--text-muted); text-align: center; padding: 50px;">Fikstür yükleniyor...</p>
                 </div>
             </div>
         </div>
@@ -370,38 +378,38 @@
         <!-- İSTATİSTİKLER (TAKIM VE OYUNCU) -->
         <div id="view-stats" class="page-view">
             <div class="content-page-container">
-                <h1 class="page-title" data-i18n="stats">Stats</h1>
+                <h1 class="page-title">İSTATİSTİKLER</h1>
                 
                 <div class="stats-tabs">
-                    <button class="stats-tab-btn active" onclick="switchStatsTab('player')" id="tab-btn-player" data-i18n="playerStats">Player Stats</button>
-                    <button class="stats-tab-btn" onclick="switchStatsTab('team')" id="tab-btn-team" data-i18n="teamStats">Team Stats</button>
+                    <button class="stats-tab-btn active" onclick="switchStatsTab('player')" id="tab-btn-player">Oyuncu İst.</button>
+                    <button class="stats-tab-btn" onclick="switchStatsTab('team')" id="tab-btn-team">Takım İst.</button>
                 </div>
 
                 <!-- OYUNCU -->
                 <div id="stats-player" class="stats-section active">
                     <div class="stats-grid">
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="topScorers">Goals</div>
+                            <div class="stat-box-title">GOL</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="topAssists">Assists</div>
+                            <div class="stat-box-title">ASİST</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="goalAssist">G + A</div>
+                            <div class="stat-box-title">GOL + ASİST</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="expectedGoals">xG (Expected)</div>
+                            <div class="stat-box-title">GOL BEKLENTİSİ (xG)</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0.0</div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="yellowCards">Yellow Cards</div>
+                            <div class="stat-box-title">SARI KART</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="redCards">Red Cards</div>
+                            <div class="stat-box-title">KIRMIZI KART</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
                         </div>
                     </div>
@@ -411,52 +419,264 @@
                 <div id="stats-team" class="stats-section">
                     <div class="stats-grid">
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="goalsScored">Goals Scored</div>
+                            <div class="stat-box-title">ATILAN GOL</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="cleanSheets">Clean Sheets</div>
+                            <div class="stat-box-title">YENİLMEYEN GOL (Clean Sheets)</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="expectedGoals">Team xG</div>
+                            <div class="stat-box-title">TAKIM xG</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0.0</div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="yellowCards">Yellow Cards</div>
+                            <div class="stat-box-title">SARI KART</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-box-title" data-i18n="redCards">Red Cards</div>
+                            <div class="stat-box-title">KIRMIZI KART</div>
                             <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div>
                         </div>
                     </div>
                 </div>
-                <p style="text-align: center; color: var(--text-muted); margin-top: 30px; font-size: 14px;" data-i18n="statsNote">* İstatistikler Puan Tablosu ve veritabanı üzerinden güncellenir.</p>
+                <p style="text-align: center; color: var(--text-muted); margin-top: 30px; font-size: 14px;">* İstatistikler Puan Tablosu ve veritabanı üzerinden güncellenir.</p>
             </div>
         </div>
 
         <!-- TAKIMLAR -->
         <div id="view-teams" class="page-view">
             <div class="content-page-container">
-                <h1 class="page-title" data-i18n="partTeams">Participating Teams</h1>
+                <h1 class="page-title">KATILAN TAKIMLAR</h1>
                 <div id="teams-grid" class="teams-grid"></div>
             </div>
         </div>
 
-        <!-- YÖNETMELİK -->
+        <!-- YENİ MÜKEMMEL YÖNETMELİK EKRANI -->
         <div id="view-rules" class="page-view">
             <div class="content-page-container">
                 <div class="doc-container">
-                    <h1 class="doc-title" data-i18n="rules">Tournament Rules</h1>
+                    <h1 class="rule-title-main">2027 UEFA Club Championship</h1>
+                    
+                    <div class="rule-intro-box">
+                        <p>- Avrupa'nın en büyük kulüp organizasyonu.</p>
+                        <p>- Her 2 yılda bir.</p>
+                        <p>- Toplam 128 takım.</p>
+                    </div>
+
                     <div class="doc-content">
-                        <h3 data-i18n="rule1Title">1. Group Stage Format</h3>
-                        <p data-i18n="rule1Desc">32 teams are divided into 8 groups of 4. Each team plays the others in their group home and away in a round-robin format.</p>
-                        <h3 data-i18n="rule2Title">2. Points System</h3>
-                        <ul><li data-i18n="rule2Desc1">Win: 3 Points</li><li data-i18n="rule2Desc2">Draw: 1 Point</li><li data-i18n="rule2Desc3">Loss: 0 Points</li></ul>
-                        <h3 data-i18n="rule3Title">3. Tie-Breaking Criteria</h3>
-                        <p data-i18n="rule3Desc">If two or more teams are equal on points, the following criteria are applied in order:</p>
-                        <ul><li data-i18n="rule3Point1">Head-to-head points</li><li data-i18n="rule3Point2">Head-to-head goal difference</li><li data-i18n="rule3Point3">Overall goal difference</li><li data-i18n="rule3Point4">Overall goals scored</li></ul>
+                        
+                        <h3 class="rule-section-title">A) LİG KONTENJANLARI</h3>
+                        <ul class="rule-list">
+                            <li>Premier Lig (İngiltere) : 16 Takım</li>
+                            <li>Seria A (İtalya) : 16 Takım</li>
+                            <li>La Liga (İspanya) : 16 Takım</li>
+                            <li>Bundesliga (Almanya) : 16 Takım</li>
+                            <li>Ligue 1 (Fransa) : 16 Takım</li>
+                            <li>Primeira Lig (Portekiz) : 12 Takım</li>
+                            <li>Eredivise (Hollanda) : 12 Takım</li>
+                            <li>Pro League (Belçika) : 10 Takım</li>
+                            <li>Süper Lig (Türkiye) : 10 Takım</li>
+                            <li>Chance Liga (Çekya) : 2 Takım</li>
+                            <li>Super League (Yunanistan) : 2 Takım</li>
+                        </ul>
+                        <div class="rule-sub-box">
+                            <li><b>A.1)</b> Belirlenen ligler 'UEFA ÜLKE PUANI' sisteminden alınmış olup ilk 11 sıralamaya giren ligler alınmıştır.</li>
+                            <li><b>A.2)</b> Belirlenen liglerden gelecek takım sayısı gene aynı şekil 'UEFA ÜLKE PUAN' sistemine göre yapılmıştır.</li>
+                            <li><b>A.3)</b> Belirlenen takım sayısı 2026 sezonu yerel lig sıralamasına göre belirlenmiştir.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">B) ELEME AŞAMASI</h3>
+                        <p class="rule-content">Takım belirleme işlemleri sonlandıktan sonra 128 takım "GRUPLU ELEME" oynayacaktır.</p>
+                        <div class="rule-sub-box">
+                            <li><b>B.1)</b> Kura çekimi torba + bilgisayar sistemi ile yapılacaktır.</li>
+                            <li><b>B.2)</b> Aynı ülke takımı eşleşmesi olmayacaktır.</li>
+                            <li><b>B.3)</b> Belirlenen takımlar gruplara dağıtılarak her biri dörderli olmak üzere toplam 32 grupta eleme oynayacaktır.</li>
+                            <li><b>B.4)</b> Toplam 6 maç oynanacaktır. (3 Ev sahibi , 3 Deplasman)</li>
+                            <li><b>B.5)</b> Gruplarda 1. olan takımlar doğrudan katılırken, 2. olan takımlar kalan 16 için play-off oynayacaktır.</li>
+                            <li><b>B.6)</b> Elemeler sonucunda toplam 48 takım 2027 UEFA Club Championship'a katılacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">C) TURNUVA AŞAMASI</h3>
+                        <p class="rule-content">Elemeler sonrası 48 takım 2027 sonunda (Kasım-Aralık) kupa için yarışacaktır.</p>
+                        <div class="rule-sub-box">
+                            <li><b>C.1)</b> Her takım toplamda 3 maç yapacaktır.</li>
+                            <li><b>C.2)</b> Her grupta 4 takım olacak şekilde toplam 12 grup olacaktır.</li>
+                            <li><b>C.3)</b> 48 Takım 4 torbaya bölünerek kura çekilecektir.</li>
+                            <li><b>C.4)</b> Aynı ülke takımı eşleşmesi olmayacaktır. (GRUP AŞAMASI)</li>
+                            <li><b>C.5)</b> Torbalar "UEFA ÜLKE SIRALAMASINA" göre belirlenecektir.</li>
+                            <li style="margin-top:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;"><b>C.6) GRUP SIRALAMASI ;</b></li>
+                            <li style="padding-left:15px;"><b>C.6.1)</b> 1. ve 2. olan takımlar doğrudan SON 32'ye yükselecektir.</li>
+                            <li style="padding-left:15px;"><b>C.6.2)</b> 3. olan takımlar EN İYİ ÜÇÜNCÜ'den yükselecektir.</li>
+                            <li style="padding-left:15px;"><b>C.6.3)</b> 4. olan takım 2027 UEFA Club Championship'e veda edecektir.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">D) GELİŞTİRMELER</h3>
+                        <p class="rule-content">Arttırılmış ödül sistemi ve oyuncuların dinlenme süreleri iyileştirildi.</p>
+
+                        <h3 class="rule-section-title">E) 2027 TAKVİMİ</h3>
+                        <ul class="rule-calendar-list">
+                            <li><span class="rule-calendar-date">1 Haziran 2026</span> 128 takımın belirlenmesi</li>
+                            <li><span class="rule-calendar-date">3 Haziran 2026</span> Eleme torbalarının belirlenmesi</li>
+                            <li><span class="rule-calendar-date">31 Temmuz 2026</span> Eleme grupları belirlenmesi / 2027 UEFA Club Championship Tanıtımı</li>
+                        </ul>
+                        <br>
+                        <ul class="rule-calendar-list">
+                            <li><span class="rule-calendar-date">22 - 24 Aralık 2026</span> 1. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">29 - 31 Aralık 2026</span> 2. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">5 - 7 Ocak 2027</span> 3. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">12 - 14 Ocak 2027</span> 4. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">2 - 4 Şubat 2027</span> 5. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">9 - 11 Şubat 2027</span> 6. Eleme maçları</li>
+                        </ul>
+                        <br>
+                        <ul class="rule-calendar-list">
+                            <li><span class="rule-calendar-date">1 Ağustos 2027</span> Torbaların belirlenmesi</li>
+                            <li><span class="rule-calendar-date">20 Ağustos 2027</span> KURA ÇEKİMİ / maçların belirlenmesi</li>
+                            <li><span class="rule-calendar-date">1 - 2 Eylül 2027</span> Play-off maçları</li>
+                            <li><span class="rule-calendar-date">8 - 9 Eylül 2027</span> Play-off maçları (Rövanş)</li>
+                        </ul>
+                        <div style="background:var(--accent-color); color:white; padding:10px 20px; font-weight:bold; border-radius:5px; margin:20px 0;">
+                            21 Kasım 2027 : 2027 UEFA Club Championship Başlangıcı / Lig maçları
+                        </div>
+                        <ul class="rule-calendar-list">
+                            <li><span class="rule-calendar-date">21 - 28 Kasım 2027</span> 1.Grup Maçları</li>
+                            <li><span class="rule-calendar-date">29 Kasım - 6 Aralık 2027</span> 2.Grup Maçları</li>
+                            <li><span class="rule-calendar-date">7 - 14 Aralık 2027</span> 3.Grup Maçları</li>
+                            <li><span class="rule-calendar-date">15 - 18 Aralık 2027</span> Son 32 Maçları</li>
+                            <li><span class="rule-calendar-date">19 - 22 Aralık 2027</span> Son 16 Maçları</li>
+                            <li><span class="rule-calendar-date">23 - 24 Aralık 2027</span> Çeyrek Final Maçları</li>
+                            <li><span class="rule-calendar-date">27 Aralık 2027</span> Yarı Final Maçları</li>
+                            <li><span class="rule-calendar-date">31 Aralık 2027</span> Üçüncülük maçı & FİNAL</li>
+                        </ul>
+
+                        <h3 class="rule-section-title">F) EV SAHİBİ: İSPANYA</h3>
+                        <p class="rule-content">2027 UEFA Club Championship'e "İSPANYA" ev sahipliği yapacaktır.</p>
+                        <div class="rule-sub-box">
+                            <li><b>F.1)</b> Yapılacak olan maçlar İspanya'nın 4 bölgesine bölünecek şekilde ayarlanmıştır.
+                                <ul style="margin-top:10px; color:#aaa;">
+                                    <li>- DOĞU BÖLGESİ : "A, F, K" grupları</li>
+                                    <li>- KUZEY BÖLGESİ : "C, H, J" grupları</li>
+                                    <li>- BATI BÖLGESİ : "B, E, L" grupları</li>
+                                    <li>- GÜNEY BÖLGESİ : "D, G, I" grupları</li>
+                                </ul>
+                            </li>
+                            <li><b>F.2)</b> Grup maçları sona ermesiyle birlikte 4 bölgede bulunan takımlar kademe kademe Merkez bölgesine (Madrid) gelir.
+                                <ul style="margin-top:10px; color:#aaa;">
+                                    <li><b>SON 32:</b> Doğu (4), Kuzey (4), Batı (4), Güney (4)</li>
+                                    <li><b>SON 16:</b> Doğu (2), Kuzey (2), Batı (1), Güney (2), Merkez (1)</li>
+                                    <li><b>ÇEYREK FİNAL:</b> Doğu (1), Kuzey (1), Güney (1), Merkez (1)</li>
+                                    <li><b>YARI FİNAL / ÜÇÜNCÜLÜK / FİNAL:</b> Merkez (Madrid) - 4 MAÇ</li>
+                                </ul>
+                            </li>
+                            <li><b>F.3)</b> Böylece oyuncuların dinlenme olanağı arttırılmıştır.</li>
+                            <li><b>F.4)</b> Bir stadyumda birden fazla maç oynanacağı kesindir.
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li><b>F.4.1)</b> Stadyumların bakım, yenileme ve onarım işlemleri UEFA tarafından yapılacaktır.</li>
+                                </ul>
+                            </li>
+                            <li><b>F.5)</b> Belirlenen stadyumlar 1 Kasım 2027 itibariyle UEFA'ya teslim edilecektir.</li>
+                            <li><b>F.6)</b> Stadyumlar 30 Ağustos 2027'de açıklanacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">G) ÖDÜL HAVUZU</h3>
+                        <p class="rule-content">Üst düzey ödül havuzu belirlenmiştir.</p>
+                        <div class="rule-sub-box">
+                            <li><b>G.1) Ülke Puanına Katkı</b>
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Galibiyet: 4 ham puan (Elemelerde 2 ham puan)</li>
+                                    <li>Beraberlik: 2 ham puan (Elemelerde 1 ham puan)</li>
+                                    <li><i>(Play-off'da ülke puanına katkı uygulanmamaktadır.)</i></li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;"><b>G.2) Finansal Ödüller</b>
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Elemelerde galibiyet: 500K Euro</li>
+                                    <li>Play-off galibiyet: 250K Euro</li>
+                                    <li>Grup aşamasına katılmak: 25,5 Milyon Euro</li>
+                                    <li>Grup aşamasında galibiyet: 2,5 Milyon Euro</li>
+                                    <li>Grup aşamasında beraberlik: 750K Euro</li>
+                                    <li>Son 16'ya katılım: 15 Milyon Euro</li>
+                                    <li>Çeyrek Final: 15,5 Milyon Euro</li>
+                                    <li>Yarı Final: 17,5 Milyon Euro</li>
+                                    <li>Finalist: 20 Milyon Euro</li>
+                                    <li>Üçüncülük: 7 Milyon Euro</li>
+                                    <li>Şampiyonluk: 25 Milyon Euro</li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;"><b>G.3) Kazanç Sistemi (Destek Primi)</b>
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Üst üste 3 galibiyet: 1 Milyon Euro</li>
+                                    <li>Grubu namağlup bitirmek: 1,5 Milyon Euro</li>
+                                    <li>Bir maçı gol yemeden bitirmek: 250K Euro</li>
+                                    <li>Bir maçta 3 farkla yenmek: 250K Euro</li>
+                                    <li>Bir maçta +5 farkla yenmek: 500K Euro</li>
+                                </ul>
+                            </li>
+                            <li><b>G.3.1)</b> Kazanç sistemi grup aşaması için geçerlidir. Elemelerde kazanç sistemi uygulanmayacaktır.</li>
+                            <li><b>G.3.2)</b> Grup aşaması sona erdiğinde kazanç sistemi devre dışı kalacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">H) KADRO BİLDİRİMİ</h3>
+                        <div class="rule-sub-box">
+                            <li><b>H.1)</b> Kadrolar en geç 14 Kasım günü saat 23:00'a kadar UEFA'ya bildirilmelidir.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">I) OYUNCU BONUSU</h3>
+                        <p class="rule-content">Grup aşamasına katılan takımların oyuncu motivasyonunu arttırması adına bonuslar uygulanacaktır:</p>
+                        <div class="rule-sub-box">
+                            <li><b>I.1)</b> Bonus Şartları:
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Bir maçta hattrick yapan oyuncu: 1 Milyon Euro</li>
+                                    <li>Bir maçta +7 kurtarış yapan kaleci: 1 Milyon Euro</li>
+                                    <li>Bir maçta "Maçın Oyuncusu" olan oyuncu: 1 Milyon Euro</li>
+                                </ul>
+                            </li>
+                            <li><b>I.1.1)</b> Oyuncu bonusu sadece Grup aşamasında uygulanacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">K) SPORTMENLİK & SAYGI</h3>
+                        <div class="rule-sub-box">
+                            <li><b>K.1)</b> Takımların tribünlerinden kaynaklanan herhangi bir sportmenliğe uygun olmayan harekette "UEFA DİSİPLİN KURULU" tarafından ceza uygulanacaktır.</li>
+                            <li><b>K.1.1)</b> Bu cezalar caydırıcı olması açısından en üst sınırdan uygulanacaktır.</li>
+                            <li><b>K.2)</b> Hangi sebep olursa olsun 2 kez ceza alan takım men edilecektir.</li>
+                            <li><b style="color:var(--accent-color);">K.3) "IRKÇILIK" yapan takım (oyuncu, yönetim, taraftar vb.) herhangi bir savunma alınmadan men edilecektir.</b></li>
+                            <li><b>K.4)</b> Sportmenliğe uymayan ceza koşulları sahada olan/olmayan tüm takım üyelerine uygulanacaktır.</li>
+                            <li><b>K.5)</b> Bu konuda "ÇOK HASSAS" davranılıp sıfır tolerans uygulanacaktır.</li>
+                            <li><b>K.6)</b> Katılan 128 takıma "SPORTMENLİK & SAYGI" toplantısı yapılacak ve eğitimi verilecektir.</li>
+                            <li><b>K.7)</b> Aynı eğitim katılacak tüm hakemlere verilecek, saha içindeki işleyiş anlatılacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">L) YAYIN HAKLARI</h3>
+                        <div class="rule-sub-box">
+                            <li><b>L.1)</b> Yayın hakları için "beIN Media Group" ile 2+2 yıllık anlaşma sağlanmıştır.</li>
+                            <li><b>L.1.1)</b> Anlaşma 1 Haziran 2026 itibariyle başlayacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">M) SPONSOR</h3>
+                        <div class="rule-sub-box">
+                            <li><b>M.1)</b> Resmi Markalar (2+2 yıllık anlaşma):
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>COCA-COLA, FedEx, Mastercard, Sony Interactive Entertainment, Just Eat Takeaway, AUDI, Turkish Airlines, Apple, Frito-lay (PepsiCO), Adidas, Rexona, McDonald's.</li>
+                                </ul>
+                            </li>
+                            <li><b>M.1.1)</b> Markalar ile anlaşmalar 1 Haziran 2026 itibariyle başlayacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">N) SÜREÇ / OYUN KURALLARI</h3>
+                        <div class="rule-sub-box">
+                            <li><b>N.1)</b> 2027 UEFA Club Championship her yeni sezonunda daha gelişmiş şekilde ilerleyecektir.</li>
+                            <li><b>N.2)</b> Turnuvanın 2037'ye kadar yapılması planlanmıştır. (N.2.1: Bu karar UEFA'ya aittir).</li>
+                            <li><b>N.3)</b> Düzenlenecek bu organizasyona (UCL, UEL gibi) katılım zorunludur.</li>
+                            <li><b style="color:var(--accent-color);">N.3.1) Katılmayı reddeden takımlar UEFA organizasyonlarından 2 yıl men edilecek ve en üst sınırdan para cezası alacaktır.</b></li>
+                            <li><b>N.4)</b> Üst üste turnuvaya 3 kez katılan takımlara "Teşvik Primi" olarak 15 Milyon Euro verilecektir.</li>
+                            <li><b>N.5)</b> Verilen her kural sonradan değiştirilebilir, eklenebilir veya silinebilir.</li>
+                            <li><b>N.6)</b> Organizasyonun tüm temel hakları UEFA'ya aittir.</li>
+                            <li><b>N.7)</b> Logo, Müzik ve Kupa detayları 31 Temmuz 2026'da tanıtılacaktır.</li>
+                            <li><b>N.8)</b> Yeni uygulanacak kurallar 31 Temmuz 2026'da tanıtılacaktır.</li>
+                        </div>
+                        
+                        <p class="last-update">son güncelleme : 20/07/2026 01:50</p>
                     </div>
                 </div>
             </div>
@@ -466,9 +686,9 @@
         <div id="view-penalties" class="page-view">
             <div class="content-page-container">
                 <div class="doc-container">
-                    <h1 class="doc-title" data-i18n="penalties">Suspensions & Penalties</h1>
+                    <h1 class="doc-title">Cezalar (Suspensions)</h1>
                     <div class="penalty-card"><div class="penalty-info"><div class="penalty-name">Örnek Oyuncu (Takım)</div><div class="penalty-reason">Direct Red Card</div></div><div class="penalty-duration">2 Matches</div></div>
-                    <p style="color: var(--text-muted); margin-top: 30px; font-size: 14px;" data-i18n="penaltiesNote">* Cezalı oyuncular listesi maç raporlarına göre güncellenir.</p>
+                    <p style="color: var(--text-muted); margin-top: 30px; font-size: 14px;">* Cezalı oyuncular listesi maç raporlarına göre güncellenir.</p>
                 </div>
             </div>
         </div>
@@ -476,30 +696,30 @@
         <!-- HABER HUB -->
         <div id="view-news" class="page-view">
             <div class="content-page-container">
-                <h1 class="page-title" data-i18n="news">News</h1>
+                <h1 class="page-title">HABERLER</h1>
                 <div class="news-hub-grid">
                     <div class="news-hub-card" onclick="openArticle('launch')">
                         <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
                         <div class="news-hub-date">10 Ekim 2026 - 09:00</div>
                         <div class="news-hub-content">
-                            <h3 class="news-hub-title" data-i18n="news1">UCC 27 Platform Officially Launched!</h3>
-                            <div class="news-hub-desc" data-i18n="launchSub">A new era begins for the ultimate club championship.</div>
+                            <h3 class="news-hub-title">UCC 27 Platformu Resmen Açıldı!</h3>
+                            <div class="news-hub-desc">Klüpler şampiyonası için yeni bir dönem başlıyor.</div>
                         </div>
                     </div>
                     <div class="news-hub-card" onclick="openArticle('groups')">
                         <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
                         <div class="news-hub-date">12 Ekim 2026 - 14:30</div>
                         <div class="news-hub-content">
-                            <h3 class="news-hub-title" data-i18n="news2">Groups and Fixtures Have Been Announced</h3>
-                            <div class="news-hub-desc" data-i18n="groupsSub">The wait is over. All 32 groups have been finalized.</div>
+                            <h3 class="news-hub-title">Gruplar ve Maçlar Belli Oldu</h3>
+                            <div class="news-hub-desc">Tüm 32 grup kesinleşti ve fikstürler çekildi.</div>
                         </div>
                     </div>
                     <div class="news-hub-card" onclick="openArticle('draw')">
                         <img src="image2.webp" class="news-hub-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=800&auto=format&fit=crop';">
                         <div class="news-hub-date">15 Ekim 2026 - 18:00</div>
                         <div class="news-hub-content">
-                            <h3 class="news-hub-title" data-i18n="news3">Play-off Draw Event Details in Madrid</h3>
-                            <div class="news-hub-desc" data-i18n="drawSub">All the details and procedures for the upcoming knockout phase draw.</div>
+                            <h3 class="news-hub-title">Kura Çekimi Etkinlik Detayları Madrid'de</h3>
+                            <div class="news-hub-desc">Eleme aşaması kura çekimi için tüm detaylar.</div>
                         </div>
                     </div>
                 </div>
@@ -509,7 +729,7 @@
         <!-- TEKİL MAKALE -->
         <div id="view-article" class="page-view">
             <div class="article-container">
-                <button class="back-btn" onclick="switchPage('news')" data-i18n="goBack">← Back</button>
+                <button class="back-btn" onclick="switchPage('news')">← GERİ DÖN</button>
                 <h1 class="article-title" id="dyn-art-title">Title</h1>
                 <h3 class="article-subtitle" id="dyn-art-sub">Subtitle</h3>
                 <img src="" class="article-image" id="dyn-art-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=1000&auto=format&fit=crop';">
@@ -524,96 +744,59 @@
     <!-- 12 KUTUCUKLU VİDEO SPONSOR ALANI (YOUTUBE LİNKLERİ İLE) -->
     <footer>
         <div class="video-sponsors-container">
-            <div class="sponsors-title" data-i18n="sponsorsTitle">Official Sponsors</div>
+            <div class="sponsors-title">RESMİ SPONSORLAR</div>
             <div class="video-sponsors-grid">
-                
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/BkcfPYQ_35E?autoplay=1&mute=1&controls=0&loop=1&playlist=BkcfPYQ_35E&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/BkcfPYQ_35E?autoplay=1&mute=1&controls=0&loop=1&playlist=BkcfPYQ_35E&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">COCA-COLA</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/PMHSbBsIXm0?autoplay=1&mute=1&controls=0&loop=1&playlist=PMHSbBsIXm0&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/PMHSbBsIXm0?autoplay=1&mute=1&controls=0&loop=1&playlist=PMHSbBsIXm0&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">FedEx</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/SDm-y9d0zeE?autoplay=1&mute=1&controls=0&loop=1&playlist=SDm-y9d0zeE&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/SDm-y9d0zeE?autoplay=1&mute=1&controls=0&loop=1&playlist=SDm-y9d0zeE&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">Mastercard</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/1BU4VXofbQk?autoplay=1&mute=1&controls=0&loop=1&playlist=1BU4VXofbQk&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/1BU4VXofbQk?autoplay=1&mute=1&controls=0&loop=1&playlist=1BU4VXofbQk&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">Sony IE</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/Icrg31BzMTA?autoplay=1&mute=1&controls=0&loop=1&playlist=Icrg31BzMTA&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/Icrg31BzMTA?autoplay=1&mute=1&controls=0&loop=1&playlist=Icrg31BzMTA&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">Just Eat</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/8GElvLxSxfI?autoplay=1&mute=1&controls=0&loop=1&playlist=8GElvLxSxfI&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/8GElvLxSxfI?autoplay=1&mute=1&controls=0&loop=1&playlist=8GElvLxSxfI&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">AUDI</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/NThw4kUOP4U?autoplay=1&mute=1&controls=0&loop=1&playlist=NThw4kUOP4U&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/NThw4kUOP4U?autoplay=1&mute=1&controls=0&loop=1&playlist=NThw4kUOP4U&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">Turkish Airlines</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/1WLqGs7c_yA?autoplay=1&mute=1&controls=0&loop=1&playlist=1WLqGs7c_yA&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/1WLqGs7c_yA?autoplay=1&mute=1&controls=0&loop=1&playlist=1WLqGs7c_yA&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">Apple</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/V97vW902d3c?autoplay=1&mute=1&controls=0&loop=1&playlist=V97vW902d3c&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/V97vW902d3c?autoplay=1&mute=1&controls=0&loop=1&playlist=V97vW902d3c&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">Frito-lay</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/EK2qa9A1TNc?autoplay=1&mute=1&controls=0&loop=1&playlist=EK2qa9A1TNc&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/EK2qa9A1TNc?autoplay=1&mute=1&controls=0&loop=1&playlist=EK2qa9A1TNc&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">Adidas</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/vxauHCLKyFU?autoplay=1&mute=1&controls=0&loop=1&playlist=vxauHCLKyFU&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/vxauHCLKyFU?autoplay=1&mute=1&controls=0&loop=1&playlist=vxauHCLKyFU&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">Rexona</div>
                 </div>
-
                 <div class="sponsor-box">
-                    <div class="sponsor-iframe-container">
-                        <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/O1SiLAFzRas?autoplay=1&mute=1&controls=0&loop=1&playlist=O1SiLAFzRas&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
-                    </div>
+                    <div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/O1SiLAFzRas?autoplay=1&mute=1&controls=0&loop=1&playlist=O1SiLAFzRas&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div>
                     <div class="sponsor-name">McDonald's</div>
                 </div>
-
             </div>
         </div>
-        <div class="movie-promo" id="movie-promo-text" data-i18n="moviePromo"><span>AVENGERS: DOOMSDAY</span> — NOW EXCLUSIVELY IN THEATERS!</div>
+        <div class="movie-promo" id="movie-promo-text"><span>AVENGERS: DOOMSDAY</span> — YAKINDA SİNEMALARDA!</div>
     </footer>
 
     <script>
@@ -625,45 +808,10 @@
         let allMatches = []; 
         let uniqueDates = []; 
 
-        const translations = {
-            en: { 
-                home: "Home", groupsNav: "Groups", groupsTitle: "Groups", matches: "Matches", draws: "Draws", teams: "Teams", news: "News", stats: "Stats", rules: "Rules", penalties: "Penalties",
-                goBack: "← Back", partTeams: "Participating Teams", loading: "Loading data...", filterGroup: "Select Group:", filterDate: "Select Date:", latestNews: "Latest News", groupWord: "Group", vs: "v", sponsorsTitle: "Official Partners",
-                moviePromo: "<span>AVENGERS: DOOMSDAY</span> — NOW EXCLUSIVELY IN THEATERS!",
-                featuredMatches: "Featured Matches of the Week", countdownTitle: "UCC 27 Kick-off In", cdDays: "Days", cdHours: "Hours", cdMins: "Mins", cdSecs: "Secs",
-                directQual: "UCC 27 Direct Qualification", playoffQual: "UCC 27 Play-off Round",
-                playerStats: "Player Stats", teamStats: "Team Stats", topScorers: "Goals", topAssists: "Assists", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "Yellow Cards", redCards: "Red Cards", goalsScored: "Goals Scored", cleanSheets: "Clean Sheets", statsNote: "* Stats are updated automatically/manually based on match reports.",
-                rule1Title: "1. Group Stage Format", rule1Desc: "32 teams are divided into 8 groups of 4. Each team plays the others in their group home and away.",
-                rule2Title: "2. Points System", rule2Desc1: "Win: 3 Points", rule2Desc2: "Draw: 1 Point", rule2Desc3: "Loss: 0 Points",
-                rule3Title: "3. Tie-Breaking Criteria", rule3Desc: "If teams are equal on points, the following apply:", rule3Point1: "Head-to-head points", rule3Point2: "Head-to-head goal difference", rule3Point3: "Overall goal difference", rule3Point4: "Overall goals scored",
-                penaltiesNote: "* Suspension lists are updated by officials based on match reports.",
-                news1: "UCC 27 Platform Officially Launched!", launchSub: "A new era begins for the ultimate club championship.", launchP1: "The official UCC 27 platform is now live! Fans from all around the world can track their favorite teams.", launchP2: "Prepare yourself for a highly competitive season.",
-                news2: "Groups and Fixtures Have Been Announced", groupsSub: "The wait is over. All 32 groups have been finalized.", groupsP1: "The official group assignments and full 6-week match fixtures have been announced.", groupsP2: "Check the 'Matches' tab to see when your favorite team is playing.",
-                news3: "Play-off Draw Event Details in Madrid", drawSub: "All the details and procedures for the upcoming knockout phase draw.", drawP1: "The highly anticipated UCC 27 draw will take place in Madrid.", drawP2: "Seedings will be determined based on group placements."
-            },
-            tr: { 
-                home: "Ana Sayfa", groupsNav: "Gruplar", groupsTitle: "Gruplar", matches: "Maçlar", draws: "Kuralar", teams: "Takımlar", news: "Haberler", stats: "İstatistikler", rules: "Yönetmelik", penalties: "Cezalar",
-                goBack: "← Geri Dön", partTeams: "Katılan Takımlar", loading: "Veriler çekiliyor...", filterGroup: "Grup Seçin:", filterDate: "Tarih Seçin:", latestNews: "Son Haberler", groupWord: "Grup", vs: "v", sponsorsTitle: "Resmi Sponsorlar",
-                moviePromo: "<span>AVENGERS: DOOMSDAY</span> — YAKINDA SİNEMALARDA!",
-                featuredMatches: "Haftanın Dev Maçları", countdownTitle: "UCC 27 Başlamasına Kalan Süre", cdDays: "Gün", cdHours: "Saat", cdMins: "Dakika", cdSecs: "Saniye",
-                directQual: "UCC 27 Direkt Katılım", playoffQual: "UCC 27 Play-off Turu",
-                playerStats: "Oyuncu İst.", teamStats: "Takım İst.", topScorers: "Gol", topAssists: "Asist", goalAssist: "Gol + Asist", expectedGoals: "Gol Beklentisi (xG)", yellowCards: "Sarı Kart", redCards: "Kırmızı Kart", goalsScored: "Atılan Gol", cleanSheets: "Yenilmeyen Gol", statsNote: "* İstatistikler Puan Tablosu ve veritabanı üzerinden güncellenir.",
-                rule1Title: "1. Grup Aşaması Formatı", rule1Desc: "32 takım 4'erli 8 gruba ayrılır. Takımlar rakipleriyle iç ve dış sahada karşılaşır.",
-                rule2Title: "2. Puan Sistemi", rule2Desc1: "Galibiyet: 3 Puan", rule2Desc2: "Beraberlik: 1 Puan", rule2Desc3: "Mağlubiyet: 0 Puan",
-                rule3Title: "3. Eşitlik Bozma Kriterleri", rule3Desc: "Puan eşitliğinde sırasıyla şunlara bakılır:", rule3Point1: "İkili averaj", rule3Point2: "İkili averaj gol farkı", rule3Point3: "Genel averaj", rule3Point4: "Atılan gol",
-                penaltiesNote: "* Cezalı oyuncular listesi maç raporlarına göre yetkililer tarafından güncellenir.",
-                news1: "UCC 27 Sitesi Kullanıma Açıldı!", launchSub: "Klüpler şampiyonası için yeni bir dönem.", launchP1: "Resmi UCC 27 platformu artık yayında! Takımlarınızı buradan takip edebilirsiniz.", launchP2: "Kıyasıya bir mücadeleye hazır olun.",
-                news2: "Gruplar ve Maçlar Belli Oldu", groupsSub: "Bekleyiş sona erdi. Tüm 32 grup kesinleşti.", groupsP1: "Resmi grup kuraları ve tam 6 haftalık maç fikstürü açıklandı.", groupsP2: "Favori takımınızın ne zaman oynayacağını Maçlar sekmesinden görebilirsiniz.",
-                news3: "Kura Çekimi Etkinlik Detayları Madrid'de", drawSub: "Yaklaşan kura çekimi için prosedürler.", drawP1: "Merakla beklenen kura çekimi Madrid'de gerçekleşecek.", drawP2: "Seri başları grup sıralamalarına göre belirlenecek."
-            }
-        };
-
-        const monthTranslations = { tr: { "Aralık": "Aralık", "Ocak": "Ocak", "Şubat": "Şubat" }, en: { "Aralık": "Dec", "Ocak": "Jan", "Şubat": "Feb" } };
-
         const articleData = {
-            'launch': { img: 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=1000&auto=format&fit=crop', tKey: 'news1', sKey: 'launchSub', p1Key: 'launchP1', p2Key: 'launchP2' },
-            'groups': { img: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1000&auto=format&fit=crop', tKey: 'news2', sKey: 'groupsSub', p1Key: 'groupsP1', p2Key: 'groupsP2' },
-            'draw': { img: 'image2.webp', tKey: 'news3', sKey: 'drawSub', p1Key: 'drawP1', p2Key: 'drawP2' }
+            'launch': { img: 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=1000&auto=format&fit=crop', tKey: 'UCC 27 Sitesi Kullanıma Açıldı!', sKey: 'Klüpler şampiyonası için yeni bir dönem.', p1Key: 'Resmi UCC 27 platformu artık yayında! Takımlarınızı buradan takip edebilirsiniz.', p2Key: 'Kıyasıya bir mücadeleye hazır olun.' },
+            'groups': { img: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1000&auto=format&fit=crop', tKey: 'Gruplar ve Maçlar Belli Oldu', sKey: 'Bekleyiş sona erdi. Tüm 32 grup kesinleşti.', p1Key: 'Resmi grup kuraları ve tam 6 haftalık maç fikstürü açıklandı.', p2Key: 'Favori takımınızın ne zaman oynayacağını Maçlar sekmesinden görebilirsiniz.' },
+            'draw': { img: 'image2.webp', tKey: 'Kura Çekimi Etkinlik Detayları Madrid\'de', sKey: 'Yaklaşan kura çekimi için prosedürler.', p1Key: 'Merakla beklenen kura çekimi Madrid\'de gerçekleşecek.', p2Key: 'Seri başları grup sıralamalarına göre belirlenecek.' }
         };
 
         const themes = ['default', 'doomsday'];
@@ -699,7 +847,6 @@
         }
         initCountdown();
 
-        // Her yerde '!' işaretini görmezden gelmek ve temizlemek için
         function cleanValue(val) {
             if(typeof val === 'string') return val.replace(/!/g, '').trim();
             return val;
@@ -758,52 +905,29 @@
             } catch(e) { return 9999999999999; }
         }
 
-        function translateDate(dateStr, lang) {
-            if(!dateStr) return "";
-            let cleanStr = cleanValue(dateStr);
-            if(lang === 'tr') return cleanStr;
-            let newDate = cleanStr;
-            if(monthTranslations[lang]) { for (let trMonth in monthTranslations['tr']) { if(cleanStr.includes(trMonth)) { newDate = cleanStr.replace(trMonth, monthTranslations[lang][trMonth]); break; } } }
-            return newDate;
-        }
-
         function populateDateDropdown() {
             const selectEl = document.getElementById('fixture-date-select');
-            const currentLang = document.getElementById('lang-selector').value;
             selectEl.innerHTML = '';
             uniqueDates.forEach(dateRaw => {
-                const displayDate = translateDate(dateRaw, currentLang);
-                selectEl.innerHTML += `<option value="${dateRaw}">${displayDate}</option>`;
+                selectEl.innerHTML += `<option value="${dateRaw}">${dateRaw}</option>`;
             });
         }
 
         function openArticle(id) {
             currentArticleId = id;
             const data = articleData[id];
-            const lang = document.getElementById('lang-selector').value;
-            const dict = translations[lang] || translations['en'];
             document.getElementById('dyn-art-img').src = data.img;
-            document.getElementById('dyn-art-title').innerHTML = dict[data.tKey];
-            document.getElementById('dyn-art-sub').innerHTML = dict[data.sKey];
-            document.getElementById('dyn-art-p1').innerHTML = dict[data.p1Key];
-            document.getElementById('dyn-art-p2').innerHTML = dict[data.p2Key];
+            document.getElementById('dyn-art-title').innerHTML = data.tKey;
+            document.getElementById('dyn-art-sub').innerHTML = data.sKey;
+            document.getElementById('dyn-art-p1').innerHTML = data.p1Key;
+            document.getElementById('dyn-art-p2').innerHTML = data.p2Key;
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
             document.getElementById('view-article').classList.add('active-page');
             window.scrollTo(0, 0);
         }
 
         function changeLanguage(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) { element.innerHTML = translations[lang][key]; } else if (translations['en'][key]) { element.innerHTML = translations['en'][key]; }
-            });
-            if(document.getElementById('view-article').classList.contains('active-page')) { openArticle(currentArticleId); }
-            if(matchesLoaded) { 
-                populateDateDropdown(); 
-                renderFixturesByDate(document.getElementById('fixture-date-select').value); 
-                renderTicker(); 
-                renderFeaturedMatches();
-            }
+            // Sadece Türkçe olduğu için çeviriyi iptal ettim
         }
 
         function switchPage(page) {
@@ -867,7 +991,6 @@
                 allMatches = await response.json();
                 matchesLoaded = true;
                 
-                // Benzersiz ve temizlenmiş tarihleri çıkar
                 uniqueDates = [...new Set(allMatches.map(m => cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]])))].filter(d => d);
                 uniqueDates.sort((a,b) => parseMatchDate(a, "00:00") - parseMatchDate(b, "00:00"));
 
@@ -881,8 +1004,7 @@
         function renderFixturesByDate(selectedDateRaw) {
             if(!matchesLoaded) return;
             const container = document.getElementById('fixtures-container');
-            const currentLang = document.getElementById('lang-selector').value;
-            const vsText = translations[currentLang] && translations[currentLang].vs ? translations[currentLang].vs : "v";
+            const vsText = "v";
             
             const dayMatches = allMatches.filter(m => cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]]) === selectedDateRaw);
             if(dayMatches.length === 0) { container.innerHTML = `<p style="text-align:center; padding:30px;">Bu tarihte maç bulunmuyor.</p>`; return; }
@@ -909,7 +1031,7 @@
                 grupMaclari.forEach(m => {
                     const evName = getProperName(m.ev); const depName = getProperName(m.dep);
                     const evLogo = findLogo(m.ev); const depLogo = findLogo(m.dep);
-                    const mTime = m.saat ? `${m.saat} (UTC)` : '';
+                    const mTime = m.saat ? `${m.saat}` : '';
                     let scoreHtml = '';
                     if (m.durum === "Oynanmadı" || m.evSkor === "" || m.evSkor === undefined) { scoreHtml = `<div class="fixture-score-box unplayed">${vsText}</div>`; } else { scoreHtml = `<div class="fixture-score-box">${m.evSkor} - ${m.depSkor}</div>`; }
                     html += `
@@ -927,12 +1049,10 @@
             container.innerHTML = html;
         }
 
-        // ! İŞARETİNİ ALGILAYAN DEV MAÇLAR (FEATURED MATCHES)
         function renderFeaturedMatches() {
             const container = document.getElementById('featured-matches-container');
             if(!container || !matchesLoaded) return;
-            const currentLang = document.getElementById('lang-selector').value;
-            const vsText = translations[currentLang] && translations[currentLang].vs ? translations[currentLang].vs : "v";
+            const vsText = "v";
 
             let featuredMatches = allMatches.filter(m => {
                 return Object.values(m).some(val => typeof val === 'string' && val.includes('!'));
@@ -946,7 +1066,7 @@
                 const evRaw = matchData[keys.find(k => k.includes('Ev S')) || keys[4]] || "";
                 const depRaw = matchData[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
                 
-                const mDate = translateDate(mDateRaw, currentLang);
+                const mDate = cleanValue(mDateRaw);
                 const mTime = cleanValue(mTimeRaw) ? cleanValue(mTimeRaw) : '';
                 
                 const evName = getProperName(evRaw);
@@ -963,14 +1083,13 @@
                 </div>`;
             });
 
-            if(html === '') { html = `<p style="color:var(--text-muted); font-size:14px;">Şu an için öne çıkan maç bulunmuyor. (Sheets'te bir maçın yanına ! işareti koyun)</p>`; }
+            if(html === '') { html = `<p style="color:var(--text-muted); font-size:14px;">Şu an için öne çıkan maç bulunmuyor.</p>`; }
             container.innerHTML = html;
         }
 
         function renderTicker() {
             const ticker = document.getElementById('home-ticker');
             if(!ticker || !matchesLoaded) return;
-            const currentLang = document.getElementById('lang-selector').value;
             let sortedMatches = [...allMatches].sort((a, b) => {
                 const keysA = Object.keys(a); const keysB = Object.keys(b);
                 const tA_date = a[keysA.find(k => k.includes('Tarih')) || keysA[2]]; const tA_time = a[keysA.find(k => k.includes('Saat')) || keysA[3]];
@@ -985,7 +1104,7 @@
                 const mDateRaw = m[keys.find(k => k.includes('Tarih')) || keys[2]]; const mTimeRaw = m[keys.find(k => k.includes('Saat')) || keys[3]];
                 const evRaw = m[keys.find(k => k.includes('Ev S')) || keys[4]] || ""; const depRaw = m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
                 const evSkor = cleanValue(m[keys.find(k => k.includes('Ev Skor')) || keys[6]]); const depSkor = cleanValue(m[keys.find(k => k.includes('Dep Skor')) || keys[7]]); const durum = cleanValue(m[keys.find(k => k.includes('Durum')) || keys[8]]);
-                const mDate = translateDate(mDateRaw, currentLang); const mTime = cleanValue(mTimeRaw) ? `${cleanValue(mTimeRaw)} (UTC)` : '';
+                const mDate = cleanValue(mDateRaw); const mTime = cleanValue(mTimeRaw) ? `${cleanValue(mTimeRaw)}` : '';
                 const evName = getProperName(evRaw); const depName = getProperName(depRaw);
                 const evLogo = findLogo(evRaw); const depLogo = findLogo(depRaw);
 
@@ -1053,7 +1172,6 @@
 
         window.onload = function() {
             fetchTournamentData();
-            changeLanguage(document.getElementById('lang-selector').value);
             updateMusicUI();
         }
     </script>
