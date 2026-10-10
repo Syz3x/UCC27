@@ -217,7 +217,7 @@
         .article-image { width: 100%; border-radius: 16px; margin-bottom: 40px; object-fit: cover; max-height: 500px; border: 1px solid var(--border-light); }
         .article-content p { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #ccc; }
 
-        /* 12 KUTUCUKLU VİDEO SPONSOR ALANI */
+        /* YOUTUBE SPONSOR KUTUCUKLARI (6x2) */
         footer { background-color: var(--theme-black); padding: 50px 40px 30px; margin-top: auto; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; gap: 40px; position: relative; z-index: 10; }
         .video-sponsors-container { width: 100%; max-width: 1400px; text-align: center; }
         .sponsors-title { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; font-weight: bold; }
@@ -268,7 +268,7 @@
             <a id="nav-news" onclick="switchPage('news')" data-i18n="news">News</a>
         </nav>
         <div class="header-right">
-            <button class="theme-btn" onclick="cycleTheme()" id="theme-btn-text">TEMA: UCC</button>
+            <button class="theme-btn" onclick="cycleTheme()" id="theme-btn-text">TEMA: UCC KLASİK</button>
             <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="en">EN</option>
                 <option value="tr" selected>TR</option>
@@ -521,7 +521,7 @@
         </div>
     </div>
 
-    <!-- 12 KUTUCUKLU VİDEO SPONSOR ALANI -->
+    <!-- 12 KUTUCUKLU VİDEO SPONSOR ALANI (YOUTUBE LİNKLERİ İLE) -->
     <footer>
         <div class="video-sponsors-container">
             <div class="sponsors-title" data-i18n="sponsorsTitle">Official Sponsors</div>
@@ -699,7 +699,7 @@
         }
         initCountdown();
 
-        // Her yerde '!' işaretini görmezden gelmek ve temizlemek için özel fonksiyon
+        // Her yerde '!' işaretini görmezden gelmek ve temizlemek için
         function cleanValue(val) {
             if(typeof val === 'string') return val.replace(/!/g, '').trim();
             return val;
@@ -867,6 +867,7 @@
                 allMatches = await response.json();
                 matchesLoaded = true;
                 
+                // Benzersiz ve temizlenmiş tarihleri çıkar
                 uniqueDates = [...new Set(allMatches.map(m => cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]])))].filter(d => d);
                 uniqueDates.sort((a,b) => parseMatchDate(a, "00:00") - parseMatchDate(b, "00:00"));
 
@@ -926,14 +927,13 @@
             container.innerHTML = html;
         }
 
-        // ! İŞARETİNİ ALGILAYAN YENİ ÖNEMLİ MAÇLAR SİSTEMİ
+        // ! İŞARETİNİ ALGILAYAN DEV MAÇLAR (FEATURED MATCHES)
         function renderFeaturedMatches() {
             const container = document.getElementById('featured-matches-container');
             if(!container || !matchesLoaded) return;
             const currentLang = document.getElementById('lang-selector').value;
             const vsText = translations[currentLang] && translations[currentLang].vs ? translations[currentLang].vs : "v";
 
-            // Bütün değerleri tarayıp içinde "!" işareti olan satırları buluyoruz
             let featuredMatches = allMatches.filter(m => {
                 return Object.values(m).some(val => typeof val === 'string' && val.includes('!'));
             });
