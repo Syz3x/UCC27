@@ -186,10 +186,8 @@
         .stat-team { font-size: 12px; color: var(--text-muted); }
         .stat-value { font-size: 18px; font-weight: 800; color: white; }
 
-        /* YÖNETMELİK & CEZALAR EKRANLARI */
+        /* YÖNETMELİK EKRANI */
         .doc-container { max-width: 1000px; margin: 0 auto; background: var(--theme-black); padding: 50px; border-radius: 16px; border: 1px solid var(--border-light); }
-        
-        /* YÖNETMELİK ÖZEL STİLLERİ */
         .rule-title-main { font-size: 32px; font-weight: 800; color: white; margin-bottom: 10px; text-align: center; }
         .rule-intro-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent-color); margin-bottom: 40px; }
         .rule-intro-box p { font-size: 16px; font-weight: 600; color: var(--text-main); margin-bottom: 5px; line-height: 1.6; }
@@ -869,7 +867,9 @@
                 "parissaintgilloise": "Paris SG", "unionsaintgilliose": "Union SG", "olympiakos": "Olympiacos", "roma": "AS Roma",
                 "guimares": "Vitória de Guimarães", "rayovallecona": "Rayo Vallecano", "celta": "Celta Vigo",
                 "monchengladbach": "Borussia Mönchengladbach", "leverkusen": "Bayer 04 Leverkusen", "aek": "AEK Athens",
-                "stvv": "Sint-Truiden", "besiktas": "Beşiktaş", "galatasaray": "Galatasaray", "fenerbahce": "Fenerbahçe", "basaksehir": "Başakşehir"
+                "stvv": "Sint-Truiden", "besiktas": "Beşiktaş", "galatasaray": "Galatasaray", "fenerbahce": "Fenerbahçe", "basaksehir": "Başakşehir",
+                "rizespor": "Çaykur Rizespor", "caykurrizespor": "Çaykur Rizespor", "caykurrize": "Çaykur Rizespor",
+                "clubbrugge": "Club Brugge", "brugge": "Club Brugge", "clubbruge": "Club Brugge", "cbrugge": "Club Brugge"
             };
             return names[base] ? names[base] : cleanValue(rawName);
         }
@@ -885,7 +885,11 @@
                 "unionsaintgilliose": ["unionsg", "unionsaintgilloise"], "olympiakos": ["olympiacos", "olympiacosfc"], "roma": ["asroma", "roma"],
                 "guimares": ["vitoriasc", "vitoriaguimaraes", "guimaraes"], "aek": ["aekathens", "aekathensfc"], "stvv": ["sinttruiden", "sinttruidense"],
                 "sportinglizbon": ["sportingcp", "sporting", "sportinglisbon"], "rayovallecona": ["rayovallecano", "rayo"], "celta": ["celtavigo", "rccelta"],
-                "monchengladbach": ["borussiamonchengladbach", "bmonchengladbach", "gladbach"]
+                "monchengladbach": ["borussiamonchengladbach", "bmonchengladbach", "gladbach"],
+                "rizespor": ["caykurrizespor", "caykurrize", "rize"],
+                "caykurrizespor": ["rizespor", "caykurrize", "rize"],
+                "clubbrugge": ["brugge", "clubbruge", "cbrugge", "clubbruggekv"],
+                "brugge": ["clubbrugge", "clubbruge", "clubbruggekv"]
             };
             if(aliases[baseName]) { for(let alias of aliases[baseName]) { if(teamLogos[alias]) return teamLogos[alias]; } }
             for(let key in teamLogos) { if(baseName.length > 3 && key.length > 3) { if(key.includes(baseName) || baseName.includes(key)) return teamLogos[key]; } }
@@ -903,6 +907,26 @@
                 let hours = 0, minutes = 0; let tParts = tStr.split(':'); if(tParts.length >= 2) { hours = parseInt(tParts[0]); minutes = parseInt(tParts[1]); }
                 return new Date(year, month, day, hours, minutes).getTime();
             } catch(e) { return 9999999999999; }
+        }
+
+        function translateDate(dateStr) {
+            if(!dateStr) return "";
+            let cleanStr = cleanValue(dateStr);
+            // Sadece bir tane boşluğa indirge (örneğin "22  Aralık" -> "22 Aralık")
+            cleanStr = cleanStr.replace(/\s+/g, ' ').trim();
+
+            // Yıl ekleme mantığı
+            let dStr = cleanStr.toLowerCase();
+            let month = 0;
+            if(dStr.includes("ocak")) month = 0; else if(dStr.includes("şubat")||dStr.includes("subat")) month = 1; else if(dStr.includes("mart")) month = 2; else if(dStr.includes("nisan")) month = 3; else if(dStr.includes("mayıs")||dStr.includes("mayis")) month = 4; else if(dStr.includes("haziran")) month = 5; else if(dStr.includes("temmuz")) month = 6; else if(dStr.includes("ağustos")||dStr.includes("agustos")) month = 7; else if(dStr.includes("eylül")||dStr.includes("eylul")) month = 8; else if(dStr.includes("ekim")) month = 9; else if(dStr.includes("kasım")||dStr.includes("kasim")) month = 10; else if(dStr.includes("aralık")||dStr.includes("aralik")) month = 11;
+
+            let yearMatch = dStr.match(/\d{4}/);
+            if (!yearMatch) {
+                let year = (month < 6) ? 2027 : 2026;
+                cleanStr += " " + year;
+            }
+
+            return cleanStr;
         }
 
         function populateDateDropdown() {
@@ -927,7 +951,7 @@
         }
 
         function changeLanguage(lang) {
-            // Sadece Türkçe olduğu için çeviriyi iptal ettim
+            // Sadece Türkçe
         }
 
         function switchPage(page) {
@@ -991,7 +1015,11 @@
                 allMatches = await response.json();
                 matchesLoaded = true;
                 
-                uniqueDates = [...new Set(allMatches.map(m => cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]])))].filter(d => d);
+                // MÜKEMMEL TARİH TEMİZLEYİCİ - TARİHLERİ BİRLEŞTİRİR
+                let rawDates = allMatches.map(m => cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]]));
+                let cleanDates = rawDates.map(d => translateDate(d)).filter(d => d !== "");
+                
+                uniqueDates = [...new Set(cleanDates)];
                 uniqueDates.sort((a,b) => parseMatchDate(a, "00:00") - parseMatchDate(b, "00:00"));
 
                 populateDateDropdown();
@@ -1001,12 +1029,17 @@
             } catch (error) { console.error('Fikstür çekilirken hata:', error); }
         }
 
-        function renderFixturesByDate(selectedDateRaw) {
+        function renderFixturesByDate(selectedCleanDate) {
             if(!matchesLoaded) return;
             const container = document.getElementById('fixtures-container');
             const vsText = "v";
             
-            const dayMatches = allMatches.filter(m => cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]]) === selectedDateRaw);
+            // Seçilen temizlenmiş tarihe uyan maçları filtrele
+            const dayMatches = allMatches.filter(m => {
+                let raw = cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]]);
+                return translateDate(raw) === selectedCleanDate;
+            });
+
             if(dayMatches.length === 0) { container.innerHTML = `<p style="text-align:center; padding:30px;">Bu tarihte maç bulunmuyor.</p>`; return; }
 
             const matchesByGroup = {};
@@ -1066,7 +1099,7 @@
                 const evRaw = matchData[keys.find(k => k.includes('Ev S')) || keys[4]] || "";
                 const depRaw = matchData[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
                 
-                const mDate = cleanValue(mDateRaw);
+                const mDate = translateDate(cleanValue(mDateRaw));
                 const mTime = cleanValue(mTimeRaw) ? cleanValue(mTimeRaw) : '';
                 
                 const evName = getProperName(evRaw);
@@ -1104,7 +1137,7 @@
                 const mDateRaw = m[keys.find(k => k.includes('Tarih')) || keys[2]]; const mTimeRaw = m[keys.find(k => k.includes('Saat')) || keys[3]];
                 const evRaw = m[keys.find(k => k.includes('Ev S')) || keys[4]] || ""; const depRaw = m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
                 const evSkor = cleanValue(m[keys.find(k => k.includes('Ev Skor')) || keys[6]]); const depSkor = cleanValue(m[keys.find(k => k.includes('Dep Skor')) || keys[7]]); const durum = cleanValue(m[keys.find(k => k.includes('Durum')) || keys[8]]);
-                const mDate = cleanValue(mDateRaw); const mTime = cleanValue(mTimeRaw) ? `${cleanValue(mTimeRaw)}` : '';
+                const mDate = translateDate(cleanValue(mDateRaw)); const mTime = cleanValue(mTimeRaw) ? `${cleanValue(mTimeRaw)}` : '';
                 const evName = getProperName(evRaw); const depName = getProperName(depRaw);
                 const evLogo = findLogo(evRaw); const depLogo = findLogo(depRaw);
 
