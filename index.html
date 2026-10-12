@@ -359,11 +359,11 @@
         <div class="header-right">
             <button class="theme-btn" onclick="cycleTheme()" id="theme-btn-text" data-i18n="themeBtn">TEMA: UCC KLASİK</button>
             <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
-                <option value="en">EN</option>
                 <option value="tr" selected>TR</option>
+                <option value="en">EN</option>
                 <option value="es">ES</option>
-                <option value="fr">FR</option>
                 <option value="de">DE</option>
+                <option value="fr">FR</option>
                 <option value="it">IT</option>
                 <option value="pt">PT</option>
             </select>
@@ -396,11 +396,31 @@
                     </div>
                 </div>
 
-                <!-- SON HABERLER (Yeni Sıralama ve Tasarım) -->
+                <!-- ANA SAYFA: HABERLER BLOKLARI GERİ GELDİ -->
                 <div class="headlines-section">
                     <h2 class="section-header" style="font-size: 18px; margin-bottom: 15px;" data-i18n="latestNews">SON HABERLER</h2>
                     <div class="headlines-grid" id="home-news-container">
-                        <!-- JS ile Doldurulacak -->
+                        <div class="headline-item" onclick="openArticle('news3')">
+                            <img src="image2.webp" class="headline-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=300&auto=format&fit=crop';">
+                            <div class="headline-content">
+                                <div class="headline-text" data-i18n="news3Title">KURA ÇEKİMİ</div>
+                                <div class="news-date" data-i18n="news3Date">5 Ağustos 2026 - 02.45</div>
+                            </div>
+                        </div>
+                        <div class="headline-item" onclick="openArticle('news2')">
+                            <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=300&auto=format&fit=crop" class="headline-img">
+                            <div class="headline-content">
+                                <div class="headline-text" data-i18n="news2Title">SİTE AÇILDI</div>
+                                <div class="news-date" data-i18n="news2Date">30 Temmuz 2026 - 03.00</div>
+                            </div>
+                        </div>
+                        <div class="headline-item" onclick="openArticle('news1')">
+                            <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=300&auto=format&fit=crop" class="headline-img">
+                            <div class="headline-content">
+                                <div class="headline-text" data-i18n="news1Title">ÖN ELEME</div>
+                                <div class="news-date" data-i18n="news1Date">28 Temmuz 2026 - 00.49</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -546,12 +566,35 @@
             </div>
         </div>
 
-        <!-- HABERLER SAYFASI -->
+        <!-- HABERLER SAYFASI: BLOKLAR GERİ GELDİ -->
         <div id="view-news" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="news">HABERLER</h1>
                 <div class="news-hub-grid" id="main-news-container">
-                    <!-- JS İle Doldurulacak -->
+                    <div class="news-hub-card" onclick="openArticle('news3')">
+                        <img src="image2.webp" class="news-hub-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=800&auto=format&fit=crop';">
+                        <div class="news-hub-content">
+                            <div class="news-hub-date" data-i18n="news3Date">5 Ağustos 2026 - 02.45</div>
+                            <h3 class="news-hub-title" data-i18n="news3Title">KURA ÇEKİMİ</h3>
+                            <div class="news-hub-desc" data-i18n="news3Sub">Toplam 32 gruptan oluşan bu mücadelede maçlar belirlendi.</div>
+                        </div>
+                    </div>
+                    <div class="news-hub-card" onclick="openArticle('news2')">
+                        <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
+                        <div class="news-hub-content">
+                            <div class="news-hub-date" data-i18n="news2Date">30 Temmuz 2026 - 03.00</div>
+                            <h3 class="news-hub-title" data-i18n="news2Title">SİTE AÇILDI</h3>
+                            <div class="news-hub-desc" data-i18n="news2Sub">Site Beta adıyla yayınlandığı için hatalarla karşılaşılabilir.</div>
+                        </div>
+                    </div>
+                    <div class="news-hub-card" onclick="openArticle('news1')">
+                        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
+                        <div class="news-hub-content">
+                            <div class="news-hub-date" data-i18n="news1Date">28 Temmuz 2026 - 00.49</div>
+                            <h3 class="news-hub-title" data-i18n="news1Title">ÖN ELEME</h3>
+                            <div class="news-hub-desc" data-i18n="news1Sub">Kura çekimiyle birlikte yeni turnuva tanıtılacaktır.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -589,14 +632,12 @@
                 <div class="sponsor-box"><div class="sponsor-iframe-container"><iframe class="sponsor-iframe" src="https://www.youtube.com/embed/vxauHCLKyFU?autoplay=1&mute=1&controls=0&loop=1&playlist=vxauHCLKyFU&playsinline=1&modestbranding=1" allow="autoplay"></iframe></div><div class="sponsor-name">Rexona</div></div>
                 <div class="sponsor-box">
                     <div class="sponsor-iframe-container">
-                        <!-- McDonald's YENİ LİNK -->
                         <iframe class="sponsor-iframe" src="https://www.youtube.com/embed/79phlhutGLg?autoplay=1&mute=1&controls=0&loop=1&playlist=79phlhutGLg&playsinline=1&modestbranding=1" allow="autoplay"></iframe>
                     </div>
                     <div class="sponsor-name">McDonald's</div>
                 </div>
             </div>
         </div>
-        <!-- AVENGERS YAZISI -->
         <div class="movie-promo" id="movie-promo-text" data-i18n="moviePromo"><span>AVENGERS: DOOMSDAY</span> — 18 Aralık'ta sinemalarda</div>
     </footer>
 
@@ -608,11 +649,8 @@
         let teamLogos = {}; 
         let allMatches = []; 
         let uniqueDates = [];
-        let allTeamsData = []; // Ülkelere ayırmak için global takımlar dizisi
+        let allTeamsData = []; 
 
-        // ==========================================
-        // DİLLER SÖZLÜĞÜ (%100 ÇEVİRİ DESTEĞİ)
-        // ==========================================
         const translations = {
             en: { 
                 home: "HOME", groupsNav: "GROUPS", groupsTitle: "GROUPS", matches: "MATCHES", draws: "DRAWS", teams: "TEAMS", news: "NEWS", stats: "STATS", rules: "RULES", penalties: "PENALTIES",
@@ -622,14 +660,16 @@
                 directQual: "UCC 27 Direct Qualification", playoffQual: "UCC 27 Play-off Round", modalStatsTab: "STATISTICS",
                 playerStats: "Player Stats", teamStats: "Team Stats", topScorers: "GOALS", topAssists: "ASSISTS", goalAssist: "G + A", expectedGoals: "xG (EXPECTED)", yellowCards: "YELLOW CARDS", redCards: "RED CARDS", goalsScored: "GOALS SCORED", cleanSheets: "CLEAN SHEETS", expectedGoalsTeam: "TEAM xG", statsNote: "* Stats are updated automatically based on match reports.",
                 penaltiesTitle: "SUSPENSIONS & PENALTIES", playerPenalties: "Player Suspensions", teamPenalties: "Team Penalties", penaltiesNote: "* Suspension lists are updated by officials based on match reports.",
-                news1Title: "UCC 27 Preliminaries Draw", news1Sub: "Draw and tournament introduction will be held on July 31.", news1Date: "July 28, 2026 - 00:49",
-                news2Title: "UCC 27 Official Website is Live", news2Sub: "The official platform is now accessible in Beta version.", news2Date: "July 30, 2026 - 03:00",
-                news3Title: "Groups and Matches Announced", news3Sub: "UCC 27 preliminary groups and match schedules announced.", news3Date: "August 5, 2026 - 02:45",
+                news1Title: "PRELIMINARIES", news1Sub: "Draw and tournament introduction will be held with club presidents.", news1Date: "July 28, 2026 - 00:49",
+                news2Title: "WEBSITE IS LIVE", news2Sub: "The official platform is now accessible, minor bugs may occur in Beta.", news2Date: "July 30, 2026 - 03:00",
+                news3Title: "DRAW RESULTS", news3Sub: "Match schedules for 32 groups have been determined.", news3Date: "August 5, 2026 - 02:45",
                 ruleIntro1: "- Europe's biggest club organization.", ruleIntro2: "- Every 2 years.", ruleIntro3: "- Total of 128 teams.",
                 ruleA: "A) LEAGUE QUOTAS", ruleB: "B) QUALIFYING STAGE", ruleC: "C) TOURNAMENT STAGE", ruleD: "D) IMPROVEMENTS", ruleE: "E) 2027 CALENDAR", ruleF: "F) HOST: SPAIN", ruleG: "G) PRIZE POOL", ruleH: "H) SQUAD DECLARATION", ruleI: "I) PLAYER BONUS", ruleK: "K) SPORTSMANSHIP & RESPECT", ruleL: "L) BROADCASTING RIGHTS", ruleM: "M) SPONSORS", ruleN: "N) PROCESS / GAME RULES",
                 themeClassic: "THEME: UCC CLASSIC", themeDoomsday: "THEME: DOOMSDAY",
                 modalHome: "Home", modalAway: "Away", modalNotStarted: "NOT STARTED", modalFT: "FT",
-                noMatchDate: "No matches found for this date.", noFeatMatch: "No featured matches right now. (Add ! in Sheets)"
+                noMatchDate: "No matches found for this date.", noFeatMatch: "No featured matches right now. (Add ! in Sheets)",
+                groupWord: "Group", thTeam: "Team",
+                statPossession: "POSSESSION %", statRecovery: "BALL RECOVERY (SEC)", statShots: "SHOTS", statXG: "EXPECTED GOALS (xG)", statPasses: "PASSES", statTackles: "TACKLES", statTacklesWon: "TACKLES WON", statInterceptions: "INTERCEPTIONS", statSaves: "SAVES", statFouls: "FOULS COMMITTED", statOffsides: "OFFSIDES", statCorners: "CORNERS", statFreeKicks: "FREE KICKS", statPenalties: "PENALTIES", statYellows: "YELLOW CARDS", statReds: "RED CARDS"
             },
             tr: { 
                 home: "ANA SAYFA", groupsNav: "GRUPLAR", groupsTitle: "GRUPLAR", matches: "MAÇLAR", draws: "KURALAR", teams: "TAKIMLAR", news: "HABERLER", stats: "İSTATİSTİKLER", rules: "YÖNETMELİK", penalties: "CEZALAR",
@@ -639,20 +679,22 @@
                 directQual: "UCC 27 Direkt Katılım", playoffQual: "UCC 27 Play-off Turu", modalStatsTab: "İSTATİSTİKLER",
                 playerStats: "Oyuncu İst.", teamStats: "Takım İst.", topScorers: "GOL", topAssists: "ASİST", goalAssist: "GOL + ASİST", expectedGoals: "GOL BEKLENTİSİ (xG)", yellowCards: "SARI KART", redCards: "KIRMIZI KART", goalsScored: "ATILAN GOL", cleanSheets: "YENİLMEYEN GOL (Clean Sheets)", expectedGoalsTeam: "TAKIM xG", statsNote: "* İstatistikler Puan Tablosu ve veritabanı üzerinden güncellenir.",
                 penaltiesTitle: "CEZALAR (Suspensions)", playerPenalties: "Oyuncu Cezaları", teamPenalties: "Takım Cezaları", penaltiesNote: "* Cezalı oyuncular ve takımlar listesi maç raporlarına göre güncellenir.",
-                news1Title: "UCC 27 Ön Eleme Kura Çekimi", news1Sub: "Kura çekimiyle birlikte yeni turnuva tanıtılacaktır.", news1Date: "28 Temmuz 2026 - 00.49",
+                news1Title: "ÖN ELEME", news1Sub: "Kura çekimiyle birlikte yeni turnuva tanıtılacaktır.", news1Date: "28 Temmuz 2026 - 00.49",
                 news2Title: "SİTE AÇILDI", news2Sub: "Site Beta adıyla yayınlandığı için hatalarla karşılaşılabilir.", news2Date: "30 Temmuz 2026 - 03.00",
                 news3Title: "KURA ÇEKİMİ", news3Sub: "Toplam 32 gruptan oluşan bu mücadelede maçlar belirlendi.", news3Date: "5 Ağustos 2026 - 02.45",
                 ruleIntro1: "- Avrupa'nın en büyük kulüp organizasyonu.", ruleIntro2: "- Her 2 yılda bir.", ruleIntro3: "- Toplam 128 takım.",
                 ruleA: "A) LİG KONTENJANLARI", ruleB: "B) ELEME AŞAMASI", ruleC: "C) TURNUVA AŞAMASI", ruleD: "D) GELİŞTİRMELER", ruleE: "E) 2027 TAKVİMİ", ruleF: "F) EV SAHİBİ: İSPANYA", ruleG: "G) ÖDÜL HAVUZU", ruleH: "H) KADRO BİLDİRİMİ", ruleI: "I) OYUNCU BONUSU", ruleK: "K) SPORTMENLİK & SAYGI", ruleL: "L) YAYIN HAKLARI", ruleM: "M) SPONSOR", ruleN: "N) SÜREÇ / OYUN KURALLARI",
                 themeClassic: "TEMA: UCC KLASİK", themeDoomsday: "TEMA: DOOMSDAY",
                 modalHome: "Ev Sahibi", modalAway: "Deplasman", modalNotStarted: "BAŞLAMADI", modalFT: "MS",
-                noMatchDate: "Bu tarihte maç bulunmuyor.", noFeatMatch: "Şu an için öne çıkan maç bulunmuyor."
+                noMatchDate: "Bu tarihte maç bulunmuyor.", noFeatMatch: "Şu an için öne çıkan maç bulunmuyor.",
+                groupWord: "Grup", thTeam: "Takım",
+                statPossession: "TOPA S. OLMA %'Sİ", statRecovery: "TOPU GERİ KAZANMA (SN)", statShots: "ŞUT", statXG: "GOL BEKLENTİSİ (xG)", statPasses: "PAS", statTackles: "MÜDAHALE", statTacklesWon: "TOP KAZANILAN MÜDAHALE", statInterceptions: "TOP KESMELER", statSaves: "KURTARIŞ", statFouls: "YAPILAN FAUL", statOffsides: "OFSAYTLAR", statCorners: "KÖŞE VURUŞU", statFreeKicks: "SERBEST VURUŞLAR", statPenalties: "PENALTI VURUŞLARI", statYellows: "SARI KARTLAR", statReds: "KIRMIZI KARTLAR"
             },
-            es: { home: "INICIO", groupsNav: "GRUPOS", groupsTitle: "GRUPOS", matches: "PARTIDOS", teams: "EQUIPOS", news: "NOTICIAS", stats: "ESTADÍSTICAS", rules: "REGLAS", penalties: "SANCIONES", goBack: "← VOLVER", partTeams: "EQUIPOS PARTICIPANTES", loading: "Cargando...", filterDate: "Seleccione Fecha:", latestNews: "ÚLTIMAS NOTICIAS", vs: "v", sponsorsTitle: "PATROCINADORES OFICIALES", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — EN CINES EL 18 DE DICIEMBRE", featuredMatches: "PARTIDOS DESTACADOS", countdownTitle: "COMIENZO DE UCC 27", cdDays: "DÍAS", cdHours: "HORAS", cdMins: "MIN", cdSecs: "SEG", directQual: "Clasificación Directa UCC 27", playoffQual: "Ronda de Play-off UCC 27", modalStatsTab: "ESTADÍSTICAS", playerStats: "Estad. Jugador", teamStats: "Estad. Equipo", topScorers: "GOLES", topAssists: "ASISTENCIAS", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "TARJETAS AMARILLAS", redCards: "TARJETAS ROJAS", goalsScored: "GOLES MARCADOS", cleanSheets: "PORTERÍAS A CERO", expectedGoalsTeam: "xG EQUIPO", statsNote: "* Las estadísticas se actualizan automáticamente.", penaltiesTitle: "SANCIONES Y PENALIZACIONES", playerPenalties: "Sanciones de Jugadores", teamPenalties: "Sanciones de Equipos", penaltiesNote: "* La lista de sanciones es actualizada por los oficiales.", news1Title: "Sorteo de Preliminares UCC 27", news1Sub: "El sorteo se realizará el 31 de julio.", news1Date: "28 de Julio 2026 - 00:49", news2Title: "Sitio Oficial de UCC 27 en Vivo", news2Sub: "La plataforma oficial es accesible en versión Beta.", news2Date: "30 de Julio 2026 - 03:00", news3Title: "Grupos y Partidos Anunciados", news3Sub: "Se han anunciado los grupos y horarios.", news3Date: "5 de Agosto 2026 - 02:45", ruleIntro1: "- La mayor organización de clubes de Europa.", ruleIntro2: "- Cada 2 años.", ruleIntro3: "- Total de 128 equipos.", ruleA: "A) CUOTAS DE LIGA", ruleB: "B) ETAPA DE CLASIFICACIÓN", ruleC: "C) ETAPA DE TORNEO", ruleD: "D) MEJORAS", ruleE: "E) CALENDARIO 2027", ruleF: "F) ANFITRIÓN: ESPAÑA", ruleG: "G) FONDO DE PREMIOS", ruleH: "H) DECLARACIÓN DE EQUIPO", ruleI: "I) BONO DE JUGADOR", ruleK: "K) DEPORTIVIDAD Y RESPETO", ruleL: "L) DERECHOS DE TRANSMISIÓN", ruleM: "M) PATROCINADORES", ruleN: "N) PROCESO / REGLAS", themeClassic: "TEMA: UCC CLÁSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Local", modalAway: "Visitante", modalNotStarted: "NO COMENZADO", modalFT: "FIN", noMatchDate: "No hay partidos en esta fecha.", noFeatMatch: "No hay partidos destacados." },
-            fr: { home: "ACCUEIL", groupsNav: "GROUPES", groupsTitle: "GROUPES", matches: "MATCHS", teams: "ÉQUIPES", news: "ACTUALITÉS", stats: "STATISTIQUES", rules: "RÈGLES", penalties: "SANCTIONS", goBack: "← RETOUR", partTeams: "ÉQUIPES PARTICIPANTES", loading: "Chargement...", filterDate: "Sélectionner la Date:", latestNews: "DERNIÈRES NOUVELLES", vs: "v", sponsorsTitle: "SPONSORS OFFICIELS", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AU CINÉMA LE 18 DÉCEMBRE", featuredMatches: "MATCHS VEDETTES", countdownTitle: "COUP D'ENVOI UCC 27", cdDays: "JOURS", cdHours: "HEURES", cdMins: "MIN", cdSecs: "SEC", directQual: "Qualification Directe UCC 27", playoffQual: "Tour de barrage UCC 27", modalStatsTab: "STATISTIQUES", playerStats: "Stats Joueur", teamStats: "Stats Équipe", topScorers: "BUTS", topAssists: "PASSES DÉC.", goalAssist: "B + P", expectedGoals: "xG", yellowCards: "CARTONS JAUNES", redCards: "CARTONS ROUGES", goalsScored: "BUTS MARQUÉS", cleanSheets: "MATCHS SANS ENCAISSER", expectedGoalsTeam: "xG ÉQUIPE", statsNote: "* Les statistiques sont mises à jour automatiquement.", penaltiesTitle: "SUSPENSIONS ET SANCTIONS", playerPenalties: "Suspensions Joueurs", teamPenalties: "Sanctions Équipes", penaltiesNote: "* La liste est mise à jour par les officiels.", news1Title: "Tirage des Préliminaires UCC 27", news1Sub: "Le tirage aura lieu le 31 juillet.", news1Date: "28 Juillet 2026 - 00:49", news2Title: "Site Officiel UCC 27 en Ligne", news2Sub: "La plateforme est accessible en version Beta.", news2Date: "30 Juillet 2026 - 03:00", news3Title: "Groupes et Matchs Annoncés", news3Sub: "Les groupes préliminaires sont annoncés.", news3Date: "5 Août 2026 - 02:45", ruleIntro1: "- La plus grande organisation de clubs en Europe.", ruleIntro2: "- Tous les 2 ans.", ruleIntro3: "- 128 équipes au total.", ruleA: "A) QUOTAS DE LIGUE", ruleB: "B) PHASE DE QUALIFICATION", ruleC: "C) PHASE DE TOURNOI", ruleD: "D) AMÉLIORATIONS", ruleE: "E) CALENDRIER 2027", ruleF: "F) HÔTE: ESPAGNE", ruleG: "G) PRIX", ruleH: "H) DÉCLARATION D'ÉQUIPE", ruleI: "I) BONUS JOUEUR", ruleK: "K) ESPRIT SPORTIF", ruleL: "L) DROITS TV", ruleM: "M) SPONSORS", ruleN: "N) RÈGLES DU JEU", themeClassic: "THÈME: CLASSIQUE", themeDoomsday: "THÈME: DOOMSDAY", modalHome: "Domicile", modalAway: "Extérieur", modalNotStarted: "NON COMMENCÉ", modalFT: "FIN", noMatchDate: "Aucun match trouvé.", noFeatMatch: "Aucun match vedette." },
-            de: { home: "START", groupsNav: "GRUPPEN", groupsTitle: "GRUPPEN", matches: "SPIELE", teams: "TEAMS", news: "NEWS", stats: "STATISTIKEN", rules: "REGELN", penalties: "STRAFEN", goBack: "← ZURÜCK", partTeams: "TEILNEHMENDE TEAMS", loading: "Laden...", filterDate: "Datum wählen:", latestNews: "AKTUELLE NEWS", vs: "v", sponsorsTitle: "OFFIZIELLE SPONSOREN", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AB 18. DEZEMBER IM KINO", featuredMatches: "TOP-SPIELE", countdownTitle: "UCC 27 START IN", cdDays: "TAGE", cdHours: "STD", cdMins: "MIN", cdSecs: "SEK", directQual: "UCC 27 Direkte Qualifikation", playoffQual: "UCC 27 Play-off-Runde", modalStatsTab: "STATISTIKEN", playerStats: "Spieler", teamStats: "Team", topScorers: "TORE", topAssists: "ASSISTS", goalAssist: "T + A", expectedGoals: "xG", yellowCards: "GELBE KARTEN", redCards: "ROTE KARTEN", goalsScored: "ERZIELTE TORE", cleanSheets: "OHNE GEGENTOR", expectedGoalsTeam: "TEAM xG", statsNote: "* Statistiken werden automatisch aktualisiert.", penaltiesTitle: "SPERREN & STRAFEN", playerPenalties: "Spielersperren", teamPenalties: "Teamstrafen", penaltiesNote: "* Sperren werden von den Offiziellen aktualisiert.", news1Title: "UCC 27 Vorrunden-Auslosung", news1Sub: "Die Auslosung findet am 31. Juli statt.", news1Date: "28. Juli 2026 - 00:49", news2Title: "UCC 27 Offizielle Website Online", news2Sub: "Die Plattform ist als Beta zugänglich.", news2Date: "30. Juli 2026 - 03:00", news3Title: "Gruppen und Spiele bekannt gegeben", news3Sub: "Die UCC 27 Vorrundengruppen stehen fest.", news3Date: "5. August 2026 - 02:45", ruleIntro1: "- Europas größte Klub-Organisation.", ruleIntro2: "- Alle 2 Jahre.", ruleIntro3: "- Insgesamt 128 Teams.", ruleA: "A) LIGA-QUOTEN", ruleB: "B) QUALIFIKATIONSPHASE", ruleC: "C) TURNIERPHASE", ruleD: "D) VERBESSERUNGEN", ruleE: "E) KALENDER 2027", ruleF: "F) GASTGEBER: SPANIEN", ruleG: "G) PREISGELD", ruleH: "H) KADER-MELDUNG", ruleI: "I) SPIELER-BONUS", ruleK: "K) SPORTSGEIST & RESPEKT", ruleL: "L) ÜBERTRAGUNGSRECHTE", ruleM: "M) SPONSOREN", ruleN: "N) SPIELREGELN", themeClassic: "THEMA: KLASSISCH", themeDoomsday: "THEMA: DOOMSDAY", modalHome: "Heim", modalAway: "Auswärts", modalNotStarted: "NICHT BEGONNEN", modalFT: "ENDE", noMatchDate: "Keine Spiele an diesem Datum.", noFeatMatch: "Keine Top-Spiele." },
-            it: { home: "HOME", groupsNav: "GIRONI", groupsTitle: "GIRONI", matches: "PARTITE", teams: "SQUADRE", news: "NOTIZIE", stats: "STATISTICHE", rules: "REGOLE", penalties: "SQUALIFICHE", goBack: "← INDIETRO", partTeams: "SQUADRE PARTECIPANTI", loading: "Caricamento...", filterDate: "Seleziona Data:", latestNews: "ULTIME NOTIZIE", vs: "v", sponsorsTitle: "SPONSOR UFFICIALI", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AL CINEMA IL 18 DICEMBRE", featuredMatches: "PARTITE DI CARTELLO", countdownTitle: "INIZIO UCC 27 TRA", cdDays: "GIORNI", cdHours: "ORE", cdMins: "MIN", cdSecs: "SEC", directQual: "Qualificazione Diretta UCC 27", playoffQual: "Turno Play-off UCC 27", modalStatsTab: "STATISTICHE", playerStats: "Stat. Giocatori", teamStats: "Stat. Squadra", topScorers: "GOL", topAssists: "ASSIST", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "CARTELLINI GIALLI", redCards: "CARTELLINI ROSSI", goalsScored: "GOL SEGNATI", cleanSheets: "RETI INVIOLATE", expectedGoalsTeam: "xG SQUADRA", statsNote: "* Le statistiche si aggiornano automaticamente.", penaltiesTitle: "SOSPENSIONI E PENALITÀ", playerPenalties: "Squalifiche Giocatori", teamPenalties: "Penalità Squadra", penaltiesNote: "* L'elenco è aggiornato dagli ufficiali.", news1Title: "Sorteggio Preliminari UCC 27", news1Sub: "Il sorteggio si terrà il 31 Luglio.", news1Date: "28 Luglio 2026 - 00:49", news2Title: "Sito Ufficiale UCC 27 Online", news2Sub: "La piattaforma ufficiale è in versione Beta.", news2Date: "30 Luglio 2026 - 03:00", news3Title: "Gironi e Partite Annunciati", news3Sub: "Annunciati i gironi preliminari UCC 27.", news3Date: "5 Agosto 2026 - 02:45", ruleIntro1: "- La più grande organizzazione di club in Europa.", ruleIntro2: "- Ogni 2 anni.", ruleIntro3: "- 128 squadre totali.", ruleA: "A) QUOTE CAMPIONATO", ruleB: "B) FASE DI QUALIFICAZIONE", ruleC: "C) FASE A GIRONI", ruleD: "D) MIGLIORAMENTI", ruleE: "E) CALENDARIO 2027", ruleF: "F) OSPITE: SPAGNA", ruleG: "G) MONTEPREMI", ruleH: "H) DICHIARAZIONE SQUADRA", ruleI: "I) BONUS GIOCATORI", ruleK: "K) SPORTIVITÀ E RISPETTO", ruleL: "L) DIRITTI TV", ruleM: "M) SPONSOR", ruleN: "N) REGOLE DEL GIOCO", themeClassic: "TEMA: CLASSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Casa", modalAway: "Trasferta", modalNotStarted: "NON INIZIATA", modalFT: "FINITA", noMatchDate: "Nessuna partita in questa data.", noFeatMatch: "Nessuna partita in primo piano." },
-            pt: { home: "INÍCIO", groupsNav: "GRUPOS", groupsTitle: "GRUPOS", matches: "JOGOS", teams: "EQUIPAS", news: "NOTÍCIAS", stats: "ESTATÍSTICAS", rules: "REGRAS", penalties: "PENALIDADES", goBack: "← VOLTAR", partTeams: "EQUIPAS PARTICIPANTES", loading: "A carregar...", filterDate: "Selecionar Data:", latestNews: "ÚLTIMAS NOTÍCIAS", vs: "v", sponsorsTitle: "PATROCINADORES OFICIAIS", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — NOS CINEMAS A 18 DE DEZEMBRO", featuredMatches: "JOGOS EM DESTAQUE", countdownTitle: "INÍCIO DO UCC 27 EM", cdDays: "DIAS", cdHours: "HORAS", cdMins: "MIN", cdSecs: "SEG", directQual: "Qualificação Direta UCC 27", playoffQual: "Ronda de Play-off UCC 27", modalStatsTab: "ESTATÍSTICAS", playerStats: "Estat. Jogador", teamStats: "Estat. Equipa", topScorers: "GOLOS", topAssists: "ASSISTÊNCIAS", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "CARTÕES AMARELOS", redCards: "CARTÕES VERMELHOS", goalsScored: "GOLOS MARCADOS", cleanSheets: "JOGOS SEM SOFRER", expectedGoalsTeam: "xG EQUIPA", statsNote: "* As estatísticas são atualizadas automaticamente.", penaltiesTitle: "SUSPENSÕES E PENALIDADES", playerPenalties: "Suspensões de Jogadores", teamPenalties: "Penalidades de Equipas", penaltiesNote: "* A lista é atualizada pelos oficiais.", news1Title: "Sorteio das Preliminares UCC 27", news1Sub: "O sorteio será realizado a 31 de Julho.", news1Date: "28 de Julho 2026 - 00:49", news2Title: "Site Oficial UCC 27 Online", news2Sub: "A plataforma oficial está acessível em Beta.", news2Date: "30 de Julho 2026 - 03:00", news3Title: "Grupos e Jogos Anunciados", news3Sub: "Os grupos e o calendário foram anunciados.", news3Date: "5 de Agosto 2026 - 02:45", ruleIntro1: "- A maior organização de clubes da Europa.", ruleIntro2: "- A cada 2 anos.", ruleIntro3: "- 128 equipas no total.", ruleA: "A) QUOTAS DE LIGA", ruleB: "B) FASE DE QUALIFICAÇÃO", ruleC: "C) FASE DE TORNEIO", ruleD: "D) MELHORIAS", ruleE: "E) CALENDÁRIO 2027", ruleF: "F) ANFITRIÃO: ESPANHA", ruleG: "G) PRÉMIOS", ruleH: "H) DECLARAÇÃO DA EQUIPA", ruleI: "I) BÓNUS DO JOGADOR", ruleK: "K) DESPORTIVISMO E RESPEITO", ruleL: "L) DIREITOS DE TRANSMISSÃO", ruleM: "M) PATROCINADORES", ruleN: "N) REGRAS DO JOGO", themeClassic: "TEMA: CLÁSSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Casa", modalAway: "Fora", modalNotStarted: "NÃO INICIOU", modalFT: "FIM", noMatchDate: "Nenhum jogo nesta data.", noFeatMatch: "Sem jogos em destaque." }
+            es: { home: "INICIO", groupsNav: "GRUPOS", groupsTitle: "GRUPOS", matches: "PARTIDOS", teams: "EQUIPOS", news: "NOTICIAS", stats: "ESTADÍSTICAS", rules: "REGLAS", penalties: "SANCIONES", goBack: "← VOLVER", partTeams: "EQUIPOS PARTICIPANTES", loading: "Cargando...", filterDate: "Seleccione Fecha:", latestNews: "ÚLTIMAS NOTICIAS", vs: "v", sponsorsTitle: "PATROCINADORES OFICIALES", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — EN CINES EL 18 DE DICIEMBRE", featuredMatches: "PARTIDOS DESTACADOS", countdownTitle: "COMIENZO DE UCC 27", cdDays: "DÍAS", cdHours: "HORAS", cdMins: "MIN", cdSecs: "SEG", directQual: "Clasificación Directa UCC 27", playoffQual: "Ronda de Play-off UCC 27", modalStatsTab: "ESTADÍSTICAS", playerStats: "Estad. Jugador", teamStats: "Estad. Equipo", topScorers: "GOLES", topAssists: "ASISTENCIAS", goalAssist: "G + A", expectedGoals: "xG (ESPERADOS)", yellowCards: "TARJETAS AMARILLAS", redCards: "TARJETAS ROJAS", goalsScored: "GOLES MARCADOS", cleanSheets: "PORTERÍAS A CERO", expectedGoalsTeam: "xG EQUIPO", statsNote: "* Las estadísticas se actualizan automáticamente.", penaltiesTitle: "SANCIONES Y PENALIZACIONES", playerPenalties: "Sanciones de Jugadores", teamPenalties: "Sanciones de Equipos", penaltiesNote: "* La lista de sanciones es actualizada por los oficiales.", news1Title: "Fase Previa", news1Sub: "El sorteo se realizará con presidentes de clubes.", news1Date: "28 de Julio 2026 - 00:49", news2Title: "Sitio Abierto", news2Sub: "La plataforma oficial es accesible en Beta.", news2Date: "30 de Julio 2026 - 03:00", news3Title: "Sorteo Realizado", news3Sub: "Se han anunciado los grupos y horarios.", news3Date: "5 de Agosto 2026 - 02:45", ruleIntro1: "- La mayor organización de clubes de Europa.", ruleIntro2: "- Cada 2 años.", ruleIntro3: "- Total de 128 equipos.", ruleA: "A) CUOTAS DE LIGA", ruleB: "B) ETAPA DE CLASIFICACIÓN", ruleC: "C) ETAPA DE TORNEO", ruleD: "D) MEJORAS", ruleE: "E) CALENDARIO 2027", ruleF: "F) ANFITRIÓN: ESPAÑA", ruleG: "G) FONDO DE PREMIOS", ruleH: "H) DECLARACIÓN DE EQUIPO", ruleI: "I) BONO DE JUGADOR", ruleK: "K) DEPORTIVIDAD Y RESPETO", ruleL: "L) DERECHOS DE TRANSMISIÓN", ruleM: "M) PATROCINADORES", ruleN: "N) PROCESO / REGLAS", themeClassic: "TEMA: UCC CLÁSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Local", modalAway: "Visitante", modalNotStarted: "NO COMENZADO", modalFT: "FIN", noMatchDate: "No hay partidos en esta fecha.", noFeatMatch: "No hay partidos destacados.", groupWord: "Grupo", thTeam: "Equipo", statPossession: "POSESIÓN %", statRecovery: "RECUPERACIÓN (SEG)", statShots: "TIROS", statXG: "GOLES ESPERADOS (xG)", statPasses: "PASES", statTackles: "ENTRADAS", statTacklesWon: "ENTRADAS GANADAS", statInterceptions: "INTERCEPCIONES", statSaves: "PARADAS", statFouls: "FALTAS COMETIDAS", statOffsides: "FUERAS DE JUEGO", statCorners: "CÓRNERS", statFreeKicks: "TIROS LIBRES", statPenalties: "PENALTIS", statYellows: "TARJETAS AMARILLAS", statReds: "TARJETAS ROJAS" },
+            fr: { home: "ACCUEIL", groupsNav: "GROUPES", groupsTitle: "GROUPES", matches: "MATCHS", teams: "ÉQUIPES", news: "ACTUALITÉS", stats: "STATISTIQUES", rules: "RÈGLES", penalties: "SANCTIONS", goBack: "← RETOUR", partTeams: "ÉQUIPES PARTICIPANTES", loading: "Chargement...", filterDate: "Sélectionner la Date:", latestNews: "DERNIÈRES NOUVELLES", vs: "v", sponsorsTitle: "SPONSORS OFFICIELS", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AU CINÉMA LE 18 DÉCEMBRE", featuredMatches: "MATCHS VEDETTES", countdownTitle: "COUP D'ENVOI UCC 27", cdDays: "JOURS", cdHours: "HEURES", cdMins: "MIN", cdSecs: "SEC", directQual: "Qualification Directe UCC 27", playoffQual: "Tour de barrage UCC 27", modalStatsTab: "STATISTIQUES", playerStats: "Stats Joueur", teamStats: "Stats Équipe", topScorers: "BUTS", topAssists: "PASSES DÉC.", goalAssist: "B + P", expectedGoals: "xG", yellowCards: "CARTONS JAUNES", redCards: "CARTONS ROUGES", goalsScored: "BUTS MARQUÉS", cleanSheets: "MATCHS SANS ENCAISSER", expectedGoalsTeam: "xG ÉQUIPE", statsNote: "* Les statistiques sont mises à jour automatiquement.", penaltiesTitle: "SUSPENSIONS ET SANCTIONS", playerPenalties: "Suspensions Joueurs", teamPenalties: "Sanctions Équipes", penaltiesNote: "* La liste est mise à jour par les officiels.", news1Title: "Préliminaires", news1Sub: "Le tirage aura lieu le 31 juillet.", news1Date: "28 Juillet 2026 - 00:49", news2Title: "Site en Ligne", news2Sub: "La plateforme est accessible en version Beta.", news2Date: "30 Juillet 2026 - 03:00", news3Title: "Groupes Annoncés", news3Sub: "Les groupes préliminaires sont annoncés.", news3Date: "5 Août 2026 - 02:45", ruleIntro1: "- La plus grande organisation de clubs en Europe.", ruleIntro2: "- Tous les 2 ans.", ruleIntro3: "- 128 équipes au total.", ruleA: "A) QUOTAS DE LIGUE", ruleB: "B) PHASE DE QUALIFICATION", ruleC: "C) PHASE DE TOURNOI", ruleD: "D) AMÉLIORATIONS", ruleE: "E) CALENDRIER 2027", ruleF: "F) HÔTE: ESPAGNE", ruleG: "G) PRIX", ruleH: "H) DÉCLARATION D'ÉQUIPE", ruleI: "I) BONUS JOUEUR", ruleK: "K) ESPRIT SPORTIF", ruleL: "L) DROITS TV", ruleM: "M) SPONSORS", ruleN: "N) RÈGLES DU JEU", themeClassic: "THÈME: CLASSIQUE", themeDoomsday: "THÈME: DOOMSDAY", modalHome: "Domicile", modalAway: "Extérieur", modalNotStarted: "NON COMMENCÉ", modalFT: "FIN", noMatchDate: "Aucun match trouvé.", noFeatMatch: "Aucun match vedette.", groupWord: "Groupe", thTeam: "Équipe", statPossession: "POSSESSION %", statRecovery: "RÉCUPÉRATION (SEC)", statShots: "TIRS", statXG: "BUTS ATTENDUS (xG)", statPasses: "PASSES", statTackles: "TACKLES", statTacklesWon: "TACKLES RÉUSSIS", statInterceptions: "INTERCEPTIONS", statSaves: "ARRÊTS", statFouls: "FAUTES COMMISES", statOffsides: "HORS-JEUX", statCorners: "CORNERS", statFreeKicks: "COUPS FRANCS", statPenalties: "PENALTYS", statYellows: "CARTONS JAUNES", statReds: "CARTONS ROUGES" },
+            de: { home: "START", groupsNav: "GRUPPEN", groupsTitle: "GRUPPEN", matches: "SPIELE", teams: "TEAMS", news: "NEWS", stats: "STATISTIKEN", rules: "REGELN", penalties: "STRAFEN", goBack: "← ZURÜCK", partTeams: "TEILNEHMENDE TEAMS", loading: "Laden...", filterDate: "Datum wählen:", latestNews: "AKTUELLE NEWS", vs: "v", sponsorsTitle: "OFFIZIELLE SPONSOREN", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AB 18. DEZEMBER IM KINO", featuredMatches: "TOP-SPIELE", countdownTitle: "UCC 27 START IN", cdDays: "TAGE", cdHours: "STD", cdMins: "MIN", cdSecs: "SEK", directQual: "UCC 27 Direkte Qualifikation", playoffQual: "UCC 27 Play-off-Runde", modalStatsTab: "STATISTIKEN", playerStats: "Spieler", teamStats: "Team", topScorers: "TORE", topAssists: "ASSISTS", goalAssist: "T + A", expectedGoals: "xG", yellowCards: "GELBE KARTEN", redCards: "ROTE KARTEN", goalsScored: "ERZIELTE TORE", cleanSheets: "OHNE GEGENTOR", expectedGoalsTeam: "TEAM xG", statsNote: "* Statistiken werden automatisch aktualisiert.", penaltiesTitle: "SPERREN & STRAFEN", playerPenalties: "Spielersperren", teamPenalties: "Teamstrafen", penaltiesNote: "* Sperren werden von den Offiziellen aktualisiert.", news1Title: "Vorrunden", news1Sub: "Die Auslosung findet am 31. Juli statt.", news1Date: "28. Juli 2026 - 00:49", news2Title: "Website Online", news2Sub: "Die Plattform ist als Beta zugänglich.", news2Date: "30. Juli 2026 - 03:00", news3Title: "Gruppen bekannt", news3Sub: "Die UCC 27 Vorrundengruppen stehen fest.", news3Date: "5. August 2026 - 02:45", ruleIntro1: "- Europas größte Klub-Organisation.", ruleIntro2: "- Alle 2 Jahre.", ruleIntro3: "- Insgesamt 128 Teams.", ruleA: "A) LIGA-QUOTEN", ruleB: "B) QUALIFIKATIONSPHASE", ruleC: "C) TURNIERPHASE", ruleD: "D) VERBESSERUNGEN", ruleE: "E) KALENDER 2027", ruleF: "F) GASTGEBER: SPANIEN", ruleG: "G) PREISGELD", ruleH: "H) KADER-MELDUNG", ruleI: "I) SPIELER-BONUS", ruleK: "K) SPORTSGEIST & RESPEKT", ruleL: "L) ÜBERTRAGUNGSRECHTE", ruleM: "M) SPONSOREN", ruleN: "N) SPIELREGELN", themeClassic: "THEMA: KLASSISCH", themeDoomsday: "THEMA: DOOMSDAY", modalHome: "Heim", modalAway: "Auswärts", modalNotStarted: "NICHT BEGONNEN", modalFT: "ENDE", noMatchDate: "Keine Spiele an diesem Datum.", noFeatMatch: "Keine Top-Spiele.", groupWord: "Gruppe", thTeam: "Team", statPossession: "BALLBESITZ %", statRecovery: "BALLRÜCKGEWINNUNG (SEK)", statShots: "SCHÜSSE", statXG: "ERWARTETE TORE (xG)", statPasses: "PÄSSE", statTackles: "ZWEIKÄMPFE", statTacklesWon: "GEWONNENE ZWEIKÄMPFE", statInterceptions: "ABFANGEN", statSaves: "PARADEN", statFouls: "BEGANGENE FOULS", statOffsides: "ABSEITS", statCorners: "ECKBÄLLE", statFreeKicks: "FREISTÖßE", statPenalties: "ELFMETER", statYellows: "GELBE KARTEN", statReds: "ROTE KARTEN" },
+            it: { home: "HOME", groupsNav: "GIRONI", groupsTitle: "GIRONI", matches: "PARTITE", teams: "SQUADRE", news: "NOTIZIE", stats: "STATISTICHE", rules: "REGOLE", penalties: "SQUALIFICHE", goBack: "← INDIETRO", partTeams: "SQUADRE PARTECIPANTI", loading: "Caricamento...", filterDate: "Seleziona Data:", latestNews: "ULTIME NOTIZIE", vs: "v", sponsorsTitle: "SPONSOR UFFICIALI", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AL CINEMA IL 18 DICEMBRE", featuredMatches: "PARTITE DI CARTELLO", countdownTitle: "INIZIO UCC 27 TRA", cdDays: "GIORNI", cdHours: "ORE", cdMins: "MIN", cdSecs: "SEC", directQual: "Qualificazione Diretta UCC 27", playoffQual: "Turno Play-off UCC 27", modalStatsTab: "STATISTICHE", playerStats: "Stat. Giocatori", teamStats: "Stat. Squadra", topScorers: "GOL", topAssists: "ASSIST", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "CARTELLINI GIALLI", redCards: "CARTELLINI ROSSI", goalsScored: "GOL SEGNATI", cleanSheets: "RETI INVIOLATE", expectedGoalsTeam: "xG SQUADRA", statsNote: "* Le statistiche si aggiornano automaticamente.", penaltiesTitle: "SOSPENSIONI E PENALITÀ", playerPenalties: "Squalifiche Giocatori", teamPenalties: "Penalità Squadra", penaltiesNote: "* L'elenco è aggiornato dagli ufficiali.", news1Title: "Sorteggio Preliminari", news1Sub: "Il sorteggio si terrà il 31 Luglio.", news1Date: "28 Luglio 2026 - 00:49", news2Title: "Sito Ufficiale Online", news2Sub: "La piattaforma ufficiale è in versione Beta.", news2Date: "30 Luglio 2026 - 03:00", news3Title: "Gironi Annunciati", news3Sub: "Annunciati i gironi preliminari UCC 27.", news3Date: "5 Agosto 2026 - 02:45", ruleIntro1: "- La più grande organizzazione di club in Europa.", ruleIntro2: "- Ogni 2 anni.", ruleIntro3: "- 128 squadre totali.", ruleA: "A) QUOTE CAMPIONATO", ruleB: "B) FASE DI QUALIFICAZIONE", ruleC: "C) FASE A GIRONI", ruleD: "D) MIGLIORAMENTI", ruleE: "E) CALENDARIO 2027", ruleF: "F) OSPITE: SPAGNA", ruleG: "G) MONTEPREMI", ruleH: "H) DICHIARAZIONE SQUADRA", ruleI: "I) BONUS GIOCATORI", ruleK: "K) SPORTIVITÀ E RISPETTO", ruleL: "L) DIRITTI TV", ruleM: "M) SPONSOR", ruleN: "N) REGOLE DEL GIOCO", themeClassic: "TEMA: CLASSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Casa", modalAway: "Trasferta", modalNotStarted: "NON INIZIATA", modalFT: "FINITA", noMatchDate: "Nessuna partita in questa data.", noFeatMatch: "Nessuna partita in primo piano.", groupWord: "Gruppo", thTeam: "Squadra", statPossession: "POSSESSO PALLA %", statRecovery: "RECUPERO PALLA (SEC)", statShots: "TIRI", statXG: "GOL PREVISTI (xG)", statPasses: "PASSAGGI", statTackles: "CONTRASTI", statTacklesWon: "CONTRASTI VINTI", statInterceptions: "INTERCETTAZIONI", statSaves: "PARATE", statFouls: "FALLI COMMESSI", statOffsides: "FUORIGIOCO", statCorners: "CALCI D'ANGOLO", statFreeKicks: "CALCI DI PUNIZIONE", statPenalties: "RIGORI", statYellows: "CARTELLINI GIALLI", statReds: "CARTELLINI ROSSI" },
+            pt: { home: "INÍCIO", groupsNav: "GRUPOS", groupsTitle: "GRUPOS", matches: "JOGOS", teams: "EQUIPAS", news: "NOTÍCIAS", stats: "ESTATÍSTICAS", rules: "REGRAS", penalties: "PENALIDADES", goBack: "← VOLTAR", partTeams: "EQUIPAS PARTICIPANTES", loading: "A carregar...", filterDate: "Selecionar Data:", latestNews: "ÚLTIMAS NOTÍCIAS", vs: "v", sponsorsTitle: "PATROCINADORES OFICIAIS", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — NOS CINEMAS A 18 DE DEZEMBRO", featuredMatches: "JOGOS EM DESTAQUE", countdownTitle: "INÍCIO DO UCC 27 EM", cdDays: "DIAS", cdHours: "HORAS", cdMins: "MIN", cdSecs: "SEG", directQual: "Qualificação Direta UCC 27", playoffQual: "Ronda de Play-off UCC 27", modalStatsTab: "ESTATÍSTICAS", playerStats: "Estat. Jogador", teamStats: "Estat. Equipa", topScorers: "GOLOS", topAssists: "ASSISTÊNCIAS", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "CARTÕES AMARELOS", redCards: "CARTÕES VERMELHOS", goalsScored: "GOLOS MARCADOS", cleanSheets: "JOGOS SEM SOFRER", expectedGoalsTeam: "xG EQUIPA", statsNote: "* As estatísticas são atualizadas automaticamente.", penaltiesTitle: "SUSPENSÕES E PENALIDADES", playerPenalties: "Suspensões de Jogadores", teamPenalties: "Penalidades de Equipas", penaltiesNote: "* A lista é atualizada pelos oficiais.", news1Title: "Sorteio das Preliminares", news1Sub: "O sorteio será realizado a 31 de Julho.", news1Date: "28 de Julho 2026 - 00:49", news2Title: "Site Oficial Online", news2Sub: "A plataforma oficial está acessível em Beta.", news2Date: "30 de Julho 2026 - 03:00", news3Title: "Grupos Anunciados", news3Sub: "Os grupos e o calendário foram anunciados.", news3Date: "5 de Agosto 2026 - 02:45", ruleIntro1: "- A maior organização de clubes da Europa.", ruleIntro2: "- A cada 2 anos.", ruleIntro3: "- 128 equipas no total.", ruleA: "A) QUOTAS DE LIGA", ruleB: "B) FASE DE QUALIFICAÇÃO", ruleC: "C) FASE DE TORNEIO", ruleD: "D) MELHORIAS", ruleE: "E) CALENDÁRIO 2027", ruleF: "F) ANFITRIÃO: ESPANHA", ruleG: "G) PRÉMIOS", ruleH: "H) DECLARAÇÃO DA EQUIPA", ruleI: "I) BÓNUS DO JOGADOR", ruleK: "K) DESPORTIVISMO E RESPEITO", ruleL: "L) DIREITOS DE TRANSMISSÃO", ruleM: "M) PATROCINADORES", ruleN: "N) REGRAS DO JOGO", themeClassic: "TEMA: CLÁSSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Casa", modalAway: "Fora", modalNotStarted: "NÃO INICIOU", modalFT: "FIM", noMatchDate: "Nenhum jogo nesta data.", noFeatMatch: "Sem jogos em destaque.", groupWord: "Grupo", thTeam: "Equipa", statPossession: "POSSE DE BOLA %", statRecovery: "RECUPERAÇÃO BOLA (SEG)", statShots: "REMATES", statXG: "GOLOS ESPERADOS (xG)", statPasses: "PASSES", statTackles: "DESARMES", statTacklesWon: "DESARMES GANHOS", statInterceptions: "INTERCEÇÕES", statSaves: "DEFESAS", statFouls: "FALTAS COMETIDAS", statOffsides: "FORAS DE JOGO", statCorners: "CANTOS", statFreeKicks: "LIVRES", statPenalties: "PENÁLTIS", statYellows: "CARTÕES AMARELOS", statReds: "CARTÕES VERMELHOS" }
         };
 
         const monthMap = {
@@ -694,7 +736,6 @@
             }
         };
 
-        // 3. MADDE: ÜLKELERE GÖRE AYIRMA SÖZLÜĞÜ (DİL DESTEKLİ)
         const countryTranslations = {
             "İngiltere": { en: "England", tr: "İngiltere", es: "Inglaterra", fr: "Angleterre", de: "England", it: "Inghilterra", pt: "Inglaterra" },
             "İspanya": { en: "Spain", tr: "İspanya", es: "España", fr: "Espagne", de: "Spanien", it: "Spagna", pt: "Espanha" },
@@ -759,18 +800,19 @@
                 .replace(/[^a-z0-9]/g, ''); 
         }
 
+        // AKILLI ÜLKE ALGILAMA MOTORU
         function getCountryByTeamName(name) {
             let n = name.toLowerCase();
             let countryKey = "Diğer";
             
-            if(/city|liverpool|arsenal|chelsea|united|tottenham|aston|newcastle|everton|west ham|brentford|crystal|fulham|brighton|bournemouth|nottingham|wolves|southampton|leicester|ipswich/.test(n)) countryKey = "İngiltere";
-            else if(/real madrid|barcelona|atletico|celta|rayo|sociedad|betis|sevilla|bilbao|girona|valencia|villarreal|osasuna|alaves|mallorca|las palmas|getafe|leganes|valladolid|espanyol/.test(n)) countryKey = "İspanya";
-            else if(/bayern|dortmund|leverkusen|leipzig|frankfurt|stuttgart|koln|köln|monchengladbach|wolfsburg|freiburg|hoffenheim|werder|heidenheim|augsburg|mainz|bochum|pauli|holstein|union berlin/.test(n)) countryKey = "Almanya";
-            else if(/milan|juventus|inter|roma|napoli|lazio|atalanta|fiorentina|bologna|torino|genoa|parma|udinese|verona|empoli|cagliari|como|lecce|venezia|monza/.test(n)) countryKey = "İtalya";
-            else if(/paris|psg|monaco|marsilya|marseille|lyon|lille|lens|nice|rennes|reims|strasbourg|montpellier|toulouse|nantes|angers|brest|havre|auxerre|etienne/.test(n)) countryKey = "Fransa";
-            else if(/galatasaray|fenerbahçe|fenerbahce|beşiktaş|besiktas|trabzon|başakşehir|basaksehir|rize|kasımpaşa|kasimpasa|alanya|antalya|göztepe|goztepe|sivas|samsun|eyüp|eyup|bodrum|konya|kayseri|hatay|gaziantep|adana/.test(n)) countryKey = "Türkiye";
-            else if(/sporting|benfica|porto|braga|guimares|vitoria|famalicao|arouca|moreirense|rio ave|vicente|estoril|boavista|farense|nacional|clara|avs|casa pia/.test(n)) countryKey = "Portekiz";
-            else if(/ajax|psv|feyenoord|alkmaar|twente|sparta|utrecht|go ahead|heerenveen|fortuna|nec|zwolle|heracles|almere|rkc|willem|nac|groningen|pec/.test(n)) countryKey = "Hollanda";
+            if(/city|liverpool|arsenal|chelsea|united|tottenham|aston|newcastle|everton|west ham|brentford|crystal|fulham|brighton|bournemouth|nottingham|wolves|southampton|leicester|ipswich|sunderland/.test(n)) countryKey = "İngiltere";
+            else if(/real madrid|barcelona|atletico|celta|rayo|sociedad|betis|sevilla|bilbao|girona|valencia|villarreal|osasuna|alaves|mallorca|las palmas|getafe|leganes|valladolid|espanyol|levante/.test(n)) countryKey = "İspanya";
+            else if(/bayern|dortmund|leverkusen|leipzig|frankfurt|stuttgart|koln|köln|cologne|monchengladbach|wolfsburg|freiburg|hoffenheim|werder|heidenheim|augsburg|mainz|bochum|pauli|holstein|union berlin|hamburg/.test(n)) countryKey = "Almanya";
+            else if(/milan|juventus|inter|roma|napoli|lazio|atalanta|fiorentina|bologna|torino|genoa|parma|udinese|verona|empoli|cagliari|como|lecce|venezia|monza|sassuolo/.test(n)) countryKey = "İtalya";
+            else if(/paris|psg|monaco|marsilya|marseille|lyon|lille|lens|nice|rennes|reims|strasbourg|montpellier|toulouse|nantes|angers|brest|havre|auxerre|etienne|lorient/.test(n)) countryKey = "Fransa";
+            else if(/galatasaray|fenerbahçe|fenerbahce|beşiktaş|besiktas|trabzon|başakşehir|basaksehir|rize|kasımpaşa|kasimpasa|alanya|antalya|göztepe|goztepe|sivas|samsun|eyüp|eyup|bodrum|konya|kayseri|hatay|gaziantep|adana|kocaeli/.test(n)) countryKey = "Türkiye";
+            else if(/sporting|benfica|porto|braga|guimares|vitoria|famalicao|arouca|moreirense|rio ave|vicente|estoril|boavista|farense|nacional|clara|avs|casa pia|alverca/.test(n)) countryKey = "Portekiz";
+            else if(/\baz\b|ajax|psv|feyenoord|alkmaar|twente|sparta|utrecht|go ahead|heerenveen|fortuna|nec|zwolle|heracles|almere|rkc|willem|nac|groningen|pec/.test(n)) countryKey = "Hollanda";
             else if(/brugge|bruge|anderlecht|genk|union sg|stvv|truiden|gilloise|antwerp|gent|standard|cercle|mechelen|charleroi|westerlo|kortrijk|leuven|dender|beerschot/.test(n)) countryKey = "Belçika";
             else if(/slavia|plzen|banik|mlada|slovacko/.test(n) || n === "sparta prag" || n === "sparta prague") countryKey = "Çekya";
             else if(/olympiacos|olympiakos|aek|paok|panathinaikos|aris/.test(n)) countryKey = "Yunanistan";
@@ -812,7 +854,19 @@
             return 'https://via.placeholder.com/35?text=?';
         }
 
-        // AKILLI TARİH ÇEVİRİCİSİ (%100 Dil Destekli)
+        function parseMatchDate(dateStr, timeStr) {
+            try {
+                let dStr = String(dateStr || "").trim().toLowerCase().replace(/!/g, '');
+                let tStr = String(timeStr || "00:00").trim().replace('.', ':').replace(/!/g, '');
+                let dayMatch = dStr.match(/\d+/); let day = dayMatch ? parseInt(dayMatch[0]) : 1;
+                let month = 0;
+                if(dStr.includes("ocak")) month = 0; else if(dStr.includes("şubat")||dStr.includes("subat")) month = 1; else if(dStr.includes("mart")) month = 2; else if(dStr.includes("nisan")) month = 3; else if(dStr.includes("mayıs")||dStr.includes("mayis")) month = 4; else if(dStr.includes("haziran")) month = 5; else if(dStr.includes("temmuz")) month = 6; else if(dStr.includes("ağustos")||dStr.includes("agustos")) month = 7; else if(dStr.includes("eylül")||dStr.includes("eylul")) month = 8; else if(dStr.includes("ekim")) month = 9; else if(dStr.includes("kasım")||dStr.includes("kasim")) month = 10; else if(dStr.includes("aralık")||dStr.includes("aralik")) month = 11;
+                let yearMatch = dStr.match(/\d{4}/); let year = yearMatch ? parseInt(yearMatch[0]) : ((month < 6) ? 2027 : 2026);
+                let hours = 0, minutes = 0; let tParts = tStr.split(':'); if(tParts.length >= 2) { hours = parseInt(tParts[0]); minutes = parseInt(tParts[1]); }
+                return new Date(year, month, day, hours, minutes).getTime();
+            } catch(e) { return 9999999999999; }
+        }
+
         function translateDate(dateStr, overrideLang) {
             if(!dateStr) return "";
             const lang = overrideLang || document.getElementById('lang-selector').value;
@@ -841,24 +895,12 @@
             return cleanStr;
         }
 
-        function parseMatchDate(dateStr, timeStr) {
-            try {
-                let dStr = String(dateStr || "").trim().toLowerCase().replace(/!/g, '');
-                let tStr = String(timeStr || "00:00").trim().replace('.', ':').replace(/!/g, '');
-                let dayMatch = dStr.match(/\d+/); let day = dayMatch ? parseInt(dayMatch[0]) : 1;
-                let month = 0;
-                if(dStr.includes("ocak")) month = 0; else if(dStr.includes("şubat")||dStr.includes("subat")) month = 1; else if(dStr.includes("mart")) month = 2; else if(dStr.includes("nisan")) month = 3; else if(dStr.includes("mayıs")||dStr.includes("mayis")) month = 4; else if(dStr.includes("haziran")) month = 5; else if(dStr.includes("temmuz")) month = 6; else if(dStr.includes("ağustos")||dStr.includes("agustos")) month = 7; else if(dStr.includes("eylül")||dStr.includes("eylul")) month = 8; else if(dStr.includes("ekim")) month = 9; else if(dStr.includes("kasım")||dStr.includes("kasim")) month = 10; else if(dStr.includes("aralık")||dStr.includes("aralik")) month = 11;
-                let yearMatch = dStr.match(/\d{4}/); let year = yearMatch ? parseInt(yearMatch[0]) : ((month < 6) ? 2027 : 2026);
-                let hours = 0, minutes = 0; let tParts = tStr.split(':'); if(tParts.length >= 2) { hours = parseInt(tParts[0]); minutes = parseInt(tParts[1]); }
-                return new Date(year, month, day, hours, minutes).getTime();
-            } catch(e) { return 9999999999999; }
-        }
-
         function populateDateDropdown() {
             const selectEl = document.getElementById('fixture-date-select');
+            const lang = document.getElementById('lang-selector').value;
             selectEl.innerHTML = '';
             uniqueDates.forEach(dateRaw => {
-                selectEl.innerHTML += `<option value="${dateRaw}">${translateDate(dateRaw)}</option>`;
+                selectEl.innerHTML += `<option value="${dateRaw}">${translateDate(dateRaw, lang)}</option>`;
             });
         }
 
@@ -890,7 +932,6 @@
                 if (dict[key]) { element.innerHTML = dict[key]; }
             });
             
-            // Tema butonu yazısı yenile
             const t = themes[currentThemeIndex];
             const btn = document.getElementById('theme-btn-text');
             if(t === 'default') btn.innerHTML = dict['themeClassic'] || "TEMA: UCC KLASİK";
@@ -899,10 +940,11 @@
             if(document.getElementById('view-article').classList.contains('active-page')) { openArticle(currentArticleId); }
             if(matchesLoaded) { 
                 populateDateDropdown(); 
+                renderGroupsGrid(lang);
                 renderFixturesByDate(document.getElementById('fixture-date-select').value); 
                 renderTicker(); 
                 renderFeaturedMatches();
-                renderTeamsGrid(lang); // Ülkeleri çevirerek yeniden çiz
+                renderTeamsGrid(lang); 
             }
         }
 
@@ -928,7 +970,6 @@
                 teamsByCountry[displayCountry].push(t);
             });
 
-            // Ekrana Ülkelere Göre Basma
             for (const [countryName, countryTeams] of Object.entries(teamsByCountry)) {
                 let cHtml = `<div class="country-section">
                                 <h2 class="country-header">${countryName}</h2>
@@ -944,16 +985,44 @@
             }
         }
 
+        let globalGroupsData = {};
+
+        function renderGroupsGrid(lang) {
+            const groupsGrid = document.getElementById('groups-grid');
+            if(!groupsGrid) return;
+            const dict = translations[lang] || translations['en'];
+            const groupWord = dict['groupWord'] || "Grup";
+            const thTeam = dict['thTeam'] || "Takım";
+
+            let groupsHtml = '';
+            for(let i = 1; i <= 32; i++) {
+                let teams = globalGroupsData[i];
+                if(!teams || teams.length === 0) continue;
+                teams.sort((a, b) => { if (Number(b.puan) !== Number(a.puan)) return Number(b.puan) - Number(a.puan); if (Number(b.a) !== Number(a.a)) return Number(b.a) - Number(a.a); return Number(b.ag) - Number(a.ag); });
+                
+                groupsHtml += `<div class="group-card"><div class="group-header">${groupWord} ${i}</div>`;
+                groupsHtml += `<div class="group-stats-header"><div class="team-col">${thTeam}</div><div class="stat-col">OM</div><div class="stat-col">G</div><div class="stat-col">B</div><div class="stat-col">M</div><div class="stat-col">AG</div><div class="stat-col">YG</div><div class="stat-col">A</div><div class="stat-col">P</div></div>`;
+                for(let j = 0; j < 4; j++) {
+                    let bar = j === 0 ? 'status-blue' : (j === 1 ? 'status-orange' : '');
+                    if(teams[j]) {
+                        const t = teams[j];
+                        groupsHtml += `<div class="group-row"><div class="status-bar ${bar}"></div><div class="team-col"><img src="${t.logo}" class="team-logo-small"><span class="group-team-name">${getProperName(t.name)}</span></div><div class="stat-col">${t.om}</div><div class="stat-col">${t.g}</div><div class="stat-col">${t.b}</div><div class="stat-col">${t.m}</div><div class="stat-col">${t.ag}</div><div class="stat-col">${t.yg}</div><div class="stat-col">${t.a}</div><div class="stat-col">${t.puan}</div></div>`;
+                    }
+                }
+                groupsHtml += `</div>`;
+            }
+            groupsGrid.innerHTML = groupsHtml;
+        }
+
         async function fetchTournamentData() {
             if (dataLoaded) return;
-            const groupsGrid = document.getElementById('groups-grid');
+            const lang = document.getElementById('lang-selector').value;
             try {
                 const response = await fetch(scriptURL);
                 const data = await response.json(); 
                 
-                const groupsData = {};
-                allTeamsData = []; // Takımları globale kaydet
-                for(let i = 1; i <= 32; i++) groupsData[i] = [];
+                allTeamsData = []; 
+                for(let i = 1; i <= 32; i++) globalGroupsData[i] = [];
                 
                 data.forEach(row => {
                     const values = Object.values(row);
@@ -973,28 +1042,13 @@
                     allTeamsData.push({ name: properName, logo: logoUrl });
 
                     if (groupNum >= 1 && groupNum <= 32) {
-                        groupsData[groupNum].push({ name: teamName, logo: logoUrl, om: values[3]||0, g: values[4]||0, b: values[5]||0, m: values[6]||0, ag: values[7]||0, yg: values[8]||0, a: values[9]||0, puan: values[10]||0 });
+                        globalGroupsData[groupNum].push({ name: teamName, logo: logoUrl, om: values[3]||0, g: values[4]||0, b: values[5]||0, m: values[6]||0, ag: values[7]||0, yg: values[8]||0, a: values[9]||0, puan: values[10]||0 });
                     }
                 });
 
-                renderTeamsGrid(document.getElementById('lang-selector').value);
-
-                let groupsHtml = '';
-                for(let i = 1; i <= 32; i++) {
-                    let teams = groupsData[i];
-                    teams.sort((a, b) => { if (Number(b.puan) !== Number(a.puan)) return Number(b.puan) - Number(a.puan); if (Number(b.a) !== Number(a.a)) return Number(b.a) - Number(a.a); return Number(b.ag) - Number(a.ag); });
-                    groupsHtml += `<div class="group-card"><div class="group-header">Grup ${i}</div>`;
-                    groupsHtml += `<div class="group-stats-header"><div class="team-col">Takım</div><div class="stat-col">OM</div><div class="stat-col">G</div><div class="stat-col">B</div><div class="stat-col">M</div><div class="stat-col">AG</div><div class="stat-col">YG</div><div class="stat-col">A</div><div class="stat-col">P</div></div>`;
-                    for(let j = 0; j < 4; j++) {
-                        let bar = j === 0 ? 'status-blue' : (j === 1 ? 'status-orange' : '');
-                        if(teams[j]) {
-                            const t = teams[j];
-                            groupsHtml += `<div class="group-row"><div class="status-bar ${bar}"></div><div class="team-col"><img src="${t.logo}" class="team-logo-small"><span class="group-team-name">${getProperName(t.name)}</span></div><div class="stat-col">${t.om}</div><div class="stat-col">${t.g}</div><div class="stat-col">${t.b}</div><div class="stat-col">${t.m}</div><div class="stat-col">${t.ag}</div><div class="stat-col">${t.yg}</div><div class="stat-col">${t.a}</div><div class="stat-col">${t.puan}</div></div>`;
-                        }
-                    }
-                    groupsHtml += `</div>`;
-                }
-                groupsGrid.innerHTML = groupsHtml;
+                renderTeamsGrid(lang);
+                renderGroupsGrid(lang);
+                
                 dataLoaded = true;
                 fetchFixtures();
             } catch (error) { console.error('Hata:', error); }
@@ -1020,25 +1074,25 @@
         }
 
         // ==========================================
-        // YENİ: MAÇ MERKEZİ EKRANI (İSTATİSTİK PENCERESİ)
+        // İSTATİSTİK PENCERESİ (DİL DESTEKLİ ÇUBUKLAR)
         // ==========================================
         const matchStatsConfig = [
-            { label: "TOPA S. OLMA %'Sİ", key: "Top" },
-            { label: "TOPU GERİ KAZANMA (SN)", key: "Geri" },
-            { label: "ŞUT", key: "Sut" },
-            { label: "GOL BEKLENTİSİ", key: "xG" },
-            { label: "PAS", key: "Pas" },
-            { label: "MÜDAHALE", key: "Mud", exact: true },
-            { label: "TOP KAZANILAN MÜDAHALE", key: "Tk" },
-            { label: "TOP KESMELER", key: "Kes" },
-            { label: "KURTARIŞ", key: "Kur" },
-            { label: "YAPILAN FAUL", key: "Faul" },
-            { label: "OFSAYTLAR", key: "Ofs" },
-            { label: "KÖŞE VURUŞU", key: "Kor" },
-            { label: "SERBEST VURUŞLAR", key: "Ser" },
-            { label: "PENALTI VURUŞLARI", key: "Pen" },
-            { label: "SARI KARTLAR", key: "Sari" },
-            { label: "KIRMIZI KARTLAR", key: "Kir" }
+            { i18nKey: "statPossession", key: "Top" },
+            { i18nKey: "statRecovery", key: "Geri" },
+            { i18nKey: "statShots", key: "Sut" },
+            { i18nKey: "statXG", key: "xG" },
+            { i18nKey: "statPasses", key: "Pas" },
+            { i18nKey: "statTackles", key: "Mud", exact: true },
+            { i18nKey: "statTacklesWon", key: "Tk" },
+            { i18nKey: "statInterceptions", key: "Kes" },
+            { i18nKey: "statSaves", key: "Kur" },
+            { i18nKey: "statFouls", key: "Faul" },
+            { i18nKey: "statOffsides", key: "Ofs" },
+            { i18nKey: "statCorners", key: "Kor" },
+            { i18nKey: "statFreeKicks", key: "Ser" },
+            { i18nKey: "statPenalties", key: "Pen" },
+            { i18nKey: "statYellows", key: "Sari" },
+            { i18nKey: "statReds", key: "Kir" }
         ];
 
         function openMatchStats(matchIndex) {
@@ -1094,6 +1148,7 @@
                 }
 
                 let isRedCard = stat.key === "Kir";
+                let displayLabel = dict[stat.i18nKey] || stat.i18nKey;
                 let labelClass = isRedCard ? "ms-label red-text" : "ms-label";
                 let evValClass = isRedCard && evNum > 0 ? "ms-val home red-text" : "ms-val home";
                 let depValClass = isRedCard && depNum > 0 ? "ms-val away red-text" : "ms-val away";
@@ -1102,7 +1157,7 @@
                 <div class="ms-row">
                     <div class="${evValClass}">${evValRaw}</div>
                     <div class="ms-center">
-                        <div class="${labelClass}">${stat.label}</div>
+                        <div class="${labelClass}">${displayLabel}</div>
                         <div class="ms-bars">
                             <div class="ms-bar-bg home"><div class="ms-fill-home" style="width: ${evPercent}%;"></div></div>
                             <div class="ms-bar-bg away"><div class="ms-fill-away" style="width: ${depPercent}%;"></div></div>
@@ -1130,10 +1185,11 @@
             const lang = document.getElementById('lang-selector').value;
             const dict = translations[lang] || translations['en'];
             const vsText = dict['vs'] || "v";
+            const groupWord = dict['groupWord'] || "Grup";
             
             const dayMatches = allMatches.filter(m => {
                 let raw = cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]]);
-                return raw === selectedRawDate; // uniqueDates formatıyla eşleşmeli
+                return raw === selectedRawDate; 
             });
 
             if(dayMatches.length === 0) { container.innerHTML = `<p style="text-align:center; padding:30px;">${dict['noMatchDate'] || "Bu tarihte maç bulunmuyor."}</p>`; return; }
@@ -1158,7 +1214,11 @@
             let html = '';
             for (const [grupAdi, grupMaclari] of Object.entries(matchesByGroup)) {
                 grupMaclari.sort((a,b) => parseMatchDate("01 Ocak 2026", a.saat) - parseMatchDate("01 Ocak 2026", b.saat));
-                html += `<div class="matchday-container"><div class="matchday-title">${grupAdi}</div>`;
+                
+                // Grup 1 -> Group 1 vs. çevirisi
+                let displayGrupAdi = grupAdi.replace(/Grup/ig, groupWord);
+
+                html += `<div class="matchday-container"><div class="matchday-title">${displayGrupAdi}</div>`;
                 grupMaclari.forEach(m => {
                     const evName = getProperName(m.ev); const depName = getProperName(m.dep);
                     const evLogo = findLogo(m.ev); const depLogo = findLogo(m.dep);
@@ -1199,7 +1259,7 @@
                 const evRaw = matchData[keys.find(k => k.includes('Ev S')) || keys[4]] || "";
                 const depRaw = matchData[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
                 
-                const mDate = translateDate(cleanValue(mDateRaw));
+                const mDate = translateDate(cleanValue(mDateRaw), lang);
                 const mTime = cleanValue(mTimeRaw) ? cleanValue(mTimeRaw) : '';
                 
                 const evName = getProperName(evRaw);
@@ -1242,7 +1302,7 @@
                 const mDateRaw = m[keys.find(k => k.includes('Tarih')) || keys[2]]; const mTimeRaw = m[keys.find(k => k.includes('Saat')) || keys[3]];
                 const evRaw = m[keys.find(k => k.includes('Ev S')) || keys[4]] || ""; const depRaw = m[keys.find(k => k.includes('Dep') && !k.includes('Skor')) || keys[5]] || "";
                 const evSkor = cleanValue(m[keys.find(k => k.includes('Ev Skor')) || keys[6]]); const depSkor = cleanValue(m[keys.find(k => k.includes('Dep Skor')) || keys[7]]); const durum = cleanValue(m[keys.find(k => k.includes('Durum')) || keys[8]]);
-                const mDate = translateDate(cleanValue(mDateRaw)); const mTime = cleanValue(mTimeRaw) ? `${cleanValue(mTimeRaw)}` : '';
+                const mDate = translateDate(cleanValue(mDateRaw), lang); const mTime = cleanValue(mTimeRaw) ? `${cleanValue(mTimeRaw)}` : '';
                 const evName = getProperName(evRaw); const depName = getProperName(depRaw);
                 const evLogo = findLogo(evRaw); const depLogo = findLogo(depRaw);
 
@@ -1310,7 +1370,7 @@
 
         window.onload = function() {
             fetchTournamentData();
-            changeLanguage('tr'); // Varsayılan açılış Türkçe
+            changeLanguage('tr'); 
             updateMusicUI();
         }
     </script>
