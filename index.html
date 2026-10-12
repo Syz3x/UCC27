@@ -164,7 +164,7 @@
         .fixture-score-box.unplayed { color: var(--text-muted); font-size: 15px; letter-spacing: normal; background: transparent; border: none; }
 
         /* -------------------------------------------------------------
-           YENİ GÜNCELLEME: MAÇ DETAY & İSTATİSTİK EKRANI (MODAL) 
+           MAÇ MERKEZİ (İSTATİSTİK PENCERESİ - MODAL)
            ------------------------------------------------------------- */
         .match-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .match-modal-overlay.active { display: flex; animation: fadeInModal 0.3s; }
@@ -178,23 +178,22 @@
         
         .modal-match-info { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
         .modal-team { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 30%; }
-        .modal-logo { width: 70px; height: 70px; object-fit: contain; }
+        .modal-logo { width: 70px; height: 70px; object-fit: contain; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
         .modal-team-name { font-size: 15px; font-weight: bold; color: white; text-align: center; }
         .modal-score-wrap { display: flex; flex-direction: column; align-items: center; gap: 5px; }
         .modal-score { font-size: 36px; font-weight: 900; color: white; letter-spacing: 2px; }
         .modal-status { font-size: 12px; color: var(--stat-yellow); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
         
-        .modal-tabs { display: flex; background: #141820; border-bottom: 1px solid #2a2f3a; }
-        .modal-tab { flex: 1; text-align: center; padding: 15px 0; font-size: 13px; font-weight: bold; color: #888; cursor: pointer; transition: 0.3s; border-bottom: 2px solid transparent; letter-spacing: 1px; }
-        .modal-tab:hover { color: white; }
-        .modal-tab.active { color: var(--stat-yellow); border-bottom-color: var(--stat-yellow); }
+        /* MAÇ FORUMU KALDIRILDI, SADECE İSTATİSTİKLER YAZISI KALDI */
+        .modal-tabs { display: flex; background: #141820; border-bottom: 1px solid #2a2f3a; justify-content: center; }
+        .modal-tab { padding: 15px 40px; font-size: 14px; font-weight: bold; color: var(--stat-yellow); border-bottom: 2px solid var(--stat-yellow); letter-spacing: 1px; }
         
-        .modal-body { padding: 20px; overflow-y: auto; flex: 1; }
+        .modal-body { padding: 20px 30px; overflow-y: auto; flex: 1; }
         
         /* Stat Satırları */
         .ms-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #1a1e26; }
         .ms-row:last-child { border-bottom: none; }
-        .ms-val { width: 40px; font-size: 16px; font-weight: bold; color: white; }
+        .ms-val { width: 45px; font-size: 16px; font-weight: bold; color: white; }
         .ms-val.home { text-align: left; }
         .ms-val.away { text-align: right; }
         
@@ -209,7 +208,6 @@
         .ms-fill-home { background: var(--stat-blue); height: 100%; border-radius: 3px; transition: width 0.8s ease-out; }
         .ms-fill-away { background: var(--stat-red); height: 100%; border-radius: 3px; transition: width 0.8s ease-out; }
 
-        /* Kırmızı kart için özel stil */
         .red-text { color: var(--stat-red) !important; }
 
         /* TAKIMLAR */
@@ -222,7 +220,7 @@
         .team-logo-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .team-name { font-size: 14px; font-weight: 700; color: #fff; position: relative; z-index: 2; letter-spacing: 0.5px; }
 
-        /* İSTATİSTİKLER SAYFASI */
+        /* İSTATİSTİKLER SAYFASI (TAKIM & OYUNCU) */
         .stats-tabs { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; border-bottom: 1px solid var(--border-light); padding-bottom: 20px; }
         .stats-tab-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--border-light); padding: 12px 30px; border-radius: 30px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .stats-tab-btn:hover { color: white; border-color: var(--text-muted); }
@@ -326,8 +324,7 @@
                 </div>
             </div>
             <div class="modal-tabs">
-                <div class="modal-tab active">İSTATİSTİKLER</div>
-                <div class="modal-tab">MAÇ FORUMU</div>
+                <div class="modal-tab">İSTATİSTİKLER</div>
             </div>
             <div class="modal-body" id="modal-stats-body">
                 <!-- Javascript ile dinamik çubuklar buraya gelecek -->
@@ -366,9 +363,6 @@
         </nav>
         <div class="header-right">
             <button class="theme-btn" onclick="cycleTheme()" id="theme-btn-text">TEMA: UCC KLASİK</button>
-            <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)" style="display:none;">
-                <option value="tr" selected>TR</option>
-            </select>
         </div>
     </header>
 
@@ -391,6 +385,7 @@
             </div>
 
             <main class="main-content">
+                <!-- DİNAMİK DEV MAÇLAR (! İŞARETİYLE SEÇİLENLER) -->
                 <div class="featured-matches-section">
                     <h2 class="section-header">HAFTANIN DEV MAÇLARI</h2>
                     <div class="featured-grid" id="featured-matches-container">
@@ -398,6 +393,7 @@
                     </div>
                 </div>
 
+                <!-- MANŞETLER -->
                 <div class="headlines-section">
                     <h2 class="section-header" style="font-size: 18px; margin-bottom: 15px;">SON HABERLER</h2>
                     <div class="headlines-grid">
@@ -440,7 +436,7 @@
             </div>
         </div>
 
-        <!-- MAÇLAR -->
+        <!-- MAÇLAR (TARİHE GÖRE SEÇİM) -->
         <div id="view-matches" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title">MAÇLAR</h1>
@@ -456,7 +452,7 @@
             </div>
         </div>
 
-        <!-- İSTATİSTİKLER -->
+        <!-- İSTATİSTİKLER (TAKIM VE OYUNCU) -->
         <div id="view-stats" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title">İSTATİSTİKLER</h1>
@@ -466,24 +462,59 @@
                     <button class="stats-tab-btn" onclick="switchStatsTab('team')" id="tab-btn-team">Takım İst.</button>
                 </div>
 
+                <!-- OYUNCU -->
                 <div id="stats-player" class="stats-section active">
                     <div class="stats-grid">
-                        <div class="stat-box"><div class="stat-box-title">GOL</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div></div>
-                        <div class="stat-box"><div class="stat-box-title">ASİST</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div></div>
-                        <div class="stat-box"><div class="stat-box-title">GOL + ASİST</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div></div>
-                        <div class="stat-box"><div class="stat-box-title">GOL BEKLENTİSİ (xG)</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0.0</div></div></div>
-                        <div class="stat-box"><div class="stat-box-title">SARI KART</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div></div>
-                        <div class="stat-box"><div class="stat-box-title">KIRMIZI KART</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div></div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">GOL</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">ASİST</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">GOL + ASİST</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">GOL BEKLENTİSİ (xG)</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0.0</div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">SARI KART</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">KIRMIZI KART</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Oyuncu Adı</div><div class="stat-team">Takım</div></div></div><div class="stat-value">0</div></div>
+                        </div>
                     </div>
                 </div>
 
+                <!-- TAKIM -->
                 <div id="stats-team" class="stats-section">
                     <div class="stats-grid">
-                        <div class="stat-box"><div class="stat-box-title">ATILAN GOL</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div></div>
-                        <div class="stat-box"><div class="stat-box-title">YENİLMEYEN GOL (Clean Sheets)</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div></div>
-                        <div class="stat-box"><div class="stat-box-title">TAKIM xG</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0.0</div></div></div>
-                        <div class="stat-box"><div class="stat-box-title">SARI KART</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div></div>
-                        <div class="stat-box"><div class="stat-box-title">KIRMIZI KART</div><div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div></div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">ATILAN GOL</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">YENİLMEYEN GOL (Clean Sheets)</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">TAKIM xG</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0.0</div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">SARI KART</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-title">KIRMIZI KART</div>
+                            <div class="stat-row"><div class="stat-player-info"><span class="stat-number">1</span><div><div class="stat-name">Takım Adı</div></div></div><div class="stat-value">0</div></div>
+                        </div>
                     </div>
                 </div>
                 <p style="text-align: center; color: var(--text-muted); margin-top: 30px; font-size: 14px;">* İstatistikler Puan Tablosu ve veritabanı üzerinden güncellenir.</p>
@@ -498,19 +529,230 @@
             </div>
         </div>
 
-        <!-- YÖNETMELİK -->
+        <!-- YÖNETMELİK EKRANI -->
         <div id="view-rules" class="page-view">
             <div class="content-page-container">
                 <div class="doc-container">
                     <h1 class="rule-title-main">2027 UEFA Club Championship</h1>
-                    <div class="rule-intro-box"><p>- Avrupa'nın en büyük kulüp organizasyonu.</p><p>- Her 2 yılda bir.</p><p>- Toplam 128 takım.</p></div>
+                    
+                    <div class="rule-intro-box">
+                        <p>- Avrupa'nın en büyük kulüp organizasyonu.</p>
+                        <p>- Her 2 yılda bir.</p>
+                        <p>- Toplam 128 takım.</p>
+                    </div>
+
                     <div class="doc-content">
+                        
                         <h3 class="rule-section-title">A) LİG KONTENJANLARI</h3>
-                        <ul class="rule-list"><li>Premier Lig (İngiltere) : 16 Takım</li><li>Seria A (İtalya) : 16 Takım</li><li>La Liga (İspanya) : 16 Takım</li><li>Bundesliga (Almanya) : 16 Takım</li><li>Ligue 1 (Fransa) : 16 Takım</li><li>Primeira Lig (Portekiz) : 12 Takım</li><li>Eredivise (Hollanda) : 12 Takım</li><li>Pro League (Belçika) : 10 Takım</li><li>Süper Lig (Türkiye) : 10 Takım</li><li>Chance Liga (Çekya) : 2 Takım</li><li>Super League (Yunanistan) : 2 Takım</li></ul>
-                        <div class="rule-sub-box"><li><b>A.1)</b> Belirlenen ligler 'UEFA ÜLKE PUANI' sisteminden alınmış olup ilk 11 sıralamaya giren ligler alınmıştır.</li><li><b>A.2)</b> Belirlenen liglerden gelecek takım sayısı gene aynı şekil 'UEFA ÜLKE PUAN' sistemine göre yapılmıştır.</li><li><b>A.3)</b> Belirlenen takım sayısı 2026 sezonu yerel lig sıralamasına göre belirlenmiştir.</li></div>
-                        <!-- Diğer kurallar yer tasarrufu için özet geçildi, asıl kodda aynı -->
+                        <ul class="rule-list">
+                            <li>Premier Lig (İngiltere) : 16 Takım</li>
+                            <li>Seria A (İtalya) : 16 Takım</li>
+                            <li>La Liga (İspanya) : 16 Takım</li>
+                            <li>Bundesliga (Almanya) : 16 Takım</li>
+                            <li>Ligue 1 (Fransa) : 16 Takım</li>
+                            <li>Primeira Lig (Portekiz) : 12 Takım</li>
+                            <li>Eredivise (Hollanda) : 12 Takım</li>
+                            <li>Pro League (Belçika) : 10 Takım</li>
+                            <li>Süper Lig (Türkiye) : 10 Takım</li>
+                            <li>Chance Liga (Çekya) : 2 Takım</li>
+                            <li>Super League (Yunanistan) : 2 Takım</li>
+                        </ul>
+                        <div class="rule-sub-box">
+                            <li><b>A.1)</b> Belirlenen ligler 'UEFA ÜLKE PUANI' sisteminden alınmış olup ilk 11 sıralamaya giren ligler alınmıştır.</li>
+                            <li><b>A.2)</b> Belirlenen liglerden gelecek takım sayısı gene aynı şekil 'UEFA ÜLKE PUAN' sistemine göre yapılmıştır.</li>
+                            <li><b>A.3)</b> Belirlenen takım sayısı 2026 sezonu yerel lig sıralamasına göre belirlenmiştir.</li>
+                        </div>
+
                         <h3 class="rule-section-title">B) ELEME AŞAMASI</h3>
                         <p class="rule-content">Takım belirleme işlemleri sonlandıktan sonra 128 takım "GRUPLU ELEME" oynayacaktır.</p>
+                        <div class="rule-sub-box">
+                            <li><b>B.1)</b> Kura çekimi torba + bilgisayar sistemi ile yapılacaktır.</li>
+                            <li><b>B.2)</b> Aynı ülke takımı eşleşmesi olmayacaktır.</li>
+                            <li><b>B.3)</b> Belirlenen takımlar gruplara dağıtılarak her biri dörderli olmak üzere toplam 32 grupta eleme oynayacaktır.</li>
+                            <li><b>B.4)</b> Toplam 6 maç oynanacaktır. (3 Ev sahibi , 3 Deplasman)</li>
+                            <li><b>B.5)</b> Gruplarda 1. olan takımlar doğrudan katılırken, 2. olan takımlar kalan 16 için play-off oynayacaktır.</li>
+                            <li><b>B.6)</b> Elemeler sonucunda toplam 48 takım 2027 UEFA Club Championship'a katılacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">C) TURNUVA AŞAMASI</h3>
+                        <p class="rule-content">Elemeler sonrası 48 takım 2027 sonunda (Kasım-Aralık) kupa için yarışacaktır.</p>
+                        <div class="rule-sub-box">
+                            <li><b>C.1)</b> Her takım toplamda 3 maç yapacaktır.</li>
+                            <li><b>C.2)</b> Her grupta 4 takım olacak şekilde toplam 12 grup olacaktır.</li>
+                            <li><b>C.3)</b> 48 Takım 4 torbaya bölünerek kura çekilecektir.</li>
+                            <li><b>C.4)</b> Aynı ülke takımı eşleşmesi olmayacaktır. (GRUP AŞAMASI)</li>
+                            <li><b>C.5)</b> Torbalar "UEFA ÜLKE SIRALAMASINA" göre belirlenecektir.</li>
+                            <li style="margin-top:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;"><b>C.6) GRUP SIRALAMASI ;</b></li>
+                            <li style="padding-left:15px;"><b>C.6.1)</b> 1. ve 2. olan takımlar doğrudan SON 32'ye yükselecektir.</li>
+                            <li style="padding-left:15px;"><b>C.6.2)</b> 3. olan takımlar EN İYİ ÜÇÜNCÜ'den yükselecektir.</li>
+                            <li style="padding-left:15px;"><b>C.6.3)</b> 4. olan takım 2027 UEFA Club Championship'e veda edecektir.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">D) GELİŞTİRMELER</h3>
+                        <p class="rule-content">Arttırılmış ödül sistemi ve oyuncuların dinlenme süreleri iyileştirildi.</p>
+
+                        <h3 class="rule-section-title">E) 2027 TAKVİMİ</h3>
+                        <ul class="rule-calendar-list">
+                            <li><span class="rule-calendar-date">1 Haziran 2026</span> 128 takımın belirlenmesi</li>
+                            <li><span class="rule-calendar-date">3 Haziran 2026</span> Eleme torbalarının belirlenmesi</li>
+                            <li><span class="rule-calendar-date">31 Temmuz 2026</span> Eleme grupları belirlenmesi / 2027 UEFA Club Championship Tanıtımı</li>
+                        </ul>
+                        <br>
+                        <ul class="rule-calendar-list">
+                            <li><span class="rule-calendar-date">22 - 24 Aralık 2026</span> 1. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">29 - 31 Aralık 2026</span> 2. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">5 - 7 Ocak 2027</span> 3. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">12 - 14 Ocak 2027</span> 4. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">2 - 4 Şubat 2027</span> 5. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">9 - 11 Şubat 2027</span> 6. Eleme maçları</li>
+                        </ul>
+                        <br>
+                        <ul class="rule-calendar-list">
+                            <li><span class="rule-calendar-date">1 Ağustos 2027</span> Torbaların belirlenmesi</li>
+                            <li><span class="rule-calendar-date">20 Ağustos 2027</span> KURA ÇEKİMİ / maçların belirlenmesi</li>
+                            <li><span class="rule-calendar-date">1 - 2 Eylül 2027</span> Play-off maçları</li>
+                            <li><span class="rule-calendar-date">8 - 9 Eylül 2027</span> Play-off maçları (Rövanş)</li>
+                        </ul>
+                        <div style="background:var(--accent-color); color:white; padding:10px 20px; font-weight:bold; border-radius:5px; margin:20px 0;">
+                            21 Kasım 2027 : 2027 UEFA Club Championship Başlangıcı / Lig maçları
+                        </div>
+                        <ul class="rule-calendar-list">
+                            <li><span class="rule-calendar-date">21 - 28 Kasım 2027</span> 1.Grup Maçları</li>
+                            <li><span class="rule-calendar-date">29 Kasım - 6 Aralık 2027</span> 2.Grup Maçları</li>
+                            <li><span class="rule-calendar-date">7 - 14 Aralık 2027</span> 3.Grup Maçları</li>
+                            <li><span class="rule-calendar-date">15 - 18 Aralık 2027</span> Son 32 Maçları</li>
+                            <li><span class="rule-calendar-date">19 - 22 Aralık 2027</span> Son 16 Maçları</li>
+                            <li><span class="rule-calendar-date">23 - 24 Aralık 2027</span> Çeyrek Final Maçları</li>
+                            <li><span class="rule-calendar-date">27 Aralık 2027</span> Yarı Final Maçları</li>
+                            <li><span class="rule-calendar-date">31 Aralık 2027</span> Üçüncülük maçı & FİNAL</li>
+                        </ul>
+
+                        <h3 class="rule-section-title">F) EV SAHİBİ: İSPANYA</h3>
+                        <p class="rule-content">2027 UEFA Club Championship'e "İSPANYA" ev sahipliği yapacaktır.</p>
+                        <div class="rule-sub-box">
+                            <li><b>F.1)</b> Yapılacak olan maçlar İspanya'nın 4 bölgesine bölünecek şekilde ayarlanmıştır.
+                                <ul style="margin-top:10px; color:#aaa;">
+                                    <li>- DOĞU BÖLGESİ : "A, F, K" grupları</li>
+                                    <li>- KUZEY BÖLGESİ : "C, H, J" grupları</li>
+                                    <li>- BATI BÖLGESİ : "B, E, L" grupları</li>
+                                    <li>- GÜNEY BÖLGESİ : "D, G, I" grupları</li>
+                                </ul>
+                            </li>
+                            <li><b>F.2)</b> Grup maçları sona ermesiyle birlikte 4 bölgede bulunan takımlar kademe kademe Merkez bölgesine (Madrid) gelir.
+                                <ul style="margin-top:10px; color:#aaa;">
+                                    <li><b>SON 32:</b> Doğu (4), Kuzey (4), Batı (4), Güney (4)</li>
+                                    <li><b>SON 16:</b> Doğu (2), Kuzey (2), Batı (1), Güney (2), Merkez (1)</li>
+                                    <li><b>ÇEYREK FİNAL:</b> Doğu (1), Kuzey (1), Güney (1), Merkez (1)</li>
+                                    <li><b>YARI FİNAL / ÜÇÜNCÜLÜK / FİNAL:</b> Merkez (Madrid) - 4 MAÇ</li>
+                                </ul>
+                            </li>
+                            <li><b>F.3)</b> Böylece oyuncuların dinlenme olanağı arttırılmıştır.</li>
+                            <li><b>F.4)</b> Bir stadyumda birden fazla maç oynanacağı kesindir.
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li><b>F.4.1)</b> Stadyumların bakım, yenileme ve onarım işlemleri UEFA tarafından yapılacaktır.</li>
+                                </ul>
+                            </li>
+                            <li><b>F.5)</b> Belirlenen stadyumlar 1 Kasım 2027 itibariyle UEFA'ya teslim edilecektir.</li>
+                            <li><b>F.6)</b> Stadyumlar 30 Ağustos 2027'de açıklanacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">G) ÖDÜL HAVUZU</h3>
+                        <p class="rule-content">Üst düzey ödül havuzu belirlenmiştir.</p>
+                        <div class="rule-sub-box">
+                            <li><b>G.1) Ülke Puanına Katkı</b>
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Galibiyet: 4 ham puan (Elemelerde 2 ham puan)</li>
+                                    <li>Beraberlik: 2 ham puan (Elemelerde 1 ham puan)</li>
+                                    <li><i>(Play-off'da ülke puanına katkı uygulanmamaktadır.)</i></li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;"><b>G.2) Finansal Ödüller</b>
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Elemelerde galibiyet: 500K Euro</li>
+                                    <li>Play-off galibiyet: 250K Euro</li>
+                                    <li>Grup aşamasına katılmak: 25,5 Milyon Euro</li>
+                                    <li>Grup aşamasında galibiyet: 2,5 Milyon Euro</li>
+                                    <li>Grup aşamasında beraberlik: 750K Euro</li>
+                                    <li>Son 16'ya katılım: 15 Milyon Euro</li>
+                                    <li>Çeyrek Final: 15,5 Milyon Euro</li>
+                                    <li>Yarı Final: 17,5 Milyon Euro</li>
+                                    <li>Finalist: 20 Milyon Euro</li>
+                                    <li>Üçüncülük: 7 Milyon Euro</li>
+                                    <li>Şampiyonluk: 25 Milyon Euro</li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;"><b>G.3) Kazanç Sistemi (Destek Primi)</b>
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Üst üste 3 galibiyet: 1 Milyon Euro</li>
+                                    <li>Grubu namağlup bitirmek: 1,5 Milyon Euro</li>
+                                    <li>Bir maçı gol yemeden bitirmek: 250K Euro</li>
+                                    <li>Bir maçta 3 farkla yenmek: 250K Euro</li>
+                                    <li>Bir maçta +5 farkla yenmek: 500K Euro</li>
+                                </ul>
+                            </li>
+                            <li><b>G.3.1)</b> Kazanç sistemi grup aşaması için geçerlidir. Elemelerde kazanç sistemi uygulanmayacaktır.</li>
+                            <li><b>G.3.2)</b> Grup aşaması sona erdiğinde kazanç sistemi devre dışı kalacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">H) KADRO BİLDİRİMİ</h3>
+                        <div class="rule-sub-box">
+                            <li><b>H.1)</b> Kadrolar en geç 14 Kasım günü saat 23:00'a kadar UEFA'ya bildirilmelidir.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">I) OYUNCU BONUSU</h3>
+                        <p class="rule-content">Grup aşamasına katılan takımların oyuncu motivasyonunu arttırması adına bonuslar uygulanacaktır:</p>
+                        <div class="rule-sub-box">
+                            <li><b>I.1)</b> Bonus Şartları:
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Bir maçta hattrick yapan oyuncu: 1 Milyon Euro</li>
+                                    <li>Bir maçta +7 kurtarış yapan kaleci: 1 Milyon Euro</li>
+                                    <li>Bir maçta "Maçın Oyuncusu" olan oyuncu: 1 Milyon Euro</li>
+                                </ul>
+                            </li>
+                            <li><b>I.1.1)</b> Oyuncu bonusu sadece Grup aşamasında uygulanacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">K) SPORTMENLİK & SAYGI</h3>
+                        <div class="rule-sub-box">
+                            <li><b>K.1)</b> Takımların tribünlerinden kaynaklanan herhangi bir sportmenliğe uygun olmayan harekette "UEFA DİSİPLİN KURULU" tarafından ceza uygulanacaktır.</li>
+                            <li><b>K.1.1)</b> Bu cezalar caydırıcı olması açısından en üst sınırdan uygulanacaktır.</li>
+                            <li><b>K.2)</b> Hangi sebep olursa olsun 2 kez ceza alan takım men edilecektir.</li>
+                            <li><b style="color:var(--accent-color);">K.3) "IRKÇILIK" yapan takım (oyuncu, yönetim, taraftar vb.) herhangi bir savunma alınmadan men edilecektir.</b></li>
+                            <li><b>K.4)</b> Sportmenliğe uymayan ceza koşulları sahada olan/olmayan tüm takım üyelerine uygulanacaktır.</li>
+                            <li><b>K.5)</b> Bu konuda "ÇOK HASSAS" davranılıp sıfır tolerans uygulanacaktır.</li>
+                            <li><b>K.6)</b> Katılan 128 takıma "SPORTMENLİK & SAYGI" toplantısı yapılacak ve eğitimi verilecektir.</li>
+                            <li><b>K.7)</b> Aynı eğitim katılacak tüm hakemlere verilecek, saha içindeki işleyiş anlatılacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">L) YAYIN HAKLARI</h3>
+                        <div class="rule-sub-box">
+                            <li><b>L.1)</b> Yayın hakları için "beIN Media Group" ile 2+2 yıllık anlaşma sağlanmıştır.</li>
+                            <li><b>L.1.1)</b> Anlaşma 1 Haziran 2026 itibariyle başlayacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">M) SPONSOR</h3>
+                        <div class="rule-sub-box">
+                            <li><b>M.1)</b> Resmi Markalar (2+2 yıllık anlaşma):
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>COCA-COLA, FedEx, Mastercard, Sony Interactive Entertainment, Just Eat Takeaway, AUDI, Turkish Airlines, Apple, Frito-lay (PepsiCO), Adidas, Rexona, McDonald's.</li>
+                                </ul>
+                            </li>
+                            <li><b>M.1.1)</b> Markalar ile anlaşmalar 1 Haziran 2026 itibariyle başlayacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title">N) SÜREÇ / OYUN KURALLARI</h3>
+                        <div class="rule-sub-box">
+                            <li><b>N.1)</b> 2027 UEFA Club Championship her yeni sezonunda daha gelişmiş şekilde ilerleyecektir.</li>
+                            <li><b>N.2)</b> Turnuvanın 2037'ye kadar yapılması planlanmıştır. (N.2.1: Bu karar UEFA'ya aittir).</li>
+                            <li><b>N.3)</b> Düzenlenecek bu organizasyona (UCL, UEL gibi) katılım zorunludur.</li>
+                            <li><b style="color:var(--accent-color);">N.3.1) Katılmayı reddeden takımlar UEFA organizasyonlarından 2 yıl men edilecek ve en üst sınırdan para cezası alacaktır.</b></li>
+                            <li><b>N.4)</b> Üst üste turnuvaya 3 kez katılan takımlara "Teşvik Primi" olarak 15 Milyon Euro verilecektir.</li>
+                            <li><b>N.5)</b> Verilen her kural sonradan değiştirilebilir, eklenebilir veya silinebilir.</li>
+                            <li><b>N.6)</b> Organizasyonun tüm temel hakları UEFA'ya aittir.</li>
+                            <li><b>N.7)</b> Logo, Müzik ve Kupa detayları 31 Temmuz 2026'da tanıtılacaktır.</li>
+                            <li><b>N.8)</b> Yeni uygulanacak kurallar 31 Temmuz 2026'da tanıtılacaktır.</li>
+                        </div>
+                        
                         <p class="last-update">son güncelleme : 20/07/2026 01:50</p>
                     </div>
                 </div>
@@ -528,7 +770,7 @@
             </div>
         </div>
 
-        <!-- HABERLER -->
+        <!-- HABER HUB -->
         <div id="view-news" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title">HABERLER</h1>
@@ -536,17 +778,26 @@
                     <div class="news-hub-card" onclick="openArticle('launch')">
                         <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
                         <div class="news-hub-date">10 Ekim 2026 - 09:00</div>
-                        <div class="news-hub-content"><h3 class="news-hub-title">UCC 27 Platformu Resmen Açıldı!</h3><div class="news-hub-desc">Klüpler şampiyonası için yeni bir dönem başlıyor.</div></div>
+                        <div class="news-hub-content">
+                            <h3 class="news-hub-title">UCC 27 Platformu Resmen Açıldı!</h3>
+                            <div class="news-hub-desc">Klüpler şampiyonası için yeni bir dönem başlıyor.</div>
+                        </div>
                     </div>
                     <div class="news-hub-card" onclick="openArticle('groups')">
                         <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800&auto=format&fit=crop" class="news-hub-img">
                         <div class="news-hub-date">12 Ekim 2026 - 14:30</div>
-                        <div class="news-hub-content"><h3 class="news-hub-title">Gruplar ve Maçlar Belli Oldu</h3><div class="news-hub-desc">Tüm 32 grup kesinleşti ve fikstürler çekildi.</div></div>
+                        <div class="news-hub-content">
+                            <h3 class="news-hub-title">Gruplar ve Maçlar Belli Oldu</h3>
+                            <div class="news-hub-desc">Tüm 32 grup kesinleşti ve fikstürler çekildi.</div>
+                        </div>
                     </div>
                     <div class="news-hub-card" onclick="openArticle('draw')">
                         <img src="image2.webp" class="news-hub-img" onerror="this.src='https://images.unsplash.com/photo-1550275994-cdc89cd1948f?q=80&w=800&auto=format&fit=crop';">
                         <div class="news-hub-date">15 Ekim 2026 - 18:00</div>
-                        <div class="news-hub-content"><h3 class="news-hub-title">Kura Çekimi Etkinlik Detayları Madrid'de</h3><div class="news-hub-desc">Eleme aşaması kura çekimi için tüm detaylar.</div></div>
+                        <div class="news-hub-content">
+                            <h3 class="news-hub-title">Kura Çekimi Etkinlik Detayları Madrid'de</h3>
+                            <div class="news-hub-desc">Eleme aşaması kura çekimi için tüm detaylar.</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -567,7 +818,7 @@
         </div>
     </div>
 
-    <!-- SPONSORLAR -->
+    <!-- 12 KUTUCUKLU VİDEO SPONSOR ALANI -->
     <footer>
         <div class="video-sponsors-container">
             <div class="sponsors-title">RESMİ SPONSORLAR</div>
@@ -670,7 +921,6 @@
             if(!rawName) return 'https://via.placeholder.com/35?text=?';
             let baseName = formatTeamName(rawName);
             
-            // YEREL DOSYA KESİN ÇÖZÜM
             if (baseName.includes("rize")) return "rize.png";
             if (baseName.includes("brugge") || baseName.includes("bruge")) return "clubbruge.png";
 
@@ -703,7 +953,6 @@
             if(!dateStr) return "";
             let cleanStr = cleanValue(dateStr);
             cleanStr = cleanStr.replace(/\s+/g, ' ').trim();
-
             let dStr = cleanStr.toLowerCase();
             let month = 0;
             if(dStr.includes("ocak")) month = 0; else if(dStr.includes("şubat")||dStr.includes("subat")) month = 1; else if(dStr.includes("mart")) month = 2; else if(dStr.includes("nisan")) month = 3; else if(dStr.includes("mayıs")||dStr.includes("mayis")) month = 4; else if(dStr.includes("haziran")) month = 5; else if(dStr.includes("temmuz")) month = 6; else if(dStr.includes("ağustos")||dStr.includes("agustos")) month = 7; else if(dStr.includes("eylül")||dStr.includes("eylul")) month = 8; else if(dStr.includes("ekim")) month = 9; else if(dStr.includes("kasım")||dStr.includes("kasim")) month = 10; else if(dStr.includes("aralık")||dStr.includes("aralik")) month = 11;
@@ -713,7 +962,6 @@
                 let year = (month < 6) ? 2027 : 2026;
                 cleanStr += " " + year;
             }
-
             return cleanStr;
         }
 
@@ -736,10 +984,6 @@
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
             document.getElementById('view-article').classList.add('active-page');
             window.scrollTo(0, 0);
-        }
-
-        function changeLanguage(lang) {
-            // Sadece Türkçe
         }
 
         function switchPage(page) {
@@ -826,25 +1070,25 @@
         }
 
         // ==========================================
-        // YENİ: MAÇ MERKEZİ (İSTATİSTİK PENCERESİ)
+        // YENİ: MAÇ MERKEZİ EKRANI
         // ==========================================
         const matchStatsConfig = [
-            { label: "TOPA S. OLMA %'Sİ", key: "Topa" },
+            { label: "TOPA S. OLMA %'Sİ", key: "Top" },
             { label: "TOPU GERİ KAZANMA (SN)", key: "Geri" },
-            { label: "ŞUT", key: "Şut" },
+            { label: "ŞUT", key: "Sut" },
             { label: "GOL BEKLENTİSİ", key: "xG" },
             { label: "PAS", key: "Pas" },
-            { label: "MÜDAHALE", key: "Müdahale", exact: true },
-            { label: "TOP KAZANILAN MÜDAHALE", key: "Kazanılan" },
-            { label: "TOP KESMELER", key: "Kesme" },
-            { label: "KURTARIŞ", key: "Kurtarış" },
+            { label: "MÜDAHALE", key: "Mud", exact: true },
+            { label: "TOP KAZANILAN MÜDAHALE", key: "Tk" },
+            { label: "TOP KESMELER", key: "Kes" },
+            { label: "KURTARIŞ", key: "Kur" },
             { label: "YAPILAN FAUL", key: "Faul" },
-            { label: "OFSAYTLAR", key: "Ofsayt" },
-            { label: "KÖŞE VURUŞU", key: "Köşe" },
-            { label: "SERBEST VURUŞLAR", key: "Serbest" },
-            { label: "PENALTI VURUŞLARI", key: "Penaltı" },
-            { label: "SARI KARTLAR", key: "Sarı" },
-            { label: "KIRMIZI KARTLAR", key: "Kırmızı" }
+            { label: "OFSAYTLAR", key: "Ofs" },
+            { label: "KÖŞE VURUŞU", key: "Kor" },
+            { label: "SERBEST VURUŞLAR", key: "Ser" },
+            { label: "PENALTI VURUŞLARI", key: "Pen" },
+            { label: "SARI KARTLAR", key: "Sari" },
+            { label: "KIRMIZI KARTLAR", key: "Kir" }
         ];
 
         function openMatchStats(matchIndex) {
@@ -871,32 +1115,20 @@
                 document.getElementById('modal-status-text').innerText = "MS";
             }
 
-            // İstatistik Çubuklarını Oluştur
             let html = '';
             matchStatsConfig.forEach(stat => {
-                // Excel'deki başlıkları arıyoruz (Örn: "Ev Şut", "Dep xG")
-                let evKey = keys.find(k => k.includes('Ev') && k.includes(stat.key));
-                let depKey = keys.find(k => k.includes('Dep') && k.includes(stat.key));
+                let evKey = keys.find(k => k === `Ev_${stat.key}`);
+                let depKey = keys.find(k => k === `Dep_${stat.key}`);
                 
-                // Tam eşleşme gerekliyse ("Müdahale" ile "Top Kazanılan Müdahale" karışmasın diye)
-                if(stat.exact) {
-                    evKey = keys.find(k => k.includes('Ev') && k.includes(stat.key) && !k.includes('Kazanılan'));
-                    depKey = keys.find(k => k.includes('Dep') && k.includes(stat.key) && !k.includes('Kazanılan'));
-                }
-
-                // Değerleri al, yoksa "0" varsay
                 let evValRaw = evKey ? matchData[evKey] : 0;
                 let depValRaw = depKey ? matchData[depKey] : 0;
 
-                // Boş veya undefined ise 0 yap
                 if(evValRaw === "" || evValRaw === undefined) evValRaw = 0;
                 if(depValRaw === "" || depValRaw === undefined) depValRaw = 0;
 
-                // Float (ondalıklı) değerleri düzgün toplayabilmek için
                 let evNum = parseFloat(String(evValRaw).replace(',', '.')) || 0;
                 let depNum = parseFloat(String(depValRaw).replace(',', '.')) || 0;
 
-                // Yüzdelik oran hesabı (Barların genişliği için)
                 let total = evNum + depNum;
                 let evPercent = 50;
                 let depPercent = 50;
@@ -905,13 +1137,11 @@
                     evPercent = (evNum / total) * 100;
                     depPercent = (depNum / total) * 100;
                 } else {
-                    // Eğer ikisi de 0 ise barlar görünmesin (0%)
                     evPercent = 0;
                     depPercent = 0;
                 }
 
-                // Kırmızı kart tasarımı için özel sınıf
-                let isRedCard = stat.key === "Kırmızı";
+                let isRedCard = stat.key === "Kir";
                 let labelClass = isRedCard ? "ms-label red-text" : "ms-label";
                 let evValClass = isRedCard && evNum > 0 ? "ms-val home red-text" : "ms-val home";
                 let depValClass = isRedCard && depNum > 0 ? "ms-val away red-text" : "ms-val away";
@@ -932,7 +1162,7 @@
 
             document.getElementById('modal-stats-body').innerHTML = html;
             document.getElementById('match-modal').classList.add('active');
-            document.body.style.overflow = "hidden"; // Arka plan kaymasını engelle
+            document.body.style.overflow = "hidden"; 
         }
 
         function closeMatchModal(event, forceClose = false) {
@@ -942,10 +1172,10 @@
             }
         }
 
-        // FİKSTÜR RENDER GÜNCELLEMESİ (Tıklanabilir yapıldı)
         function renderFixturesByDate(selectedCleanDate) {
             if(!matchesLoaded) return;
             const container = document.getElementById('fixtures-container');
+            
             const dayMatches = allMatches.filter(m => {
                 let raw = cleanValue(m[Object.keys(m).find(k => k.includes('Tarih')) || Object.keys(m)[2]]);
                 return translateDate(raw) === selectedCleanDate;
@@ -958,7 +1188,6 @@
                 const keys = Object.keys(m);
                 const grup = cleanValue(m[keys[0]]); 
                 if(!matchesByGroup[grup]) matchesByGroup[grup] = [];
-                // Maçın allMatches içindeki orijinal indexini buluyoruz (Modal için gerekli)
                 const originalIndex = allMatches.indexOf(m);
                 matchesByGroup[grup].push({
                     index: originalIndex,
@@ -996,7 +1225,6 @@
             container.innerHTML = html;
         }
 
-        // DEV MAÇLAR RENDER GÜNCELLEMESİ
         function renderFeaturedMatches() {
             const container = document.getElementById('featured-matches-container');
             if(!container || !matchesLoaded) return;
@@ -1031,12 +1259,10 @@
             container.innerHTML = html;
         }
 
-        // KAYAN MAÇLAR (TICKER) RENDER GÜNCELLEMESİ
         function renderTicker() {
             const ticker = document.getElementById('home-ticker');
             if(!ticker || !matchesLoaded) return;
             
-            // Sıralarken orijinal indexi kaybetmemek için objeye çeviriyoruz
             let matchesWithIndex = allMatches.map((m, index) => ({ data: m, originalIndex: index }));
             
             matchesWithIndex.sort((a, b) => {
