@@ -999,6 +999,7 @@
         function getCountryByTeamName(name) {
             let n = name.toLowerCase();
             let countryKey = "Diğer";
+            
             if(/city|liverpool|arsenal|chelsea|united|tottenham|aston|newcastle|everton|west ham|brentford|crystal|fulham|brighton|bournemouth|nottingham|wolves|southampton|leicester|ipswich|sunderland/.test(n)) countryKey = "İngiltere";
             else if(/real madrid|barcelona|atletico|celta|rayo|sociedad|betis|sevilla|bilbao|girona|valencia|villarreal|osasuna|alaves|mallorca|las palmas|getafe|leganes|valladolid|espanyol|levante/.test(n)) countryKey = "İspanya";
             else if(/bayern|dortmund|leverkusen|leipzig|frankfurt|stuttgart|koln|köln|cologne|monchengladbach|wolfsburg|freiburg|hoffenheim|werder|heidenheim|augsburg|mainz|bochum|pauli|holstein|union berlin|hamburg/.test(n)) countryKey = "Almanya";
@@ -1006,10 +1007,11 @@
             else if(/paris|psg|monaco|marsilya|marseille|lyon|lille|lens|nice|rennes|reims|strasbourg|montpellier|toulouse|nantes|angers|brest|havre|auxerre|etienne|lorient/.test(n)) countryKey = "Fransa";
             else if(/galatasaray|fenerbahçe|fenerbahce|beşiktaş|besiktas|trabzon|başakşehir|basaksehir|rize|kasımpaşa|kasimpasa|alanya|antalya|göztepe|goztepe|sivas|samsun|eyüp|eyup|bodrum|konya|kayseri|hatay|gaziantep|adana|kocaeli/.test(n)) countryKey = "Türkiye";
             else if(/sporting|benfica|porto|braga|guimares|vitoria|famalicao|arouca|moreirense|rio ave|vicente|estoril|boavista|farense|nacional|clara|avs|casa pia|alverca/.test(n)) countryKey = "Portekiz";
+            else if(/slavia|plzen|banik|mlada|slovacko|sparta prag|sparta prague/.test(n)) countryKey = "Çekya";
             else if(/\baz\b|ajax|psv|feyenoord|alkmaar|twente|sparta|utrecht|go ahead|heerenveen|fortuna|nec|zwolle|heracles|almere|rkc|willem|nac|groningen|pec/.test(n)) countryKey = "Hollanda";
             else if(/brugge|bruge|anderlecht|genk|union sg|stvv|truiden|gilloise|antwerp|gent|standard|cercle|mechelen|charleroi|westerlo|kortrijk|leuven|dender|beerschot/.test(n)) countryKey = "Belçika";
-            else if(/slavia|plzen|banik|mlada|slovacko/.test(n) || n === "sparta prag" || n === "sparta prague") countryKey = "Çekya";
             else if(/olympiacos|olympiakos|aek|paok|panathinaikos|aris/.test(n)) countryKey = "Yunanistan";
+
             return countryKey;
         }
 
