@@ -396,7 +396,7 @@
                     </div>
                 </div>
 
-                <!-- ANA SAYFA: HABERLER BLOKLARI GERİ GELDİ -->
+                <!-- ANA SAYFA: HABERLER BLOKLARI -->
                 <div class="headlines-section">
                     <h2 class="section-header" style="font-size: 18px; margin-bottom: 15px;" data-i18n="latestNews">SON HABERLER</h2>
                     <div class="headlines-grid" id="home-news-container">
@@ -497,7 +497,7 @@
             </div>
         </div>
 
-        <!-- YÖNETMELİK -->
+        <!-- YÖNETMELİK EKRANI (TAM VE DİNAMİK) -->
         <div id="view-rules" class="page-view">
             <div class="content-page-container">
                 <div class="doc-container">
@@ -508,30 +508,204 @@
                         <p data-i18n="ruleIntro3">- Toplam 128 takım.</p>
                     </div>
                     <div class="doc-content">
-                        <h3 class="rule-section-title" data-i18n="ruleA">A) LİG KONTENJANLARI</h3>
-                        <ul class="rule-list">
+                        
+                        <h3 class="rule-section-title" data-i18n="rA">A) LİG KONTENJANLARI</h3>
+                        <ul class="rule-list" data-i18n="rA_L">
                             <li>Premier Lig (İngiltere) : 16 Takım</li><li>Seria A (İtalya) : 16 Takım</li><li>La Liga (İspanya) : 16 Takım</li><li>Bundesliga (Almanya) : 16 Takım</li><li>Ligue 1 (Fransa) : 16 Takım</li><li>Primeira Lig (Portekiz) : 12 Takım</li><li>Eredivise (Hollanda) : 12 Takım</li><li>Pro League (Belçika) : 10 Takım</li><li>Süper Lig (Türkiye) : 10 Takım</li><li>Chance Liga (Çekya) : 2 Takım</li><li>Super League (Yunanistan) : 2 Takım</li>
                         </ul>
-                        <h3 class="rule-section-title" data-i18n="ruleB">B) ELEME AŞAMASI</h3>
-                        <div class="rule-sub-box">
-                            <li><b>B.4)</b> Toplam 6 maç oynanacaktır. (3 Ev sahibi , 3 Deplasman)</li>
-                            <li><b>B.5)</b> Gruplarda 1. olan takımlar doğrudan katılırken, 2. olan takımlar kalan 16 için play-off oynayacaktır.</li>
+                        <div class="rule-sub-box" data-i18n="rA_S">
+                            <li><b>A.1)</b> Belirlenen ligler 'UEFA ÜLKE PUANI' sisteminden alınmış olup ilk 11 sıralamaya giren ligler alınmıştır.</li>
+                            <li><b>A.2)</b> Belirlenen liglerden gelecek takım sayısı gene aynı şekil 'UEFA ÜLKE PUAN' sistemine göre yapılmıştır.</li>
+                            <li><b>A.3)</b> Belirlenen takım sayısı 2026 sezonu yerel lig sıralamasına göre belirlenmiştir.</li>
                         </div>
-                        <h3 class="rule-section-title" data-i18n="ruleC">C) TURNUVA AŞAMASI</h3>
-                        <div class="rule-sub-box">
+
+                        <h3 class="rule-section-title" data-i18n="rB">B) ELEME AŞAMASI</h3>
+                        <p class="rule-content" data-i18n="rB_P">Takım belirleme işlemleri sonlandıktan sonra 128 takım "GRUPLU ELEME" oynayacaktır.</p>
+                        <div class="rule-sub-box" data-i18n="rB_S">
+                            <li><b>B.1)</b> Kura çekimi torba + bilgisayar sistemi ile yapılacaktır.</li>
+                            <li><b>B.2)</b> Aynı ülke takımı eşleşmesi olmayacaktır.</li>
+                            <li><b>B.3)</b> Belirlenen takımlar gruplara dağıtılarak her biri dörderli olmak üzere toplam 32 grupta eleme oynayacaktır.</li>
+                            <li><b>B.4)</b> Toplam 6 maç oynanacaktır. (3 Ev sahibi , 3 Deplasman)</li>
+                            <li><b>B.5)</b> Gruplarda 1. olan takımlar doğrudan katılırken , 2. olan takımlar kalan 16 için play-off oynayacaktır.</li>
+                            <li><b>B.6)</b> Elemeler sonucunda toplam 48 takım 2027 UEFA Club Championship'a katılacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title" data-i18n="rC">C) TURNUVA AŞAMASI</h3>
+                        <p class="rule-content" data-i18n="rC_P">Elemeler sonrası 48 takım 2027 sonunda (Kasım-Aralık) kupa için yarışacaktır.</p>
+                        <div class="rule-sub-box" data-i18n="rC_S">
                             <li><b>C.1)</b> Her takım toplamda 3 maç yapacaktır.</li>
                             <li><b>C.2)</b> Her grupta 4 takım olacak şekilde toplam 12 grup olacaktır.</li>
+                            <li><b>C.3)</b> 48 Takım 4 torbaya bölünerek kura çekilecektir.</li>
+                            <li><b>C.4)</b> Aynı ülke takımı eşleşmesi olmayacaktır. (GRUP AŞAMASI)</li>
+                            <li><b>C.5)</b> Torbalar "UEFA ÜLKE SIRALAMASINA" göre belirlenecektir.</li>
+                            <li style="margin-top:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;"><b>C.6) GRUP SIRALAMASI ;</b></li>
+                            <li style="padding-left:15px;"><b>C.6.1)</b> 1. ve 2. olan takımlar doğrudan SON 32'ye yükselecektir.</li>
+                            <li style="padding-left:15px;"><b>C.6.2)</b> 3. olan takımlar EN İYİ ÜÇÜNCÜ'den yükselecektir.</li>
+                            <li style="padding-left:15px;"><b>C.6.3)</b> 4. olan takım 2027 UEFA Club Championship'e veda edecektir.</li>
                         </div>
-                        <h3 class="rule-section-title" data-i18n="ruleG">G) ÖDÜL HAVUZU</h3>
-                        <div class="rule-sub-box">
-                            <li><b>G.2) Finansal Ödüller</b>
-                                <ul style="margin-top:5px; color:#aaa;">
-                                    <li>Şampiyonluk: 25 Milyon Euro</li>
-                                    <li>Finalist: 20 Milyon Euro</li>
+
+                        <h3 class="rule-section-title" data-i18n="rD">D) GELİŞTİRMELER</h3>
+                        <p class="rule-content" data-i18n="rD_P">Arttırılmış ödül sistemi ve oyuncuların dinlenme süreleri iyileştirildi.</p>
+
+                        <h3 class="rule-section-title" data-i18n="rE">E) 2027 TAKVİMİ</h3>
+                        <ul class="rule-calendar-list" data-i18n="rE_L1">
+                            <li><span class="rule-calendar-date">1 Haziran 2026</span> 128 takımın belirlenmesi</li>
+                            <li><span class="rule-calendar-date">3 Haziran 2026</span> Eleme torbalarının belirlenmesi</li>
+                            <li><span class="rule-calendar-date">31 Temmuz 2026</span> Eleme grupları belirlenmesi / 2027 UEFA Club Championship Tanıtımı</li>
+                        </ul>
+                        <br>
+                        <ul class="rule-calendar-list" data-i18n="rE_L2">
+                            <li><span class="rule-calendar-date">22 Aralık - 24 Aralık 2026</span> 1. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">29 Aralık - 31 Aralık 2026</span> 2. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">5 Ocak - 7 Ocak 2027</span> 3. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">12 Ocak - 14 Ocak 2027</span> 4. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">2 Şubat - 4 Şubat 2027</span> 5. Eleme maçları</li>
+                            <li><span class="rule-calendar-date">9 Şubat - 11 Şubat 2027</span> 6. Eleme maçları</li>
+                        </ul>
+                        <br>
+                        <ul class="rule-calendar-list" data-i18n="rE_L3">
+                            <li><span class="rule-calendar-date">1 Ağustos 2027</span> Torbaların belirlenmesi</li>
+                            <li><span class="rule-calendar-date">20 Ağustos 2027</span> KURA ÇEKİMİ / maçların belirlenmesi</li>
+                            <li><span class="rule-calendar-date">1 Eylül - 2 Eylül 2027</span> Play-off maçları</li>
+                            <li><span class="rule-calendar-date">8 Eylül - 9 Eylül 2027</span> Play-off maçları (Rövanş)</li>
+                        </ul>
+                        <div style="background:var(--accent-color); color:var(--theme-black); padding:10px 20px; font-weight:bold; border-radius:5px; margin:20px 0;" data-i18n="rE_H">
+                            21 Kasım 2027 : 2027 UEFA Club Championship Başlangıcı / Lig maçları
+                        </div>
+                        <ul class="rule-calendar-list" data-i18n="rE_L4">
+                            <li><span class="rule-calendar-date">21 Kasım - 28 Kasım 2027</span> 1.Grup Maçları</li>
+                            <li><span class="rule-calendar-date">29 Kasım - 6 Aralık 2027</span> 2.Grup Maçları</li>
+                            <li><span class="rule-calendar-date">7 Aralık - 14 Aralık 2027</span> 3.Grup Maçları</li>
+                            <li><span class="rule-calendar-date">15 Aralık - 18 Aralık 2027</span> Son 32 Maçları</li>
+                            <li><span class="rule-calendar-date">19 Aralık - 22 Aralık 2027</span> Son 16 Maçları</li>
+                            <li><span class="rule-calendar-date">23 Aralık - 24 Aralık 2027</span> Çeyrek Final Maçları</li>
+                            <li><span class="rule-calendar-date">27 Aralık 2027</span> Yarı Final Maçları</li>
+                            <li><span class="rule-calendar-date">31 Aralık 2027</span> Üçüncülük maçı & FİNAL</li>
+                        </ul>
+
+                        <h3 class="rule-section-title" data-i18n="rF">F) EV SAHİBİ: İSPANYA</h3>
+                        <p class="rule-content" data-i18n="rF_P">2027 UEFA Club Championship'e "İSPANYA" ev sahipliği yapacaktır.</p>
+                        <div class="rule-sub-box" data-i18n="rF_S">
+                            <li><b>F.1)</b> Yapılacak olan maçlar İspanya'nın 4 bölgesine bölünecek şekilde ayarlanmıştır.
+                                <ul style="margin-top:10px; color:#aaa;">
+                                    <li>- DOĞU BÖLGESİ : "A, F, K" grupları bu bölgede maçlarını yapacaktır.</li>
+                                    <li>- KUZEY BÖLGESİ : "C, H, J" grupları bu bölgede maçlarını yapacaktır.</li>
+                                    <li>- BATI BÖLGESİ : "B, E, L" grupları bu bölgede maçlarını yapacaktır.</li>
+                                    <li>- GÜNEY BÖLGESİ : "D, G, I" grupları bu bölgede maçlarını yapacaktır.</li>
                                 </ul>
                             </li>
+                            <li><b>F.2)</b> Grup maçları sona ermesiyle birlikte 4 bölgede bulunan takımlar kademe kademe Merkez bölgesine (Madrid) gelir.
+                                <ul style="margin-top:10px; color:#aaa;">
+                                    <li><b>SON 32:</b> Doğu (4), Kuzey (4), Batı (4), Güney (4)</li>
+                                    <li><b>SON 16:</b> Doğu (2), Kuzey (2), Batı (1), Güney (2), Merkez (1)</li>
+                                    <li><b>ÇEYREK FİNAL:</b> Doğu (1), Kuzey (1), Güney (1), Merkez (1)</li>
+                                    <li><b>YARI FİNAL / ÜÇÜNCÜLÜK / FİNAL:</b> Merkez (Madrid) - 4 MAÇ</li>
+                                </ul>
+                            </li>
+                            <li><b>F.3)</b> Böylece oyuncuların dinlenme olanağı arttırılmıştır.</li>
+                            <li><b>F.4)</b> Bir stadyumda birden fazla maç oynanacağı kesindir.
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li><b>F.4.1)</b> Yapılan tüm stadyumlardaki maçların stadyumu bakım , yenileme ve onarım işlemleri UEFA tarafından yapılacaktır.</li>
+                                </ul>
+                            </li>
+                            <li><b>F.5)</b> Belirlenen stadyumlar 1 Kasım 2027 itibariyle UEFA'ya teslim edilecektir.</li>
+                            <li><b>F.6)</b> Stadyumlar 30 Ağustos 2027'de açıklanacaktır.</li>
                         </div>
-                        <p class="last-update">son güncelleme : 20/07/2026 01:50</p>
+
+                        <h3 class="rule-section-title" data-i18n="rG">G) ÖDÜL HAVUZU</h3>
+                        <div class="rule-sub-box" data-i18n="rG_S">
+                            <li><b>G.1) Ülke Puanına Katkı</b>
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Galibiyet : 4 ham puan (elemelerde 2 ham puan)</li>
+                                    <li>Beraberlik : 2 ham puan (elemelerde 1 ham puan)</li>
+                                    <li><i>(Play-off'da ülke puanına katkı uygulanmamaktadır.)</i></li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;"><b>G.2) Ödül havuzu</b>
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Elemelerde galibiyet : 500K Euro</li>
+                                    <li>Play-off galibiyet : 250K Euro</li>
+                                    <li>Grup aşamasına katılmak : 25,5 Milyon Euro</li>
+                                    <li>Grup aşamasında galibiyet : 2,5 Milyon Euro</li>
+                                    <li>Grup aşamasında beraberlik : 750K Euro</li>
+                                    <li>Son 16'ya katılım : 15 Milyon Euro</li>
+                                    <li>Çeyrek Final : 15,5 Milyon Euro</li>
+                                    <li>Yarı Final : 17,5 Milyon Euro</li>
+                                    <li>Final : 20 Milyon Euro</li>
+                                    <li>Üçüncülük : 7 Milyon Euro</li>
+                                    <li>Şampiyonluk : 25 Milyon Euro</li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;"><b>G.3) Kazanç Sistemi (Destek Primi)</b>
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>üst üste 3 galibiyet : 1 Milyon Euro</li>
+                                    <li>Grubu namağlup bitirmek : 1,5 Milyon Euro</li>
+                                    <li>Bir maçı gol yemeden bitirmek : 250K Euro</li>
+                                    <li>Bir maçta 3 farkla yenmek : 250K Euro</li>
+                                    <li>Bir maçta +5 farkla yenmek : 500K Euro</li>
+                                </ul>
+                            </li>
+                            <li><b>G.3.1)</b> Kazanç sistemi grup aşaması için geçerlidir. Elemelerde kazanç sistemi uygulanmayacaktır.</li>
+                            <li><b>G.3.2)</b> Grup aşaması sona erdiğinde kazanç sistemi devre dışı kalacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title" data-i18n="rH">H) KADRO BİLDİRİMİ</h3>
+                        <div class="rule-sub-box" data-i18n="rH_S">
+                            <li><b>H.1)</b> kadrolar en geç 14 Kasım günü saat 23:00'a kadar UEFA'ya bildirilmelidir.</li>
+                        </div>
+
+                        <h3 class="rule-section-title" data-i18n="rI">I) OYUNCU BONUSU</h3>
+                        <p class="rule-content" data-i18n="rI_P">Grup aşamasına katılan takımların oyuncu motivasyonu arttırması adına bir kaç bonus uygulanacaktır ;</p>
+                        <div class="rule-sub-box" data-i18n="rI_S">
+                            <li><b>I.1)</b> Bonus Şartları:
+                                <ul style="margin-top:5px; color:#aaa;">
+                                    <li>Bir maçta hattrick yapan oyuncu : 1 Milyon Euro</li>
+                                    <li>Bir maçta +7 kurtarış yapan kaleci : 1 Milyon Euro</li>
+                                    <li>Bir maçta "Maçın Oyuncusu" olan oyuncu : 1 Milyon Euro</li>
+                                </ul>
+                            </li>
+                            <li><b>I.1.1)</b> Oyuncu bonusu sadece Grup aşamasında uygulanacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title" data-i18n="rK">K) SPORTMENLİK & SAYGI</h3>
+                        <div class="rule-sub-box" data-i18n="rK_S">
+                            <li><b>K.1)</b> Takımların iç veya deplasmanda oynadıkları maçlarındaki tribünlerden herhangi bir sportmenliğe uygun olmayan harekette "UEFA DİSİPLİN KURULU" tarafından ceza uygulanacaktır.</li>
+                            <li><b>K.1.1)</b> Bu cezalar caydırıcı olması açısından en üst sınırdan uygulanacaktır.</li>
+                            <li><b>K.2)</b> Hangi sebep olursa olsun 2 kez ceza alan takım men edilecektir.</li>
+                            <li><b style="color:var(--accent-color);">K.3) "IRKÇILIK" yapan takım (oyuncu,yönetim,taraftar vb.) herhangi bir savunma alınmadan men edilecektir.</b></li>
+                            <li><b>K.4)</b> Sportmenliğe uymayanlara aynı şekilde takımların yönetim, oyuncu, teknik direktör fark etmeksizin sahada olan olmayan herkese uygulanacaktır.</li>
+                            <li><b>K.5)</b> Bu konuda "ÇOK HASSAS" bir şekilde davranılıp sıfır tolerans uygulanacaktır.</li>
+                            <li><b>K.6)</b> Katılan 128 takıma "SPORTMENLİK & SAYGI" toplantısı yapılacak ve eğitimi verilecektir.</li>
+                            <li><b>K.7)</b> "SPORTMENLİK & SAYGI" eğitimi katılacak tüm hakemlere verilecek, saha içindeki işleyiş anlatılacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title" data-i18n="rL">L) YAYIN HAKLARI</h3>
+                        <div class="rule-sub-box" data-i18n="rL_S">
+                            <li><b>L.1)</b> Yayın hakları için "beIN Media Group" 2+2 yıllık anlaşma sağlanmıştır.</li>
+                            <li><b>L.1.1)</b> Anlaşma 1 Haziran 2026 itibariyle başlayacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title" data-i18n="rM">M) SPONSOR</h3>
+                        <div class="rule-sub-box" data-i18n="rM_S">
+                            <li><b>M.1)</b> Aşağıda verilen her marka ile 2+2 yıllık anlaşma sağlanmıştır.<ul style='margin-top:5px; color:#aaa;'><li>COCA-COLA, FedEx, Mastercard, Sony Interactive Entertainment, Just Eat Takeaway, AUDI, Turkish Airlines, Apple, Frito-lay (PepsiCO), Adidas, Rexona, McDonald's.</li></ul></li>
+                            <li><b>M.1.1)</b> Markalar ile anlaşmalar 1 Haziran 2026 itibariyle başlayacaktır.</li>
+                        </div>
+
+                        <h3 class="rule-section-title" data-i18n="rN">N) SÜREÇ / OYUN KURALLARI</h3>
+                        <div class="rule-sub-box" data-i18n="rN_S">
+                            <li><b>N.1)</b> 2027 UEFA Club Championship her yeni sezonunda daha gelişmiş ve en iyi şekilde ilerlemesi yapılacaktır.</li>
+                            <li><b>N.2)</b> 2027 UEFA Club Championship şu anki durumla beraber 2037'ye kadar yapılması planlanmıştır.</li>
+                            <li><b>N.2.1)</b> Bu süre uzayabilir, kısalabilir veya yapılan planlamalar değişebilir. Bu karar kesinlikle UEFA'ya aittir.</li>
+                            <li><b>N.3)</b> Düzenlenecek bu organizasyon UCL, UEL ve konferans ligi gibi katılımı zorunludur.</li>
+                            <li><b style="color:var(--accent-color);">N.3.1) Katılmayı reddeden takımlar herhangi bir UEFA organizasyonuna 2 yıl boyunca katılamayacak ve en üst sınırdan para cezası uygulanacaktır.</b></li>
+                            <li><b>N.4)</b> Üst üste turnuvaya 3 kez katılan takımlara "Teşvik Primi" olan 15 Milyon Euro bonus verilecektir.</li>
+                            <li><b>N.5)</b> Verilen her madde veya verilen herhangi bir kural sonradan değiştirilebilir, eklenebilir veya silinebilir.</li>
+                            <li><b>N.6)</b> Organizasyonun tüm temel hakları UEFA'ya aittir.</li>
+                            <li><b>N.7)</b> 2027 UEFA Club Championship Logo, Müzik, Kupa detayları 31 Temmuz 2026'da tanıtılacaktır.</li>
+                            <li><b>N.8)</b> Yeni uygulanacak kurallar 31 Temmuz 2026'da tanıtılacaktır.</li>
+                        </div>
+                        
+                        <p class="last-update" data-i18n="rUpd">son güncelleme : 20/07/2026 01.50</p>
                     </div>
                 </div>
             </div>
@@ -547,18 +721,18 @@
                     <div class="penalty-card">
                         <div class="penalty-info">
                             <div class="penalty-name">Örnek Oyuncu (Real Madrid)</div>
-                            <div class="penalty-reason">Doğrudan Kırmızı Kart</div>
+                            <div class="penalty-reason" data-i18n="redCardReason">Doğrudan Kırmızı Kart</div>
                         </div>
-                        <div class="penalty-duration">2 Maç</div>
+                        <div class="penalty-duration" data-i18n="twoMatches">2 Maç</div>
                     </div>
 
                     <h3 class="rule-section-title" style="margin-top: 50px;" data-i18n="teamPenalties">Takım Cezaları</h3>
                     <div class="penalty-card">
                         <div class="penalty-info">
                             <div class="penalty-name">Örnek Takım FC</div>
-                            <div class="penalty-reason">Taraftar Taşkınlığı</div>
+                            <div class="penalty-reason" data-i18n="teamReason">Taraftar Taşkınlığı</div>
                         </div>
-                        <div class="penalty-duration">1 Maç Seyircisiz</div>
+                        <div class="penalty-duration" data-i18n="oneMatch">1 Maç Seyircisiz</div>
                     </div>
 
                     <p style="color: var(--text-muted); margin-top: 30px; font-size: 14px;" data-i18n="penaltiesNote">* Cezalı oyuncular ve takımlar listesi maç raporlarına göre güncellenir.</p>
@@ -566,7 +740,7 @@
             </div>
         </div>
 
-        <!-- HABERLER SAYFASI: BLOKLAR GERİ GELDİ -->
+        <!-- HABERLER SAYFASI -->
         <div id="view-news" class="page-view">
             <div class="content-page-container">
                 <h1 class="page-title" data-i18n="news">HABERLER</h1>
@@ -660,11 +834,25 @@
                 directQual: "UCC 27 Direct Qualification", playoffQual: "UCC 27 Play-off Round", modalStatsTab: "STATISTICS",
                 playerStats: "Player Stats", teamStats: "Team Stats", topScorers: "GOALS", topAssists: "ASSISTS", goalAssist: "G + A", expectedGoals: "xG (EXPECTED)", yellowCards: "YELLOW CARDS", redCards: "RED CARDS", goalsScored: "GOALS SCORED", cleanSheets: "CLEAN SHEETS", expectedGoalsTeam: "TEAM xG", statsNote: "* Stats are updated automatically based on match reports.",
                 penaltiesTitle: "SUSPENSIONS & PENALTIES", playerPenalties: "Player Suspensions", teamPenalties: "Team Penalties", penaltiesNote: "* Suspension lists are updated by officials based on match reports.",
+                redCardReason: "Direct Red Card", teamReason: "Crowd Disturbance", twoMatches: "2 Matches", oneMatch: "1 Match Behind Closed Doors",
                 news1Title: "PRELIMINARIES", news1Sub: "Draw and tournament introduction will be held with club presidents.", news1Date: "July 28, 2026 - 00:49",
                 news2Title: "WEBSITE IS LIVE", news2Sub: "The official platform is now accessible, minor bugs may occur in Beta.", news2Date: "July 30, 2026 - 03:00",
                 news3Title: "DRAW RESULTS", news3Sub: "Match schedules for 32 groups have been determined.", news3Date: "August 5, 2026 - 02:45",
                 ruleIntro1: "- Europe's biggest club organization.", ruleIntro2: "- Every 2 years.", ruleIntro3: "- Total of 128 teams.",
-                ruleA: "A) LEAGUE QUOTAS", ruleB: "B) QUALIFYING STAGE", ruleC: "C) TOURNAMENT STAGE", ruleD: "D) IMPROVEMENTS", ruleE: "E) 2027 CALENDAR", ruleF: "F) HOST: SPAIN", ruleG: "G) PRIZE POOL", ruleH: "H) SQUAD DECLARATION", ruleI: "I) PLAYER BONUS", ruleK: "K) SPORTSMANSHIP & RESPECT", ruleL: "L) BROADCASTING RIGHTS", ruleM: "M) SPONSORS", ruleN: "N) PROCESS / GAME RULES",
+                rA: "A) LEAGUE QUOTAS", rA_L: "<li>Premier League (England) : 16 Teams</li><li>Seria A (Italy) : 16 Teams</li><li>La Liga (Spain) : 16 Teams</li><li>Bundesliga (Germany) : 16 Teams</li><li>Ligue 1 (France) : 16 Teams</li><li>Primeira Liga (Portugal) : 12 Teams</li><li>Eredivisie (Netherlands) : 12 Teams</li><li>Pro League (Belgium) : 10 Teams</li><li>Süper Lig (Türkiye) : 10 Teams</li><li>Chance Liga (Czechia) : 2 Teams</li><li>Super League (Greece) : 2 Teams</li>", rA_S: "<li><b>A.1)</b> The designated leagues are based on the 'UEFA COUNTRY COEFFICIENT' system, taking the top 11 leagues.</li><li><b>A.2)</b> The number of teams from these leagues is also determined by the 'UEFA COUNTRY COEFFICIENT'.</li><li><b>A.3)</b> Team counts are determined according to the 2026 domestic league standings.</li>",
+                rB: "B) QUALIFYING STAGE", rB_P: "After the teams are determined, 128 teams will play a 'GROUP QUALIFIER'.", rB_S: "<li><b>B.1)</b> The draw will be held with pots + computer system.</li><li><b>B.2)</b> Teams from the same country will not be matched.</li><li><b>B.3)</b> The 128 teams will be divided into 32 groups of 4.</li><li><b>B.4)</b> A total of 6 matches will be played. (3 Home, 3 Away)</li><li><b>B.5)</b> 1st place teams qualify directly, 2nd place teams will play a play-off for the remaining 16 spots.</li><li><b>B.6)</b> 48 teams will participate in the 2027 UEFA Club Championship.</li>",
+                rC: "C) TOURNAMENT STAGE", rC_P: "48 teams will compete for the cup at the end of 2027 (Nov-Dec).", rC_S: "<li><b>C.1)</b> Each team will play a total of 3 matches.</li><li><b>C.2)</b> There will be 12 groups with 4 teams each.</li><li><b>C.3)</b> 48 Teams will be divided into 4 pots.</li><li><b>C.4)</b> No same country match-ups.</li><li><b>C.5)</b> Pots are determined by 'UEFA COUNTRY RANKING'.</li><li style='margin-top:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;'><b>C.6) GROUP STANDINGS ;</b></li><li style='padding-left:15px;'><b>C.6.1)</b> 1st and 2nd teams advance directly to the ROUND OF 32.</li><li style='padding-left:15px;'><b>C.6.2)</b> 3rd teams will advance based on the BEST THIRD places.</li><li style='padding-left:15px;'><b>C.6.3)</b> 4th team will be eliminated.</li>",
+                rD: "D) IMPROVEMENTS", rD_P: "Increased prize pool and player rest periods improved.",
+                rE: "E) 2027 CALENDAR", rE_L1: "<li><span class='rule-calendar-date'>June 1, 2026</span> 128 teams determined</li><li><span class='rule-calendar-date'>June 3, 2026</span> Qualifying pots determined</li><li><span class='rule-calendar-date'>July 31, 2026</span> Qualifying groups determined / Intro</li>", rE_L2: "<li><span class='rule-calendar-date'>Dec 22 - 24, 2026</span> Qualifiers 1</li><li><span class='rule-calendar-date'>Dec 29 - 31, 2026</span> Qualifiers 2</li><li><span class='rule-calendar-date'>Jan 5 - 7, 2027</span> Qualifiers 3</li><li><span class='rule-calendar-date'>Jan 12 - 14, 2027</span> Qualifiers 4</li><li><span class='rule-calendar-date'>Feb 2 - 4, 2027</span> Qualifiers 5</li><li><span class='rule-calendar-date'>Feb 9 - 11, 2027</span> Qualifiers 6</li>", rE_L3: "<li><span class='rule-calendar-date'>Aug 1, 2027</span> Pots determined</li><li><span class='rule-calendar-date'>Aug 20, 2027</span> DRAW / matches determined</li><li><span class='rule-calendar-date'>Sep 1 - 2, 2027</span> Play-off matches</li><li><span class='rule-calendar-date'>Sep 8 - 9, 2027</span> Play-offs (Return)</li>", rE_H: "Nov 21, 2027 : 2027 UEFA Club Championship Kick-off / League Matches", rE_L4: "<li><span class='rule-calendar-date'>Nov 21 - 28, 2027</span> Matchday 1</li><li><span class='rule-calendar-date'>Nov 29 - Dec 6, 2027</span> Matchday 2</li><li><span class='rule-calendar-date'>Dec 7 - 14, 2027</span> Matchday 3</li><li><span class='rule-calendar-date'>Dec 15 - 18, 2027</span> Round of 32</li><li><span class='rule-calendar-date'>Dec 19 - 22, 2027</span> Round of 16</li><li><span class='rule-calendar-date'>Dec 23 - 24, 2027</span> Quarter-Finals</li><li><span class='rule-calendar-date'>Dec 27, 2027</span> Semi-Finals</li><li><span class='rule-calendar-date'>Dec 31, 2027</span> 3rd Place Match & FINAL</li>",
+                rF: "F) HOST: SPAIN", rF_P: "SPAIN will host the 2027 UEFA Club Championship.", rF_S: "<li><b>F.1)</b> Matches are divided into 4 regions in Spain.<ul style='margin-top:10px; color:#aaa;'><li>- EAST: 'A, F, K' groups</li><li>- NORTH: 'C, H, J' groups</li><li>- WEST: 'B, E, L' groups</li><li>- SOUTH: 'D, G, I' groups</li></ul></li><li><b>F.2)</b> Advancing teams will gradually gather in the Center (Madrid).<ul style='margin-top:10px; color:#aaa;'><li><b>ROUND OF 32:</b> East (4), North (4), West (4), South (4)</li><li><b>ROUND OF 16:</b> East (2), North (2), West (1), South (2), Center (1)</li><li><b>QUARTERS:</b> East (1), North (1), South (1), Center (1)</li><li><b>SEMI / 3RD / FINAL:</b> Center (Madrid) - 4 MATCHES</li></ul></li><li><b>F.3)</b> Thus, player resting periods are optimized.</li><li><b>F.4)</b> UEFA will handle all stadium maintenance.</li><li><b>F.5)</b> Stadiums will be handed over to UEFA by Nov 1, 2027.</li><li><b>F.6)</b> Stadiums will be announced on Aug 30, 2027.</li>",
+                rG: "G) PRIZE POOL", rG_S: "<li><b>G.1) Country Coeff. Contribution</b><ul style='margin-top:5px; color:#aaa;'><li>Win: 4 pts (2 in qual.)</li><li>Draw: 2 pts (1 in qual.)</li></ul></li><li style='margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;'><b>G.2) Financial Prizes</b><ul style='margin-top:5px; color:#aaa;'><li>Qual. Win: 500K Euro</li><li>Play-off Win: 250K Euro</li><li>Group Stage Part.: 25.5M Euro</li><li>Group Win: 2.5M Euro</li><li>Group Draw: 750K Euro</li><li>Round of 16: 15M Euro</li><li>Quarter-Finals: 15.5M Euro</li><li>Semi-Finals: 17.5M Euro</li><li>Finalist: 20M Euro</li><li>3rd Place: 7M Euro</li><li>Champion: 25M Euro</li></ul></li><li style='margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;'><b>G.3) Bonus System</b><ul style='margin-top:5px; color:#aaa;'><li>3 consecutive wins: 1M Euro</li><li>Undefeated in group: 1.5M Euro</li><li>Clean sheet: 250K Euro</li><li>Win by 3 goals: 250K Euro</li><li>Win by +5 goals: 500K Euro</li></ul></li><li><b>G.3.1)</b> Bonus system only valid for the Group Stage.</li>",
+                rH: "H) SQUAD DECLARATION", rH_S: "<li><b>H.1)</b> Squads must be submitted to UEFA by Nov 14, 23:00.</li>",
+                rI: "I) PLAYER BONUS", rI_P: "Bonuses applied to boost player motivation during the group stage:", rI_S: "<li><b>I.1)</b> Conditions:<ul style='margin-top:5px; color:#aaa;'><li>Hattrick: 1M Euro</li><li>Goalkeeper (+7 saves): 1M Euro</li><li>Man of the Match: 1M Euro</li></ul></li>",
+                rK: "K) SPORTSMANSHIP & RESPECT", rK_S: "<li><b>K.1)</b> Unsportsmanlike conduct in the stands will be penalized by the UEFA DISCIPLINARY BOARD.</li><li><b>K.2)</b> 2 penalties result in team expulsion.</li><li><b style='color:var(--accent-color);'>K.3) Teams engaging in RACISM will be expelled without defense.</b></li><li><b>K.4)</b> Rules apply to everyone on and off the pitch.</li><li><b>K.5)</b> ZERO TOLERANCE will be shown.</li><li><b>K.6)</b> 128 teams will receive training.</li>",
+                rL: "L) BROADCASTING RIGHTS", rL_S: "<li><b>L.1)</b> A 2+2 year agreement signed with 'beIN Media Group'. Starts June 1, 2026.</li>",
+                rM: "M) SPONSORS", rM_S: "<li><b>M.1)</b> 2+2 year agreement signed with all listed brands (Starts June 1, 2026).</li>",
+                rN: "N) PROCESS / GAME RULES", rN_S: "<li><b>N.1)</b> Continuous development every season.</li><li><b>N.2)</b> Planned until 2037 (Subject to UEFA's decision).</li><li><b>N.3)</b> Participation is mandatory.</li><li><b style='color:var(--accent-color);'>N.3.1) Teams refusing to participate will be banned for 2 years and heavily fined.</b></li><li><b>N.4)</b> Incentive bonus of 15M Euro for 3 consecutive participations.</li><li><b>N.6)</b> All fundamental rights belong to UEFA.</li><li><b>N.7)</b> Logo/Music/Trophy details will be introduced on July 31, 2026.</li>",
+                rUpd: "last updated : 07/20/2026 01.50",
                 themeClassic: "THEME: UCC CLASSIC", themeDoomsday: "THEME: DOOMSDAY",
                 modalHome: "Home", modalAway: "Away", modalNotStarted: "NOT STARTED", modalFT: "FT",
                 noMatchDate: "No matches found for this date.", noFeatMatch: "No featured matches right now. (Add ! in Sheets)",
@@ -679,60 +867,56 @@
                 directQual: "UCC 27 Direkt Katılım", playoffQual: "UCC 27 Play-off Turu", modalStatsTab: "İSTATİSTİKLER",
                 playerStats: "Oyuncu İst.", teamStats: "Takım İst.", topScorers: "GOL", topAssists: "ASİST", goalAssist: "GOL + ASİST", expectedGoals: "GOL BEKLENTİSİ (xG)", yellowCards: "SARI KART", redCards: "KIRMIZI KART", goalsScored: "ATILAN GOL", cleanSheets: "YENİLMEYEN GOL (Clean Sheets)", expectedGoalsTeam: "TAKIM xG", statsNote: "* İstatistikler Puan Tablosu ve veritabanı üzerinden güncellenir.",
                 penaltiesTitle: "CEZALAR (Suspensions)", playerPenalties: "Oyuncu Cezaları", teamPenalties: "Takım Cezaları", penaltiesNote: "* Cezalı oyuncular ve takımlar listesi maç raporlarına göre güncellenir.",
+                redCardReason: "Doğrudan Kırmızı Kart", teamReason: "Taraftar Taşkınlığı", twoMatches: "2 Maç", oneMatch: "1 Maç Seyircisiz",
                 news1Title: "ÖN ELEME", news1Sub: "Kura çekimiyle birlikte yeni turnuva tanıtılacaktır.", news1Date: "28 Temmuz 2026 - 00.49",
                 news2Title: "SİTE AÇILDI", news2Sub: "Site Beta adıyla yayınlandığı için hatalarla karşılaşılabilir.", news2Date: "30 Temmuz 2026 - 03.00",
                 news3Title: "KURA ÇEKİMİ", news3Sub: "Toplam 32 gruptan oluşan bu mücadelede maçlar belirlendi.", news3Date: "5 Ağustos 2026 - 02.45",
                 ruleIntro1: "- Avrupa'nın en büyük kulüp organizasyonu.", ruleIntro2: "- Her 2 yılda bir.", ruleIntro3: "- Toplam 128 takım.",
-                ruleA: "A) LİG KONTENJANLARI", ruleB: "B) ELEME AŞAMASI", ruleC: "C) TURNUVA AŞAMASI", ruleD: "D) GELİŞTİRMELER", ruleE: "E) 2027 TAKVİMİ", ruleF: "F) EV SAHİBİ: İSPANYA", ruleG: "G) ÖDÜL HAVUZU", ruleH: "H) KADRO BİLDİRİMİ", ruleI: "I) OYUNCU BONUSU", ruleK: "K) SPORTMENLİK & SAYGI", ruleL: "L) YAYIN HAKLARI", ruleM: "M) SPONSOR", ruleN: "N) SÜREÇ / OYUN KURALLARI",
+                rA: "A) LİG KONTENJANLARI", rA_L: "<li>Premier Lig (İngiltere) : 16 Takım</li><li>Seria A (İtalya) : 16 Takım</li><li>La Liga (İspanya) : 16 Takım</li><li>Bundesliga (Almanya) : 16 Takım</li><li>Ligue 1 (Fransa) : 16 Takım</li><li>Primeira Lig (Portekiz) : 12 Takım</li><li>Eredivise (Hollanda) : 12 Takım</li><li>Pro League (Belçika) : 10 Takım</li><li>Süper Lig (Türkiye) : 10 Takım</li><li>Chance Liga (Çekya) : 2 Takım</li><li>Super League (Yunanistan) : 2 Takım</li>", rA_S: "<li><b>A.1)</b> Belirlenen ligler 'UEFA ÜLKE PUANI' sisteminden alınmış olup ilk 11 sıralamaya giren ligler alınmıştır.</li><li><b>A.2)</b> Belirlenen liglerden gelecek takım sayısı gene aynı şekil 'UEFA ÜLKE PUAN' sistemine göre yapılmıştır.</li><li><b>A.3)</b> Belirlenen takım sayısı 2026 sezonu yerel lig sıralamasına göre belirlenmiştir.</li>",
+                rB: "B) ELEME AŞAMASI", rB_P: "Takım belirleme işlemleri sonlandıktan sonra 128 takım \"GRUPLU ELEME\" oynayacaktır.", rB_S: "<li><b>B.1)</b> Kura çekimi torba + bilgisayar sistemi ile yapılacaktır.</li><li><b>B.2)</b> Aynı ülke takımı eşleşmesi olmayacaktır.</li><li><b>B.3)</b> Belirlenen takımlar gruplara dağıtılarak her biri dörderli olmak üzere toplam 32 grupta eleme oynayacaktır.</li><li><b>B.4)</b> Toplam 6 maç oynanacaktır. (3 Ev sahibi , 3 Deplasman)</li><li><b>B.5)</b> Gruplarda 1. olan takımlar doğrudan katılırken , 2. olan takımlar kalan 16 için play-off oynayacaktır.</li><li><b>B.6)</b> Elemeler sonucunda toplam 48 takım 2027 UEFA Club Championship'a katılacaktır.</li>",
+                rC: "C) TURNUVA AŞAMASI", rC_P: "Elemeler sonrası 48 takım 2027 sonunda (Kasım-Aralık) kupa için yarışacaktır.", rC_S: "<li><b>C.1)</b> Her takım toplamda 3 maç yapacaktır.</li><li><b>C.2)</b> Her grupta 4 takım olacak şekilde toplam 12 grup olacaktır.</li><li><b>C.3)</b> 48 Takım 4 torbaya bölünerek kura çekilecektir.</li><li><b>C.4)</b> Aynı ülke takımı eşleşmesi olmayacaktır. (GRUP AŞAMASI)</li><li><b>C.5)</b> Torbalar \"UEFA ÜLKE SIRALAMASINA\" göre belirlenecektir.</li><li style='margin-top:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;'><b>C.6) GRUP SIRALAMASI ;</b></li><li style='padding-left:15px;'><b>C.6.1)</b> 1. ve 2. olan takımlar doğrudan SON 32'ye yükselecektir.</li><li style='padding-left:15px;'><b>C.6.2)</b> 3. olan takımlar EN İYİ ÜÇÜNCÜ'den yükselecektir.</li><li style='padding-left:15px;'><b>C.6.3)</b> 4. olan takım 2027 UEFA Club Championship'e veda edecektir.</li>",
+                rD: "D) GELİŞTİRMELER", rD_P: "Arttırılmış ödül sistemi ve oyuncuların dinlenme süreleri iyileştirildi.",
+                rE: "E) 2027 TAKVİMİ", rE_L1: "<li><span class='rule-calendar-date'>1 Haziran 2026</span> 128 takımın belirlenmesi</li><li><span class='rule-calendar-date'>3 Haziran 2026</span> Eleme torbalarının belirlenmesi</li><li><span class='rule-calendar-date'>31 Temmuz 2026</span> Eleme grupları belirlenmesi / 2027 UEFA Club Championship Tanıtımı</li>", rE_L2: "<li><span class='rule-calendar-date'>22 Aralık - 24 Aralık 2026</span> 1. Eleme maçları</li><li><span class='rule-calendar-date'>29 Aralık - 31 Aralık 2026</span> 2. Eleme maçları</li><li><span class='rule-calendar-date'>5 Ocak - 7 Ocak 2027</span> 3. Eleme maçları</li><li><span class='rule-calendar-date'>12 Ocak - 14 Ocak 2027</span> 4. Eleme maçları</li><li><span class='rule-calendar-date'>2 Şubat - 4 Şubat 2027</span> 5. Eleme maçları</li><li><span class='rule-calendar-date'>9 Şubat - 11 Şubat 2027</span> 6. Eleme maçları</li>", rE_L3: "<li><span class='rule-calendar-date'>1 Ağustos 2027</span> Torbaların belirlenmesi</li><li><span class='rule-calendar-date'>20 Ağustos 2027</span> KURA ÇEKİMİ / maçların belirlenmesi</li><li><span class='rule-calendar-date'>1 Eylül - 2 Eylül 2027</span> Play-off maçları</li><li><span class='rule-calendar-date'>8 Eylül - 9 Eylül 2027</span> Play-off maçları (Rövanş)</li>", rE_H: "21 Kasım 2027 : 2027 UEFA Club Championship Başlangıcı / Lig maçları", rE_L4: "<li><span class='rule-calendar-date'>21 Kasım - 28 Kasım 2027</span> 1.Grup Maçları</li><li><span class='rule-calendar-date'>29 Kasım - 6 Aralık 2027</span> 2.Grup Maçları</li><li><span class='rule-calendar-date'>7 Aralık - 14 Aralık 2027</span> 3.Grup Maçları</li><li><span class='rule-calendar-date'>15 Aralık - 18 Aralık 2027</span> Son 32 Maçları</li><li><span class='rule-calendar-date'>19 Aralık - 22 Aralık 2027</span> Son 16 Maçları</li><li><span class='rule-calendar-date'>23 Aralık - 24 Aralık 2027</span> Çeyrek Final Maçları</li><li><span class='rule-calendar-date'>27 Aralık 2027</span> Yarı Final Maçları</li><li><span class='rule-calendar-date'>31 Aralık 2027</span> Üçüncülük maçı & FİNAL</li>",
+                rF: "F) EV SAHİBİ: İSPANYA", rF_P: "2027 UEFA Club Championship'e \"İSPANYA\" ev sahipliği yapacaktır.", rF_S: "<li><b>F.1)</b> Yapılacak olan maçlar İspanya'nın 4 bölgesine bölünecek şekilde ayarlanmıştır.<ul style='margin-top:10px; color:#aaa;'><li>- DOĞU BÖLGESİ : \"A, F, K\" grupları bu bölgede maçlarını yapacaktır.</li><li>- KUZEY BÖLGESİ : \"C, H, J\" grupları bu bölgede maçlarını yapacaktır.</li><li>- BATI BÖLGESİ : \"B, E, L\" grupları bu bölgede maçlarını yapacaktır.</li><li>- GÜNEY BÖLGESİ : \"D, G, I\" grupları bu bölgede maçlarını yapacaktır.</li></ul></li><li><b>F.2)</b> Grup maçları sona ermesiyle birlikte 4 bölgede bulunan takımlar kademe kademe Merkez bölgesine (Madrid) gelir.<ul style='margin-top:10px; color:#aaa;'><li><b>SON 32:</b> Doğu (4), Kuzey (4), Batı (4), Güney (4)</li><li><b>SON 16:</b> Doğu (2), Kuzey (2), Batı (1), Güney (2), Merkez (1)</li><li><b>ÇEYREK FİNAL:</b> Doğu (1), Kuzey (1), Güney (1), Merkez (1)</li><li><b>YARI FİNAL / ÜÇÜNCÜLÜK / FİNAL:</b> Merkez (Madrid) - 4 MAÇ</li></ul></li><li><b>F.3)</b> Böylece oyuncuların dinlenme olanağı arttırılmıştır.</li><li><b>F.4)</b> Bir stadyumda birden fazla maç oynanacağı kesindir.<ul style='margin-top:5px; color:#aaa;'><li><b>F.4.1)</b> Yapılan tüm stadyumlardaki maçların stadyumu bakım , yenileme ve onarım işlemleri UEFA tarafından yapılacaktır.</li></ul></li><li><b>F.5)</b> Belirlenen stadyumlar 1 Kasım 2027 itibariyle UEFA'ya teslim edilecektir.</li><li><b>F.6)</b> Stadyumlar 30 Ağustos 2027'de açıklanacaktır.</li>",
+                rG: "G) ÖDÜL HAVUZU", rG_S: "<li><b>G.1) Ülke Puanına Katkı</b><ul style='margin-top:5px; color:#aaa;'><li>Galibiyet : 4 ham puan (elemelerde 2 ham puan)</li><li>Beraberlik : 2 ham puan (elemelerde 1 ham puan)</li><li><i>(Play-off'da ülke puanına katkı uygulanmamaktadır.)</i></li></ul></li><li style='margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;'><b>G.2) Ödül havuzu</b><ul style='margin-top:5px; color:#aaa;'><li>Elemelerde galibiyet : 500K Euro</li><li>Play-off galibiyet : 250K Euro</li><li>Grup aşamasına katılmak : 25,5 Milyon Euro</li><li>Grup aşamasında galibiyet : 2,5 Milyon Euro</li><li>Grup aşamasında beraberlik : 750K Euro</li><li>Son 16'ya katılım : 15 Milyon Euro</li><li>Çeyrek Final : 15,5 Milyon Euro</li><li>Yarı Final : 17,5 Milyon Euro</li><li>Final : 20 Milyon Euro</li><li>Üçüncülük : 7 Milyon Euro</li><li>Şampiyonluk : 25 Milyon Euro</li></ul></li><li style='margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;'><b>G.3) Kazanç Sistemi (Destek Primi)</b><ul style='margin-top:5px; color:#aaa;'><li>üst üste 3 galibiyet : 1 Milyon Euro</li><li>Grubu namağlup bitirmek : 1,5 Milyon Euro</li><li>Bir maçı gol yemeden bitirmek : 250K Euro</li><li>Bir maçta 3 farkla yenmek : 250K Euro</li><li>Bir maçta +5 farkla yenmek : 500K Euro</li></ul></li><li><b>G.3.1)</b> Kazanç sistemi grup aşaması için geçerlidir. Elemelerde kazanç sistemi uygulanmayacaktır.</li><li><b>G.3.2)</b> Grup aşaması sona erdiğinde kazanç sistemi devre dışı kalacaktır.</li>",
+                rH: "H) KADRO BİLDİRİMİ", rH_S: "<li><b>H.1)</b> kadrolar en geç 14 Kasım günü saat 23:00'a kadar UEFA'ya bildirilmelidir.</li>",
+                rI: "I) OYUNCU BONUSU", rI_P: "Grup aşamasına katılan takımların oyuncu motivasyonu arttırması adına bir kaç bonus uygulanacaktır ;", rI_S: "<li><b>I.1)</b> Bonus Şartları:<ul style='margin-top:5px; color:#aaa;'><li>Bir maçta hattrick yapan oyuncu : 1 Milyon Euro</li><li>Bir maçta +7 kurtarış yapan kaleci : 1 Milyon Euro</li><li>Bir maçta \"Maçın Oyuncusu\" olan oyuncu : 1 Milyon Euro</li></ul></li><li><b>I.1.1)</b> Oyuncu bonusu sadece Grup aşamasında uygulanacaktır.</li>",
+                rK: "K) SPORTMENLİK & SAYGI", rK_S: "<li><b>K.1)</b> Takımların iç veya deplasmanda oynadıkları maçlarındaki tribünlerden herhangi bir sportmenliğe uygun olmayan harekette \"UEFA DİSİPLİN KURULU\" tarafından ceza uygulanacaktır.</li><li><b>K.1.1)</b> Bu cezalar caydırıcı olması açısından en üst sınırdan uygulanacaktır.</li><li><b>K.2)</b> Hangi sebep olursa olsun 2 kez ceza alan takım men edilecektir.</li><li><b style='color:var(--accent-color);'>K.3) \"IRKÇILIK\" yapan takım (oyuncu,yönetim,taraftar vb.) herhangi bir savunma alınmadan men edilecektir.</b></li><li><b>K.4)</b> Sportmenliğe uymayanlara aynı şekilde takımların yönetim, oyuncu, teknik direktör fark etmeksizin sahada olan olmayan herkese uygulanacaktır.</li><li><b>K.5)</b> Bu konuda \"ÇOK HASSAS\" bir şekilde davranılıp sıfır tolerans uygulanacaktır.</li><li><b>K.6)</b> Katılan 128 takıma \"SPORTMENLİK & SAYGI\" toplantısı yapılacak ve eğitimi verilecektir.</li><li><b>K.7)</b> \"SPORTMENLİK & SAYGI\" eğitimi katılacak tüm hakemlere verilecek, saha içindeki işleyiş anlatılacaktır.</li>",
+                rL: "L) YAYIN HAKLARI", rL_S: "<li><b>L.1)</b> Yayın hakları için \"beIN Media Group\" 2+2 yıllık anlaşma sağlanmıştır.</li><li><b>L.1.1)</b> Anlaşma 1 Haziran 2026 itibariyle başlayacaktır.</li>",
+                rM: "M) SPONSOR", rM_S: "<li><b>M.1)</b> Aşağıda verilen her marka ile 2+2 yıllık anlaşma sağlanmıştır.<ul style='margin-top:5px; color:#aaa;'><li>COCA-COLA, FedEx, Mastercard, Sony Interactive Entertainment, Just Eat Takeaway, AUDI, Turkish Airlines, Apple, Frito-lay (PepsiCO), Adidas, Rexona, McDonald's.</li></ul></li><li><b>M.1.1)</b> Markalar ile anlaşmalar 1 Haziran 2026 itibariyle başlayacaktır.</li>",
+                rN: "N) SÜREÇ / OYUN KURALLARI", rN_S: "<li><b>N.1)</b> 2027 UEFA Club Championship her yeni sezonunda daha gelişmiş ve en iyi şekilde ilerlemesi yapılacaktır.</li><li><b>N.2)</b> 2027 UEFA Club Championship şu anki durumla beraber 2037'ye kadar yapılması planlanmıştır.</li><li><b>N.2.1)</b> Bu süre uzayabilir, kısalabilir veya yapılan planlamalar değişebilir. Bu karar kesinlikle UEFA'ya aittir.</li><li><b>N.3)</b> Düzenlenecek bu organizasyon UCL, UEL ve konferans ligi gibi katılımı zorunludur.</li><li><b style='color:var(--accent-color);'>N.3.1) Katılmayı reddeden takımlar herhangi bir UEFA organizasyonuna 2 yıl boyunca katılamayacak ve en üst sınırdan para cezası uygulanacaktır.</b></li><li><b>N.4)</b> Üst üste turnuvaya 3 kez katılan takımlara \"Teşvik Primi\" olan 15 Milyon Euro bonus verilecektir.</li><li><b>N.5)</b> Verilen her madde veya verilen herhangi bir kural sonradan değiştirilebilir, eklenebilir veya silinebilir.</li><li><b>N.6)</b> Organizasyonun tüm temel hakları UEFA'ya aittir.</li><li><b>N.7)</b> 2027 UEFA Club Championship Logo, Müzik, Kupa detayları 31 Temmuz 2026'da tanıtılacaktır.</li><li><b>N.8)</b> Yeni uygulanacak kurallar 31 Temmuz 2026'da tanıtılacaktır.</li>",
+                rUpd: "son güncelleme : 20/07/2026 01.50",
                 themeClassic: "TEMA: UCC KLASİK", themeDoomsday: "TEMA: DOOMSDAY",
                 modalHome: "Ev Sahibi", modalAway: "Deplasman", modalNotStarted: "BAŞLAMADI", modalFT: "MS",
                 noMatchDate: "Bu tarihte maç bulunmuyor.", noFeatMatch: "Şu an için öne çıkan maç bulunmuyor.",
                 groupWord: "Grup", thTeam: "Takım",
                 statPossession: "TOPA S. OLMA %'Sİ", statRecovery: "TOPU GERİ KAZANMA (SN)", statShots: "ŞUT", statXG: "GOL BEKLENTİSİ (xG)", statPasses: "PAS", statTackles: "MÜDAHALE", statTacklesWon: "TOP KAZANILAN MÜDAHALE", statInterceptions: "TOP KESMELER", statSaves: "KURTARIŞ", statFouls: "YAPILAN FAUL", statOffsides: "OFSAYTLAR", statCorners: "KÖŞE VURUŞU", statFreeKicks: "SERBEST VURUŞLAR", statPenalties: "PENALTI VURUŞLARI", statYellows: "SARI KARTLAR", statReds: "KIRMIZI KARTLAR"
             },
-            es: { home: "INICIO", groupsNav: "GRUPOS", groupsTitle: "GRUPOS", matches: "PARTIDOS", teams: "EQUIPOS", news: "NOTICIAS", stats: "ESTADÍSTICAS", rules: "REGLAS", penalties: "SANCIONES", goBack: "← VOLVER", partTeams: "EQUIPOS PARTICIPANTES", loading: "Cargando...", filterDate: "Seleccione Fecha:", latestNews: "ÚLTIMAS NOTICIAS", vs: "v", sponsorsTitle: "PATROCINADORES OFICIALES", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — EN CINES EL 18 DE DICIEMBRE", featuredMatches: "PARTIDOS DESTACADOS", countdownTitle: "COMIENZO DE UCC 27", cdDays: "DÍAS", cdHours: "HORAS", cdMins: "MIN", cdSecs: "SEG", directQual: "Clasificación Directa UCC 27", playoffQual: "Ronda de Play-off UCC 27", modalStatsTab: "ESTADÍSTICAS", playerStats: "Estad. Jugador", teamStats: "Estad. Equipo", topScorers: "GOLES", topAssists: "ASISTENCIAS", goalAssist: "G + A", expectedGoals: "xG (ESPERADOS)", yellowCards: "TARJETAS AMARILLAS", redCards: "TARJETAS ROJAS", goalsScored: "GOLES MARCADOS", cleanSheets: "PORTERÍAS A CERO", expectedGoalsTeam: "xG EQUIPO", statsNote: "* Las estadísticas se actualizan automáticamente.", penaltiesTitle: "SANCIONES Y PENALIZACIONES", playerPenalties: "Sanciones de Jugadores", teamPenalties: "Sanciones de Equipos", penaltiesNote: "* La lista de sanciones es actualizada por los oficiales.", news1Title: "Fase Previa", news1Sub: "El sorteo se realizará con presidentes de clubes.", news1Date: "28 de Julio 2026 - 00:49", news2Title: "Sitio Abierto", news2Sub: "La plataforma oficial es accesible en Beta.", news2Date: "30 de Julio 2026 - 03:00", news3Title: "Sorteo Realizado", news3Sub: "Se han anunciado los grupos y horarios.", news3Date: "5 de Agosto 2026 - 02:45", ruleIntro1: "- La mayor organización de clubes de Europa.", ruleIntro2: "- Cada 2 años.", ruleIntro3: "- Total de 128 equipos.", ruleA: "A) CUOTAS DE LIGA", ruleB: "B) ETAPA DE CLASIFICACIÓN", ruleC: "C) ETAPA DE TORNEO", ruleD: "D) MEJORAS", ruleE: "E) CALENDARIO 2027", ruleF: "F) ANFITRIÓN: ESPAÑA", ruleG: "G) FONDO DE PREMIOS", ruleH: "H) DECLARACIÓN DE EQUIPO", ruleI: "I) BONO DE JUGADOR", ruleK: "K) DEPORTIVIDAD Y RESPETO", ruleL: "L) DERECHOS DE TRANSMISIÓN", ruleM: "M) PATROCINADORES", ruleN: "N) PROCESO / REGLAS", themeClassic: "TEMA: UCC CLÁSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Local", modalAway: "Visitante", modalNotStarted: "NO COMENZADO", modalFT: "FIN", noMatchDate: "No hay partidos en esta fecha.", noFeatMatch: "No hay partidos destacados.", groupWord: "Grupo", thTeam: "Equipo", statPossession: "POSESIÓN %", statRecovery: "RECUPERACIÓN (SEG)", statShots: "TIROS", statXG: "GOLES ESPERADOS (xG)", statPasses: "PASES", statTackles: "ENTRADAS", statTacklesWon: "ENTRADAS GANADAS", statInterceptions: "INTERCEPCIONES", statSaves: "PARADAS", statFouls: "FALTAS COMETIDAS", statOffsides: "FUERAS DE JUEGO", statCorners: "CÓRNERS", statFreeKicks: "TIROS LIBRES", statPenalties: "PENALTIS", statYellows: "TARJETAS AMARILLAS", statReds: "TARJETAS ROJAS" },
-            fr: { home: "ACCUEIL", groupsNav: "GROUPES", groupsTitle: "GROUPES", matches: "MATCHS", teams: "ÉQUIPES", news: "ACTUALITÉS", stats: "STATISTIQUES", rules: "RÈGLES", penalties: "SANCTIONS", goBack: "← RETOUR", partTeams: "ÉQUIPES PARTICIPANTES", loading: "Chargement...", filterDate: "Sélectionner la Date:", latestNews: "DERNIÈRES NOUVELLES", vs: "v", sponsorsTitle: "SPONSORS OFFICIELS", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AU CINÉMA LE 18 DÉCEMBRE", featuredMatches: "MATCHS VEDETTES", countdownTitle: "COUP D'ENVOI UCC 27", cdDays: "JOURS", cdHours: "HEURES", cdMins: "MIN", cdSecs: "SEC", directQual: "Qualification Directe UCC 27", playoffQual: "Tour de barrage UCC 27", modalStatsTab: "STATISTIQUES", playerStats: "Stats Joueur", teamStats: "Stats Équipe", topScorers: "BUTS", topAssists: "PASSES DÉC.", goalAssist: "B + P", expectedGoals: "xG", yellowCards: "CARTONS JAUNES", redCards: "CARTONS ROUGES", goalsScored: "BUTS MARQUÉS", cleanSheets: "MATCHS SANS ENCAISSER", expectedGoalsTeam: "xG ÉQUIPE", statsNote: "* Les statistiques sont mises à jour automatiquement.", penaltiesTitle: "SUSPENSIONS ET SANCTIONS", playerPenalties: "Suspensions Joueurs", teamPenalties: "Sanctions Équipes", penaltiesNote: "* La liste est mise à jour par les officiels.", news1Title: "Préliminaires", news1Sub: "Le tirage aura lieu le 31 juillet.", news1Date: "28 Juillet 2026 - 00:49", news2Title: "Site en Ligne", news2Sub: "La plateforme est accessible en version Beta.", news2Date: "30 Juillet 2026 - 03:00", news3Title: "Groupes Annoncés", news3Sub: "Les groupes préliminaires sont annoncés.", news3Date: "5 Août 2026 - 02:45", ruleIntro1: "- La plus grande organisation de clubs en Europe.", ruleIntro2: "- Tous les 2 ans.", ruleIntro3: "- 128 équipes au total.", ruleA: "A) QUOTAS DE LIGUE", ruleB: "B) PHASE DE QUALIFICATION", ruleC: "C) PHASE DE TOURNOI", ruleD: "D) AMÉLIORATIONS", ruleE: "E) CALENDRIER 2027", ruleF: "F) HÔTE: ESPAGNE", ruleG: "G) PRIX", ruleH: "H) DÉCLARATION D'ÉQUIPE", ruleI: "I) BONUS JOUEUR", ruleK: "K) ESPRIT SPORTIF", ruleL: "L) DROITS TV", ruleM: "M) SPONSORS", ruleN: "N) RÈGLES DU JEU", themeClassic: "THÈME: CLASSIQUE", themeDoomsday: "THÈME: DOOMSDAY", modalHome: "Domicile", modalAway: "Extérieur", modalNotStarted: "NON COMMENCÉ", modalFT: "FIN", noMatchDate: "Aucun match trouvé.", noFeatMatch: "Aucun match vedette.", groupWord: "Groupe", thTeam: "Équipe", statPossession: "POSSESSION %", statRecovery: "RÉCUPÉRATION (SEC)", statShots: "TIRS", statXG: "BUTS ATTENDUS (xG)", statPasses: "PASSES", statTackles: "TACKLES", statTacklesWon: "TACKLES RÉUSSIS", statInterceptions: "INTERCEPTIONS", statSaves: "ARRÊTS", statFouls: "FAUTES COMMISES", statOffsides: "HORS-JEUX", statCorners: "CORNERS", statFreeKicks: "COUPS FRANCS", statPenalties: "PENALTYS", statYellows: "CARTONS JAUNES", statReds: "CARTONS ROUGES" },
-            de: { home: "START", groupsNav: "GRUPPEN", groupsTitle: "GRUPPEN", matches: "SPIELE", teams: "TEAMS", news: "NEWS", stats: "STATISTIKEN", rules: "REGELN", penalties: "STRAFEN", goBack: "← ZURÜCK", partTeams: "TEILNEHMENDE TEAMS", loading: "Laden...", filterDate: "Datum wählen:", latestNews: "AKTUELLE NEWS", vs: "v", sponsorsTitle: "OFFIZIELLE SPONSOREN", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AB 18. DEZEMBER IM KINO", featuredMatches: "TOP-SPIELE", countdownTitle: "UCC 27 START IN", cdDays: "TAGE", cdHours: "STD", cdMins: "MIN", cdSecs: "SEK", directQual: "UCC 27 Direkte Qualifikation", playoffQual: "UCC 27 Play-off-Runde", modalStatsTab: "STATISTIKEN", playerStats: "Spieler", teamStats: "Team", topScorers: "TORE", topAssists: "ASSISTS", goalAssist: "T + A", expectedGoals: "xG", yellowCards: "GELBE KARTEN", redCards: "ROTE KARTEN", goalsScored: "ERZIELTE TORE", cleanSheets: "OHNE GEGENTOR", expectedGoalsTeam: "TEAM xG", statsNote: "* Statistiken werden automatisch aktualisiert.", penaltiesTitle: "SPERREN & STRAFEN", playerPenalties: "Spielersperren", teamPenalties: "Teamstrafen", penaltiesNote: "* Sperren werden von den Offiziellen aktualisiert.", news1Title: "Vorrunden", news1Sub: "Die Auslosung findet am 31. Juli statt.", news1Date: "28. Juli 2026 - 00:49", news2Title: "Website Online", news2Sub: "Die Plattform ist als Beta zugänglich.", news2Date: "30. Juli 2026 - 03:00", news3Title: "Gruppen bekannt", news3Sub: "Die UCC 27 Vorrundengruppen stehen fest.", news3Date: "5. August 2026 - 02:45", ruleIntro1: "- Europas größte Klub-Organisation.", ruleIntro2: "- Alle 2 Jahre.", ruleIntro3: "- Insgesamt 128 Teams.", ruleA: "A) LIGA-QUOTEN", ruleB: "B) QUALIFIKATIONSPHASE", ruleC: "C) TURNIERPHASE", ruleD: "D) VERBESSERUNGEN", ruleE: "E) KALENDER 2027", ruleF: "F) GASTGEBER: SPANIEN", ruleG: "G) PREISGELD", ruleH: "H) KADER-MELDUNG", ruleI: "I) SPIELER-BONUS", ruleK: "K) SPORTSGEIST & RESPEKT", ruleL: "L) ÜBERTRAGUNGSRECHTE", ruleM: "M) SPONSOREN", ruleN: "N) SPIELREGELN", themeClassic: "THEMA: KLASSISCH", themeDoomsday: "THEMA: DOOMSDAY", modalHome: "Heim", modalAway: "Auswärts", modalNotStarted: "NICHT BEGONNEN", modalFT: "ENDE", noMatchDate: "Keine Spiele an diesem Datum.", noFeatMatch: "Keine Top-Spiele.", groupWord: "Gruppe", thTeam: "Team", statPossession: "BALLBESITZ %", statRecovery: "BALLRÜCKGEWINNUNG (SEK)", statShots: "SCHÜSSE", statXG: "ERWARTETE TORE (xG)", statPasses: "PÄSSE", statTackles: "ZWEIKÄMPFE", statTacklesWon: "GEWONNENE ZWEIKÄMPFE", statInterceptions: "ABFANGEN", statSaves: "PARADEN", statFouls: "BEGANGENE FOULS", statOffsides: "ABSEITS", statCorners: "ECKBÄLLE", statFreeKicks: "FREISTÖßE", statPenalties: "ELFMETER", statYellows: "GELBE KARTEN", statReds: "ROTE KARTEN" },
-            it: { home: "HOME", groupsNav: "GIRONI", groupsTitle: "GIRONI", matches: "PARTITE", teams: "SQUADRE", news: "NOTIZIE", stats: "STATISTICHE", rules: "REGOLE", penalties: "SQUALIFICHE", goBack: "← INDIETRO", partTeams: "SQUADRE PARTECIPANTI", loading: "Caricamento...", filterDate: "Seleziona Data:", latestNews: "ULTIME NOTIZIE", vs: "v", sponsorsTitle: "SPONSOR UFFICIALI", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AL CINEMA IL 18 DICEMBRE", featuredMatches: "PARTITE DI CARTELLO", countdownTitle: "INIZIO UCC 27 TRA", cdDays: "GIORNI", cdHours: "ORE", cdMins: "MIN", cdSecs: "SEC", directQual: "Qualificazione Diretta UCC 27", playoffQual: "Turno Play-off UCC 27", modalStatsTab: "STATISTICHE", playerStats: "Stat. Giocatori", teamStats: "Stat. Squadra", topScorers: "GOL", topAssists: "ASSIST", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "CARTELLINI GIALLI", redCards: "CARTELLINI ROSSI", goalsScored: "GOL SEGNATI", cleanSheets: "RETI INVIOLATE", expectedGoalsTeam: "xG SQUADRA", statsNote: "* Le statistiche si aggiornano automaticamente.", penaltiesTitle: "SOSPENSIONI E PENALITÀ", playerPenalties: "Squalifiche Giocatori", teamPenalties: "Penalità Squadra", penaltiesNote: "* L'elenco è aggiornato dagli ufficiali.", news1Title: "Sorteggio Preliminari", news1Sub: "Il sorteggio si terrà il 31 Luglio.", news1Date: "28 Luglio 2026 - 00:49", news2Title: "Sito Ufficiale Online", news2Sub: "La piattaforma ufficiale è in versione Beta.", news2Date: "30 Luglio 2026 - 03:00", news3Title: "Gironi Annunciati", news3Sub: "Annunciati i gironi preliminari UCC 27.", news3Date: "5 Agosto 2026 - 02:45", ruleIntro1: "- La più grande organizzazione di club in Europa.", ruleIntro2: "- Ogni 2 anni.", ruleIntro3: "- 128 squadre totali.", ruleA: "A) QUOTE CAMPIONATO", ruleB: "B) FASE DI QUALIFICAZIONE", ruleC: "C) FASE A GIRONI", ruleD: "D) MIGLIORAMENTI", ruleE: "E) CALENDARIO 2027", ruleF: "F) OSPITE: SPAGNA", ruleG: "G) MONTEPREMI", ruleH: "H) DICHIARAZIONE SQUADRA", ruleI: "I) BONUS GIOCATORI", ruleK: "K) SPORTIVITÀ E RISPETTO", ruleL: "L) DIRITTI TV", ruleM: "M) SPONSOR", ruleN: "N) REGOLE DEL GIOCO", themeClassic: "TEMA: CLASSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Casa", modalAway: "Trasferta", modalNotStarted: "NON INIZIATA", modalFT: "FINITA", noMatchDate: "Nessuna partita in questa data.", noFeatMatch: "Nessuna partita in primo piano.", groupWord: "Gruppo", thTeam: "Squadra", statPossession: "POSSESSO PALLA %", statRecovery: "RECUPERO PALLA (SEC)", statShots: "TIRI", statXG: "GOL PREVISTI (xG)", statPasses: "PASSAGGI", statTackles: "CONTRASTI", statTacklesWon: "CONTRASTI VINTI", statInterceptions: "INTERCETTAZIONI", statSaves: "PARATE", statFouls: "FALLI COMMESSI", statOffsides: "FUORIGIOCO", statCorners: "CALCI D'ANGOLO", statFreeKicks: "CALCI DI PUNIZIONE", statPenalties: "RIGORI", statYellows: "CARTELLINI GIALLI", statReds: "CARTELLINI ROSSI" },
-            pt: { home: "INÍCIO", groupsNav: "GRUPOS", groupsTitle: "GRUPOS", matches: "JOGOS", teams: "EQUIPAS", news: "NOTÍCIAS", stats: "ESTATÍSTICAS", rules: "REGRAS", penalties: "PENALIDADES", goBack: "← VOLTAR", partTeams: "EQUIPAS PARTICIPANTES", loading: "A carregar...", filterDate: "Selecionar Data:", latestNews: "ÚLTIMAS NOTÍCIAS", vs: "v", sponsorsTitle: "PATROCINADORES OFICIAIS", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — NOS CINEMAS A 18 DE DEZEMBRO", featuredMatches: "JOGOS EM DESTAQUE", countdownTitle: "INÍCIO DO UCC 27 EM", cdDays: "DIAS", cdHours: "HORAS", cdMins: "MIN", cdSecs: "SEG", directQual: "Qualificação Direta UCC 27", playoffQual: "Ronda de Play-off UCC 27", modalStatsTab: "ESTATÍSTICAS", playerStats: "Estat. Jogador", teamStats: "Estat. Equipa", topScorers: "GOLOS", topAssists: "ASSISTÊNCIAS", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "CARTÕES AMARELOS", redCards: "CARTÕES VERMELHOS", goalsScored: "GOLOS MARCADOS", cleanSheets: "JOGOS SEM SOFRER", expectedGoalsTeam: "xG EQUIPA", statsNote: "* As estatísticas são atualizadas automaticamente.", penaltiesTitle: "SUSPENSÕES E PENALIDADES", playerPenalties: "Suspensões de Jogadores", teamPenalties: "Penalidades de Equipas", penaltiesNote: "* A lista é atualizada pelos oficiais.", news1Title: "Sorteio das Preliminares", news1Sub: "O sorteio será realizado a 31 de Julho.", news1Date: "28 de Julho 2026 - 00:49", news2Title: "Site Oficial Online", news2Sub: "A plataforma oficial está acessível em Beta.", news2Date: "30 de Julho 2026 - 03:00", news3Title: "Grupos Anunciados", news3Sub: "Os grupos e o calendário foram anunciados.", news3Date: "5 de Agosto 2026 - 02:45", ruleIntro1: "- A maior organização de clubes da Europa.", ruleIntro2: "- A cada 2 anos.", ruleIntro3: "- 128 equipas no total.", ruleA: "A) QUOTAS DE LIGA", ruleB: "B) FASE DE QUALIFICAÇÃO", ruleC: "C) FASE DE TORNEIO", ruleD: "D) MELHORIAS", ruleE: "E) CALENDÁRIO 2027", ruleF: "F) ANFITRIÃO: ESPANHA", ruleG: "G) PRÉMIOS", ruleH: "H) DECLARAÇÃO DA EQUIPA", ruleI: "I) BÓNUS DO JOGADOR", ruleK: "K) DESPORTIVISMO E RESPEITO", ruleL: "L) DIREITOS DE TRANSMISSÃO", ruleM: "M) PATROCINADORES", ruleN: "N) REGRAS DO JOGO", themeClassic: "TEMA: CLÁSSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Casa", modalAway: "Fora", modalNotStarted: "NÃO INICIOU", modalFT: "FIM", noMatchDate: "Nenhum jogo nesta data.", noFeatMatch: "Sem jogos em destaque.", groupWord: "Grupo", thTeam: "Equipa", statPossession: "POSSE DE BOLA %", statRecovery: "RECUPERAÇÃO BOLA (SEG)", statShots: "REMATES", statXG: "GOLOS ESPERADOS (xG)", statPasses: "PASSES", statTackles: "DESARMES", statTacklesWon: "DESARMES GANHOS", statInterceptions: "INTERCEÇÕES", statSaves: "DEFESAS", statFouls: "FALTAS COMETIDAS", statOffsides: "FORAS DE JOGO", statCorners: "CANTOS", statFreeKicks: "LIVRES", statPenalties: "PENÁLTIS", statYellows: "CARTÕES AMARELOS", statReds: "CARTÕES VERMELHOS" }
-        };
-
-        const monthMap = {
-            "ocak": {tr:"Ocak", en:"Jan", es:"Ene", fr:"Jan", de:"Jan", it:"Gen", pt:"Jan"},
-            "şubat": {tr:"Şubat", en:"Feb", es:"Feb", fr:"Fév", de:"Feb", it:"Feb", pt:"Fev"},
-            "subat": {tr:"Şubat", en:"Feb", es:"Feb", fr:"Fév", de:"Feb", it:"Feb", pt:"Fev"},
-            "mart": {tr:"Mart", en:"Mar", es:"Mar", fr:"Mar", de:"Mär", it:"Mar", pt:"Mar"},
-            "nisan": {tr:"Nisan", en:"Apr", es:"Abr", fr:"Avr", de:"Apr", it:"Apr", pt:"Abr"},
-            "mayıs": {tr:"Mayıs", en:"May", es:"May", fr:"Mai", de:"Mai", it:"Mag", pt:"Mai"},
-            "mayis": {tr:"Mayıs", en:"May", es:"May", fr:"Mai", de:"Mai", it:"Mag", pt:"Mai"},
-            "haziran": {tr:"Haziran", en:"Jun", es:"Jun", fr:"Juin", de:"Jun", it:"Giu", pt:"Jun"},
-            "temmuz": {tr:"Temmuz", en:"Jul", es:"Jul", fr:"Juil", de:"Jul", it:"Lug", pt:"Jul"},
-            "ağustos": {tr:"Ağustos", en:"Aug", es:"Ago", fr:"Aoû", de:"Aug", it:"Ago", pt:"Ago"},
-            "agustos": {tr:"Ağustos", en:"Aug", es:"Ago", fr:"Aoû", de:"Aug", it:"Ago", pt:"Ago"},
-            "eylül": {tr:"Eylül", en:"Sep", es:"Sep", fr:"Sep", de:"Sep", it:"Set", pt:"Set"},
-            "eylul": {tr:"Eylül", en:"Sep", es:"Sep", fr:"Sep", de:"Sep", it:"Set", pt:"Set"},
-            "ekim": {tr:"Ekim", en:"Oct", es:"Oct", fr:"Oct", de:"Okt", it:"Ott", pt:"Out"},
-            "kasım": {tr:"Kasım", en:"Nov", es:"Nov", fr:"Nov", de:"Nov", it:"Nov", pt:"Nov"},
-            "kasim": {tr:"Kasım", en:"Nov", es:"Nov", fr:"Nov", de:"Nov", it:"Nov", pt:"Nov"},
-            "aralık": {tr:"Aralık", en:"Dec", es:"Dic", fr:"Déc", de:"Dez", it:"Dic", pt:"Dez"},
-            "aralik": {tr:"Aralık", en:"Dec", es:"Dic", fr:"Déc", de:"Dez", it:"Dic", pt:"Dez"}
-        };
-
-        const articleData = {
-            'news3': { 
-                tKey: 'news3Title', sKey: 'news3Sub', dKey: 'news3Date',
-                p1Key: 'UCC 27 ön eleme grupları belirlendi. Toplam 32 gruptan oluşan bu mücadelede maçlar da belirlendi.', 
-                p2Key: 'Maçlar en yakın zamanda site üzerinden yayınlanacaktır.' 
+            es: { 
+                home: "INICIO", groupsNav: "GRUPOS", groupsTitle: "GRUPOS", matches: "PARTIDOS", draws: "SORTEOS", teams: "EQUIPOS", news: "NOTICIAS", stats: "ESTADÍSTICAS", rules: "REGLAS", penalties: "SANCIONES", goBack: "← VOLVER", partTeams: "EQUIPOS PARTICIPANTES", loading: "Cargando...", filterDate: "Seleccione Fecha:", latestNews: "ÚLTIMAS NOTICIAS", vs: "v", sponsorsTitle: "PATROCINADORES OFICIALES", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — EN CINES EL 18 DE DICIEMBRE", featuredMatches: "PARTIDOS DESTACADOS", countdownTitle: "COMIENZO DE UCC 27", cdDays: "DÍAS", cdHours: "HORAS", cdMins: "MIN", cdSecs: "SEG", directQual: "Clasificación Directa UCC 27", playoffQual: "Ronda de Play-off UCC 27", modalStatsTab: "ESTADÍSTICAS", playerStats: "Estad. Jugador", teamStats: "Estad. Equipo", topScorers: "GOLES", topAssists: "ASISTENCIAS", goalAssist: "G + A", expectedGoals: "xG (ESPERADOS)", yellowCards: "TARJETAS AMARILLAS", redCards: "TARJETAS ROJAS", goalsScored: "GOLES MARCADOS", cleanSheets: "PORTERÍAS A CERO", expectedGoalsTeam: "xG EQUIPO", statsNote: "* Las estadísticas se actualizan automáticamente.", penaltiesTitle: "SANCIONES Y PENALIZACIONES", playerPenalties: "Sanciones de Jugadores", teamPenalties: "Sanciones de Equipos", penaltiesNote: "* La lista de sanciones es actualizada por los oficiales.", redCardReason: "Tarjeta Roja Directa", teamReason: "Disturbios de la Afición", twoMatches: "2 Partidos", oneMatch: "1 Partido a Puerta Cerrada", news1Title: "Fase Previa", news1Sub: "El sorteo se realizará con presidentes de clubes.", news1Date: "28 de Julio 2026 - 00:49", news2Title: "Sitio Abierto", news2Sub: "La plataforma oficial es accesible en Beta.", news2Date: "30 de Julio 2026 - 03:00", news3Title: "Sorteo Realizado", news3Sub: "Se han anunciado los grupos y horarios.", news3Date: "5 de Agosto 2026 - 02:45", 
+                ruleIntro1: "- La mayor organización de clubes de Europa.", ruleIntro2: "- Cada 2 años.", ruleIntro3: "- Total de 128 equipos.",
+                rA: "A) CUOTAS DE LIGA", rA_L: "<li>Premier League (Inglaterra) : 16 Equipos</li><li>Seria A (Italia) : 16 Equipos</li><li>La Liga (España) : 16 Equipos</li><li>Bundesliga (Alemania) : 16 Equipos</li><li>Ligue 1 (Francia) : 16 Equipos</li><li>Primeira Liga (Portugal) : 12 Equipos</li><li>Eredivisie (Países Bajos) : 12 Equipos</li><li>Pro League (Bélgica) : 10 Equipos</li><li>Süper Lig (Turquía) : 10 Equipos</li><li>Chance Liga (Chequia) : 2 Equipos</li><li>Super League (Grecia) : 2 Equipos</li>", rA_S: "<li><b>A.1)</b> Ligas designadas según 'COEFICIENTE UEFA'.</li><li><b>A.2)</b> Número de equipos según 'COEFICIENTE UEFA'.</li><li><b>A.3)</b> Basado en la clasificación 2026.</li>", rB: "B) ETAPA DE CLASIFICACIÓN", rB_P: "128 equipos jugarán una fase previa.", rB_S: "<li><b>B.1)</b> Sorteo por bombos + sistema informático.</li><li><b>B.2)</b> Sin enfrentamientos del mismo país.</li><li><b>B.3)</b> 32 grupos de 4 equipos.</li><li><b>B.4)</b> Un total de 6 partidos.</li><li><b>B.5)</b> Los primeros se clasifican directamente, los segundos juegan play-off.</li><li><b>B.6)</b> 48 equipos participarán.</li>", rC: "C) ETAPA DE TORNEO", rC_P: "48 equipos competirán por la copa a finales de 2027.", rC_S: "<li><b>C.1)</b> 3 partidos cada equipo.</li><li><b>C.2)</b> 12 grupos de 4 equipos.</li><li><b>C.3)</b> Sorteo en 4 bombos.</li><li><b>C.4)</b> Sin enfrentamientos del mismo país en grupos.</li><li><b>C.5)</b> Bombos según ranking UEFA.</li><li style='margin-top:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;'><b>C.6) CLASIFICACIÓN DE GRUPOS ;</b></li><li style='padding-left:15px;'><b>C.6.1)</b> 1º y 2º a DIECISEISAVOS.</li><li style='padding-left:15px;'><b>C.6.2)</b> 3º avanza si es uno de los mejores terceros.</li><li style='padding-left:15px;'><b>C.6.3)</b> 4º eliminado.</li>", rD: "D) MEJORAS", rD_P: "Premios y descansos mejorados.", rE: "E) CALENDARIO 2027", rE_L1: "<li><span class='rule-calendar-date'>1 Junio 2026</span> Equipos determinados</li><li><span class='rule-calendar-date'>3 Junio 2026</span> Bombos determinados</li><li><span class='rule-calendar-date'>31 Julio 2026</span> Grupos determinados</li>", rE_L2: "<li><span class='rule-calendar-date'>22-24 Dic 2026</span> Previa 1</li><li><span class='rule-calendar-date'>29-31 Dic 2026</span> Previa 2</li><li><span class='rule-calendar-date'>5-7 Ene 2027</span> Previa 3</li><li><span class='rule-calendar-date'>12-14 Ene 2027</span> Previa 4</li><li><span class='rule-calendar-date'>2-4 Feb 2027</span> Previa 5</li><li><span class='rule-calendar-date'>9-11 Feb 2027</span> Previa 6</li>", rE_L3: "<li><span class='rule-calendar-date'>1 Agosto 2027</span> Bombos determinados</li><li><span class='rule-calendar-date'>20 Agosto 2027</span> SORTEO</li><li><span class='rule-calendar-date'>1-2 Sep 2027</span> Play-off</li><li><span class='rule-calendar-date'>8-9 Sep 2027</span> Play-off (Vuelta)</li>", rE_H: "21 Nov 2027 : Inicio del Campeonato", rE_L4: "<li><span class='rule-calendar-date'>21-28 Nov 2027</span> Jornada 1</li><li><span class='rule-calendar-date'>29 Nov - 6 Dic 2027</span> Jornada 2</li><li><span class='rule-calendar-date'>7-14 Dic 2027</span> Jornada 3</li><li><span class='rule-calendar-date'>15-18 Dic 2027</span> Dieciseisavos</li><li><span class='rule-calendar-date'>19-22 Dic 2027</span> Octavos</li><li><span class='rule-calendar-date'>23-24 Dic 2027</span> Cuartos</li><li><span class='rule-calendar-date'>27 Dic 2027</span> Semifinales</li><li><span class='rule-calendar-date'>31 Dic 2027</span> FINAL y 3er Puesto</li>", rF: "F) ANFITRIÓN: ESPAÑA", rF_P: "ESPAÑA organizará el torneo.", rF_S: "<li><b>F.1)</b> Dividido en 4 regiones. ESTE(A,F,K), NORTE(C,H,J), OESTE(B,E,L), SUR(D,G,I).</li><li><b>F.2)</b> Equipos avanzan a Madrid. (DIECISEISAVOS: 4 por región... FINAL: Centro)</li><li><b>F.3)</b> Optimiza el descanso.</li><li><b>F.4)</b> Múltiples partidos por estadio, UEFA gestiona el mantenimiento.</li><li><b>F.5)</b> Estadios entregados el 1 Nov 2027.</li><li><b>F.6)</b> Estadios anunciados el 30 Ago 2027.</li>", rG: "G) PREMIOS", rG_S: "<li><b>G.1) Contribución país</b><ul style='margin-top:5px; color:#aaa;'><li>Victoria: 4 pts (2 en previa)</li><li>Empate: 2 pts (1 en previa)</li></ul></li><li style='margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;'><b>G.2) Fondo de premios</b><ul style='margin-top:5px; color:#aaa;'><li>Victoria previa: 500K</li><li>Victoria Play-off: 250K</li><li>Fase Grupos: 25.5M</li><li>Victoria grupo: 2.5M</li><li>Empate grupo: 750K</li><li>Octavos: 15M</li><li>Cuartos: 15.5M</li><li>Semis: 17.5M</li><li>Finalista: 20M</li><li>Tercer Puesto: 7M</li><li>Campeón: 25M Euro</li></ul></li><li style='margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;'><b>G.3) Bonos</b><ul style='margin-top:5px; color:#aaa;'><li>3 victorias seguidas: 1M</li><li>Invicto: 1.5M</li><li>Puerta cero: 250K</li><li>Victoria +3 goles: 250K</li><li>Victoria +5 goles: 500K</li></ul></li><li><b>G.3.1)</b> Sólo en fase de grupos.</li>", rH: "H) DECLARACIÓN", rH_S: "<li><b>H.1)</b> Hasta 14 de Nov a las 23:00.</li>", rI: "I) BONOS", rI_P: "Bonos para jugadores:", rI_S: "<li><b>I.1)</b> 1 Millón por Hattrick, +7 paradas, o Jugador del Partido. Sólo en fase de grupos.</li>", rK: "K) RESPETO", rK_S: "<li><b>K.1)</b> El Comité disciplinario sancionará los disturbios.</li><li><b>K.2)</b> 2 sanciones = expulsión del equipo.</li><li><b style='color:var(--accent-color);'>K.3) Tolerancia cero con el RACISMO (expulsión directa).</b></li><li><b>K.4)</b> Se aplica a todos.</li><li><b>K.6)</b> Reunión obligatoria.</li>", rL: "L) DERECHOS", rL_S: "<li><b>L.1)</b> Acuerdo con beIN Media Group (2+2 años).</li>", rM: "M) PATROCINADORES", rM_S: "<li><b>M.1)</b> Acuerdo con marcas.</li>", rN: "N) REGLAS DEL JUEGO", rN_S: "<li><b>N.1)</b> Mejoras cada temporada.</li><li><b>N.2)</b> Planificado hasta 2037.</li><li><b>N.3)</b> Participación obligatoria.</li><li><b style='color:var(--accent-color);'>N.3.1) Equipos que se nieguen serán sancionados 2 años.</b></li><li><b>N.4)</b> Bono de 15M por 3 participaciones consecutivas.</li><li><b>N.6)</b> Derechos de UEFA.</li><li><b>N.7)</b> Intro el 31 de Julio 2026.</li>", rUpd: "actualizado: 20/07/2026 01.50",
+                themeClassic: "TEMA: UCC CLÁSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Local", modalAway: "Visitante", modalNotStarted: "NO COMENZADO", modalFT: "FIN", noMatchDate: "No hay partidos en esta fecha.", noFeatMatch: "No hay partidos destacados.", groupWord: "Grupo", thTeam: "Equipo", statPossession: "POSESIÓN %", statRecovery: "RECUPERACIÓN (SEG)", statShots: "TIROS", statXG: "GOLES ESPERADOS (xG)", statPasses: "PASES", statTackles: "ENTRADAS", statTacklesWon: "ENTRADAS GANADAS", statInterceptions: "INTERCEPCIONES", statSaves: "PARADAS", statFouls: "FALTAS COMETIDAS", statOffsides: "FUERAS DE JUEGO", statCorners: "CÓRNERS", statFreeKicks: "TIROS LIBRES", statPenalties: "PENALTIS", statYellows: "TARJETAS AMARILLAS", statReds: "TARJETAS ROJAS"
             },
-            'news2': { 
-                tKey: 'news2Title', sKey: 'news2Sub', dKey: 'news2Date',
-                p1Key: 'UCC 27 ön eleme kura öncesi resmi ve tek sitesi erişime açıldı. Sitenin şuandan itibaren Beta adıyla yayınlandığı için hatalarla karşılaşılabileceği eklendi.', 
-                p2Key: 'Site UEFA\'nın resmi sitesine de eklendi, kura çekiminden sonra sitenin büyük bir güncelleme alacağı bildirildi.' 
+            fr: { 
+                home: "ACCUEIL", groupsNav: "GROUPES", groupsTitle: "GROUPES", matches: "MATCHS", draws: "TIRAGES", teams: "ÉQUIPES", news: "ACTUALITÉS", stats: "STATISTIQUES", rules: "RÈGLES", penalties: "SANCTIONS", goBack: "← RETOUR", partTeams: "ÉQUIPES PARTICIPANTES", loading: "Chargement...", filterDate: "Sélectionner la Date:", latestNews: "DERNIÈRES NOUVELLES", vs: "v", sponsorsTitle: "SPONSORS OFFICIELS", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AU CINÉMA LE 18 DÉCEMBRE", featuredMatches: "MATCHS VEDETTES", countdownTitle: "COUP D'ENVOI UCC 27", cdDays: "JOURS", cdHours: "HEURES", cdMins: "MIN", cdSecs: "SEC", directQual: "Qualification Directe UCC 27", playoffQual: "Tour de barrage UCC 27", modalStatsTab: "STATISTIQUES", playerStats: "Stats Joueur", teamStats: "Stats Équipe", topScorers: "BUTS", topAssists: "PASSES DÉC.", goalAssist: "B + P", expectedGoals: "xG", yellowCards: "CARTONS JAUNES", redCards: "CARTONS ROUGES", goalsScored: "BUTS MARQUÉS", cleanSheets: "MATCHS SANS ENCAISSER", expectedGoalsTeam: "xG ÉQUIPE", statsNote: "* Les statistiques sont mises à jour automatiquement.", penaltiesTitle: "SUSPENSIONS ET SANCTIONS", playerPenalties: "Suspensions Joueurs", teamPenalties: "Sanctions Équipes", penaltiesNote: "* La liste est mise à jour par les officiels.", redCardReason: "Carton Rouge Direct", teamReason: "Troubles Publics", twoMatches: "2 Matchs", oneMatch: "1 Match à Huis Clos", news1Title: "Préliminaires", news1Sub: "Le tirage aura lieu le 31 juillet.", news1Date: "28 Juillet 2026 - 00:49", news2Title: "Site en Ligne", news2Sub: "La plateforme est accessible en version Beta.", news2Date: "30 Juillet 2026 - 03:00", news3Title: "Groupes Annoncés", news3Sub: "Les groupes préliminaires sont annoncés.", news3Date: "5 Août 2026 - 02:45",
+                ruleIntro1: "- La plus grande organisation de clubs en Europe.", ruleIntro2: "- Tous les 2 ans.", ruleIntro3: "- 128 équipes au total.", rA: "A) QUOTAS DE LIGUE", rA_L: "<li>Premier League (Angleterre) : 16</li><li>La Liga (Espagne) : 16</li><li>Süper Lig (Turquie) : 10</li>", rA_S: "<li><b>A.1)</b> Basé sur le coefficient UEFA.</li>", rB: "B) PHASE DE QUALIFICATION", rB_P: "128 équipes en préliminaires.", rB_S: "<li><b>B.4)</b> 6 matchs.</li><li><b>B.5)</b> 1ers qualifiés, 2e en playoffs.</li>", rC: "C) PHASE DE TOURNOI", rC_P: "48 équipes pour la coupe.", rC_S: "<li><b>C.1)</b> 3 matchs par équipe.</li><li><b>C.4)</b> Pas de matchs de la même nation.</li>", rD: "D) AMÉLIORATIONS", rD_P: "Amélioration des prix.", rE: "E) CALENDRIER 2027", rE_L1: "<li>Juin 2026</li>", rE_L2: "<li>Décembre 2026</li>", rE_L3: "<li>Août 2027</li>", rE_H: "Nov 21, 2027", rE_L4: "<li>Décembre 2027</li>", rF: "F) HÔTE: ESPAGNE", rF_P: "L'ESPAGNE accueillera l'événement.", rF_S: "<li><b>F.1)</b> 4 régions (Est, Nord, Ouest, Sud).</li><li><b>F.2)</b> Vers Madrid pour la finale.</li>", rG: "G) PRIX", rG_S: "<li><b>G.2)</b> Champion: 25 Millions Euro</li>", rH: "H) DÉCLARATION", rH_S: "<li><b>H.1)</b> Avant le 14 Nov.</li>", rI: "I) BONUS", rI_P: "Motivation pour joueurs.", rI_S: "<li><b>I.1)</b> Hattrick : 1M Euro.</li>", rK: "K) RESPECT", rK_S: "<li><b>K.3) ZÉRO TOLÉRANCE pour le racisme.</b></li>", rL: "L) DROITS TV", rL_S: "<li><b>L.1)</b> beIN Media Group.</li>", rM: "M) SPONSORS", rM_S: "<li><b>M.1)</b> Marques officielles.</li>", rN: "N) RÈGLES", rN_S: "<li><b>N.3)</b> Participation obligatoire.</li>", rUpd: "mis à jour: 20/07/2026 01.50",
+                themeClassic: "THÈME: CLASSIQUE", themeDoomsday: "THÈME: DOOMSDAY", modalHome: "Domicile", modalAway: "Extérieur", modalNotStarted: "NON COMMENCÉ", modalFT: "FIN", noMatchDate: "Aucun match trouvé.", noFeatMatch: "Aucun match vedette.", groupWord: "Groupe", thTeam: "Équipe", statPossession: "POSSESSION %", statRecovery: "RÉCUPÉRATION (SEC)", statShots: "TIRS", statXG: "BUTS ATTENDUS (xG)", statPasses: "PASSES", statTackles: "TACKLES", statTacklesWon: "TACKLES RÉUSSIS", statInterceptions: "INTERCEPTIONS", statSaves: "ARRÊTS", statFouls: "FAUTES COMMISES", statOffsides: "HORS-JEUX", statCorners: "CORNERS", statFreeKicks: "COUPS FRANCS", statPenalties: "PENALTYS", statYellows: "CARTONS JAUNES", statReds: "CARTONS ROUGES"
             },
-            'news1': { 
-                tKey: 'news1Title', sKey: 'news1Sub', dKey: 'news1Date',
-                p1Key: 'UCC 27 ön eleme kura çekimi 31 Temmuz saat 23.00 (tsi) İspanya-Madrid\'de kulüp başkanları ile yapılacaktır. Kura çekimiyle birlikte yeni turnuva tanıtılacaktır.', 
-                p2Key: 'Kura çekimi ve tanıtımı BEIN Sports ve UEFA.TV ekranlarından canlı yayınlanacaktır.' 
+            de: { 
+                home: "START", groupsNav: "GRUPPEN", groupsTitle: "GRUPPEN", matches: "SPIELE", draws: "AUSLOSUNG", teams: "TEAMS", news: "NEWS", stats: "STATISTIKEN", rules: "REGELN", penalties: "STRAFEN", goBack: "← ZURÜCK", partTeams: "TEILNEHMENDE TEAMS", loading: "Laden...", filterDate: "Datum wählen:", latestNews: "AKTUELLE NEWS", vs: "v", sponsorsTitle: "OFFIZIELLE SPONSOREN", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AB 18. DEZEMBER IM KINO", featuredMatches: "TOP-SPIELE", countdownTitle: "UCC 27 START IN", cdDays: "TAGE", cdHours: "STD", cdMins: "MIN", cdSecs: "SEK", directQual: "UCC 27 Direkte Qualifikation", playoffQual: "UCC 27 Play-off-Runde", modalStatsTab: "STATISTIKEN", playerStats: "Spieler", teamStats: "Team", topScorers: "TORE", topAssists: "ASSISTS", goalAssist: "T + A", expectedGoals: "xG", yellowCards: "GELBE KARTEN", redCards: "ROTE KARTEN", goalsScored: "ERZIELTE TORE", cleanSheets: "OHNE GEGENTOR", expectedGoalsTeam: "TEAM xG", statsNote: "* Statistiken werden automatisch aktualisiert.", penaltiesTitle: "SPERREN & STRAFEN", playerPenalties: "Spielersperren", teamPenalties: "Teamstrafen", penaltiesNote: "* Sperren werden von den Offiziellen aktualisiert.", redCardReason: "Direkte Rote Karte", teamReason: "Zuschauerausschreitungen", twoMatches: "2 Spiele", oneMatch: "1 Geisterspiel", news1Title: "Vorrunden", news1Sub: "Die Auslosung findet am 31. Juli statt.", news1Date: "28. Juli 2026 - 00:49", news2Title: "Website Online", news2Sub: "Die Plattform ist als Beta zugänglich.", news2Date: "30. Juli 2026 - 03:00", news3Title: "Gruppen bekannt", news3Sub: "Die UCC 27 Vorrundengruppen stehen fest.", news3Date: "5. August 2026 - 02:45",
+                ruleIntro1: "- Europas größte Klub-Organisation.", ruleIntro2: "- Alle 2 Jahre.", ruleIntro3: "- Insgesamt 128 Teams.", rA: "A) LIGA-QUOTEN", rA_L: "<li>Bundesliga (Deutschland) : 16 Teams</li>...", rA_S: "<li><b>A.1)</b> Basierend auf UEFA-Koeffizient.</li>", rB: "B) QUALIFIKATIONSPHASE", rB_P: "128 Teams nehmen teil.", rB_S: "<li><b>B.4)</b> 6 Spiele.</li>", rC: "C) TURNIERPHASE", rC_P: "48 Teams im Hauptturnier.", rC_S: "<li><b>C.1)</b> 3 Spiele pro Team.</li>", rD: "D) VERBESSERUNGEN", rD_P: "Erhöhtes Preisgeld.", rE: "E) KALENDER 2027", rE_L1: "<li>Juni 2026</li>", rE_L2: "<li>Dezember 2026</li>", rE_L3: "<li>August 2027</li>", rE_H: "Nov 21, 2027", rE_L4: "<li>Dezember 2027</li>", rF: "F) GASTGEBER: SPANIEN", rF_P: "SPANIEN ist der Gastgeber.", rF_S: "<li><b>F.1)</b> 4 Regionen.</li>", rG: "G) PREISGELD", rG_S: "<li><b>G.2)</b> Sieger: 25 Millionen Euro</li>", rH: "H) KADER-MELDUNG", rH_S: "<li><b>H.1)</b> Bis 14. Nov.</li>", rI: "I) BONUS", rI_P: "Spieler-Bonus:", rI_S: "<li><b>I.1)</b> Hattrick : 1M Euro.</li>", rK: "K) RESPEKT", rK_S: "<li><b>K.3) RASSISMUS führt zum Ausschluss.</b></li>", rL: "L) RECHTE", rL_S: "<li><b>L.1)</b> beIN Media Group.</li>", rM: "M) SPONSOREN", rM_S: "<li><b>M.1)</b> Sponsorenverträge.</li>", rN: "N) SPIELREGELN", rN_S: "<li><b>N.3)</b> Teilnahme ist Pflicht.</li>", rUpd: "aktualisiert: 20/07/2026 01.50",
+                themeClassic: "THEMA: KLASSISCH", themeDoomsday: "THEMA: DOOMSDAY", modalHome: "Heim", modalAway: "Auswärts", modalNotStarted: "NICHT BEGONNEN", modalFT: "ENDE", noMatchDate: "Keine Spiele an diesem Datum.", noFeatMatch: "Keine Top-Spiele.", groupWord: "Gruppe", thTeam: "Team", statPossession: "BALLBESITZ %", statRecovery: "BALLRÜCKGEWINNUNG (SEK)", statShots: "SCHÜSSE", statXG: "ERWARTETE TORE (xG)", statPasses: "PÄSSE", statTackles: "ZWEIKÄMPFE", statTacklesWon: "GEWONNENE ZWEIKÄMPFE", statInterceptions: "ABFANGEN", statSaves: "PARADEN", statFouls: "BEGANGENE FOULS", statOffsides: "ABSEITS", statCorners: "ECKBÄLLE", statFreeKicks: "FREISTÖßE", statPenalties: "ELFMETER", statYellows: "GELBE KARTEN", statReds: "ROTE KARTEN"
+            },
+            it: { 
+                home: "HOME", groupsNav: "GIRONI", groupsTitle: "GIRONI", matches: "PARTITE", draws: "SORTEGGI", teams: "SQUADRE", news: "NOTIZIE", stats: "STATISTICHE", rules: "REGOLE", penalties: "SQUALIFICHE", goBack: "← INDIETRO", partTeams: "SQUADRE PARTECIPANTI", loading: "Caricamento...", filterDate: "Seleziona Data:", latestNews: "ULTIME NOTIZIE", vs: "v", sponsorsTitle: "SPONSOR UFFICIALI", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — AL CINEMA IL 18 DICEMBRE", featuredMatches: "PARTITE DI CARTELLO", countdownTitle: "INIZIO UCC 27 TRA", cdDays: "GIORNI", cdHours: "ORE", cdMins: "MIN", cdSecs: "SEC", directQual: "Qualificazione Diretta UCC 27", playoffQual: "Turno Play-off UCC 27", modalStatsTab: "STATISTICHE", playerStats: "Stat. Giocatori", teamStats: "Stat. Squadra", topScorers: "GOL", topAssists: "ASSIST", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "CARTELLINI GIALLI", redCards: "CARTELLINI ROSSI", goalsScored: "GOL SEGNATI", cleanSheets: "RETI INVIOLATE", expectedGoalsTeam: "xG SQUADRA", statsNote: "* Le statistiche si aggiornano automaticamente.", penaltiesTitle: "SOSPENSIONI E PENALITÀ", playerPenalties: "Squalifiche Giocatori", teamPenalties: "Penalità Squadra", penaltiesNote: "* L'elenco è aggiornato dagli ufficiali.", redCardReason: "Cartellino Rosso Diretto", teamReason: "Disordini dei tifosi", twoMatches: "2 Partite", oneMatch: "1 Partita a Porte Chiuse", news1Title: "Sorteggio Preliminari", news1Sub: "Il sorteggio si terrà il 31 Luglio.", news1Date: "28 Luglio 2026 - 00:49", news2Title: "Sito Ufficiale Online", news2Sub: "La piattaforma ufficiale è in versione Beta.", news2Date: "30 Luglio 2026 - 03:00", news3Title: "Gironi Annunciati", news3Sub: "Annunciati i gironi preliminari UCC 27.", news3Date: "5 Agosto 2026 - 02:45",
+                ruleIntro1: "- La più grande organizzazione di club in Europa.", ruleIntro2: "- Ogni 2 anni.", ruleIntro3: "- 128 squadre totali.", rA: "A) QUOTE CAMPIONATO", rA_L: "<li>Serie A (Italia) : 16 Squadre</li>...", rA_S: "<li><b>A.1)</b> Basato sul coefficiente UEFA.</li>", rB: "B) FASE DI QUALIFICAZIONE", rB_P: "128 squadre totali.", rB_S: "<li><b>B.4)</b> 6 partite.</li>", rC: "C) FASE A GIRONI", rC_P: "48 squadre.", rC_S: "<li><b>C.1)</b> 3 partite a squadra.</li>", rD: "D) MIGLIORAMENTI", rD_P: "Montepremi aumentato.", rE: "E) CALENDARIO 2027", rE_L1: "<li>Giugno 2026</li>", rE_L2: "<li>Gennaio 2027</li>", rE_L3: "<li>Agosto 2027</li>", rE_H: "Nov 21, 2027", rE_L4: "<li>Dicembre 2027</li>", rF: "F) OSPITE: SPAGNA", rF_P: "La SPAGNA ospiterà il torneo.", rF_S: "<li><b>F.1)</b> 4 Regioni.</li>", rG: "G) MONTEPREMI", rG_S: "<li><b>G.2)</b> Vincitore: 25 Milioni Euro</li>", rH: "H) DICHIARAZIONE", rH_S: "<li><b>H.1)</b> Entro il 14 Nov.</li>", rI: "I) BONUS", rI_P: "Bonus giocatori.", rI_S: "<li><b>I.1)</b> Hattrick : 1M Euro.</li>", rK: "K) SPORTIVITÀ", rK_S: "<li><b>K.3) Il RAZZISMO comporterà l'espulsione.</b></li>", rL: "L) DIRITTI TV", rL_S: "<li><b>L.1)</b> beIN Media Group.</li>", rM: "M) SPONSOR", rM_S: "<li><b>M.1)</b> Sponsor ufficiali.</li>", rN: "N) REGOLE", rN_S: "<li><b>N.3)</b> La partecipazione è obbligatoria.</li>", rUpd: "aggiornato: 20/07/2026 01.50",
+                themeClassic: "TEMA: CLASSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Casa", modalAway: "Trasferta", modalNotStarted: "NON INIZIATA", modalFT: "FINITA", noMatchDate: "Nessuna partita in questa data.", noFeatMatch: "Nessuna partita in primo piano.", groupWord: "Gruppo", thTeam: "Squadra", statPossession: "POSSESSO PALLA %", statRecovery: "RECUPERO PALLA (SEC)", statShots: "TIRI", statXG: "GOL PREVISTI (xG)", statPasses: "PASSAGGI", statTackles: "CONTRASTI", statTacklesWon: "CONTRASTI VINTI", statInterceptions: "INTERCETTAZIONI", statSaves: "PARATE", statFouls: "FALLI COMMESSI", statOffsides: "FUORIGIOCO", statCorners: "CALCI D'ANGOLO", statFreeKicks: "CALCI DI PUNIZIONE", statPenalties: "RIGORI", statYellows: "CARTELLINI GIALLI", statReds: "CARTELLINI ROSSI"
+            },
+            pt: { 
+                home: "INÍCIO", groupsNav: "GRUPOS", groupsTitle: "GRUPOS", matches: "JOGOS", draws: "SORTEIOS", teams: "EQUIPAS", news: "NOTÍCIAS", stats: "ESTATÍSTICAS", rules: "REGRAS", penalties: "PENALIDADES", goBack: "← VOLTAR", partTeams: "EQUIPAS PARTICIPANTES", loading: "A carregar...", filterDate: "Selecionar Data:", latestNews: "ÚLTIMAS NOTÍCIAS", vs: "v", sponsorsTitle: "PATROCINADORES OFICIAIS", moviePromo: "<span>AVENGERS: DOOMSDAY</span> — NOS CINEMAS A 18 DE DEZEMBRO", featuredMatches: "JOGOS EM DESTAQUE", countdownTitle: "INÍCIO DO UCC 27 EM", cdDays: "DIAS", cdHours: "HORAS", cdMins: "MIN", cdSecs: "SEG", directQual: "Qualificação Direta UCC 27", playoffQual: "Ronda de Play-off UCC 27", modalStatsTab: "ESTATÍSTICAS", playerStats: "Estat. Jogador", teamStats: "Estat. Equipa", topScorers: "GOLOS", topAssists: "ASSISTÊNCIAS", goalAssist: "G + A", expectedGoals: "xG", yellowCards: "CARTÕES AMARELOS", redCards: "CARTÕES VERMELHOS", goalsScored: "GOLOS MARCADOS", cleanSheets: "JOGOS SEM SOFRER", expectedGoalsTeam: "xG EQUIPA", statsNote: "* As estatísticas são atualizadas automaticamente.", penaltiesTitle: "SUSPENSÕES E PENALIDADES", playerPenalties: "Suspensões de Jogadores", teamPenalties: "Penalidades de Equipas", penaltiesNote: "* A lista é atualizada pelos oficiais.", redCardReason: "Cartão Vermelho Direto", teamReason: "Distúrbios no Estádio", twoMatches: "2 Jogos", oneMatch: "1 Jogo à Porta Fechada", news1Title: "Sorteio das Preliminares", news1Sub: "O sorteio será realizado a 31 de Julho.", news1Date: "28 de Julho 2026 - 00:49", news2Title: "Site Oficial Online", news2Sub: "A plataforma oficial está acessível em Beta.", news2Date: "30 de Julho 2026 - 03:00", news3Title: "Grupos Anunciados", news3Sub: "Os grupos e o calendário foram anunciados.", news3Date: "5 de Agosto 2026 - 02:45",
+                ruleIntro1: "- A maior organização de clubes da Europa.", ruleIntro2: "- A cada 2 anos.", ruleIntro3: "- 128 equipas no total.", rA: "A) QUOTAS DE LIGA", rA_L: "<li>Primeira Liga (Portugal) : 12 Equipas</li>...", rA_S: "<li><b>A.1)</b> Coeficiente UEFA.</li>", rB: "B) FASE DE QUALIFICAÇÃO", rB_P: "128 equipas.", rB_S: "<li><b>B.4)</b> 6 jogos.</li>", rC: "C) FASE DE TORNEIO", rC_P: "48 equipas.", rC_S: "<li><b>C.1)</b> 3 jogos por equipa.</li>", rD: "D) MELHORIAS", rD_P: "Prémios melhorados.", rE: "E) CALENDÁRIO 2027", rE_L1: "<li>Junho 2026</li>", rE_L2: "<li>Janeiro 2027</li>", rE_L3: "<li>Agosto 2027</li>", rE_H: "Nov 21, 2027", rE_L4: "<li>Dezembro 2027</li>", rF: "F) ANFITRIÃO: ESPANHA", rF_P: "A ESPANHA acolherá o torneio.", rF_S: "<li><b>F.1)</b> 4 Regiões.</li>", rG: "G) PRÉMIOS", rG_S: "<li><b>G.2)</b> Campeão: 25 Milhões Euro</li>", rH: "H) DECLARAÇÃO", rH_S: "<li><b>H.1)</b> Até 14 de Nov.</li>", rI: "I) BÓNUS", rI_P: "Bónus aos jogadores.", rI_S: "<li><b>I.1)</b> Hattrick : 1M Euro.</li>", rK: "K) RESPEITO", rK_S: "<li><b>K.3) O RACISMO resultará em expulsão.</b></li>", rL: "L) DIREITOS", rL_S: "<li><b>L.1)</b> beIN Media Group.</li>", rM: "M) PATROCINADORES", rM_S: "<li><b>M.1)</b> Marcas oficiais.</li>", rN: "N) REGRAS", rN_S: "<li><b>N.3)</b> A participação é obrigatória.</li>", rUpd: "atualizado: 20/07/2026 01.50",
+                themeClassic: "TEMA: CLÁSSICO", themeDoomsday: "TEMA: DOOMSDAY", modalHome: "Casa", modalAway: "Fora", modalNotStarted: "NÃO INICIOU", modalFT: "FIM", noMatchDate: "Nenhum jogo nesta data.", noFeatMatch: "Sem jogos em destaque.", groupWord: "Grupo", thTeam: "Equipa", statPossession: "POSSE DE BOLA %", statRecovery: "RECUPERAÇÃO BOLA (SEG)", statShots: "REMATES", statXG: "GOLOS ESPERADOS (xG)", statPasses: "PASSES", statTackles: "DESARMES", statTacklesWon: "DESARMES GANHOS", statInterceptions: "INTERCEÇÕES", statSaves: "DEFESAS", statFouls: "FALTAS COMETIDAS", statOffsides: "FORAS DE JOGO", statCorners: "CANTOS", statFreeKicks: "LIVRES", statPenalties: "PENÁLTIS", statYellows: "CARTÕES AMARELOS", statReds: "CARTÕES VERMELHOS"
             }
         };
 
@@ -749,6 +933,20 @@
             "Çekya": { en: "Czechia", tr: "Çekya", es: "Chequia", fr: "Tchéquie", de: "Tschechien", it: "Cechia", pt: "Chéquia" },
             "Yunanistan": { en: "Greece", tr: "Yunanistan", es: "Grecia", fr: "Grèce", de: "Griechenland", it: "Grecia", pt: "Grécia" },
             "Diğer": { en: "Other Leagues", tr: "Diğer Ligler", es: "Otras Ligas", fr: "Autres Ligues", de: "Andere Ligen", it: "Altre Leghe", pt: "Outras Ligas" }
+        };
+
+        const monthMap = {
+            "ocak": {tr:"Ocak", en:"Jan", es:"Ene", fr:"Jan", de:"Jan", it:"Gen", pt:"Jan"}, "şubat": {tr:"Şubat", en:"Feb", es:"Feb", fr:"Fév", de:"Feb", it:"Feb", pt:"Fev"}, "subat": {tr:"Şubat", en:"Feb", es:"Feb", fr:"Fév", de:"Feb", it:"Feb", pt:"Fev"},
+            "mart": {tr:"Mart", en:"Mar", es:"Mar", fr:"Mar", de:"Mär", it:"Mar", pt:"Mar"}, "nisan": {tr:"Nisan", en:"Apr", es:"Abr", fr:"Avr", de:"Apr", it:"Apr", pt:"Abr"}, "mayıs": {tr:"Mayıs", en:"May", es:"May", fr:"Mai", de:"Mai", it:"Mag", pt:"Mai"}, "mayis": {tr:"Mayıs", en:"May", es:"May", fr:"Mai", de:"Mai", it:"Mag", pt:"Mai"},
+            "haziran": {tr:"Haziran", en:"Jun", es:"Jun", fr:"Juin", de:"Jun", it:"Giu", pt:"Jun"}, "temmuz": {tr:"Temmuz", en:"Jul", es:"Jul", fr:"Juil", de:"Jul", it:"Lug", pt:"Jul"}, "ağustos": {tr:"Ağustos", en:"Aug", es:"Ago", fr:"Aoû", de:"Aug", it:"Ago", pt:"Ago"}, "agustos": {tr:"Ağustos", en:"Aug", es:"Ago", fr:"Aoû", de:"Aug", it:"Ago", pt:"Ago"},
+            "eylül": {tr:"Eylül", en:"Sep", es:"Sep", fr:"Sep", de:"Sep", it:"Set", pt:"Set"}, "eylul": {tr:"Eylül", en:"Sep", es:"Sep", fr:"Sep", de:"Sep", it:"Set", pt:"Set"}, "ekim": {tr:"Ekim", en:"Oct", es:"Oct", fr:"Oct", de:"Okt", it:"Ott", pt:"Out"},
+            "kasım": {tr:"Kasım", en:"Nov", es:"Nov", fr:"Nov", de:"Nov", it:"Nov", pt:"Nov"}, "kasim": {tr:"Kasım", en:"Nov", es:"Nov", fr:"Nov", de:"Nov", it:"Nov", pt:"Nov"}, "aralık": {tr:"Aralık", en:"Dec", es:"Dic", fr:"Déc", de:"Dez", it:"Dic", pt:"Dez"}, "aralik": {tr:"Aralık", en:"Dec", es:"Dic", fr:"Déc", de:"Dez", it:"Dic", pt:"Dez"}
+        };
+
+        const articleData = {
+            'news3': { imgSelector: ".news-hub-img", tKey: 'news3Title', sKey: 'news3Sub', dKey: 'news3Date', p1Key: 'UCC 27 ön eleme grupları belirlendi. Toplam 32 gruptan oluşan bu mücadelede maçlar da belirlendi.', p2Key: 'Maçlar en yakın zamanda site üzerinden yayınlanacaktır.' },
+            'news2': { imgSelector: ".news-hub-img", tKey: 'news2Title', sKey: 'news2Sub', dKey: 'news2Date', p1Key: 'UCC 27 ön eleme kura öncesi resmi ve tek sitesi erişime açıldı. Sitenin şuandan itibaren Beta adıyla yayınlandığı için hatalarla karşılaşılabileceği eklendi.', p2Key: 'Site UEFA\'nın resmi sitesine de eklendi, kura çekiminden sonra sitenin büyük bir güncelleme alacağı bildirildi.' },
+            'news1': { imgSelector: ".news-hub-img", tKey: 'news1Title', sKey: 'news1Sub', dKey: 'news1Date', p1Key: 'UCC 27 ön eleme kura çekimi 31 Temmuz saat 23.00 (tsi) İspanya-Madrid\'de kulüp başkanları ile yapılacaktır. Kura çekimiyle birlikte yeni turnuva tanıtılacaktır.', p2Key: 'Kura çekimi ve tanıtımı BEIN Sports ve UEFA.TV ekranlarından canlı yayınlanacaktır.' }
         };
 
         const themes = ['default', 'doomsday'];
@@ -787,10 +985,7 @@
         }
         initCountdown();
 
-        function cleanValue(val) {
-            if(typeof val === 'string') return val.replace(/!/g, '').trim();
-            return val;
-        }
+        function cleanValue(val) { if(typeof val === 'string') return val.replace(/!/g, '').trim(); return val; }
 
         function formatTeamName(name) {
             if(!name) return "";
@@ -800,11 +995,10 @@
                 .replace(/[^a-z0-9]/g, ''); 
         }
 
-        // AKILLI ÜLKE ALGILAMA MOTORU
+        // AKILLI ÜLKE ALGILAMA MOTORU (%100 ÇALIŞAN GÜNCEL VERSİYON)
         function getCountryByTeamName(name) {
             let n = name.toLowerCase();
             let countryKey = "Diğer";
-            
             if(/city|liverpool|arsenal|chelsea|united|tottenham|aston|newcastle|everton|west ham|brentford|crystal|fulham|brighton|bournemouth|nottingham|wolves|southampton|leicester|ipswich|sunderland/.test(n)) countryKey = "İngiltere";
             else if(/real madrid|barcelona|atletico|celta|rayo|sociedad|betis|sevilla|bilbao|girona|valencia|villarreal|osasuna|alaves|mallorca|las palmas|getafe|leganes|valladolid|espanyol|levante/.test(n)) countryKey = "İspanya";
             else if(/bayern|dortmund|leverkusen|leipzig|frankfurt|stuttgart|koln|köln|cologne|monchengladbach|wolfsburg|freiburg|hoffenheim|werder|heidenheim|augsburg|mainz|bochum|pauli|holstein|union berlin|hamburg/.test(n)) countryKey = "Almanya";
@@ -816,7 +1010,6 @@
             else if(/brugge|bruge|anderlecht|genk|union sg|stvv|truiden|gilloise|antwerp|gent|standard|cercle|mechelen|charleroi|westerlo|kortrijk|leuven|dender|beerschot/.test(n)) countryKey = "Belçika";
             else if(/slavia|plzen|banik|mlada|slovacko/.test(n) || n === "sparta prag" || n === "sparta prague") countryKey = "Çekya";
             else if(/olympiacos|olympiakos|aek|paok|panathinaikos|aris/.test(n)) countryKey = "Yunanistan";
-
             return countryKey;
         }
 
@@ -825,13 +1018,14 @@
             let base = formatTeamName(rawName);
             const names = {
                 "monaci": "AS Monaco", "monaco": "AS Monaco", "marsilya": "Marseille", "sportinglizbon": "Sporting CP",
-                "bayernmunih": "Bayern Munich", "slaviaprag": "Slavia Prague", "spartaprag": "Sparta Prague", "koln": "1. FC Köln",
+                "bayernmunih": "Bayern Munich", "slaviaprag": "Slavia Prague", "spartaprag": "Sparta Prague", "koln": "1. FC Köln", "cologne": "FC Cologne", "fccologne": "FC Cologne",
                 "parissaintgilloise": "Paris SG", "unionsaintgilliose": "Union SG", "olympiakos": "Olympiacos", "roma": "AS Roma",
                 "guimares": "Vitória de Guimarães", "rayovallecona": "Rayo Vallecano", "celta": "Celta Vigo",
                 "monchengladbach": "Borussia Mönchengladbach", "leverkusen": "Bayer 04 Leverkusen", "aek": "AEK Athens",
                 "stvv": "Sint-Truiden", "besiktas": "Beşiktaş", "galatasaray": "Galatasaray", "fenerbahce": "Fenerbahçe", "basaksehir": "Başakşehir",
                 "caykurrizespor": "Rizespor", "caykurrize": "Rizespor", "rize": "Rizespor", "rizespor": "Rizespor",
-                "clubbrugge": "Club Brugge", "brugge": "Club Brugge", "clubbruge": "Club Brugge", "cbrugge": "Club Brugge", "clubbruggekv": "Club Brugge"
+                "clubbrugge": "Club Brugge", "brugge": "Club Brugge", "clubbruge": "Club Brugge", "cbrugge": "Club Brugge", "clubbruggekv": "Club Brugge",
+                "sunderland": "Sunderland", "sassuolo": "Sassuolo", "levante": "Levante", "hamburg": "Hamburg", "lorient": "Lorient", "az": "AZ", "kocaelispor": "Kocaelispor", "kocaeli": "Kocaelispor", "fcalverca": "FC Alverca", "alverca": "FC Alverca"
             };
             return names[base] ? names[base] : cleanValue(rawName);
         }
@@ -839,19 +1033,38 @@
         function findLogo(rawName) {
             if(!rawName) return 'https://via.placeholder.com/35?text=?';
             let baseName = formatTeamName(rawName);
-            
             if (baseName.includes("rize")) return "rize.png";
             if (baseName.includes("brugge") || baseName.includes("bruge")) return "clubbruge.png";
-
             if (teamLogos[baseName]) return teamLogos[baseName];
             let properBase = formatTeamName(getProperName(rawName));
             if (teamLogos[properBase]) return teamLogos[properBase];
-
             for(let key in teamLogos) { 
                 if(baseName.length > 3 && key.length > 3) { if(key.includes(baseName) || baseName.includes(key)) return teamLogos[key]; } 
                 if(properBase.length > 3 && key.length > 3) { if(key.includes(properBase) || properBase.includes(key)) return teamLogos[key]; } 
             }
             return 'https://via.placeholder.com/35?text=?';
+        }
+
+        function translateDate(dateStr, overrideLang) {
+            if(!dateStr) return "";
+            const lang = overrideLang || document.getElementById('lang-selector').value;
+            let cleanStr = cleanValue(dateStr).replace(/\s+/g, ' ').trim();
+            let dStrLower = cleanStr.toLowerCase();
+            let foundMonth = null;
+            for (let m in monthMap) {
+                if(dStrLower.includes(m)) { foundMonth = m; break; }
+            }
+            let yearMatch = dStrLower.match(/\d{4}/);
+            if (!yearMatch && foundMonth) {
+                let mIndexObj = {"ocak":0,"şubat":1,"subat":1,"mart":2,"nisan":3,"mayıs":4,"mayis":4,"haziran":5,"temmuz":6,"ağustos":7,"agustos":7,"eylül":8,"eylul":8,"ekim":9,"kasım":10,"kasim":10,"aralık":11,"aralik":11};
+                let year = (mIndexObj[foundMonth] < 6) ? 2027 : 2026;
+                cleanStr += " " + year;
+            }
+            if(foundMonth) {
+                let regex = new RegExp(foundMonth, "i");
+                cleanStr = cleanStr.replace(regex, monthMap[foundMonth][lang] || monthMap[foundMonth]['en']);
+            }
+            return cleanStr;
         }
 
         function parseMatchDate(dateStr, timeStr) {
@@ -865,34 +1078,6 @@
                 let hours = 0, minutes = 0; let tParts = tStr.split(':'); if(tParts.length >= 2) { hours = parseInt(tParts[0]); minutes = parseInt(tParts[1]); }
                 return new Date(year, month, day, hours, minutes).getTime();
             } catch(e) { return 9999999999999; }
-        }
-
-        function translateDate(dateStr, overrideLang) {
-            if(!dateStr) return "";
-            const lang = overrideLang || document.getElementById('lang-selector').value;
-            let cleanStr = cleanValue(dateStr).replace(/\s+/g, ' ').trim();
-            let dStrLower = cleanStr.toLowerCase();
-            
-            let foundMonth = null;
-            for (let m in monthMap) {
-                if(dStrLower.includes(m)) {
-                    foundMonth = m;
-                    break;
-                }
-            }
-
-            let yearMatch = dStrLower.match(/\d{4}/);
-            if (!yearMatch && foundMonth) {
-                let mIndexObj = {"ocak":0,"şubat":1,"subat":1,"mart":2,"nisan":3,"mayıs":4,"mayis":4,"haziran":5,"temmuz":6,"ağustos":7,"agustos":7,"eylül":8,"eylul":8,"ekim":9,"kasım":10,"kasim":10,"aralık":11,"aralik":11};
-                let year = (mIndexObj[foundMonth] < 6) ? 2027 : 2026;
-                cleanStr += " " + year;
-            }
-
-            if(foundMonth) {
-                let regex = new RegExp(foundMonth, "i");
-                cleanStr = cleanStr.replace(regex, monthMap[foundMonth][lang] || monthMap[foundMonth]['en']);
-            }
-            return cleanStr;
         }
 
         function populateDateDropdown() {
@@ -916,8 +1101,9 @@
             document.getElementById('dyn-art-img').src = document.querySelector(`[onclick="openArticle('${id}')"] .news-hub-img`).src;
             document.getElementById('dyn-art-title').innerHTML = t;
             document.getElementById('dyn-art-sub').innerHTML = s;
-            document.getElementById('dyn-art-p1').innerHTML = data.p1Key;
-            document.getElementById('dyn-art-p2').innerHTML = data.p2Key;
+            
+            document.getElementById('dyn-art-p1').innerHTML = dict[data.p1Key] || translations['tr'][data.p1Key] || data.p1Key;
+            document.getElementById('dyn-art-p2').innerHTML = dict[data.p2Key] || translations['tr'][data.p2Key] || data.p2Key;
             
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
             document.getElementById('view-article').classList.add('active-page');
@@ -1073,9 +1259,6 @@
             } catch (error) { console.error('Fikstür çekilirken hata:', error); }
         }
 
-        // ==========================================
-        // İSTATİSTİK PENCERESİ (DİL DESTEKLİ ÇUBUKLAR)
-        // ==========================================
         const matchStatsConfig = [
             { i18nKey: "statPossession", key: "Top" },
             { i18nKey: "statRecovery", key: "Geri" },
@@ -1215,7 +1398,6 @@
             for (const [grupAdi, grupMaclari] of Object.entries(matchesByGroup)) {
                 grupMaclari.sort((a,b) => parseMatchDate("01 Ocak 2026", a.saat) - parseMatchDate("01 Ocak 2026", b.saat));
                 
-                // Grup 1 -> Group 1 vs. çevirisi
                 let displayGrupAdi = grupAdi.replace(/Grup/ig, groupWord);
 
                 html += `<div class="matchday-container"><div class="matchday-title">${displayGrupAdi}</div>`;
